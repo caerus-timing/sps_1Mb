@@ -17,7 +17,7 @@ src/fsbl_hooks.o src/fsbl_hooks.o: ../src/fsbl_hooks.c ../src/fsbl.h \
  ../../sps_7020_v3_bsp/ps7_cortexa9_0/include/xstatus.h \
  ../../sps_7020_v3_bsp/ps7_cortexa9_0/include/xil_assert.h \
  ../src/fsbl_debug.h \
- /home/rayc/Documents/CAERUS/CAERUS_sps_dev/CAERUS_4ch_v3/CAERUS_4ch_v3.sdk/top_level_wrapper_hw_platform_0/ps7_init.h \
+ /home/rayc/Documents/CAERUS/CAERUS_sps_dev/vivado/CAERUS_4ch_v3/CAERUS_4ch_v3.sdk/top_level_wrapper_hw_platform_0/ps7_init.h \
  ../../sps_7020_v3_bsp/ps7_cortexa9_0/include/xstatus.h \
  ../src/fsbl_hooks.h
 
@@ -61,7 +61,7 @@ src/fsbl_hooks.o src/fsbl_hooks.o: ../src/fsbl_hooks.c ../src/fsbl.h \
 
 ../src/fsbl_debug.h:
 
-/home/rayc/Documents/CAERUS/CAERUS_sps_dev/CAERUS_4ch_v3/CAERUS_4ch_v3.sdk/top_level_wrapper_hw_platform_0/ps7_init.h:
+/home/rayc/Documents/CAERUS/CAERUS_sps_dev/vivado/CAERUS_4ch_v3/CAERUS_4ch_v3.sdk/top_level_wrapper_hw_platform_0/ps7_init.h:
 
 ../../sps_7020_v3_bsp/ps7_cortexa9_0/include/xstatus.h:
 

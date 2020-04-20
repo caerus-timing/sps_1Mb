@@ -3,5 +3,5 @@ the_ROM_image:
 {
 	[bootloader]/home/rayc/Documents/CAERUS/CAERUS_sps_dev/vivado/CAERUS_4ch_v3/CAERUS_4ch_v3.sdk/FSBL/Debug/FSBL.elf
 	/home/rayc/Documents/CAERUS/CAERUS_sps_dev/vivado/CAERUS_4ch_v3/CAERUS_4ch_v3.sdk/top_level_wrapper_hw_platform_0/top_level_wrapper.bit
-	/home/rayc/Documents/CAERUS/CAERUS_sps_dev/CAERUS_4ch_v3/CAERUS_4ch_v3.sdk/sps_7020_v3/Debug/sps_7020_v3.elf
+	/home/rayc/Documents/CAERUS/CAERUS_sps_dev/vivado/CAERUS_4ch_v3/CAERUS_4ch_v3.sdk/sps_7020_v3/Debug/sps_7020_v3.elf
 }

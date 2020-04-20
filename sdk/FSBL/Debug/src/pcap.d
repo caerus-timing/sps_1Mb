@@ -17,7 +17,7 @@ src/pcap.o src/pcap.o: ../src/pcap.c ../src/pcap.h \
  ../../sps_7020_v3_bsp/ps7_cortexa9_0/include/xpseudo_asm.h \
  ../../sps_7020_v3_bsp/ps7_cortexa9_0/include/xil_printf.h \
  ../src/fsbl_debug.h \
- /home/rayc/Documents/CAERUS/CAERUS_sps_dev/CAERUS_4ch_v3/CAERUS_4ch_v3.sdk/top_level_wrapper_hw_platform_0/ps7_init.h \
+ /home/rayc/Documents/CAERUS/CAERUS_sps_dev/vivado/CAERUS_4ch_v3/CAERUS_4ch_v3.sdk/top_level_wrapper_hw_platform_0/ps7_init.h \
  ../src/image_mover.h \
  ../../sps_7020_v3_bsp/ps7_cortexa9_0/include/xil_exception.h \
  ../../sps_7020_v3_bsp/ps7_cortexa9_0/include/sleep.h \
@@ -65,7 +65,7 @@ src/pcap.o src/pcap.o: ../src/pcap.c ../src/pcap.h \
 
 ../src/fsbl_debug.h:
 
-/home/rayc/Documents/CAERUS/CAERUS_sps_dev/CAERUS_4ch_v3/CAERUS_4ch_v3.sdk/top_level_wrapper_hw_platform_0/ps7_init.h:
+/home/rayc/Documents/CAERUS/CAERUS_sps_dev/vivado/CAERUS_4ch_v3/CAERUS_4ch_v3.sdk/top_level_wrapper_hw_platform_0/ps7_init.h:
 
 ../src/image_mover.h:
 
