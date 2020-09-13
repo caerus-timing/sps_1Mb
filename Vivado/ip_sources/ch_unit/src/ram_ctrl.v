@@ -116,27 +116,27 @@ module ram_ctrl	#
                                     ram_addr <= ram_addr;
                                 end else begin
                                     playback_done <= 1'b0;
-                                    ram_addr <= ram_addr;
+                                    ram_addr <= 1'b0;
                                 end
                             
                             end else begin
-                                playback_done <= 0;
+                                playback_done <= 1'b0;
                                 ram_addr <= ram_addr + 1'b1;
                             end
                         end else begin
                             playback_done <= 0;
-                            ram_addr <= ram_addr;
+                            ram_addr <= 1'b0;
                         end
                     end
                     WRITE_MODE:	begin
                         wen <= 1'b1;
                         ram_addr <= ram_addr;
-                        playback_done <= 0;
+                        playback_done <= 1'b0;
                     end
                     default: begin
                         wen	<=	1'b0;
                         ram_addr <=	ram_addr;
-                        playback_done <= 0;
+                        playback_done <= 1'b0;
                     end
                 endcase
             end

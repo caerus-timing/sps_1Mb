@@ -45,7 +45,7 @@ void initMemory(){
 	int Status;
 
 	//Init CDMA 0
-	CfgPtr = XAxiCdma_LookupConfig(XPAR_MEMORYSYSTEM_AXI_CDMA_0_DEVICE_ID);
+	CfgPtr = XAxiCdma_LookupConfig(XPAR_AXI_CDMA_0_DEVICE_ID);
 	if (!CfgPtr) {
 		printf("This is really bad.\r\n");
 		while(1);
@@ -61,7 +61,7 @@ void initMemory(){
 	XAxiCdma_IntrDisable(&AxiCdma0, XAXICDMA_XR_IRQ_ALL_MASK);
 
 	//Init CDMA 1
-	CfgPtr = XAxiCdma_LookupConfig(XPAR_MEMORYSYSTEM_AXI_CDMA_1_DEVICE_ID);
+	CfgPtr = XAxiCdma_LookupConfig(XPAR_AXI_CDMA_1_DEVICE_ID);
 	if (!CfgPtr) {
 		printf("This is really bad.\r\n");
 		while(1);
@@ -78,7 +78,7 @@ void initMemory(){
 
 
 	//Init CDMA 2
-	CfgPtr = XAxiCdma_LookupConfig(XPAR_MEMORYSYSTEM_AXI_CDMA_2_DEVICE_ID);
+	CfgPtr = XAxiCdma_LookupConfig(XPAR_AXI_CDMA_2_DEVICE_ID);
 	if (!CfgPtr) {
 		printf("This is really bad.\r\n");
 		while(1);
@@ -94,7 +94,7 @@ void initMemory(){
 	XAxiCdma_IntrDisable(&AxiCdma2, XAXICDMA_XR_IRQ_ALL_MASK);
 
 	//Init CDMA 3
-	CfgPtr = XAxiCdma_LookupConfig(XPAR_MEMORYSYSTEM_AXI_CDMA_3_DEVICE_ID);
+	CfgPtr = XAxiCdma_LookupConfig(XPAR_AXI_CDMA_3_DEVICE_ID);
 	if (!CfgPtr) {
 		printf("This is really bad.\r\n");
 		while(1);
@@ -108,6 +108,7 @@ void initMemory(){
 	/* Disable interrupts, we use polling mode
 	 */
 	XAxiCdma_IntrDisable(&AxiCdma3, XAXICDMA_XR_IRQ_ALL_MASK);
+
 
 
 }
@@ -201,9 +202,8 @@ void readDev(){
 	u32 length;
 	int Status;
 	int CDMA_Status;
-	length = random;
 	if(i != 0){
-		Status = XAxiCdma_SimpleTransfer(&AxiCdma0, (u32) BRAM, ((u32) CH1BASE + length+1), length, NULL, NULL);
+		Status = XAxiCdma_SimpleTransfer(&AxiCdma0, (u32) BRAM, ((u32) CH1BASE + 33+1), length, NULL, NULL);
 
 		if (Status != XST_SUCCESS) {
 			CDMA_Status = XAxiCdma_GetError(&AxiCdma0);
@@ -218,7 +218,7 @@ void readDev(){
 
 	volatile u32 * high = ch1Loc + length;
 
-	for(i=0; i < 4 * length; i++){
+	for(i=0; i < 70; i++){
 		xil_printf("@ %p ch4Data: %lX \r\n",(CH1BASE + 4 * i), ch1Loc[i]);
 	}
 }
@@ -229,6 +229,7 @@ void writetoDev(){
 	int Status;
 	int CDMA_Status;
 	length =  ch1Loc - (u32 *) CH1BASE;
+	printf("The engine is going to transfer %ld words from CH1BASE to BRAM \r\n",length);
 	if(length != 0){
 		Status = XAxiCdma_SimpleTransfer(&AxiCdma0, (u32) CH1BASE, (u32) BRAM, length, NULL, NULL);
 
