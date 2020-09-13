@@ -1,0 +1,6 @@
+Export the hardware with the bitstream in Vivado to Vitis/HDL.
+Make sure to name the hardware caerus_v4 to maintain backwards compatability.
+
+Set Vitis to open in the workspace folder.
+
+I suggest keeping platforms in the platform location, and applications in the application location. Do not use the base locations, they do not work.

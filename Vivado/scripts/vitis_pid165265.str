@@ -1,0 +1,427 @@
+/*
+
+Xilinx Vitis v2020.1.0 (64-bit) [Major: 2020, Minor: 1]
+SW Build 2902540 on Wed May 27 19:55:13 MDT 2020
+
+Process ID (PID): 165265
+License: Customer
+
+Current time: 	Sat Sep 12 21:11:55 EDT 2020
+Time zone: 	Eastern Standard Time (America/New_York)
+
+OS: Fedora release 32 (Thirty Two)
+OS Version: 5.8.7-200.fc32.x86_64
+OS Architecture: amd64
+Available processors (cores): 16
+
+Display: :0
+Screen size: 2560x1080
+Available screens: 2
+Available disk space: 588 GB
+
+Java version: 	9.0.4 64-bit
+Java home: 	/opt/Xilinx/Vitis/2020.1/tps/lnx64/jre9.0.4
+Java executable location: 	/opt/Xilinx/Vitis/2020.1/tps/lnx64/jre9.0.4/bin/java
+Java initial memory (-Xms): 	64 MB
+Java maximum memory (-Xmx):	 4 GB
+
+Java library paths: /opt/Xilinx/Vitis/2020.1/lib/lnx64.o/Default:/opt/Xilinx/Vitis/2020.1/lib/lnx64.o:/opt/Xilinx/Vitis/2020.1/tps/lnx64/jre9.0.4/lib/:/opt/Xilinx/Vitis/2020.1/tps/lnx64/jre9.0.4/lib//server:/opt/Xilinx/Vitis/2020.1/lib/lnx64.o:/opt/Xilinx/Vitis/2020.1/lib/lnx64.o/Default:/opt/Xilinx/Vitis/2020.1/lib/lnx64.o:/opt/Xilinx/Vivado/2020.1/bin/../lnx64/tools/dot/lib:/opt/Xilinx/Vitis/2020.1/bin/../lnx64/tools/dot/lib:/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib
+
+Java class paths: /opt/Xilinx/Vitis/2020.1/eclipse/lnx64.o//plugins/org.eclipse.equinox.launcher_1.5.0.v20180512-1130.jar
+LD_LIBRARY_PATH: /opt/Xilinx/Vitis
+
+User name: 	mulholbn
+User home directory: /home/mulholbn
+User working directory: /home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/scripts
+User country: 	US
+User language: 	en
+User locale: 	en_US
+
+RDI_BASEROOT: /opt/Xilinx/Vitis
+HDI_APPROOT: /opt/Xilinx/Vitis/2020.1
+RDI_DATADIR: /opt/Xilinx/Vitis/2020.1/data
+RDI_BINDIR: /opt/Xilinx/Vitis/2020.1/bin
+
+Vitis preferences directory: /home/mulholbn/.Xilinx/Vitis/2020.1/
+Vitis workspace directory: /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace
+Vitis workspace log file location: /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/.metadata/.log
+Engine tmp dir: 	
+
+Xilinx Environment Variables
+----------------------------
+XILINX_DSP: 
+XILINX_HLS: /opt/Xilinx/Vitis/2020.1
+XILINX_PLANAHEAD: /opt/Xilinx/Vitis/2020.1
+XILINX_SDK: /opt/Xilinx/Vitis/2020.1
+XILINX_VITIS: /opt/Xilinx/Vitis/2020.1
+XILINX_VIVADO: /opt/Xilinx/Vivado/2020.1
+XILINX_VIVADO_HLS: /opt/Xilinx/Vivado/2020.1
+_RDI_DONT_SET_XILINX_AS_PATH: True
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+selectMenuItem("File", "WorkbenchWindow", "MenuItem.FILE");
+selectMenuItem("Properties", "WorkbenchWindow", "MenuItem.PROPERTIES");
+selectMenuItem("Window", "WorkbenchWindow", "MenuItem.WINDOW");
+selectMenuItem("Preferences", "WorkbenchWindow", "MenuItem.PREFERENCES");
+selectTree("General", "Additional", "Preferences", "CustomPreferenceDialog", "Tree.WorkbenchPreferenceManager");
+selectTree("Appearance", "Additional > General", "Preferences", "CustomPreferenceDialog", "Tree.WorkbenchPreferenceManager");
+selectButton("Apply and Close", "Preferences", "CustomPreferenceDialog", "Button.APPLY_AND_CLOSE");
+selectMenuItem("Window", "WorkbenchWindow", "MenuItem.WINDOW");
+selectMenuItem("Preferences", "WorkbenchWindow", "MenuItem.PREFERENCES");
+selectTree("Additional", "Preferences", "CustomPreferenceDialog", "Tree.WorkbenchPreferenceManager");
+selectCombo("Dark", "Preferences", "CustomPreferenceDialog", "Combo.THEME");
+selectButton("Apply", "Preferences", "CustomPreferenceDialog", "Button.APPLY");
+selectButton("OK", "Theme change", "MessageDialog", "Button.OK");
+selectButton("Apply and Close", "Preferences", "CustomPreferenceDialog", "Button.APPLY_AND_CLOSE");
+selectCheckBox("Use default location", Boolean.FALSE, "New Platform Project (Create new platform project)", "NewPlatformProjectWizard", "Button.USE_DEFAULT_LOCATION");
+selectCheckBox("Use default location", Boolean.TRUE, "New Platform Project (Create new platform project)", "NewPlatformProjectWizard", "Button.USE_DEFAULT_LOCATION");
+selectCheckBox("Use default location", Boolean.FALSE, "New Platform Project (Create new platform project)", "NewPlatformProjectWizard", "Button.USE_DEFAULT_LOCATION");
+selectButton("Browse", "New Platform Project (Create new platform project)", "NewPlatformProjectWizard", "Button.BROWSE");
+setTextField("caerus_v4", "New Platform Project (Create new platform project)", "NewPlatformProjectWizard", "Text.PROJECT_NAME");
+selectButton("Browse", "New Platform Project (Create new platform project)", "NewPlatformProjectWizard", "Button.BROWSE");
+selectButton("Cancel", "New Platform Project (Create new platform project)", "NewPlatformProjectWizard", "Button.CANCEL");
+selectCheckBox("Use default location", Boolean.FALSE, "New Platform Project (Create new platform project)", "NewPlatformProjectWizard", "Button.USE_DEFAULT_LOCATION");
+selectButton("Browse", "New Platform Project (Create new platform project)", "NewPlatformProjectWizard", "Button.BROWSE");
+setTextField("caerus_v4", "New Platform Project (Create new platform project)", "NewPlatformProjectWizard", "Text.PROJECT_NAME");
+selectButton("Browse", "New Platform Project (Create new platform project)", "NewPlatformProjectWizard", "Button.BROWSE");
+selectButton("Next", "New Platform Project (Create new platform project)", "NewPlatformProjectWizard", "Button.NEXT");
+selectButton("Next", "New Platform Project (Platform Project)", "NewPlatformProjectWizard", "Button.NEXT");
+selectButton("Browse", "New Platform Project (Platform Project Specification)", "NewPlatformProjectWizard", "Button.BROWSE");
+setFileDialog("/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/hdl/caerus_v4.xsa", "Hardware Specification File", "SDXFileDialog", "Button.OK");
+selectButton("Finish", "New Platform Project (Platform Project Specification)", "NewPlatformProjectWizard", "Button.FINISH");
+selectTree("ps7_cortexa9_0", "caerus_v4", "caerus_v4", "ScwEditor", "Tree");
+selectTree("zynq_fsbl", "caerus_v4 > ps7_cortexa9_0", "caerus_v4", "ScwEditor", "Tree");
+selectTree("Board Support Package", "caerus_v4 > ps7_cortexa9_0 > zynq_fsbl", "caerus_v4", "ScwEditor", "Tree");
+selectTab("Drivers", "Drivers", "ScwEditor", "TabItem.DRIVERS");
+selectTree("Board Support Package", "caerus_v4 > ps7_cortexa9_0 > standalone on ps7_cortexa9_0", "caerus_v4", "ScwEditor", "Tree");
+selectTab("Drivers", "Drivers", "ScwEditor", "TabItem.DRIVERS");
+selectTab("Libraries", "Libraries", "ScwEditor", "TabItem.LIBRARIES");
+selectTable("No data available", "caerus_v4", "ScwEditor", "TableViewer.ArrayContentProvider");
+selectTab("Drivers", "Drivers", "ScwEditor", "TabItem.DRIVERS");
+selectTree("caerus_v4", "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("File", "caerus_v4", "WorkbenchWindow", "MenuItem.FILE");
+selectMenuItem("New", "caerus_v4", "WorkbenchWindow", "MenuItem.NEW");
+selectMenuItem("Application Project", "caerus_v4", "WorkbenchWindow", "MenuItem.APPLICATION_PROJECT");
+selectButton("Next", "New Application Project (Create a New Application Project)", "NewAppProjectWizard", "Button.NEXT");
+selectTreeTable("caerus_v4", "New Application Project (Platform)", "NewAppProjectWizard", "TreeViewer.ArrayTreeContentProvider");
+selectButton("Next", "New Application Project (Platform)", "NewAppProjectWizard", "Button.NEXT");
+selectTreeTable("ps7_cortexa9 SMP", "New Application Project (Application Project Details)", "NewAppProjectWizard", "ProjectDetailsPage");
+selectTreeTable("ps7_cortexa9_0", EventType.DOUBLE_CLICK, "New Application Project (Application Project Details)", "NewAppProjectWizard", "ProjectDetailsPage");
+setTextField("Caerus_Mem_Test", "New Application Project (Application Project Details)", "NewAppProjectWizard", "Text.APPLICATION_PROJECT_NAME");
+selectButton("Next", "New Application Project (Application Project Details)", "NewAppProjectWizard", "Button.NEXT");
+selectButton("Back", "New Application Project (Domain)", "NewAppProjectWizard", "Button.BACK");
+selectButton("Next", "New Application Project (Application Project Details)", "NewAppProjectWizard", "Button.NEXT");
+selectButton("Next", "New Application Project (Domain)", "NewAppProjectWizard", "Button.NEXT");
+selectTreeTable("Empty Application", "SW development templates", "New Application Project (Templates)", "NewAppProjectWizard", "TreeViewer.TemplateContentProvider");
+selectButton("Finish", "New Application Project (Templates)", "NewAppProjectWizard", "Button.FINISH");
+selectTree("src", "Caerus_Mem_Test_system > Caerus_Mem_Test", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectTree("chDriver.c", "Caerus_Mem_Test_system > Caerus_Mem_Test > src", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Properties", "Explorer", "ProjectExplorer", "MenuItem.PROPERTIES");
+selectButton("Cancel", "Properties for chDriver.c", "PropertyDialog", "Button.CANCEL");
+selectTree("main.h", "Caerus_Mem_Test_system > Caerus_Mem_Test > src", EventType.DOUBLE_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectTree("main.c", "Caerus_Mem_Test_system > Caerus_Mem_Test > src", EventType.DOUBLE_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectTree("caerus_v4", "Caerus_Mem_Test_system > Caerus_Mem_Test > src", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Build Project", "Explorer", "ProjectExplorer", "MenuItem.BUILD_PROJECT");
+activateView("caerus_v4", "caerus_v4/platform.spr", "ScwEditor", "CTabItem.CAERUS_V4");
+activateView("main.c", "Caerus_Mem_Test/src/main.c", "CEditor", "CTabItem.MAIN_C");
+selectTree("Caerus_Mem_Test", "Caerus_Mem_Test_system", "Explorer", "ProjectExplorer", "Tree");
+selectTree("Caerus_Mem_Test_system", "Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectToolBarButton("Build Debug for project Caerus_Mem_Test_system", "Caerus_Mem_Test_system", "WorkbenchWindow", "ToolItem.BUILD_DEBUG_FOR");
+activateView("Problems", "ProblemsView", "CTabItem.PROBLEMS");
+activateView("Problems", "7 errors 0 warnings 11 others", "ProblemsView", "CTabItem.PROBLEMS");
+selectProblemsView("XPAR_CH_UNIT_0_BASEADDR undeclared", "Errors", EventType.DOUBLE_CLICK, "ProblemsView", "TreeViewer.MarkerViewerContentProvider");
+selectToolBarButton("Build Debug for project Caerus_Mem_Test", "Caerus_Mem_Test", "WorkbenchWindow", "ToolItem.BUILD_DEBUG_FOR");
+activateView("Problems", "7 errors 1 warning 3 others", "ProblemsView", "CTabItem.PROBLEMS");
+selectProblemsView("XPAR_AXI_CDMA_0_DEVICE_ID undeclared", "Errors", EventType.DOUBLE_CLICK, "ProblemsView", "TreeViewer.MarkerViewerContentProvider");
+activateView("xparameters.h", "caerus_v4/export/caerus_v4/sw/caerus_v4/standalone_", "CEditor", "CTabItem.XPARAMETERS_H");
+activateView("main.c", "Caerus_Mem_Test/src/main.c", "CEditor", "CTabItem.MAIN_C");
+activateView("memory.c", "Caerus_Mem_Test/src/memory.c", "CEditor", "CTabItem.MEMORY_C");
+activateView("xparameters.h", "caerus_v4/export/caerus_v4/sw/caerus_v4/standalone_", "CEditor", "CTabItem.XPARAMETERS_H");
+activateView("memory.c", "Caerus_Mem_Test/src/memory.c", "CEditor", "CTabItem.MEMORY_C");
+selectTree("Caerus_Mem_Test_system", "Explorer", "ProjectExplorer", "Tree");
+selectToolBarButton("Build Debug for project Caerus_Mem_Test_system", "Caerus_Mem_Test_system", "WorkbenchWindow", "ToolItem.BUILD_DEBUG_FOR");
+activateView("Problems", "2 items", "ProblemsView", "CTabItem.PROBLEMS");
+activateView("Console", "ConsoleView", "CTabItem.CONSOLE");
+selectMenuItem("Xilinx", "Caerus_Mem_Test", "WorkbenchWindow", "MenuItem.XILINX");
+selectMenuItem("Generate Linker Script", "Caerus_Mem_Test", "WorkbenchWindow", "MenuItem.GENERATE_LINKER");
+selectButton("OK", "Error", "MessageDialog", "Button.OK");
+selectTree("Caerus_Mem_Test", "Caerus_Mem_Test_system", "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Xilinx", "Caerus_Mem_Test", "WorkbenchWindow", "MenuItem.XILINX");
+selectMenuItem("Generate Linker Script", "Caerus_Mem_Test", "WorkbenchWindow", "MenuItem.GENERATE_LINKER");
+selectTab("Basic", "Generate a linker script", "LinkgenView", "TabItem.BASIC");
+selectTab("Advanced", "Generate a linker script", "LinkgenView", "TabItem.ADVANCED");
+selectTab("Basic", "Generate a linker script", "LinkgenView", "TabItem.BASIC");
+setTextField("5 KB", "Generate a linker script", "LinkgenView", "Text.HEAP_SIZE");
+selectButton("Generate", "Generate a linker script", "LinkgenView", "Button.GENERATE");
+setTextField("5 KB", "Linker Script Already Exists", "MessageDialog", "Text.STACK_SIZE");
+selectButton("No", "Linker Script Already Exists", "MessageDialog", "Button.NO");
+selectButton("Generate", "Generate a linker script", "LinkgenView", "Button.GENERATE");
+setTextField("5 KB", "Linker Script Already Exists", "MessageDialog", "Text.HEAP_SIZE");
+selectButton("Yes", "Linker Script Already Exists", "MessageDialog", "Button.YES");
+selectTree("lscript.ld", "Caerus_Mem_Test_system > Caerus_Mem_Test > src", EventType.DOUBLE_CLICK, "Explorer", "ProjectExplorer", "Tree");
+closeView("lscript.ld", "Caerus_Mem_Test/src/lscript.ld", "LscriptEditor", "CTabItem.LSCRIPT_LD");
+selectTree("Caerus_Mem_Test_system", "Caerus_Mem_Test_system > Caerus_Mem_Test > src", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Run As", "Explorer", "ProjectExplorer", "MenuItem.RUN_AS");
+selectMenuItem("1 Launch Hardware", "Caerus_Mem_Test_system", "WorkbenchWindow", "MenuItem.1_LAUNCH_HARDWARE");
+activateView("main.c", "Caerus_Mem_Test/src/main.c", "CEditor", "CTabItem.MAIN_C");
+selectTree("Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Run As", "Explorer", "ProjectExplorer", "MenuItem.RUN_AS");
+selectMenuItem("1 Launch Hardware", "Caerus_Mem_Test_system", "WorkbenchWindow", "MenuItem.1_LAUNCH_HARDWARE");
+selectTree("Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectToolBarButton("Build Debug for project Caerus_Mem_Test_system", "Caerus_Mem_Test_system", "WorkbenchWindow", "ToolItem.BUILD_DEBUG_FOR");
+selectMenuItem("Detach", "Explorer", "ProjectExplorer", "MenuItem.DETACH");
+selectMenuItem("Window", "Caerus_Mem_Test", "WorkbenchWindow", "MenuItem.WINDOW");
+selectMenuItem("Reset Perspective", "Caerus_Mem_Test", "WorkbenchWindow", "MenuItem.RESET_PERSPECTIVE");
+selectButton("Reset Perspective", "Reset Perspective", "MessageDialog", "Button.RESET_PERSPECTIVE");
+selectToolBarButton("Minimize", "Assistant", "SDXAssistantView", "ToolItem.MINIMIZE");
+selectTree("Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Run As", "Explorer", "ProjectExplorer", "MenuItem.RUN_AS");
+selectMenuItem("1 Launch Hardware", "Caerus_Mem_Test_system", "WorkbenchWindow", "MenuItem.1_LAUNCH_HARDWARE");
+selectToolBarButton("Build Debug for project Caerus_Mem_Test", "Caerus_Mem_Test", "WorkbenchWindow", "ToolItem.BUILD_DEBUG_FOR");
+selectTree("Debug", "Caerus_Mem_Test_system > Caerus_Mem_Test", "Console", "ConsoleView", "Tree");
+selectTree("Caerus_Mem_Test_system", "Caerus_Mem_Test_system > Caerus_Mem_Test", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Run As", "Explorer", "ProjectExplorer", "MenuItem.RUN_AS");
+selectMenuItem("1 Launch Hardware", "Caerus_Mem_Test_system", "WorkbenchWindow", "MenuItem.1_LAUNCH_HARDWARE");
+selectTree("cmdline.c", "Caerus_Mem_Test_system > Caerus_Mem_Test > src", EventType.DOUBLE_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectTree("chDriver.c", "Caerus_Mem_Test_system > Caerus_Mem_Test > src", EventType.DOUBLE_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectTextEditor("chDriver.c", "Caerus_Mem_Test/src/chDriver.c", EventType.POPUP_TRIGGER_CLICK, "CEditor", "StyledText.CHDRIVER_C");
+selectMenuItem("Window", "Caerus_Mem_Test", "WorkbenchWindow", "MenuItem.WINDOW");
+selectMenuItem("Preferences", "Caerus_Mem_Test", "WorkbenchWindow", "MenuItem.PREFERENCES");
+selectTree("Additional", "Caerus_Mem_Test_system > Caerus_Mem_Test > src", "Preferences", "CustomPreferenceDialog", "Tree.WorkbenchPreferenceManager");
+selectTree("Colors and Fonts", "Additional > General > Appearance", "Preferences", "CustomPreferenceDialog", "Tree.WorkbenchPreferenceManager");
+selectTree("Basic", "Additional > General > Appearance", "Preferences", "CustomPreferenceDialog", "Tree.ThemeRegistry");
+selectTree("Active hyperlink text color", "Basic", "Preferences", "CustomPreferenceDialog", "Tree.ThemeRegistry");
+selectTree("Content Assist foreground color", "Basic", EventType.DOUBLE_CLICK, "Preferences", "CustomPreferenceDialog", "Tree.ThemeRegistry");
+selectTree("Information text color", "Basic", "Preferences", "CustomPreferenceDialog", "Tree.ThemeRegistry");
+selectTree("C/C++ Editor Text Font", "C/C++ > Editor", "Preferences", "CustomPreferenceDialog", "Tree.ThemeRegistry");
+selectTree("C/C++ Build Console Text Font", "C/C++", "Preferences", "CustomPreferenceDialog", "Tree.ThemeRegistry");
+selectTree("Active", "View and Editor Folders", "Preferences", "CustomPreferenceDialog", "Tree.ThemeRegistry");
+selectButton("Apply and Close", "Preferences", "CustomPreferenceDialog", "Button.APPLY_AND_CLOSE");
+selectMenuItem("Window", "Caerus_Mem_Test", "WorkbenchWindow", "MenuItem.WINDOW");
+selectMenuItem("Preferences", "Caerus_Mem_Test", "WorkbenchWindow", "MenuItem.PREFERENCES");
+selectTree("Additional", "Preferences", "CustomPreferenceDialog", "Tree.WorkbenchPreferenceManager");
+selectTree("Appearance", "Additional > General", "Preferences", "CustomPreferenceDialog", "Tree.WorkbenchPreferenceManager");
+selectTree("Additional", "Additional > General", "Preferences", "CustomPreferenceDialog", "Tree.WorkbenchPreferenceManager");
+selectCombo("Reduced Palette", "Preferences", "CustomPreferenceDialog", "Combo.COLOR_AND_FONT_THEME");
+selectButton("Apply", "Preferences", "CustomPreferenceDialog", "Button.APPLY");
+selectButton("OK", "Theme change", "MessageDialog", "Button.OK");
+selectMenuItem("Window", "Caerus_Mem_Test", "WorkbenchWindow", "MenuItem.WINDOW");
+selectMenuItem("Preferences", "Caerus_Mem_Test", "WorkbenchWindow", "MenuItem.PREFERENCES");
+selectTree("Additional", "Preferences", "CustomPreferenceDialog", "Tree.WorkbenchPreferenceManager");
+selectCombo("High Contrast", "Preferences", "CustomPreferenceDialog", "Combo.THEME");
+selectCombo("Classic", "Preferences", "CustomPreferenceDialog", "Combo.THEME");
+selectButton("Apply", "Preferences", "CustomPreferenceDialog", "Button.APPLY");
+selectButton("OK", "Theme change", "MessageDialog", "Button.OK");
+selectButton("Apply and Close", "Preferences", "CustomPreferenceDialog", "Button.APPLY_AND_CLOSE");
+selectMenuItem("Window", "Caerus_Mem_Test", "WorkbenchWindow", "MenuItem.WINDOW");
+selectMenuItem("Preferences", "Caerus_Mem_Test", "WorkbenchWindow", "MenuItem.PREFERENCES");
+selectTree("Additional", "Preferences", "CustomPreferenceDialog", "Tree.WorkbenchPreferenceManager");
+selectCombo("Classic Theme", "Preferences", "CustomPreferenceDialog", "Combo.COLOR_AND_FONT_THEME");
+selectButton("Apply", "Preferences", "CustomPreferenceDialog", "Button.APPLY");
+selectButton("OK", "Theme change", "MessageDialog", "Button.OK");
+selectCombo("Dark", "Preferences", "CustomPreferenceDialog", "Combo.THEME");
+selectButton("Apply", "Preferences", "CustomPreferenceDialog", "Button.APPLY");
+selectButton("OK", "Theme change", "MessageDialog", "Button.OK");
+selectCombo("XCustom", "Preferences", "CustomPreferenceDialog", "Combo.THEME");
+selectButton("Apply", "Preferences", "CustomPreferenceDialog", "Button.APPLY");
+selectButton("OK", "Theme change", "MessageDialog", "Button.OK");
+selectCombo("Dark", "Preferences", "CustomPreferenceDialog", "Combo.THEME");
+selectButton("Apply", "Preferences", "CustomPreferenceDialog", "Button.APPLY");
+selectButton("OK", "Theme change", "MessageDialog", "Button.OK");
+selectButton("Apply and Close", "Preferences", "CustomPreferenceDialog", "Button.APPLY_AND_CLOSE");
+selectTree("src", "Caerus_Mem_Test_system > Caerus_Mem_Test", "Explorer", "ProjectExplorer", "Tree");
+selectTree("Includes", "Caerus_Mem_Test_system > Caerus_Mem_Test", "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Window", "Caerus_Mem_Test", "WorkbenchWindow", "MenuItem.WINDOW");
+selectMenuItem("Preferences", "Caerus_Mem_Test", "WorkbenchWindow", "MenuItem.PREFERENCES");
+selectTree("Additional", "Caerus_Mem_Test_system > Caerus_Mem_Test", "Preferences", "CustomPreferenceDialog", "Tree.WorkbenchPreferenceManager");
+selectCombo("Default", "Preferences", "CustomPreferenceDialog", "Combo.COLOR_AND_FONT_THEME");
+selectCombo("Dark", "Preferences", "CustomPreferenceDialog", "Combo.THEME");
+selectButton("Apply", "Preferences", "CustomPreferenceDialog", "Button.APPLY");
+selectButton("OK", "Theme change", "MessageDialog", "Button.OK");
+selectTree("Colors and Fonts", "Additional > General > Appearance", "Preferences", "CustomPreferenceDialog", "Tree.WorkbenchPreferenceManager");
+selectTree("View and Editor Folders", "Additional > General > Appearance", "Preferences", "CustomPreferenceDialog", "Tree.ThemeRegistry");
+selectTree("Dialog Font", "Basic", "Preferences", "CustomPreferenceDialog", "Tree.ThemeRegistry");
+selectTree("Decoration color", "Basic", "Preferences", "CustomPreferenceDialog", "Tree.ThemeRegistry");
+selectTree("Basic", "Basic", "Preferences", "CustomPreferenceDialog", "Tree.ThemeRegistry");
+selectTree("Assembly compare text font", "Text Compare", "Preferences", "CustomPreferenceDialog", "Tree.ThemeRegistry");
+selectTree("C/C++ compare text font", "Text Compare", "Preferences", "CustomPreferenceDialog", "Tree.ThemeRegistry");
+selectTree("Compare text font", "Text Compare", "Preferences", "CustomPreferenceDialog", "Tree.ThemeRegistry");
+selectTree("C/C++ compare text font", "Text Compare", "Preferences", "CustomPreferenceDialog", "Tree.ThemeRegistry");
+selectTree("Assembly compare text font", "Text Compare", EventType.DOUBLE_CLICK, "Preferences", "CustomPreferenceDialog", "Tree.ThemeRegistry");
+selectTree("Outgoing change color", "Text Compare", "Preferences", "CustomPreferenceDialog", "Tree.ThemeRegistry");
+selectTree("Text Compare", "Text Compare", "Preferences", "CustomPreferenceDialog", "Tree.ThemeRegistry");
+selectTree("Structured Text Editor Text Font", "Structured Text Editors", "Preferences", "CustomPreferenceDialog", "Tree.ThemeRegistry");
+selectButton("Apply and Close", "Preferences", "CustomPreferenceDialog", "Button.APPLY_AND_CLOSE");
+selectTree("Caerus_Mem_Test_system", "Explorer", "ProjectExplorer", "Tree");
+selectToolBarButton("Build Debug for project Caerus_Mem_Test_system", "Caerus_Mem_Test_system", "WorkbenchWindow", "ToolItem.BUILD_DEBUG_FOR");
+selectTree("Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Run As", "Explorer", "ProjectExplorer", "MenuItem.RUN_AS");
+selectMenuItem("1 Launch Hardware", "Caerus_Mem_Test_system", "WorkbenchWindow", "MenuItem.1_LAUNCH_HARDWARE");
+activateView("main.h", "Caerus_Mem_Test/src/main.h", "CEditor", "CTabItem.MAIN_H");
+activateView("main.c", "Caerus_Mem_Test/src/main.c", "CEditor", "CTabItem.MAIN_C");
+selectTree("Caerus_Mem_Test_system", "Explorer", "ProjectExplorer", "Tree");
+selectToolBarMenuButton("Build Debug for project Caerus_Mem_Test_system", "Caerus_Mem_Test_system", "WorkbenchWindow", "ToolItem.BUILD_DEBUG_FOR");
+selectTree("Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Clean Project", "Explorer", "ProjectExplorer", "MenuItem.CLEAN_PROJECT");
+selectTree("Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Build Project", "Explorer", "ProjectExplorer", "MenuItem.BUILD_PROJECT");
+selectTree("Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Run As", "Explorer", "ProjectExplorer", "MenuItem.RUN_AS");
+selectMenuItem("1 Launch Hardware", "Caerus_Mem_Test_system", "WorkbenchWindow", "MenuItem.1_LAUNCH_HARDWARE");
+selectTree("Caerus_Mem_Test_system", "Explorer", "ProjectExplorer", "Tree");
+selectToolBarButton("Build Debug for project Caerus_Mem_Test_system", "Caerus_Mem_Test_system", "WorkbenchWindow", "ToolItem.BUILD_DEBUG_FOR");
+selectTree("Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Run As", "Explorer", "ProjectExplorer", "MenuItem.RUN_AS");
+selectMenuItem("1 Launch Hardware", "Caerus_Mem_Test_system", "WorkbenchWindow", "MenuItem.1_LAUNCH_HARDWARE");
+activateView("chDriver.c", "Caerus_Mem_Test/src/chDriver.c", "CEditor", "CTabItem.CHDRIVER_C");
+activateView("*main.c", "Caerus_Mem_Test/src/main.c", "Editor", "CTabItem.*MAIN_C");
+activateView("chDriver.c", "Caerus_Mem_Test/src/chDriver.c", "CEditor", "CTabItem.CHDRIVER_C");
+activateView("*main.c", "Caerus_Mem_Test/src/main.c", "Editor", "CTabItem.*MAIN_C");
+selectToolBarButton("Build Debug for project Caerus_Mem_Test", "Caerus_Mem_Test", "WorkbenchWindow", "ToolItem.BUILD_DEBUG_FOR");
+selectTree("Debug", "Caerus_Mem_Test_system > Caerus_Mem_Test", "Console", "ConsoleView", "Tree");
+selectTree("Caerus_Mem_Test_system", "Caerus_Mem_Test_system > Caerus_Mem_Test", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Run As", "Explorer", "ProjectExplorer", "MenuItem.RUN_AS");
+selectMenuItem("1 Launch Hardware", "Caerus_Mem_Test_system", "WorkbenchWindow", "MenuItem.1_LAUNCH_HARDWARE");
+activateView("main.c", "Caerus_Mem_Test/src/main.c", "CEditor", "CTabItem.MAIN_C");
+selectToolBarButton("Build Debug for project Caerus_Mem_Test", "Caerus_Mem_Test", "WorkbenchWindow", "ToolItem.BUILD_DEBUG_FOR");
+selectTree("Debug", "Caerus_Mem_Test_system > Caerus_Mem_Test", "Console", "ConsoleView", "Tree");
+selectTree("Caerus_Mem_Test_system", "Caerus_Mem_Test_system > Caerus_Mem_Test", "Explorer", "ProjectExplorer", "Tree");
+selectToolBarButton("Build Debug for project Caerus_Mem_Test_system", "Caerus_Mem_Test_system", "WorkbenchWindow", "ToolItem.BUILD_DEBUG_FOR");
+selectTree("Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Run As", "Explorer", "ProjectExplorer", "MenuItem.RUN_AS");
+selectMenuItem("1 Launch Hardware", "Caerus_Mem_Test_system", "WorkbenchWindow", "MenuItem.1_LAUNCH_HARDWARE");
+selectTree("Caerus_Mem_Test", "Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectTree("Caerus_Mem_Test_system", "Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Run As", "Explorer", "ProjectExplorer", "MenuItem.RUN_AS");
+selectMenuItem("1 Launch Hardware", "Caerus_Mem_Test_system", "WorkbenchWindow", "MenuItem.1_LAUNCH_HARDWARE");
+selectButton("Cancel", "Progress Information", "ProgressMonitorJobsDialog", "Button.CANCEL");
+selectButton("OK", "Error Launching Program", "ErrorDialog", "Button.OK");
+selectToolBarButton("Build Debug for project Caerus_Mem_Test_system", "Caerus_Mem_Test_system", "WorkbenchWindow", "ToolItem.BUILD_DEBUG_FOR");
+selectTree("Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Run As", "Explorer", "ProjectExplorer", "MenuItem.RUN_AS");
+selectMenuItem("1 Launch Hardware", "Caerus_Mem_Test_system", "WorkbenchWindow", "MenuItem.1_LAUNCH_HARDWARE");
+activateView("chDriver.h", "Caerus_Mem_Test/src/chDriver.h", "CEditor", "CTabItem.CHDRIVER_H");
+selectTree("Debug", "Caerus_Mem_Test_system > Caerus_Mem_Test", "chDriver.h", "CEditor", "Tree");
+activateView("memory.c", "Caerus_Mem_Test/src/memory.c", "CEditor", "CTabItem.MEMORY_C");
+activateView("chDriver.c", "Caerus_Mem_Test/src/chDriver.c", "CEditor", "CTabItem.CHDRIVER_C");
+activateView("main.c", "Caerus_Mem_Test/src/main.c", "CEditor", "CTabItem.MAIN_C");
+activateView("chDriver.c", "Caerus_Mem_Test/src/chDriver.c", "CEditor", "CTabItem.CHDRIVER_C");
+activateView("*main.c", "Caerus_Mem_Test/src/main.c", "Editor", "CTabItem.*MAIN_C");
+activateView("chDriver.c", "Caerus_Mem_Test/src/chDriver.c", "CEditor", "CTabItem.CHDRIVER_C");
+activateView("chDriver.h", "Caerus_Mem_Test/src/chDriver.h", "CEditor", "CTabItem.CHDRIVER_H");
+selectTree("Caerus_Mem_Test_system", "Explorer", "ProjectExplorer", "Tree");
+selectToolBarButton("Build Debug for project Caerus_Mem_Test_system", "Caerus_Mem_Test_system", "WorkbenchWindow", "ToolItem.BUILD_DEBUG_FOR");
+setText("22:02:01 **** Incremental Build of configuration De", "Console", "ConsoleView", "StyledText");
+selectTree("Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+activateView("Problems", "4 errors 1 warning 3 others", "ProblemsView", "CTabItem.PROBLEMS");
+activateView("chDriver.c", "Caerus_Mem_Test/src/chDriver.c", "CEditor", "CTabItem.CHDRIVER_C");
+selectTree("Caerus_Mem_Test_system", "Explorer", "ProjectExplorer", "Tree");
+selectToolBarButton("Build Debug for project Caerus_Mem_Test_system", "Caerus_Mem_Test_system", "WorkbenchWindow", "ToolItem.BUILD_DEBUG_FOR");
+selectTree("Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Run As", "Explorer", "ProjectExplorer", "MenuItem.RUN_AS");
+selectMenuItem("1 Launch Hardware", "Caerus_Mem_Test_system", "WorkbenchWindow", "MenuItem.1_LAUNCH_HARDWARE");
+activateView("main.c", "Caerus_Mem_Test/src/main.c", "CEditor", "CTabItem.MAIN_C");
+selectTree("Caerus_Mem_Test_system", "Explorer", "ProjectExplorer", "Tree");
+selectToolBarButton("Build Debug for project Caerus_Mem_Test_system", "Caerus_Mem_Test_system", "WorkbenchWindow", "ToolItem.BUILD_DEBUG_FOR");
+selectTree("Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Run As", "Explorer", "ProjectExplorer", "MenuItem.RUN_AS");
+selectMenuItem("1 Launch Hardware", "Caerus_Mem_Test_system", "WorkbenchWindow", "MenuItem.1_LAUNCH_HARDWARE");
+activateView("chDriver.c", "Caerus_Mem_Test/src/chDriver.c", "CEditor", "CTabItem.CHDRIVER_C");
+activateView("main.c", "Caerus_Mem_Test/src/main.c", "CEditor", "CTabItem.MAIN_C");
+activateView("chDriver.c", "Caerus_Mem_Test/src/chDriver.c", "CEditor", "CTabItem.CHDRIVER_C");
+activateView("main.c", "Caerus_Mem_Test/src/main.c", "CEditor", "CTabItem.MAIN_C");
+selectTextEditor("main.c", "Caerus_Mem_Test/src/main.c", EventType.POPUP_TRIGGER_CLICK, "CEditor", "StyledText.MAIN_C");
+activateView("chDriver.h", "Caerus_Mem_Test/src/chDriver.h", "CEditor", "CTabItem.CHDRIVER_H");
+selectTree("memory.h", "Caerus_Mem_Test_system > Caerus_Mem_Test > src", EventType.DOUBLE_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectTree("memory.c", "Caerus_Mem_Test_system > Caerus_Mem_Test > src", EventType.DOUBLE_CLICK, "Explorer", "ProjectExplorer", "Tree");
+activateView("*main.c", "Caerus_Mem_Test/src/main.c", "Editor", "CTabItem.*MAIN_C");
+activateView("memory.h", "Caerus_Mem_Test/src/memory.h", "CEditor", "CTabItem.MEMORY_H");
+activateView("cmdline.c", "Caerus_Mem_Test/src/cmdline.c", "CEditor", "CTabItem.CMDLINE_C");
+activateView("chDriver.c", "Caerus_Mem_Test/src/chDriver.c", "CEditor", "CTabItem.CHDRIVER_C");
+activateView("main.c", "Caerus_Mem_Test/src/main.c", "CEditor", "CTabItem.MAIN_C");
+activateView("chDriver.c", "Caerus_Mem_Test/src/chDriver.c", "CEditor", "CTabItem.CHDRIVER_C");
+activateView("*main.c", "Caerus_Mem_Test/src/main.c", "Editor", "CTabItem.*MAIN_C");
+activateView("chDriver.c", "Caerus_Mem_Test/src/chDriver.c", "CEditor", "CTabItem.CHDRIVER_C");
+activateView("main.c", "Caerus_Mem_Test/src/main.c", "CEditor", "CTabItem.MAIN_C");
+activateView("chDriver.c", "Caerus_Mem_Test/src/chDriver.c", "CEditor", "CTabItem.CHDRIVER_C");
+activateView("*main.c", "Caerus_Mem_Test/src/main.c", "Editor", "CTabItem.*MAIN_C");
+selectTree("Caerus_Mem_Test_system", "Explorer", "ProjectExplorer", "Tree");
+selectToolBarButton("Build Debug for project Caerus_Mem_Test_system", "Caerus_Mem_Test_system", "WorkbenchWindow", "ToolItem.BUILD_DEBUG_FOR");
+selectToolBarButton("Run", "Caerus_Mem_Test", "WorkbenchWindow", "ToolItem.RUN");
+selectButton("OK", "Unable To Launch", "MessageDialog", "Button.OK");
+selectTree("Binaries", "Caerus_Mem_Test_system > Caerus_Mem_Test", "Explorer", "ProjectExplorer", "Tree");
+selectTree("Caerus_Mem_Test", "Caerus_Mem_Test_system", "Explorer", "ProjectExplorer", "Tree");
+selectToolBarButton("Run", "Caerus_Mem_Test", "WorkbenchWindow", "ToolItem.RUN");
+selectTable("Launch on Hardware", "Run As", "LaunchShortcutSelectionDialog", "Table.SELECT_A_WAY_TO_RUN_'CAERUS_MEM_TEST'");
+selectButton("Cancel", "Run As", "LaunchShortcutSelectionDialog", "Button.CANCEL");
+selectTree("Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Run As", "Explorer", "ProjectExplorer", "MenuItem.RUN_AS");
+selectMenuItem("1 Launch Hardware", "Caerus_Mem_Test_system", "WorkbenchWindow", "MenuItem.1_LAUNCH_HARDWARE");
+activateView("memory.c", "Caerus_Mem_Test/src/memory.c", "CEditor", "CTabItem.MEMORY_C");
+activateView("cmdline.c", "Caerus_Mem_Test/src/cmdline.c", "CEditor", "CTabItem.CMDLINE_C");
+activateView("chDriver.h", "Caerus_Mem_Test/src/chDriver.h", "CEditor", "CTabItem.CHDRIVER_H");
+activateView("chDriver.c", "Caerus_Mem_Test/src/chDriver.c", "CEditor", "CTabItem.CHDRIVER_C");
+activateView("memory.c", "Caerus_Mem_Test/src/memory.c", "CEditor", "CTabItem.MEMORY_C");
+activateView("chDriver.c", "Caerus_Mem_Test/src/chDriver.c", "CEditor", "CTabItem.CHDRIVER_C");
+activateView("chDriver.h", "Caerus_Mem_Test/src/chDriver.h", "CEditor", "CTabItem.CHDRIVER_H");
+activateView("chDriver.c", "Caerus_Mem_Test/src/chDriver.c", "CEditor", "CTabItem.CHDRIVER_C");
+activateView("memory.c", "Caerus_Mem_Test/src/memory.c", "CEditor", "CTabItem.MEMORY_C");
+activateView("*chDriver.h", "Caerus_Mem_Test/src/chDriver.h", "Editor", "CTabItem.*CHDRIVER_H");
+activateView("*chDriver.c", "Caerus_Mem_Test/src/chDriver.c", "Editor", "CTabItem.*CHDRIVER_C");
+activateView("chDriver.h", "Caerus_Mem_Test/src/chDriver.h", "CEditor", "CTabItem.CHDRIVER_H");
+activateView("chDriver.c", "Caerus_Mem_Test/src/chDriver.c", "CEditor", "CTabItem.CHDRIVER_C");
+activateView("main.c", "Caerus_Mem_Test/src/main.c", "CEditor", "CTabItem.MAIN_C");
+selectTree("Caerus_Mem_Test", "Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectToolBarButton("Build Debug for project Caerus_Mem_Test", "Caerus_Mem_Test", "WorkbenchWindow", "ToolItem.BUILD_DEBUG_FOR");
+activateView("Problems", "114 errors 2 warnings 3 others", "ProblemsView", "CTabItem.PROBLEMS");
+selectProblemsView("expected { at end of input", "Errors", EventType.DOUBLE_CLICK, "ProblemsView", "TreeViewer.MarkerViewerContentProvider");
+activateView("memory.c", "Caerus_Mem_Test/src/memory.c", "CEditor", "CTabItem.MEMORY_C");
+activateView("chDriver.c", "Caerus_Mem_Test/src/chDriver.c", "CEditor", "CTabItem.CHDRIVER_C");
+activateView("chDriver.h", "Caerus_Mem_Test/src/chDriver.h", "CEditor", "CTabItem.CHDRIVER_H");
+selectToolBarButton("Build Debug for project Caerus_Mem_Test", "Caerus_Mem_Test", "WorkbenchWindow", "ToolItem.BUILD_DEBUG_FOR");
+selectTree("Debug", "Caerus_Mem_Test_system > Caerus_Mem_Test", "Console", "ConsoleView", "Tree");
+selectTree("main.c", "Caerus_Mem_Test_system > Caerus_Mem_Test > src", "Explorer", "ProjectExplorer", "Tree");
+selectTree("Caerus_Mem_Test", "Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectTree("Caerus_Mem_Test_system", "Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Run As", "Explorer", "ProjectExplorer", "MenuItem.RUN_AS");
+selectMenuItem("1 Launch Hardware", "Caerus_Mem_Test_system", "WorkbenchWindow", "MenuItem.1_LAUNCH_HARDWARE");
+selectTree("Caerus_Mem_Test_system", "Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Run As", "Explorer", "ProjectExplorer", "MenuItem.RUN_AS");
+selectMenuItem("1 Launch Hardware", "Caerus_Mem_Test_system", "WorkbenchWindow", "MenuItem.1_LAUNCH_HARDWARE");
+selectTree("Caerus_Mem_Test_system", "Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Run As", "Explorer", "ProjectExplorer", "MenuItem.RUN_AS");
+selectMenuItem("1 Launch Hardware", "Caerus_Mem_Test_system", "WorkbenchWindow", "MenuItem.1_LAUNCH_HARDWARE");
+selectTree("Caerus_Mem_Test_system", "Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Run As", "Explorer", "ProjectExplorer", "MenuItem.RUN_AS");
+selectMenuItem("1 Launch Hardware", "Caerus_Mem_Test_system", "WorkbenchWindow", "MenuItem.1_LAUNCH_HARDWARE");
+selectTree("caerus_v4", "Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Update Hardware Specification", "Explorer", "ProjectExplorer", "MenuItem.UPDATE_HARDWARE");
+selectButton("Browse", "Update Hardware Specification", "ScwSyncHwSpecDialog", "Button.BROWSE");
+cancelFileDialog("Locate Hardware Specification File", "SDXFileDialog", "Button.CANCEL");
+selectButton("Browse", "Update Hardware Specification", "ScwSyncHwSpecDialog", "Button.BROWSE");
+cancelFileDialog("Locate Hardware Specification File", "SDXFileDialog", "Button.CANCEL");
+selectButton("Cancel", "Update Hardware Specification", "ScwSyncHwSpecDialog", "Button.CANCEL");
+selectTree("caerus_v4", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Update Hardware Specification", "Explorer", "ProjectExplorer", "MenuItem.UPDATE_HARDWARE");
+selectButton("Browse", "Update Hardware Specification", "ScwSyncHwSpecDialog", "Button.BROWSE");
+setFileDialog("/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/hdl/caerus_v4.xsa", "Locate Hardware Specification File", "SDXFileDialog", "Button.OK");
+selectButton("OK", "Update Hardware Specification", "ScwSyncHwSpecDialog", "Button.OK");
+selectTree("caerus_v4", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Update Hardware Specification", "Explorer", "ProjectExplorer", "MenuItem.UPDATE_HARDWARE");
+selectTree("caerus_v4", "Explorer", "ProjectExplorer", "Tree");
+selectButton("Cancel", "Update Hardware Specification", "ScwSyncHwSpecDialog", "Button.CANCEL");
+selectTree("caerus_v4", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Build Project", "Explorer", "ProjectExplorer", "MenuItem.BUILD_PROJECT");
+selectTree("Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Build Project", "Explorer", "ProjectExplorer", "MenuItem.BUILD_PROJECT");
+selectTree("Caerus_Mem_Test_system", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Run As", "Explorer", "ProjectExplorer", "MenuItem.RUN_AS");
+selectMenuItem("1 Launch Hardware", "Caerus_Mem_Test_system", "WorkbenchWindow", "MenuItem.1_LAUNCH_HARDWARE");
+selectButton("Exit", "Confirm Exit", "MessageDialogWithToggle", "Button.EXIT");
+// Exiting Xilinx Vitis with a status code '0' at 9/12/20, 11:52:25 PM EDT
+// Elapsed time: 02:40:30
+
