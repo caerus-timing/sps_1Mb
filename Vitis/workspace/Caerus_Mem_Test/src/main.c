@@ -225,10 +225,10 @@ void play(u8 ch_mask)
 	}
 
 	xil_printf("Waiting for addr=%d read: %d on ch=%d\n\r", stop_addr[stop_ch], readStop(stop_ch), stop_ch);
-	xil_printf("Config = %lx \r\n", readConfig(stop_ch));
-	xil_printf("REG1 = %lx \r\n", readPeriod(stop_ch));
-	xil_printf("REG2 = %lx \r\n", readAddr(stop_ch));
-	xil_printf("REG3 = %lx \r\n", readStart(stop_ch));
+	//xil_printf("Config = %lx \r\n", readConfig(stop_ch));
+	//xil_printf("REG1 = %lx \r\n", readPeriod(stop_ch));
+	//xil_printf("REG2 = %lx \r\n", readAddr(stop_ch));
+	//xil_printf("REG3 = %lx \r\n", readStart(stop_ch));
 	// Start playback
 	//Ugly but works out well
 	if((ch_mask & 0x1) == 0x1){
@@ -259,7 +259,7 @@ void play(u8 ch_mask)
 	}
 
 	xil_printf("Stopping\n\r");
-	readDev();
+	//readDev();
 	stop();
 
 

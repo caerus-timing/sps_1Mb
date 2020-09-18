@@ -134,3 +134,13 @@ timestamp=[2020-09-13 18:05:07], mode=BUILD, duration=0:00:08.640, duration_ms=8
 timestamp=[2020-09-13 18:27:18], mode=PLATFORM_GENERATION, duration=0:00:06.684, duration_ms=6684, data={name=caerus_v4}
 timestamp=[2020-09-13 18:27:23], mode=BUILD, duration=0:00:02.341, duration_ms=2341, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
 timestamp=[2020-09-13 18:27:40], mode=BUILD, duration=0:00:08.391, duration_ms=8391, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-14 14:15:49], mode=WORKBENCH_START, duration=0:00:20.366, duration_ms=20366, data={}
+timestamp=[2020-09-14 14:15:50], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.187, duration_ms=187, data={}
+timestamp=[2020-09-14 14:15:53], mode=WORKBENCH_UI_INIT, duration=0:00:03.791, duration_ms=3791, data={editors_count=11, platform_editors_count=1, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=Caerus_Mem_Test,Caerus_Mem_Test_system,RemoteSystemsTempFiles,caerus_v4}
+timestamp=[2020-09-14 14:48:08], mode=PLATFORM_GENERATION, duration=0:00:06.131, duration_ms=6131, data={name=caerus_v4}
+timestamp=[2020-09-18 13:13:18], mode=WORKBENCH_START, duration=0:00:25.801, duration_ms=25801, data={}
+timestamp=[2020-09-18 13:13:19], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.131, duration_ms=131, data={}
+timestamp=[2020-09-18 13:13:24], mode=WORKBENCH_UI_INIT, duration=0:00:06.068, duration_ms=6068, data={editors_count=10, platform_editors_count=0, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=Caerus_Mem_Test,Caerus_Mem_Test_system,RemoteSystemsTempFiles,caerus_v4}
+timestamp=[2020-09-18 13:16:09], mode=BUILD, duration=0:00:02.895, duration_ms=2895, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-18 13:16:20], mode=BUILD, duration=0:00:10.043, duration_ms=10043, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-18 13:21:58], mode=MISC, duration=0:00:02.308, duration_ms=2308, data={name=Caerus_Mem_Test_system, type=bif_creation}

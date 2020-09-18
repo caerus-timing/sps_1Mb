@@ -2860,3 +2860,79 @@ con
 
 18:28:59 INFO  : Launch script is exported to file '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/.sdk/launch_scripts/single_application_debug/systemdebugger_caerus_mem_test_system_standalone.tcl'
 18:52:04 INFO  : Disconnected from the channel tcfchan#45.
+14:15:40 INFO  : Launching XSCT server: xsct -n  -interactive /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/temp_xsdb_launch_script.tcl
+14:15:46 INFO  : XSCT server has started successfully.
+14:15:46 INFO  : plnx-install-location is set to ''
+14:15:46 INFO  : Successfully done setting XSCT server connection channel  
+14:15:46 INFO  : Successfully done setting workspace for the tool. 
+14:15:50 INFO  : Platform repository initialization has completed.
+14:15:53 INFO  : Registering command handlers for Vitis TCF services
+14:16:00 INFO  : Successfully done query RDI_DATADIR 
+14:24:15 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:24:16 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+14:24:16 INFO  : 'jtag frequency' command is executed.
+14:24:16 INFO  : Context for 'APU' is selected.
+14:24:16 INFO  : System reset is completed.
+14:24:19 INFO  : 'after 3000' command is executed.
+14:24:19 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+14:24:21 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/Caerus_Mem_Test/_ide/bitstream/caerus_v4.bit"
+14:24:21 INFO  : Context for 'APU' is selected.
+14:24:22 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_v4/export/caerus_v4/hw/caerus_v4.xsa'.
+14:24:22 INFO  : 'configparams force-mem-access 1' command is executed.
+14:24:22 INFO  : Context for 'APU' is selected.
+14:24:22 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/Caerus_Mem_Test/_ide/psinit/ps7_init.tcl' is done.
+14:24:22 INFO  : 'ps7_init' command is executed.
+14:24:22 INFO  : 'ps7_post_config' command is executed.
+14:24:22 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:24:22 INFO  : The application '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/Caerus_Mem_Test/Debug/Caerus_Mem_Test.elf' is downloaded to processor 'ps7_cortexa9_0'.
+14:24:22 INFO  : 'configparams force-mem-access 0' command is executed.
+14:24:22 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/Caerus_Mem_Test/_ide/bitstream/caerus_v4.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_v4/export/caerus_v4/hw/caerus_v4.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/Caerus_Mem_Test/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/Caerus_Mem_Test/Debug/Caerus_Mem_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:24:22 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:24:22 INFO  : 'con' command is executed.
+14:24:22 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+14:24:22 INFO  : Launch script is exported to file '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/.sdk/launch_scripts/single_application_debug/systemdebugger_caerus_mem_test_system_standalone.tcl'
+14:47:56 INFO  : Hardware specification for platform project 'caerus_v4' is updated.
+14:48:05 INFO  : Result from executing command 'getProjects': caerus_v4
+14:48:05 INFO  : Result from executing command 'getPlatforms': caerus_v4|/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_v4/export/caerus_v4/caerus_v4.xpfm
+14:59:24 INFO  : Disconnected from the channel tcfchan#1.
+13:13:04 INFO  : Launching XSCT server: xsct -n  -interactive /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/temp_xsdb_launch_script.tcl
+13:13:09 INFO  : XSCT server has started successfully.
+13:13:09 INFO  : Successfully done setting XSCT server connection channel  
+13:13:09 INFO  : plnx-install-location is set to ''
+13:13:09 INFO  : Successfully done setting workspace for the tool. 
+13:13:19 INFO  : Platform repository initialization has completed.
+13:13:20 INFO  : Registering command handlers for Vitis TCF services
+13:13:29 INFO  : Successfully done query RDI_DATADIR 
+13:16:04 INFO  : Checking for BSP changes to sync application flags for project 'Caerus_Mem_Test'...
+13:16:15 ERROR : (XSDB Server)ERROR: [Hsi 55-1571] The design file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_v4/export/caerus_v4/hw/caerus_v4.xsa is already opened
+
+13:20:40 INFO  : Successfully done sdx_reload_mss "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_v4/zynq_fsbl/zynq_fsbl_bsp/system.mss"
+13:21:08 INFO  : Successfully done sdx_reload_mss "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_v4/zynq_fsbl/zynq_fsbl_bsp/system.mss"
+13:21:08 INFO  : No changes in MSS file content so sources will not be generated.
+13:21:12 INFO  : Successfully done sdx_reload_mss "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_v4/ps7_cortexa9_0/standalone_domain/bsp/system.mss"
+13:21:56 INFO  : Generated template bif file for Caerus_Mem_Test_system
+13:24:17 INFO  : Invoking Bootgen: bootgen -image Caerus_Mem_Test_system.bif -arch zynq -o /home/mulholbn/Documents/Thesis/Kairos/ccs/bootImage/BOOT.bin
+13:24:17 INFO  : Overwriting existing bif file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/Caerus_Mem_Test_system/_ide/bootimage/Caerus_Mem_Test_system.bif
+13:24:18 INFO  : Bootgen command execution is done.
