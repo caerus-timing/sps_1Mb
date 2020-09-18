@@ -1,0 +1,146 @@
+timestamp=[2020-09-12 21:11:49], mode=WORKBENCH_START, duration=0:00:06.855, duration_ms=6855, data={}
+timestamp=[2020-09-12 21:11:55], mode=WORKBENCH_UI_INIT, duration=0:00:05.188, duration_ms=5188, data={editors_count=0, platform_editors_count=0, projects_count=0, platform_projects_count=0, active_platform_editor=false, projects=}
+timestamp=[2020-09-12 21:11:56], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:05.591, duration_ms=5591, data={}
+timestamp=[2020-09-12 21:15:34], mode=PLATFORM_CREATION, duration=0:00:19.394, duration_ms=19394, data={platform_source=dsa, os=standalone, processor=ps7_cortexa9, platform=null}
+timestamp=[2020-09-12 21:23:31], mode=APP_CREATION, duration=0:00:10.767, duration_ms=10767, data={name=Caerus_Mem_Test, project_type=sdk, os=standalone, processor=cortex-a9, runtime=C/C++, platform=caerus_v4, application_type=application}
+timestamp=[2020-09-12 21:25:40], mode=PLATFORM_GENERATION, duration=0:00:31.897, duration_ms=31897, data={name=caerus_v4}
+timestamp=[2020-09-12 21:25:59], mode=BUILD, duration=0:00:00.240, duration_ms=240, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 21:26:05], mode=BUILD, duration=0:00:05.887, duration_ms=5887, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 21:27:04], mode=BUILD, duration=0:00:00.427, duration_ms=427, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 21:28:08], mode=BUILD, duration=0:00:00.479, duration_ms=479, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 21:28:16], mode=BUILD, duration=0:00:07.086, duration_ms=7086, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 21:33:37], mode=BUILD, duration=0:00:00.131, duration_ms=131, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=true}
+timestamp=[2020-09-12 21:33:37], mode=BUILD, duration=0:00:00.575, duration_ms=575, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 21:33:45], mode=BUILD, duration=0:00:06.986, duration_ms=6986, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 21:35:38], mode=BUILD, duration=0:00:00.275, duration_ms=275, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 21:48:38], mode=BUILD, duration=0:00:00.277, duration_ms=277, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 21:48:45], mode=BUILD, duration=0:00:06.834, duration_ms=6834, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 21:49:46], mode=PLATFORM_GENERATION, duration=0:00:05.463, duration_ms=5463, data={name=caerus_v4}
+timestamp=[2020-09-12 21:49:46], mode=BUILD, duration=0:00:00.137, duration_ms=137, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=true}
+timestamp=[2020-09-12 21:49:46], mode=BUILD, duration=0:00:00.127, duration_ms=127, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=true}
+timestamp=[2020-09-12 21:50:17], mode=PLATFORM_GENERATION, duration=0:00:27.043, duration_ms=27043, data={name=caerus_v4}
+timestamp=[2020-09-12 21:50:20], mode=BUILD, duration=0:00:00.581, duration_ms=581, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 21:50:27], mode=BUILD, duration=0:00:06.904, duration_ms=6904, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 21:52:05], mode=BUILD, duration=0:00:00.277, duration_ms=277, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 21:52:12], mode=BUILD, duration=0:00:06.837, duration_ms=6837, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 21:54:03], mode=BUILD, duration=0:00:00.326, duration_ms=326, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 21:56:19], mode=BUILD, duration=0:00:00.276, duration_ms=276, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 21:56:26], mode=BUILD, duration=0:00:00.126, duration_ms=126, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 21:56:33], mode=BUILD, duration=0:00:06.936, duration_ms=6936, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 21:57:55], mode=BUILD, duration=0:00:00.275, duration_ms=275, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 21:58:02], mode=BUILD, duration=0:00:06.835, duration_ms=6835, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 22:02:01], mode=BUILD, duration=0:00:00.325, duration_ms=325, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 22:02:06], mode=BUILD, duration=0:00:05.382, duration_ms=5382, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 22:02:44], mode=BUILD, duration=0:00:00.288, duration_ms=288, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 22:02:51], mode=BUILD, duration=0:00:06.835, duration_ms=6835, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 22:03:55], mode=BUILD, duration=0:00:00.275, duration_ms=275, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 22:04:03], mode=BUILD, duration=0:00:06.891, duration_ms=6891, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 22:12:20], mode=BUILD, duration=0:00:00.377, duration_ms=377, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 22:12:27], mode=BUILD, duration=0:00:06.838, duration_ms=6838, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 22:18:24], mode=BUILD, duration=0:00:00.227, duration_ms=227, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 22:18:58], mode=BUILD, duration=0:00:00.377, duration_ms=377, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 23:48:49], mode=PLATFORM_GENERATION, duration=0:00:06.556, duration_ms=6556, data={name=caerus_v4}
+timestamp=[2020-09-12 23:49:23], mode=BUILD, duration=0:00:03.383, duration_ms=3383, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-12 23:49:42], mode=BUILD, duration=0:00:08.501, duration_ms=8501, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 00:57:57], mode=WORKBENCH_START, duration=0:00:33.877, duration_ms=33877, data={}
+timestamp=[2020-09-13 00:57:58], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.313, duration_ms=313, data={}
+timestamp=[2020-09-13 00:58:01], mode=WORKBENCH_UI_INIT, duration=0:00:04.002, duration_ms=4002, data={editors_count=9, platform_editors_count=0, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=Caerus_Mem_Test,Caerus_Mem_Test_system,RemoteSystemsTempFiles,caerus_v4}
+timestamp=[2020-09-13 01:09:15], mode=BUILD, duration=0:00:02.820, duration_ms=2820, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 01:09:28], mode=BUILD, duration=0:00:12.598, duration_ms=12598, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 01:12:31], mode=BUILD, duration=0:00:00.273, duration_ms=273, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 01:12:38], mode=BUILD, duration=0:00:06.730, duration_ms=6730, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 01:49:29], mode=WORKBENCH_START, duration=0:00:11.840, duration_ms=11840, data={}
+timestamp=[2020-09-13 01:49:29], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.030, duration_ms=30, data={}
+timestamp=[2020-09-13 01:49:30], mode=WORKBENCH_UI_INIT, duration=0:00:00.609, duration_ms=609, data={editors_count=10, platform_editors_count=0, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=Caerus_Mem_Test,Caerus_Mem_Test_system,RemoteSystemsTempFiles,caerus_v4}
+timestamp=[2020-09-13 01:55:20], mode=PLATFORM_GENERATION, duration=0:00:06.147, duration_ms=6147, data={name=caerus_v4}
+timestamp=[2020-09-13 01:55:23], mode=BUILD, duration=0:00:00.804, duration_ms=804, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 01:55:39], mode=BUILD, duration=0:00:08.296, duration_ms=8296, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 01:56:59], mode=BUILD, duration=0:00:00.277, duration_ms=277, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 01:57:07], mode=BUILD, duration=0:00:06.837, duration_ms=6837, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 02:11:56], mode=BUILD, duration=0:00:00.277, duration_ms=277, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 02:12:03], mode=BUILD, duration=0:00:06.840, duration_ms=6840, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 02:13:36], mode=BUILD, duration=0:00:00.277, duration_ms=277, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 02:13:43], mode=BUILD, duration=0:00:06.783, duration_ms=6783, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 02:15:57], mode=BUILD, duration=0:00:00.176, duration_ms=176, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 02:16:04], mode=BUILD, duration=0:00:06.788, duration_ms=6788, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 02:19:51], mode=BUILD, duration=0:00:00.276, duration_ms=276, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 02:19:58], mode=BUILD, duration=0:00:06.834, duration_ms=6834, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 02:23:29], mode=BUILD, duration=0:00:00.374, duration_ms=374, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 02:23:36], mode=BUILD, duration=0:00:06.885, duration_ms=6885, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 02:35:13], mode=BUILD, duration=0:00:00.177, duration_ms=177, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 02:35:20], mode=BUILD, duration=0:00:06.783, duration_ms=6783, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 02:36:31], mode=BUILD, duration=0:00:00.275, duration_ms=275, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 02:36:38], mode=BUILD, duration=0:00:06.833, duration_ms=6833, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 02:45:33], mode=BUILD, duration=0:00:00.175, duration_ms=175, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 02:45:41], mode=BUILD, duration=0:00:06.833, duration_ms=6833, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 02:50:30], mode=BUILD, duration=0:00:00.276, duration_ms=276, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 02:51:39], mode=BUILD, duration=0:00:00.272, duration_ms=272, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 02:51:46], mode=BUILD, duration=0:00:06.786, duration_ms=6786, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 02:52:29], mode=BUILD, duration=0:00:00.275, duration_ms=275, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 02:52:36], mode=BUILD, duration=0:00:06.785, duration_ms=6785, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 02:55:24], mode=BUILD, duration=0:00:00.275, duration_ms=275, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 02:55:31], mode=BUILD, duration=0:00:06.736, duration_ms=6736, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 02:56:15], mode=BUILD, duration=0:00:00.277, duration_ms=277, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 02:56:22], mode=BUILD, duration=0:00:06.837, duration_ms=6837, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 03:06:38], mode=BUILD, duration=0:00:00.276, duration_ms=276, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 03:06:45], mode=BUILD, duration=0:00:06.785, duration_ms=6785, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 12:01:59], mode=WORKBENCH_START, duration=0:00:16.968, duration_ms=16968, data={}
+timestamp=[2020-09-13 12:02:01], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.371, duration_ms=371, data={}
+timestamp=[2020-09-13 12:02:02], mode=WORKBENCH_UI_INIT, duration=0:00:02.113, duration_ms=2113, data={editors_count=12, platform_editors_count=2, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=Caerus_Mem_Test,Caerus_Mem_Test_system,RemoteSystemsTempFiles,caerus_v4}
+timestamp=[2020-09-13 12:44:47], mode=WORKBENCH_START, duration=0:00:09.268, duration_ms=9268, data={}
+timestamp=[2020-09-13 12:44:48], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.028, duration_ms=28, data={}
+timestamp=[2020-09-13 12:44:48], mode=WORKBENCH_UI_INIT, duration=0:00:00.854, duration_ms=854, data={editors_count=12, platform_editors_count=2, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=Caerus_Mem_Test,Caerus_Mem_Test_system,RemoteSystemsTempFiles,caerus_v4}
+timestamp=[2020-09-13 12:54:27], mode=PLATFORM_GENERATION, duration=0:00:21.632, duration_ms=21632, data={name=caerus_v4}
+timestamp=[2020-09-13 12:54:55], mode=BUILD, duration=0:00:00.849, duration_ms=849, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 12:55:11], mode=BUILD, duration=0:00:08.337, duration_ms=8337, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 13:07:21], mode=BUILD, duration=0:00:00.276, duration_ms=276, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 13:07:29], mode=BUILD, duration=0:00:07.050, duration_ms=7050, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 14:40:12], mode=PLATFORM_GENERATION, duration=0:00:07.842, duration_ms=7842, data={name=caerus_v4}
+timestamp=[2020-09-13 14:40:22], mode=BUILD, duration=0:00:03.683, duration_ms=3683, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 14:40:39], mode=BUILD, duration=0:00:08.152, duration_ms=8152, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 14:46:17], mode=BUILD, duration=0:00:00.175, duration_ms=175, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 14:46:24], mode=BUILD, duration=0:00:07.035, duration_ms=7035, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 14:47:06], mode=BUILD, duration=0:00:00.277, duration_ms=277, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 14:47:13], mode=BUILD, duration=0:00:06.885, duration_ms=6885, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 15:25:51], mode=BUILD, duration=0:00:00.276, duration_ms=276, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 15:25:58], mode=BUILD, duration=0:00:06.884, duration_ms=6884, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 15:28:15], mode=BUILD, duration=0:00:00.274, duration_ms=274, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 15:28:22], mode=BUILD, duration=0:00:06.934, duration_ms=6934, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 15:31:03], mode=BUILD, duration=0:00:00.304, duration_ms=304, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 15:31:10], mode=BUILD, duration=0:00:06.921, duration_ms=6921, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 15:31:54], mode=BUILD, duration=0:00:00.281, duration_ms=281, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 15:32:01], mode=BUILD, duration=0:00:06.860, duration_ms=6860, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 16:52:46], mode=PLATFORM_GENERATION, duration=0:00:06.433, duration_ms=6433, data={name=caerus_v4}
+timestamp=[2020-09-13 16:53:29], mode=BUILD, duration=0:00:04.149, duration_ms=4149, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 16:53:46], mode=BUILD, duration=0:00:08.890, duration_ms=8890, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 16:55:46], mode=BUILD, duration=0:00:00.275, duration_ms=275, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 16:55:53], mode=BUILD, duration=0:00:06.836, duration_ms=6836, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 16:57:16], mode=BUILD, duration=0:00:00.373, duration_ms=373, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 16:57:23], mode=BUILD, duration=0:00:06.833, duration_ms=6833, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 17:03:28], mode=BUILD, duration=0:00:00.374, duration_ms=374, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 17:03:35], mode=BUILD, duration=0:00:07.140, duration_ms=7140, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 17:35:20], mode=PLATFORM_GENERATION, duration=0:00:28.795, duration_ms=28795, data={name=caerus_v4}
+timestamp=[2020-09-13 17:35:25], mode=BUILD, duration=0:00:01.379, duration_ms=1379, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 17:35:41], mode=BUILD, duration=0:00:06.004, duration_ms=6004, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 17:38:15], mode=BUILD, duration=0:00:00.527, duration_ms=527, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 17:38:23], mode=BUILD, duration=0:00:08.093, duration_ms=8093, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 18:02:04], mode=PLATFORM_GENERATION, duration=0:00:09.837, duration_ms=9837, data={name=caerus_v4}
+timestamp=[2020-09-13 18:03:41], mode=PLATFORM_GENERATION, duration=0:00:05.451, duration_ms=5451, data={name=caerus_v4}
+timestamp=[2020-09-13 18:03:41], mode=BUILD, duration=0:00:00.230, duration_ms=230, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=true}
+timestamp=[2020-09-13 18:03:42], mode=BUILD, duration=0:00:00.224, duration_ms=224, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=true}
+timestamp=[2020-09-13 18:04:38], mode=PLATFORM_GENERATION, duration=0:00:49.871, duration_ms=49871, data={name=caerus_v4}
+timestamp=[2020-09-13 18:04:51], mode=BUILD, duration=0:00:01.781, duration_ms=1781, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 18:05:07], mode=BUILD, duration=0:00:08.640, duration_ms=8640, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 18:27:18], mode=PLATFORM_GENERATION, duration=0:00:06.684, duration_ms=6684, data={name=caerus_v4}
+timestamp=[2020-09-13 18:27:23], mode=BUILD, duration=0:00:02.341, duration_ms=2341, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-13 18:27:40], mode=BUILD, duration=0:00:08.391, duration_ms=8391, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-14 14:15:49], mode=WORKBENCH_START, duration=0:00:20.366, duration_ms=20366, data={}
+timestamp=[2020-09-14 14:15:50], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.187, duration_ms=187, data={}
+timestamp=[2020-09-14 14:15:53], mode=WORKBENCH_UI_INIT, duration=0:00:03.791, duration_ms=3791, data={editors_count=11, platform_editors_count=1, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=Caerus_Mem_Test,Caerus_Mem_Test_system,RemoteSystemsTempFiles,caerus_v4}
+timestamp=[2020-09-14 14:48:08], mode=PLATFORM_GENERATION, duration=0:00:06.131, duration_ms=6131, data={name=caerus_v4}
+timestamp=[2020-09-18 13:13:18], mode=WORKBENCH_START, duration=0:00:25.801, duration_ms=25801, data={}
+timestamp=[2020-09-18 13:13:19], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.131, duration_ms=131, data={}
+timestamp=[2020-09-18 13:13:24], mode=WORKBENCH_UI_INIT, duration=0:00:06.068, duration_ms=6068, data={editors_count=10, platform_editors_count=0, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=Caerus_Mem_Test,Caerus_Mem_Test_system,RemoteSystemsTempFiles,caerus_v4}
+timestamp=[2020-09-18 13:16:09], mode=BUILD, duration=0:00:02.895, duration_ms=2895, data={name=Caerus_Mem_Test, configuration=Debug, clean_build=false}
+timestamp=[2020-09-18 13:16:20], mode=BUILD, duration=0:00:10.043, duration_ms=10043, data={name=Caerus_Mem_Test_system, configuration=Debug, clean_build=false}
+timestamp=[2020-09-18 13:21:58], mode=MISC, duration=0:00:02.308, duration_ms=2308, data={name=Caerus_Mem_Test_system, type=bif_creation}

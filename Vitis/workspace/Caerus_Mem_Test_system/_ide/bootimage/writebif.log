@@ -1,0 +1,9 @@
+TRACE::2020-09-18.13:21:56::SCWBifWriter::Found the complete platform /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_v4/export/caerus_v4/caerus_v4.xpfm
+TRACE::2020-09-18.13:21:56::SCWBifWriter::hardware databse : design_1_wrapper
+TRACE::2020-09-18.13:21:56::SCWBifWriter::bitstream found in the design
+TRACE::2020-09-18.13:21:56::SCWBifWriter::Found a baremetal domain, proc: ps7_cortexa9_0
+TRACE::2020-09-18.13:21:56::SCWBifWriter::proc type : 
+TRACE::2020-09-18.13:21:56::SCWBifWriter::proc[0] : ps7_cortexa9_0
+TRACE::2020-09-18.13:21:56::SCWBifWriter::Device type is : zynq
+TRACE::2020-09-18.13:21:56::SCWBifWriter::Writing BIF to file : /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/Caerus_Mem_Test_system/_ide/bootimage/template_Caerus_Mem_Test_system.bif
+TRACE::2020-09-18.13:21:56::SCWBifWriter::Writing the Zynq Baremetal bif 

@@ -1,0 +1,7 @@
+//arch = zynq; split = false; format = BIN
+the_ROM_image:
+{
+	[bootloader]/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_v4/export/caerus_v4/sw/caerus_v4/boot/fsbl.elf
+	/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/Caerus_Mem_Test/_ide/bitstream/caerus_v4.bit
+	/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/Caerus_Mem_Test/Debug/Caerus_Mem_Test.elf
+}
