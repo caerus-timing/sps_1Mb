@@ -1,0 +1,7 @@
+/*caerus_can*/
+the_ROM_image:
+{
+  [bootloader]<caerus_can/boot/fsbl.elf>
+   <bitstream> 
+  <elf,ps7_cortexa9_0>
+}
