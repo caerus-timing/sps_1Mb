@@ -446,14 +446,15 @@ u8 createCANMessage(CAN_Message message, u8 chUnit){
 
 	//Use newSize as our epoc, as that should be the last bit of the CRC + 1;
 
+	//TODO: CRC DELIM, ACK AND ACK DELIM ARE INVERTED
 	//Add CRC Delim
-	postStuffed[newSize] = 0xFFFFFFFF;
+	postStuffed[newSize] = 0;
 
 	//Add ACK
-	postStuffed[newSize + 1] = 0;
+	postStuffed[newSize + 1] = 0xFFFFFFFF;
 
 	//Add ACK Delim
-	postStuffed[newSize + 2] = 0xFFFFFFFF;
+	postStuffed[newSize + 2] = 0;
 
 	//Add 10 low bits, 7 for EOF, 3 for Interframe spacing
 
@@ -499,7 +500,6 @@ int main(void) {
 	u8 rx_int_mask;
 
 	init();
-
 	CAN_begin(&busDev, XPAR_PMODCAN_0_AXI_LITE_GPIO_BASEADDR,XPAR_PMODCAN_0_AXI_LITE_SPI_BASEADDR);
 	CAN_Configure(&busDev, CAN_ModeNormalOperation);
 
