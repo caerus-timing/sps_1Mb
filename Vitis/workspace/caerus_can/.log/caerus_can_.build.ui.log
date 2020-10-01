@@ -1,6 +1,2 @@
-2020-10-01T12:01:09.40710200255-12:01:09 **** Incremental Build of project caerus_can ****
-000-buildplatform.sh 36529 caerus_can no_domain_build 
-000-XSDB Server Channel: tcfchan#1
-00255-
-12:01:18 Build Finished (took 9s.227ms)
+2020-10-01T12:40:54.919133000-Nothing to build in platform 'caerus_can'
 

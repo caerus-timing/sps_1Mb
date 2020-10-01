@@ -515,11 +515,10 @@ int main(void) {
 
 	CAN_begin(&busDev, XPAR_PMODCAN_0_AXI_LITE_GPIO_BASEADDR,XPAR_PMODCAN_0_AXI_LITE_SPI_BASEADDR);
 	CAN_Configure(&busDev, CAN_ModeNormalOperation);
-
+	xil_printf("Waiting to receive\r\n");
 	while (1) {
 		do {
 			status = CAN_ReadStatus(&busDev);
-			xil_printf("Waiting to receive\r\n");
 		} while ((status & CAN_STATUS_RX0IF_MASK) != 0 && (status & CAN_STATUS_RX1IF_MASK) != 0);
 
 		switch (status & 0x03) {
@@ -535,7 +534,7 @@ int main(void) {
 			rx_int_mask = CAN_CANINTF_RX1IF_MASK;
 			break;
 		default:
-			xil_printf("Error, message not received\r\n");
+			//xil_printf("Error, message not received\r\n");
 			continue;
 		}
 
@@ -547,11 +546,12 @@ int main(void) {
 		xil_printf("ID: %03x\r\n", RxMessage.id);
 		if(RxMessage.id == DESIRED_ID){
 			u8 bitsize = createCANMessage(RxMessage, 1);
-			doPlayback((500000*32),bitsize);
+			doPlayback((250000*32),bitsize);
 		}
 		XGpioPs_WritePin(&mio, MIO_PIN,0);
 
 		sleep(1);
+		xil_printf("Waiting to receive\r\n");
 	}
 	/*
 	RxMessage.id = 0x543;
