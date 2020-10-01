@@ -466,10 +466,6 @@ u8 createCANMessage(CAN_Message message, u8 chUnit){
 		postStuffed[newSize + 3 + i] = 0;
 	}
 
-	for(int i=0; i < 30; i++){
-		writeWord(0xFFFFFFFF, 1);
-	}
-
 	//Print out the CANL data, debugging
 
 	for(int i =0; i < newSize+13; i++){
@@ -481,14 +477,11 @@ u8 createCANMessage(CAN_Message message, u8 chUnit){
 		writeWord(postStuffed[i], 1);
 	}
 
-	for(int i=0; i < 30; i++){
-		writeWord(0xFFFFFFFF, 1);
-	}
 
 	//send stuff to memory
 
 	//return newSize+13+30;
-	return newSize+13+60;
+	return newSize+13;
 
 
 
@@ -512,7 +505,7 @@ int main(void) {
 	XGpioPs_SetDirectionPin(&mio, MIO_PIN,1);
 	XGpioPs_SetOutputEnablePin(&mio, MIO_PIN,1);
 	XGpioPs_WritePin(&mio, MIO_PIN,0);
-
+	/*
 	CAN_begin(&busDev, XPAR_PMODCAN_0_AXI_LITE_GPIO_BASEADDR,XPAR_PMODCAN_0_AXI_LITE_SPI_BASEADDR);
 	CAN_Configure(&busDev, CAN_ModeNormalOperation);
 	xil_printf("Waiting to receive\r\n");
@@ -553,7 +546,7 @@ int main(void) {
 		sleep(1);
 		xil_printf("Waiting to receive\r\n");
 	}
-	/*
+	*/
 	RxMessage.id = 0x543;
 	RxMessage.rtr = 0;
 	RxMessage.ide = 0;
@@ -567,11 +560,12 @@ int main(void) {
 	RxMessage.data[5] = 0x3D;
 	xil_printf("Received Message");
 	xil_printf("ID: %03x\r\n", RxMessage.id);
+	XGpioPs_WritePin(&mio, MIO_PIN,1);
 	if(RxMessage.id == DESIRED_ID){
 		u8 bitsize = createCANMessage(RxMessage, 1);
-		doPlayback((50000*32),bitsize);
+		doPlayback((250000*32),bitsize);
 	}
 	xil_printf("\r\n\r\n\r\n\r\n\r\n\r\n\r\n");
-	*/
+
 }
 

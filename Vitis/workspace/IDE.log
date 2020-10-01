@@ -5951,3 +5951,26 @@ con
 12:40:54 INFO  : Checking for BSP changes to sync application flags for project 'expirement1'...
 12:41:07 INFO  : Invoking Bootgen: bootgen -image expirement1.bif -arch zynq -o /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/expirement1/_ide/bootimage/BOOT.bin -w on
 12:41:09 INFO  : Bootgen command execution is done.
+13:29:05 INFO  : Launching XSCT server: xsct -n  -interactive /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/temp_xsdb_launch_script.tcl
+13:29:08 INFO  : XSCT server has started successfully.
+13:29:08 INFO  : Successfully done setting XSCT server connection channel  
+13:29:08 INFO  : plnx-install-location is set to ''
+13:29:08 INFO  : Successfully done setting workspace for the tool. 
+13:29:09 INFO  : Platform repository initialization has completed.
+13:29:09 INFO  : Successfully done query RDI_DATADIR 
+13:29:09 INFO  : Registering command handlers for Vitis TCF services
+13:42:42 INFO  : Launching XSCT server: xsct -n  -interactive /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/temp_xsdb_launch_script.tcl
+13:42:46 INFO  : XSCT server has started successfully.
+13:42:46 INFO  : Successfully done setting XSCT server connection channel  
+13:42:46 INFO  : plnx-install-location is set to ''
+13:42:46 INFO  : Successfully done setting workspace for the tool. 
+13:42:58 INFO  : Registering command handlers for Vitis TCF services
+13:42:59 INFO  : Platform repository initialization has completed.
+13:43:58 INFO  : Successfully done query RDI_DATADIR 
+13:44:31 INFO  : Checking for BSP changes to sync application flags for project 'expirement1'...
+13:44:51 INFO  : Invoking Bootgen: bootgen -image expirement1.bif -arch zynq -o /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/expirement1/_ide/bootimage/BOOT.bin -w on
+13:44:53 INFO  : Bootgen command execution is done.
+13:45:14 INFO  : Checking for BSP changes to sync application flags for project 'expirement1'...
+13:45:22 INFO  : Checking for BSP changes to sync application flags for project 'expirement1'...
+13:45:27 INFO  : Invoking Bootgen: bootgen -image expirement1.bif -arch zynq -o /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/expirement1/_ide/bootimage/BOOT.bin -w on
+13:45:29 INFO  : Bootgen command execution is done.
