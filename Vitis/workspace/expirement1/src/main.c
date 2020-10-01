@@ -18,6 +18,7 @@
 
 #include "chDriver.h"
 #include "PmodCAN.h"
+#include "xgpiops.h"
 
 
 #define SYS_CLK_HZ 100000000
@@ -28,6 +29,8 @@
 
 #define MEM_LENGTH 1048576 //65536
 #define DESIRED_ID 0x543
+
+#define MIO_PIN 13
 
 
 //Special defines to get rid of magic numbers
@@ -98,6 +101,7 @@ u32 stop_addr[4] 	  = {MEM_LENGTH-1, MEM_LENGTH-1, MEM_LENGTH-1, MEM_LENGTH-1};
 u8  ch_repeat_mask    = 0b0000;
 
 PmodCAN busDev;
+static XGpioPs mio;
 
 
 void init() {
@@ -498,8 +502,17 @@ int main(void) {
 	CAN_RxBuffer target;
 	u8 status;
 	u8 rx_int_mask;
+	XGpioPs_Config *ConfigPtr;
+
 
 	init();
+
+	ConfigPtr = XGpioPs_LookupConfig(0);
+	XGpioPs_CfgInitialize(&mio,ConfigPtr,ConfigPtr->BaseAddr);
+	XGpioPs_SetDirectionPin(&mio, MIO_PIN,1);
+	XGpioPs_SetOutputEnablePin(&mio, MIO_PIN,1);
+	XGpioPs_WritePin(&mio, MIO_PIN,0);
+
 	CAN_begin(&busDev, XPAR_PMODCAN_0_AXI_LITE_GPIO_BASEADDR,XPAR_PMODCAN_0_AXI_LITE_SPI_BASEADDR);
 	CAN_Configure(&busDev, CAN_ModeNormalOperation);
 
@@ -529,13 +542,14 @@ int main(void) {
 		CAN_ReceiveMessage(&busDev, &RxMessage, target);
 
 		CAN_ModifyReg(&busDev, CAN_CANINTF_REG_ADDR, rx_int_mask, 0);
-
+		XGpioPs_WritePin(&mio, MIO_PIN,1);
 		xil_printf("Received Message");
 		xil_printf("ID: %03x\r\n", RxMessage.id);
 		if(RxMessage.id == DESIRED_ID){
 			u8 bitsize = createCANMessage(RxMessage, 1);
 			doPlayback((500000*32),bitsize);
 		}
+		XGpioPs_WritePin(&mio, MIO_PIN,0);
 
 		sleep(1);
 	}

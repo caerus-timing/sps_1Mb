@@ -8848,3 +8848,469 @@ TRACE::2020-09-30.23:01:55::SCWMssOS::DEBUG:  swdes dump  /home/mulholbn/Documen
 /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
 
 TRACE::2020-09-30.23:01:55::SCWMssOS::Sw design exists and opened at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:42:38::SCWPlatform::Trying to open the hw design at /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:38::SCWPlatform::DSA given /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:38::SCWPlatform::DSA absoulate path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:41::SCWPlatform::DSA directory /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw
+TRACE::2020-10-01.11:42:41::SCWPlatform:: Platform Path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:41::SCWPlatform:: Unique name xilinx:zybo-z7-20::0.0
+TRACE::2020-10-01.11:42:41::SCWPlatform::Do not have an existing db opened. 
+TRACE::2020-10-01.11:42:55::SCWPlatform::Opened new HwDB with name design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWReader::Active system found as  caerus_can
+TRACE::2020-10-01.11:42:55::SCWReader::Handling sysconfig caerus_can
+TRACE::2020-10-01.11:42:55::SCWDomain::checking for install qemu data   : 
+TRACE::2020-10-01.11:42:55::SCWDomain:: Using the QEMU Data from install at  : /opt/Xilinx/Vitis/2020.1/data/emulation/platforms/zynq/qemu/
+TRACE::2020-10-01.11:42:55::SCWDomain:: Using the QEMU args  from install at  : /opt/Xilinx/Vitis/2020.1/data/emulation/platforms/zynq/qemu/qemu_args.txt
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to open the hw design at /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA given /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA absoulate path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA directory /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Platform Path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Unique name xilinx:zybo-z7-20::0.0
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to set the existing hwdb with name design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Opened existing hwdb design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to open the hw design at /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA given /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA absoulate path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA directory /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Platform Path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Unique name xilinx:zybo-z7-20::0.0
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to set the existing hwdb with name design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Opened existing hwdb design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to open the hw design at /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA given /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA absoulate path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA directory /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Platform Path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Unique name xilinx:zybo-z7-20::0.0
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to set the existing hwdb with name design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Opened existing hwdb design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2020-10-01.11:42:55::SCWReader::Boot application domain added for zynq_fsbl
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to open the hw design at /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA given /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA absoulate path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA directory /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Platform Path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Unique name xilinx:zybo-z7-20::0.0
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to set the existing hwdb with name design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Opened existing hwdb design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2020-10-01.11:42:55::SCWMssOS::Checking the sw design at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2020-10-01.11:42:55::SCWMssOS::DEBUG:  swdes dump  
+TRACE::2020-10-01.11:42:55::SCWMssOS::No sw design opened at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2020-10-01.11:42:55::SCWMssOS::mss exists loading the mss file  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2020-10-01.11:42:55::SCWMssOS::Opened the sw design from mss  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2020-10-01.11:42:55::SCWMssOS::Adding the swdes entry /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss with des name system
+TRACE::2020-10-01.11:42:55::SCWMssOS::updating the scw layer about changes
+TRACE::2020-10-01.11:42:55::SCWMssOS::Opened the sw design.  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to open the hw design at /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA given /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA absoulate path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA directory /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Platform Path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Unique name xilinx:zybo-z7-20::0.0
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to set the existing hwdb with name design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Opened existing hwdb design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2020-10-01.11:42:55::SCWMssOS::Checking the sw design at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2020-10-01.11:42:55::SCWMssOS::DEBUG:  swdes dump  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2020-10-01.11:42:55::SCWMssOS::Sw design exists and opened at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2020-10-01.11:42:55::SCWMssOS:: library already available in sw design:  xilffs:4.3
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to open the hw design at /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA given /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA absoulate path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA directory /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Platform Path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Unique name xilinx:zybo-z7-20::0.0
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to set the existing hwdb with name design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Opened existing hwdb design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2020-10-01.11:42:55::SCWMssOS::Checking the sw design at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2020-10-01.11:42:55::SCWMssOS::DEBUG:  swdes dump  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2020-10-01.11:42:55::SCWMssOS::Sw design exists and opened at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2020-10-01.11:42:55::SCWMssOS:: library already available in sw design:  xilrsa:1.6
+TRACE::2020-10-01.11:42:55::SCWMssOS::Saving the mss changes /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2020-10-01.11:42:55::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2020-10-01.11:42:55::SCWMssOS::Completed writemss as part of save.
+TRACE::2020-10-01.11:42:55::SCWMssOS::Commit changes completed.
+TRACE::2020-10-01.11:42:55::SCWReader::Adding prebuilt librarypaths as   
+TRACE::2020-10-01.11:42:55::SCWReader::Adding prebuilt incpaths  as   
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to open the hw design at /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA given /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA absoulate path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA directory /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Platform Path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Unique name xilinx:zybo-z7-20::0.0
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to set the existing hwdb with name design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Opened existing hwdb design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2020-10-01.11:42:55::SCWMssOS::Checking the sw design at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2020-10-01.11:42:55::SCWMssOS::DEBUG:  swdes dump  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2020-10-01.11:42:55::SCWMssOS::Sw design exists and opened at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2020-10-01.11:42:55::SCWReader::No isolation master present  
+TRACE::2020-10-01.11:42:55::SCWDomain::checking for install qemu data   : 
+TRACE::2020-10-01.11:42:55::SCWDomain:: Using the QEMU Data from install at  : /opt/Xilinx/Vitis/2020.1/data/emulation/platforms/zynq/qemu/
+TRACE::2020-10-01.11:42:55::SCWDomain:: Using the QEMU args  from install at  : /opt/Xilinx/Vitis/2020.1/data/emulation/platforms/zynq/qemu/qemu_args.txt
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to open the hw design at /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA given /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA absoulate path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA directory /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Platform Path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Unique name xilinx:zybo-z7-20::0.0
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to set the existing hwdb with name design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Opened existing hwdb design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to open the hw design at /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA given /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA absoulate path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA directory /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Platform Path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Unique name xilinx:zybo-z7-20::0.0
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to set the existing hwdb with name design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Opened existing hwdb design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to open the hw design at /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA given /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA absoulate path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA directory /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Platform Path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Unique name xilinx:zybo-z7-20::0.0
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to set the existing hwdb with name design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Opened existing hwdb design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2020-10-01.11:42:55::SCWMssOS::Checking the sw design at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:42:55::SCWMssOS::DEBUG:  swdes dump  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2020-10-01.11:42:55::SCWMssOS::No sw design opened at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:42:55::SCWMssOS::mss exists loading the mss file  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:42:55::SCWMssOS::Opened the sw design from mss  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:42:55::SCWMssOS::Adding the swdes entry /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss with des name system_0
+TRACE::2020-10-01.11:42:55::SCWMssOS::updating the scw layer about changes
+TRACE::2020-10-01.11:42:55::SCWMssOS::Opened the sw design.  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:42:55::SCWMssOS::Saving the mss changes /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:42:55::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2020-10-01.11:42:55::SCWMssOS::Completed writemss as part of save.
+TRACE::2020-10-01.11:42:55::SCWMssOS::Commit changes completed.
+TRACE::2020-10-01.11:42:55::SCWReader::Adding prebuilt librarypaths as   
+TRACE::2020-10-01.11:42:55::SCWReader::Adding prebuilt incpaths  as   
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to open the hw design at /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA given /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA absoulate path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA directory /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Platform Path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Unique name xilinx:zybo-z7-20::0.0
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to set the existing hwdb with name design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Opened existing hwdb design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2020-10-01.11:42:55::SCWMssOS::Checking the sw design at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:42:55::SCWMssOS::DEBUG:  swdes dump  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2020-10-01.11:42:55::SCWMssOS::Sw design exists and opened at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:42:55::SCWReader::No isolation master present  
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to open the hw design at /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA given /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA absoulate path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA directory /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Platform Path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Unique name xilinx:zybo-z7-20::0.0
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to set the existing hwdb with name design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Opened existing hwdb design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2020-10-01.11:42:55::SCWMssOS::Checking the sw design at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2020-10-01.11:42:55::SCWMssOS::DEBUG:  swdes dump  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2020-10-01.11:42:55::SCWMssOS::Sw design exists and opened at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to open the hw design at /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA given /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA absoulate path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform::DSA directory /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Platform Path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:55::SCWPlatform:: Unique name xilinx:zybo-z7-20::0.0
+TRACE::2020-10-01.11:42:55::SCWPlatform::Trying to set the existing hwdb with name design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Opened existing hwdb design_1_wrapper
+TRACE::2020-10-01.11:42:55::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2020-10-01.11:42:55::SCWMssOS::Checking the sw design at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:42:55::SCWMssOS::DEBUG:  swdes dump  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2020-10-01.11:42:55::SCWMssOS::Sw design exists and opened at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:42:59::SCWMssOS::In reload Mss file.
+TRACE::2020-10-01.11:42:59::SCWPlatform::Trying to open the hw design at /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:59::SCWPlatform::DSA given /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:59::SCWPlatform::DSA absoulate path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:59::SCWPlatform::DSA directory /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw
+TRACE::2020-10-01.11:42:59::SCWPlatform:: Platform Path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:42:59::SCWPlatform:: Unique name xilinx:zybo-z7-20::0.0
+TRACE::2020-10-01.11:42:59::SCWPlatform::Trying to set the existing hwdb with name design_1_wrapper
+TRACE::2020-10-01.11:42:59::SCWPlatform::Opened existing hwdb design_1_wrapper
+TRACE::2020-10-01.11:42:59::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2020-10-01.11:42:59::SCWMssOS::Checking the sw design at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:42:59::SCWMssOS::DEBUG:  swdes dump  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+KEYINFO::2020-10-01.11:42:59::SCWMssOS::Could not open the swdb for system_0
+KEYINFO::2020-10-01.11:42:59::SCWMssOS::Could not open the sw design at  system_0
+ERROR: [Hsi 55-1558] Software Design system_0 is not found
+
+TRACE::2020-10-01.11:42:59::SCWMssOS::Cleared the swdb table entry
+TRACE::2020-10-01.11:42:59::SCWMssOS::No sw design opened at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:42:59::SCWMssOS::mss exists loading the mss file  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:42:59::SCWMssOS::Opened the sw design from mss  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:42:59::SCWMssOS::Adding the swdes entry /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss with des name system_0
+TRACE::2020-10-01.11:42:59::SCWMssOS::updating the scw layer about changes
+TRACE::2020-10-01.11:42:59::SCWMssOS::Opened the sw design.  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:42:59::SCWMssOS::Saving the mss changes /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:42:59::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2020-10-01.11:43:00::SCWMssOS::Completed writemss as part of save.
+TRACE::2020-10-01.11:43:00::SCWMssOS::Commit changes completed.
+TRACE::2020-10-01.11:43:00::SCWPlatform::Trying to open the hw design at /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:43:00::SCWPlatform::DSA given /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:43:00::SCWPlatform::DSA absoulate path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:43:00::SCWPlatform::DSA directory /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw
+TRACE::2020-10-01.11:43:00::SCWPlatform:: Platform Path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:43:00::SCWPlatform:: Unique name xilinx:zybo-z7-20::0.0
+TRACE::2020-10-01.11:43:00::SCWPlatform::Trying to set the existing hwdb with name design_1_wrapper
+TRACE::2020-10-01.11:43:00::SCWPlatform::Opened existing hwdb design_1_wrapper
+TRACE::2020-10-01.11:43:00::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2020-10-01.11:43:00::SCWMssOS::Checking the sw design at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:43:00::SCWMssOS::DEBUG:  swdes dump  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2020-10-01.11:43:00::SCWMssOS::Sw design exists and opened at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:43:00::SCWMssOS::Removing the swdes entry for  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:43:00::SCWMssOS::In reload Mss file.
+TRACE::2020-10-01.11:43:00::SCWPlatform::Trying to open the hw design at /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:43:00::SCWPlatform::DSA given /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:43:00::SCWPlatform::DSA absoulate path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:43:00::SCWPlatform::DSA directory /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw
+TRACE::2020-10-01.11:43:00::SCWPlatform:: Platform Path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:43:00::SCWPlatform:: Unique name xilinx:zybo-z7-20::0.0
+TRACE::2020-10-01.11:43:00::SCWPlatform::Trying to set the existing hwdb with name design_1_wrapper
+TRACE::2020-10-01.11:43:00::SCWPlatform::Opened existing hwdb design_1_wrapper
+TRACE::2020-10-01.11:43:00::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2020-10-01.11:43:00::SCWMssOS::Checking the sw design at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:43:00::SCWMssOS::DEBUG:  swdes dump  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2020-10-01.11:43:00::SCWMssOS::No sw design opened at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:43:00::SCWMssOS::mss exists loading the mss file  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:43:00::SCWMssOS::Opened the sw design from mss  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:43:00::SCWMssOS::Adding the swdes entry /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss with des name system_0
+TRACE::2020-10-01.11:43:00::SCWMssOS::updating the scw layer about changes
+TRACE::2020-10-01.11:43:00::SCWMssOS::Opened the sw design.  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:43:00::SCWMssOS::Saving the mss changes /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:43:00::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2020-10-01.11:43:00::SCWMssOS::Completed writemss as part of save.
+TRACE::2020-10-01.11:43:00::SCWMssOS::Commit changes completed.
+TRACE::2020-10-01.11:43:00::SCWPlatform::Trying to open the hw design at /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:43:00::SCWPlatform::DSA given /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:43:00::SCWPlatform::DSA absoulate path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:43:00::SCWPlatform::DSA directory /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw
+TRACE::2020-10-01.11:43:00::SCWPlatform:: Platform Path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.11:43:00::SCWPlatform:: Unique name xilinx:zybo-z7-20::0.0
+TRACE::2020-10-01.11:43:00::SCWPlatform::Trying to set the existing hwdb with name design_1_wrapper
+TRACE::2020-10-01.11:43:00::SCWPlatform::Opened existing hwdb design_1_wrapper
+TRACE::2020-10-01.11:43:00::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2020-10-01.11:43:00::SCWMssOS::Checking the sw design at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:43:00::SCWMssOS::DEBUG:  swdes dump  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2020-10-01.11:43:00::SCWMssOS::Sw design exists and opened at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.11:43:00::SCWMssOS::Removing the swdes entry for  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+LOG::2020-10-01.12:01:12::SCWPlatform::Started generating the artifacts platform caerus_can
+TRACE::2020-10-01.12:01:12::SCWPlatform::Sanity checking of platform is completed
+LOG::2020-10-01.12:01:12::SCWPlatform::Started generating the artifacts for system configuration caerus_can
+LOG::2020-10-01.12:01:12::SCWSystem::Checking the domain zynq_fsbl
+LOG::2020-10-01.12:01:12::SCWSystem::Doing application build for :  zynq_fsbl
+TRACE::2020-10-01.12:01:12::SCWBDomain::Not a forced makefile updation, No changes are present. 
+TRACE::2020-10-01.12:01:12::SCWDomain::Skipping the build for domain :  zynq_fsbl
+LOG::2020-10-01.12:01:12::SCWSystem::Checking the domain standalone_domain
+LOG::2020-10-01.12:01:12::SCWSystem::Not a boot domain 
+LOG::2020-10-01.12:01:12::SCWSystem::Started Processing the domain standalone_domain
+TRACE::2020-10-01.12:01:12::SCWDomain::Generating domain artifcats
+TRACE::2020-10-01.12:01:12::SCWMssOS::Generating standalone artifcats
+TRACE::2020-10-01.12:01:12::SCWMssOS::Copying the qemu file from  /opt/Xilinx/Vitis/2020.1/data/emulation/platforms/zynq/qemu/qemu_args.txt To /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/export/caerus_can/sw/caerus_can/qemu/
+TRACE::2020-10-01.12:01:12::SCWMssOS::Copying the qemu file from  /opt/Xilinx/Vitis/2020.1/data/emulation/platforms/zynq/qemu/qemu_args.txt To /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/export/caerus_can/sw/caerus_can/standalone_domain/qemu/
+TRACE::2020-10-01.12:01:12::SCWMssOS:: Copying the user libraries. 
+TRACE::2020-10-01.12:01:12::SCWPlatform::Trying to open the hw design at /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.12:01:12::SCWPlatform::DSA given /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.12:01:12::SCWPlatform::DSA absoulate path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.12:01:12::SCWPlatform::DSA directory /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw
+TRACE::2020-10-01.12:01:12::SCWPlatform:: Platform Path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.12:01:12::SCWPlatform:: Unique name xilinx:zybo-z7-20::0.0
+TRACE::2020-10-01.12:01:12::SCWPlatform::Trying to set the existing hwdb with name design_1_wrapper
+TRACE::2020-10-01.12:01:12::SCWPlatform::Opened existing hwdb design_1_wrapper
+TRACE::2020-10-01.12:01:12::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2020-10-01.12:01:12::SCWMssOS::Checking the sw design at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.12:01:12::SCWMssOS::DEBUG:  swdes dump  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2020-10-01.12:01:12::SCWMssOS::No sw design opened at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.12:01:12::SCWMssOS::mss exists loading the mss file  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.12:01:12::SCWMssOS::Opened the sw design from mss  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.12:01:12::SCWMssOS::Adding the swdes entry /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss with des name system_0
+TRACE::2020-10-01.12:01:12::SCWMssOS::updating the scw layer about changes
+TRACE::2020-10-01.12:01:12::SCWMssOS::Opened the sw design.  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.12:01:12::SCWMssOS::Completed writing the mss file at /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp
+TRACE::2020-10-01.12:01:12::SCWMssOS::Mss edits present, copying mssfile into export location /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.12:01:12::SCWMssOS::bsp generated is upto date with the mss file. Skipping bsp generation.
+TRACE::2020-10-01.12:01:12::SCWMssOS::BSP is already built. skipping the bsp build ... 
+TRACE::2020-10-01.12:01:12::SCWDomain::Skipping the build for domain :  standalone_domain
+TRACE::2020-10-01.12:01:12::SCWMssOS::skipping the bsp build ... 
+TRACE::2020-10-01.12:01:12::SCWMssOS::Copying to export directory.
+TRACE::2020-10-01.12:01:14::SCWMssOS:: Checking if to create the Supporting Applications
+TRACE::2020-10-01.12:01:14::SCWMssOS:: No Linux domain exists, trying to generate FSBL 
+LOG::2020-10-01.12:01:14::SCWSystem::Completed Processing the domain standalone_domain
+LOG::2020-10-01.12:01:14::SCWSystem::Completed Processing the sysconfig caerus_can
+LOG::2020-10-01.12:01:14::SCWPlatform::Completed generating the artifacts for system configuration caerus_can
+TRACE::2020-10-01.12:01:14::SCWPlatform::Started preparing the platform 
+TRACE::2020-10-01.12:01:14::SCWSystem::Writing the bif file for system config caerus_can
+TRACE::2020-10-01.12:01:14::SCWSystem::dir created 
+TRACE::2020-10-01.12:01:14::SCWSystem::Writing the bif 
+TRACE::2020-10-01.12:01:14::SCWPlatform::Started writing the spfm file 
+TRACE::2020-10-01.12:01:14::SCWPlatform::Started writing the xpfm file 
+TRACE::2020-10-01.12:01:14::SCWPlatform::Completed generating the platform
+TRACE::2020-10-01.12:01:14::SCWMssOS::Saving the mss changes /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2020-10-01.12:01:14::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2020-10-01.12:01:14::SCWMssOS::Completed writemss as part of save.
+TRACE::2020-10-01.12:01:14::SCWMssOS::Commit changes completed.
+TRACE::2020-10-01.12:01:14::SCWMssOS::Saving the mss changes /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.12:01:14::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2020-10-01.12:01:14::SCWMssOS::Completed writemss as part of save.
+TRACE::2020-10-01.12:01:14::SCWMssOS::Commit changes completed.
+TRACE::2020-10-01.12:01:14::SCWPlatform::Trying to open the hw design at /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.12:01:14::SCWPlatform::DSA given /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.12:01:14::SCWPlatform::DSA absoulate path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.12:01:14::SCWPlatform::DSA directory /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw
+TRACE::2020-10-01.12:01:14::SCWPlatform:: Platform Path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.12:01:14::SCWPlatform:: Unique name xilinx:zybo-z7-20::0.0
+TRACE::2020-10-01.12:01:14::SCWPlatform::Trying to set the existing hwdb with name design_1_wrapper
+TRACE::2020-10-01.12:01:14::SCWPlatform::Opened existing hwdb design_1_wrapper
+TRACE::2020-10-01.12:01:14::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2020-10-01.12:01:14::SCWMssOS::Checking the sw design at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2020-10-01.12:01:14::SCWMssOS::DEBUG:  swdes dump  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2020-10-01.12:01:14::SCWMssOS::Sw design exists and opened at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2020-10-01.12:01:14::SCWPlatform::Trying to open the hw design at /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.12:01:14::SCWPlatform::DSA given /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.12:01:14::SCWPlatform::DSA absoulate path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.12:01:14::SCWPlatform::DSA directory /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw
+TRACE::2020-10-01.12:01:14::SCWPlatform:: Platform Path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.12:01:14::SCWPlatform:: Unique name xilinx:zybo-z7-20::0.0
+TRACE::2020-10-01.12:01:14::SCWPlatform::Trying to set the existing hwdb with name design_1_wrapper
+TRACE::2020-10-01.12:01:14::SCWPlatform::Opened existing hwdb design_1_wrapper
+TRACE::2020-10-01.12:01:14::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2020-10-01.12:01:14::SCWMssOS::Checking the sw design at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.12:01:14::SCWMssOS::DEBUG:  swdes dump  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2020-10-01.12:01:14::SCWMssOS::Sw design exists and opened at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.12:01:14::SCWWriter::formatted JSON is {
+	"platformName":	"caerus_can",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"caerus_can",
+	"platHandOff":	"/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/hdl/caerus_v4.xsa",
+	"platIntHandOff":	"<platformDir>/hw/caerus_v4.xsa",
+	"deviceType":	"zynq",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"fsblExtraCompilerFlags":	"-MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard ",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"caerus_can",
+	"systems":	[{
+			"systemName":	"caerus_can",
+			"systemDesc":	"caerus_can",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"caerus_can",
+			"sysActiveDom":	"standalone_domain",
+			"sysDefaultDom":	"standalone_domain",
+			"domains":	[{
+					"domainName":	"zynq_fsbl",
+					"domainDispName":	"zynq_fsbl",
+					"domainDesc":	"FSBL Application BSP - Auto Generated.",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"debugEnable":	"",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"7.2",
+					"mssFile":	"",
+					"md5Digest":	"a2d7d6a4d9b1ece5d6cdc468f2b5ca2b",
+					"compatibleApp":	"zynq_fsbl",
+					"domType":	"bootDomain",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	["xilffs:4.3", "xilrsa:1.6"],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}, {
+					"domainName":	"standalone_domain",
+					"domainDispName":	"standalone on ps7_cortexa9_0",
+					"domainDesc":	"standalone_domain",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"qemuArgs":	"/opt/Xilinx/Vitis/2020.1/data/emulation/platforms/zynq/qemu/qemu_args.txt",
+					"qemuData":	"/opt/Xilinx/Vitis/2020.1/data/emulation/platforms/zynq/qemu/",
+					"debugEnable":	"False",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"7.2",
+					"mssFile":	"",
+					"md5Digest":	"3c4dbd9a3898fea7d4773002c8844020",
+					"compatibleApp":	"",
+					"domType":	"mssDomain",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	[],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}]
+		}]
+}
+KEYINFO::2020-10-01.12:01:14::SCWPlatform::updated the xpfm file.
+TRACE::2020-10-01.12:01:15::SCWPlatform::Trying to open the hw design at /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.12:01:15::SCWPlatform::DSA given /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.12:01:15::SCWPlatform::DSA absoulate path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.12:01:15::SCWPlatform::DSA directory /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw
+TRACE::2020-10-01.12:01:15::SCWPlatform:: Platform Path /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/hw/caerus_v4.xsa
+TRACE::2020-10-01.12:01:15::SCWPlatform:: Unique name xilinx:zybo-z7-20::0.0
+TRACE::2020-10-01.12:01:15::SCWPlatform::Trying to set the existing hwdb with name design_1_wrapper
+TRACE::2020-10-01.12:01:15::SCWPlatform::Opened existing hwdb design_1_wrapper
+TRACE::2020-10-01.12:01:15::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2020-10-01.12:01:15::SCWMssOS::Checking the sw design at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2020-10-01.12:01:15::SCWMssOS::DEBUG:  swdes dump  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2020-10-01.12:01:15::SCWMssOS::Sw design exists and opened at  /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss
