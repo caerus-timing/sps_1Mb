@@ -1,0 +1,12 @@
+/* /tmp/bootgen_expirement1_system10714667741658322988/sd_card_temp/boot.bif */
+/* Command to create bitstream .bin file:       */
+/*   bootgen -image <bif_file> -split bin -w    */
+/* Command to create BOOT.BIN file:             */
+/*   bootgen  -image <bif_file> -w -o i BOOT.BIN */
+/*caerus_can*/
+the_ROM_image:
+{
+ [bootloader] /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/export/caerus_can/sw/caerus_can/boot/fsbl.elf
+ /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/expirement1/_ide/bitstream/caerus_v4.bit
+ /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/expirement1/Debug/expirement1.elf
+}
