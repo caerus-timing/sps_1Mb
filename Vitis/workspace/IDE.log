@@ -5917,3 +5917,6 @@ con
 ----------------End of Script----------------
 
 23:25:30 INFO  : Launch script is exported to file '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/.sdk/launch_scripts/single_application_debug/debugger_expirement1-default.tcl'
+23:28:56 INFO  : Generated template bif file for expirement1
+23:29:00 INFO  : Invoking Bootgen: bootgen -image expirement1.bif -arch zynq -o /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/expirement1/_ide/bootimage/BOOT.bin
+23:29:01 INFO  : Bootgen command execution is done.
