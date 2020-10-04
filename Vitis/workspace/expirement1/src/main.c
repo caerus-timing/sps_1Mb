@@ -31,7 +31,7 @@
 #define MIO_PIN 13
 #define XCANPS_MAX_FRAME_SIZE_IN_WORDS (XCANPS_MAX_FRAME_SIZE / sizeof(u32))
 
-
+#define DESIRED_ID 231
 
 
 //Special defines to get rid of magic numbers
@@ -504,18 +504,18 @@ u8 createCANMessage(CAN_Message message, u8 chUnit){
 
 	//TODO: CRC DELIM, ACK AND ACK DELIM ARE INVERTED
 	//Add CRC Delim
-	postStuffed[newSize] = 0;
+	postStuffed[newSize] = 0xFFFFFFFF;
 
 	//Add ACK
-	postStuffed[newSize + 1] = 0xFFFFFFFF;
+	postStuffed[newSize + 1] = 0;
 
 	//Add ACK Delim
-	postStuffed[newSize + 2] = 0;
+	postStuffed[newSize + 2] = 0xFFFFFFFF;
 
 	//Add 10 low bits, 7 for EOF, 3 for Interframe spacing
 
 	for(int i = 0; i < 10; i++){
-		postStuffed[newSize + 3 + i] = 0;
+		postStuffed[newSize + 3 + i] = 0xFFFFFFFF;
 	}
 
 	//Print out the CANL data, debugging
@@ -647,8 +647,6 @@ int main(void) {
 	for(u8 j = 0; j < RxMessage.dlc; j++){
 		xil_printf("Data %d: %X \r\n", RxMessage.data[j]);
 	}
-
-	/*
 	xil_printf("ID: %03x\r\n", RxMessage.id);
 	XGpioPs_WritePin(&mio, MIO_PIN,1);
 	if(RxMessage.id == DESIRED_ID){
@@ -656,6 +654,7 @@ int main(void) {
 		doPlayback((250000*32),bitsize);
 	}
 	xil_printf("\r\n\r\n\r\n\r\n\r\n\r\n\r\n");
-	*/
+	XGpioPs_WritePin(&mio, MIO_PIN,0);
+
 }
 
