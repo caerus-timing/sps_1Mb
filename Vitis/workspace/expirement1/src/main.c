@@ -54,7 +54,7 @@
  */
 #define TEST_BTR_SYNCJUMPWIDTH		1
 #define TEST_BTR_SECOND_TIMESEGMENT	3
-#define TEST_BTR_FIRST_TIMESEGMENT	15
+#define TEST_BTR_FIRST_TIMESEGMENT	14
 
 /*
  * The Baud rate Prescalar value in the Baud Rate Prescaler Register (BRPR)
