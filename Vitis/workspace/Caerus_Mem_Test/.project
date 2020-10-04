@@ -3,7 +3,6 @@
 	<name>Caerus_Mem_Test</name>
 	<comment>Created by Vitis v2020.1</comment>
 	<projects>
-		<project>caerus_v4</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

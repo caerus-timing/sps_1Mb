@@ -17,9 +17,8 @@
 #include "xil_cache.h"
 
 #include "chDriver.h"
-#include "PmodCAN.h"
 #include "xgpiops.h"
-
+#include "xcanps.h"
 
 #define SYS_CLK_HZ 100000000
 #define MIN_PB_HZ 60
@@ -28,9 +27,11 @@
 #define CH_COUNT 4
 
 #define MEM_LENGTH 1048576 //65536
-#define DESIRED_ID 0x543
 
 #define MIO_PIN 13
+#define XCANPS_MAX_FRAME_SIZE_IN_WORDS (XCANPS_MAX_FRAME_SIZE / sizeof(u32))
+
+
 
 
 //Special defines to get rid of magic numbers
@@ -44,6 +45,25 @@
 #define CRC_SIZE 15
 #define EXEMPT_SIZE 10
 #define MAX_FRAME_SIZE 200
+
+/*
+ * Timing parameters to be set in the Bit Timing Register (BTR).
+ * These values are for a 40 Kbps baudrate assuming the CAN input clock
+ frequency
+ * is 24 MHz.
+ */
+#define TEST_BTR_SYNCJUMPWIDTH		1
+#define TEST_BTR_SECOND_TIMESEGMENT	3
+#define TEST_BTR_FIRST_TIMESEGMENT	15
+
+/*
+ * The Baud rate Prescalar value in the Baud Rate Prescaler Register (BRPR)
+ * needs to be set based on the input clock  frequency to the CAN core and
+ * the desired CAN baud rate.
+ * This value is for a 40 Kbps baudrate assuming the CAN input clock frequency
+ * is 24 MHz.
+ */
+#define TEST_BRPR_BAUD_PRESCALAR	9
 
 /*
  * CHANNEL ADDRESSING GPIO DEVICES
@@ -100,19 +120,51 @@ u32 ch_frequencies[4] = {2000, 2000, 2000, 2000};
 u32 stop_addr[4] 	  = {MEM_LENGTH-1, MEM_LENGTH-1, MEM_LENGTH-1, MEM_LENGTH-1};
 u8  ch_repeat_mask    = 0b0000;
 
-PmodCAN busDev;
+/* Driver instance */
+static XCanPs Can;
+XCanPs_Config *ConfigPtr;
+
 static XGpioPs mio;
 
 
-void init() {
+
+
+int init() {
+	int Status;
 
 	initMemory();
 	// Disable DCache
 	Xil_DCacheDisable();
 
-	//double checked above
+	ConfigPtr = XCanPs_LookupConfig(XPAR_PS7_CAN_0_DEVICE_ID);
+	Status = XCanPs_CfgInitialize(&Can,
+					ConfigPtr,
+					ConfigPtr->BaseAddr);
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
 
-	//TODO : check functions
+	Status = XCanPs_SelfTest(&Can);
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+
+	XCanPs_EnterMode(&Can, XCANPS_MODE_CONFIG);
+	while(XCanPs_GetMode(&Can) != XCANPS_MODE_CONFIG);
+	/*
+	 * Setup Baud Rate Prescaler Register (BRPR) and
+	 * Bit Timing Register (BTR).
+	 */
+	XCanPs_SetBaudRatePrescaler(&Can, TEST_BRPR_BAUD_PRESCALAR);
+	XCanPs_SetBitTiming(&Can, TEST_BTR_SYNCJUMPWIDTH,TEST_BTR_SECOND_TIMESEGMENT,TEST_BTR_FIRST_TIMESEGMENT);
+	/*
+	 * Enter Loop Back Mode.
+	 */
+	XCanPs_EnterMode(&Can, XCANPS_MODE_NORMAL);
+	while(XCanPs_GetMode(&Can) != XCANPS_MODE_NORMAL);
+
+	return Status;
+
 }
 
 
@@ -492,73 +544,111 @@ u8 createCANMessage(CAN_Message message, u8 chUnit){
 int main(void) {
 
 	CAN_Message RxMessage;
-	CAN_RxBuffer target;
-	u8 status;
-	u8 rx_int_mask;
-	XGpioPs_Config *ConfigPtr;
+	u32 target[XCANPS_MAX_FRAME_SIZE_IN_WORDS];
+	int Status;
+	XGpioPs_Config * ConfigPtr;
 
-
-	init();
-
+	Status = init();
+	xil_printf("The status for init was %d\r\n",Status);
+	//Config GPIO
 	ConfigPtr = XGpioPs_LookupConfig(0);
 	XGpioPs_CfgInitialize(&mio,ConfigPtr,ConfigPtr->BaseAddr);
 	XGpioPs_SetDirectionPin(&mio, MIO_PIN,1);
 	XGpioPs_SetOutputEnablePin(&mio, MIO_PIN,1);
 	XGpioPs_WritePin(&mio, MIO_PIN,0);
-	/*
-	CAN_begin(&busDev, XPAR_PMODCAN_0_AXI_LITE_GPIO_BASEADDR,XPAR_PMODCAN_0_AXI_LITE_SPI_BASEADDR);
-	CAN_Configure(&busDev, CAN_ModeNormalOperation);
-	xil_printf("Waiting to receive\r\n");
-	while (1) {
-		do {
-			status = CAN_ReadStatus(&busDev);
-		} while ((status & CAN_STATUS_RX0IF_MASK) != 0 && (status & CAN_STATUS_RX1IF_MASK) != 0);
+	{
+		u8 *FramePtr;
+		int Index;
+		int Status;
+		u32 TxFrame[4];
 
-		switch (status & 0x03) {
-		case 0b01:
-		case 0b11:
-			xil_printf("fetching message from receive buffer 0\r\n");
-			target = CAN_Rx0;
-			rx_int_mask = CAN_CANINTF_RX0IF_MASK;
-			break;
-		case 0b10:
-			xil_printf("fetching message from receive buffer 1\r\n");
-			target = CAN_Rx1;
-			rx_int_mask = CAN_CANINTF_RX1IF_MASK;
-			break;
-		default:
-			//xil_printf("Error, message not received\r\n");
-			continue;
-		}
+		/*
+		 * Create correct values for Identifier and Data Length Code Register.
+		 */
+		TxFrame[0] = (u32)XCanPs_CreateIdValue((u32)0x543, 0, 0, 0, 0);
+		TxFrame[1] = (u32)XCanPs_CreateDlcValue((u32)4);
 
-		CAN_ReceiveMessage(&busDev, &RxMessage, target);
+		/*
+		 * Now fill in the data field with known values so we can verify them
+		 * on receive.
+		 */
+		FramePtr = (u8 *)(&TxFrame[2]);
+		*FramePtr++ = 0x56;
+		*FramePtr++ = 0x87;
+		*FramePtr++ = 0xFD;
+		*FramePtr++ = 0xA2;
 
-		CAN_ModifyReg(&busDev, CAN_CANINTF_REG_ADDR, rx_int_mask, 0);
-		XGpioPs_WritePin(&mio, MIO_PIN,1);
-		xil_printf("Received Message");
-		xil_printf("ID: %03x\r\n", RxMessage.id);
-		if(RxMessage.id == DESIRED_ID){
-			u8 bitsize = createCANMessage(RxMessage, 1);
-			doPlayback((250000*32),bitsize);
-		}
-		XGpioPs_WritePin(&mio, MIO_PIN,0);
 
-		sleep(1);
-		xil_printf("Waiting to receive\r\n");
+		/*
+		 * Wait until TX FIFO has room.
+		 */
+		while (XCanPs_IsTxFifoFull(&Can) == TRUE);
+
+		/*
+		 * Now send the frame.
+		 *
+		 * Another way to send a frame is keep calling XCanPs_Send() until it
+		 * returns XST_SUCCESS. No check on if TX FIFO is full is needed anymore
+		 * in that case.
+		 */
+		Status = XCanPs_Send(&Can, TxFrame);
+		xil_printf("Send Status %d\r\n",Status);
+
+
+
 	}
-	*/
-	RxMessage.id = 0x543;
-	RxMessage.rtr = 0;
-	RxMessage.ide = 0;
-	RxMessage.srr = 0;
-	RxMessage.dlc = 6;
-	RxMessage.data[0] = 0xAB;
-	RxMessage.data[1] = 0x56;
-	RxMessage.data[2] = 0x32;
-	RxMessage.data[3] = 0xFD;
-	RxMessage.data[4] = 0xC2;
-	RxMessage.data[5] = 0x3D;
-	xil_printf("Received Message");
+
+	//CAN Time
+
+	/*
+	 * Wait until a frame is received.
+	 */
+	while (XCanPs_IsRxEmpty(&Can) == TRUE);
+
+
+	/*
+	 * Receive a frame and verify its contents.
+	 */
+	Status = XCanPs_Recv(&Can, target);
+	if (Status == XST_SUCCESS) {
+		xil_printf("Decoding the message \r\n");
+		u8 i;
+		u8 read_start_addr;
+
+
+		RxMessage.id = (target[0] & XCANPS_IDR_ID1_MASK) >> XCANPS_IDR_ID1_SHIFT;
+
+		RxMessage.ide = 0;
+
+		RxMessage.srr = (target[0] & XCANPS_IDR_SRR_MASK) >> XCANPS_IDR_SRR_SHIFT;
+
+		RxMessage.rtr = (target[0] & XCANPS_IDR_RTR_MASK);
+
+		RxMessage.dlc = (target[1] & XCANPS_DLCR_DLC_MASK) >> XCANPS_DLCR_DLC_SHIFT;
+
+
+		u8 firstRunSize = 4;
+		if(RxMessage.dlc < 4){
+			firstRunSize = RxMessage.dlc;
+		}
+
+
+
+		for (i = 0; i < firstRunSize; i++){
+			RxMessage.data[i] = ((target[2] >> (XCANPS_DW1R_DB0_SHIFT - 8 * i)) & 0xFF);
+		}
+		for(i=4; i < RxMessage.dlc; i++){
+			RxMessage.data[i] = ((target[3] >> (XCANPS_DW2R_DB4_SHIFT - 8 * i)) & 0xFF);
+		}
+
+	}
+	xil_printf("Received Message & Printing \r\n");
+	xil_printf("ID: %X IDE: %d SRR: %d RTR: $d, DLC: %d \r\n",RxMessage.id, RxMessage.ide, RxMessage.srr, RxMessage.dlc);
+	for(u8 j = 0; j < RxMessage.dlc; j++){
+		xil_printf("Data %d: %X \r\n", RxMessage.data[j]);
+	}
+
+	/*
 	xil_printf("ID: %03x\r\n", RxMessage.id);
 	XGpioPs_WritePin(&mio, MIO_PIN,1);
 	if(RxMessage.id == DESIRED_ID){
@@ -566,6 +656,6 @@ int main(void) {
 		doPlayback((250000*32),bitsize);
 	}
 	xil_printf("\r\n\r\n\r\n\r\n\r\n\r\n\r\n");
-
+	*/
 }
 

@@ -31,19 +31,6 @@
  
  
 /******************************************************************/
-/* Definitions for driver PMODCAN */
-#define XPAR_PMODCAN_NUM_INSTANCES 1
-
-/* Definitions for peripheral PMODCAN_0 */
-#define XPAR_PMODCAN_0_DEVICE_ID 0
-#define XPAR_PMODCAN_0_AXI_LITE_SPI_BASEADDR 0x40010000
-#define XPAR_PMODCAN_0_AXI_LITE_SPI_HIGHADDR 0x4001FFFF
-#define XPAR_PMODCAN_0_AXI_LITE_GPIO_BASEADDR 0x40000000
-#define XPAR_PMODCAN_0_AXI_LITE_GPIO_HIGHADDR 0x40000FFF
-
-
-/******************************************************************/
-
 /* Definitions for driver AXICDMA */
 #define XPAR_XAXICDMA_NUM_INSTANCES 4
 
@@ -145,6 +132,27 @@
 /******************************************************************/
 
 #define XAXICDMA_MAX_TRANSFER_LEN    0x3FFFFFF
+/* Definitions for driver CANPS */
+#define XPAR_XCANPS_NUM_INSTANCES 1
+
+/* Definitions for peripheral PS7_CAN_0 */
+#define XPAR_PS7_CAN_0_DEVICE_ID 0
+#define XPAR_PS7_CAN_0_BASEADDR 0xE0008000
+#define XPAR_PS7_CAN_0_HIGHADDR 0xE0008FFF
+#define XPAR_PS7_CAN_0_CAN_CLK_FREQ_HZ 100000000
+
+
+/******************************************************************/
+
+/* Canonical definitions for peripheral PS7_CAN_0 */
+#define XPAR_XCANPS_0_DEVICE_ID XPAR_PS7_CAN_0_DEVICE_ID
+#define XPAR_XCANPS_0_BASEADDR 0xE0008000
+#define XPAR_XCANPS_0_HIGHADDR 0xE0008FFF
+#define XPAR_XCANPS_0_CAN_CLK_FREQ_HZ 100000000
+
+
+/******************************************************************/
+
 
 /* Definitions for peripheral PS7_DDR_0 */
 #define XPAR_PS7_DDR_0_S_AXI_BASEADDR 0x00100000
@@ -403,8 +411,6 @@
 #define XPAR_FABRIC_AXI_CDMA_1_CDMA_INTROUT_INTR 62U
 #define XPAR_FABRIC_AXI_CDMA_2_CDMA_INTROUT_INTR 63U
 #define XPAR_FABRIC_AXI_CDMA_3_CDMA_INTROUT_INTR 64U
-#define XPAR_FABRIC_PMODCAN_0_SPI_INTERRUPT_INTR 65U
-#define XPAR_FABRIC_PMODCAN_0_GPIO_INTERRUPT_INTR 66U
 
 /******************************************************************/
 
@@ -413,8 +419,6 @@
 #define XPAR_FABRIC_AXICDMA_1_VEC_ID XPAR_FABRIC_AXI_CDMA_1_CDMA_INTROUT_INTR
 #define XPAR_FABRIC_AXICDMA_2_VEC_ID XPAR_FABRIC_AXI_CDMA_2_CDMA_INTROUT_INTR
 #define XPAR_FABRIC_AXICDMA_3_VEC_ID XPAR_FABRIC_AXI_CDMA_3_CDMA_INTROUT_INTR
-#define XPAR_FABRIC_PMODCAN_0_SPI_INTERRUPT_VEC_ID XPAR_FABRIC_PMODCAN_0_SPI_INTERRUPT_INTR
-#define XPAR_FABRIC_PMODCAN_0_GPIO_INTERRUPT_VEC_ID XPAR_FABRIC_PMODCAN_0_GPIO_INTERRUPT_INTR
 
 /******************************************************************/
 
