@@ -339,3 +339,93 @@ timestamp=[2020-10-04 18:15:07], mode=WORKBENCH_UI_INIT, duration=0:00:03.097, d
 timestamp=[2020-10-04 18:19:52], mode=PLATFORM_GENERATION, duration=0:00:22.553, duration_ms=22553, data={name=caerus_can}
 timestamp=[2020-10-04 18:19:55], mode=BUILD, duration=0:00:00.835, duration_ms=835, data={name=expirement1, configuration=Debug, clean_build=false}
 timestamp=[2020-10-04 18:20:03], mode=BUILD, duration=0:00:07.115, duration_ms=7115, data={name=expirement1_system, configuration=Debug, clean_build=false}
+timestamp=[2020-10-06 17:05:04], mode=WORKBENCH_START, duration=0:00:41.843, duration_ms=41843, data={}
+timestamp=[2020-10-06 17:05:06], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:01.213, duration_ms=1213, data={}
+timestamp=[2020-10-06 17:05:12], mode=WORKBENCH_UI_INIT, duration=0:00:08.382, duration_ms=8382, data={editors_count=7, platform_editors_count=4, projects_count=7, platform_projects_count=1, active_platform_editor=false, projects=Caerus_Mem_Test,Caerus_Mem_Test_system,RemoteSystemsTempFiles,caerus_can,caerus_v4,expirement1,expirement1_system}
+timestamp=[2020-12-11 14:32:21], mode=WORKBENCH_START, duration=0:00:16.633, duration_ms=16633, data={}
+timestamp=[2020-12-11 14:32:22], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.266, duration_ms=266, data={}
+timestamp=[2020-12-11 14:32:23], mode=WORKBENCH_UI_INIT, duration=0:00:01.922, duration_ms=1922, data={editors_count=14, platform_editors_count=7, projects_count=7, platform_projects_count=1, active_platform_editor=true, projects=Caerus_Mem_Test,Caerus_Mem_Test_system,RemoteSystemsTempFiles,caerus_can,caerus_v4,expirement1,expirement1_system}
+timestamp=[2020-12-11 14:34:34], mode=PLATFORM_CREATION, duration=0:00:15.047, duration_ms=15047, data={platform_source=dsa, os=standalone, processor=ps7_cortexa9, platform=null}
+timestamp=[2020-12-11 14:36:43], mode=APP_CREATION, duration=0:00:07.682, duration_ms=7682, data={name=sampleDetectSW, project_type=sdk, os=standalone, processor=cortex-a9, runtime=C/C++, platform=sampleHW, application_type=application}
+timestamp=[2020-12-14 11:11:06], mode=WORKBENCH_START, duration=0:00:27.543, duration_ms=27543, data={}
+timestamp=[2020-12-14 11:11:07], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.447, duration_ms=447, data={}
+timestamp=[2020-12-14 11:11:13], mode=WORKBENCH_UI_INIT, duration=0:00:07.317, duration_ms=7317, data={editors_count=1, platform_editors_count=0, projects_count=10, platform_projects_count=2, active_platform_editor=false, projects=Caerus_Mem_Test,Caerus_Mem_Test_system,RemoteSystemsTempFiles,caerus_can,caerus_v4,expirement1,expirement1_system,sampleDetectSW,sampleDetectSW_system,sampleHW}
+timestamp=[2020-12-14 17:56:28], mode=PLATFORM_GENERATION, duration=0:00:23.711, duration_ms=23711, data={name=caerus_can}
+timestamp=[2020-12-14 17:56:30], mode=BUILD, duration=0:00:00.805, duration_ms=805, data={name=expirement1, configuration=Debug, clean_build=false}
+timestamp=[2020-12-14 17:56:39], mode=BUILD, duration=0:00:07.495, duration_ms=7495, data={name=expirement1_system, configuration=Debug, clean_build=false}
+timestamp=[2020-12-14 17:57:11], mode=PLATFORM_GENERATION, duration=0:00:32.878, duration_ms=32878, data={name=sampleHW}
+timestamp=[2020-12-14 17:57:14], mode=BUILD, duration=0:00:00.238, duration_ms=238, data={name=sampleDetectSW, configuration=Debug, clean_build=false}
+timestamp=[2020-12-14 17:57:20], mode=BUILD, duration=0:00:05.732, duration_ms=5732, data={name=sampleDetectSW_system, configuration=Debug, clean_build=false}
+timestamp=[2020-12-14 17:58:12], mode=BUILD, duration=0:00:00.235, duration_ms=235, data={name=sampleDetectSW, configuration=Debug, clean_build=false}
+timestamp=[2020-12-14 17:58:35], mode=BUILD, duration=0:00:00.234, duration_ms=234, data={name=sampleDetectSW, configuration=Debug, clean_build=false}
+timestamp=[2020-12-14 18:17:23], mode=BUILD, duration=0:00:00.186, duration_ms=186, data={name=expirement1, configuration=Debug, clean_build=false}
+timestamp=[2020-12-14 18:17:31], mode=BUILD, duration=0:00:07.293, duration_ms=7293, data={name=expirement1_system, configuration=Debug, clean_build=false}
+timestamp=[2020-12-14 18:17:37], mode=PLATFORM_GENERATION, duration=0:00:05.517, duration_ms=5517, data={name=sampleHW}
+timestamp=[2020-12-14 18:17:39], mode=BUILD, duration=0:00:00.478, duration_ms=478, data={name=sampleDetectSW, configuration=Debug, clean_build=false}
+timestamp=[2020-12-14 18:17:45], mode=BUILD, duration=0:00:05.697, duration_ms=5697, data={name=sampleDetectSW_system, configuration=Debug, clean_build=false}
+timestamp=[2020-12-14 18:17:55], mode=BUILD, duration=0:00:00.229, duration_ms=229, data={name=sampleDetectSW, configuration=Debug, clean_build=false}
+timestamp=[2020-12-14 18:18:28], mode=BUILD, duration=0:00:00.235, duration_ms=235, data={name=sampleDetectSW, configuration=Debug, clean_build=false}
+timestamp=[2020-12-14 18:18:44], mode=BUILD, duration=0:00:00.427, duration_ms=427, data={name=sampleDetectSW, configuration=Debug, clean_build=false}
+timestamp=[2020-12-14 18:19:09], mode=BUILD, duration=0:00:00.181, duration_ms=181, data={name=sampleDetectSW, configuration=Debug, clean_build=false}
+timestamp=[2020-12-14 18:19:22], mode=BUILD, duration=0:00:00.231, duration_ms=231, data={name=sampleDetectSW, configuration=Debug, clean_build=false}
+timestamp=[2020-12-14 18:19:52], mode=BUILD, duration=0:00:00.379, duration_ms=379, data={name=sampleDetectSW, configuration=Debug, clean_build=false}
+timestamp=[2020-12-14 18:20:08], mode=BUILD, duration=0:00:00.180, duration_ms=180, data={name=sampleDetectSW, configuration=Debug, clean_build=false}
+timestamp=[2020-12-14 18:20:16], mode=BUILD, duration=0:00:07.191, duration_ms=7191, data={name=sampleDetectSW_system, configuration=Debug, clean_build=false}
+timestamp=[2020-12-15 09:42:23], mode=WORKBENCH_START, duration=0:00:38.162, duration_ms=38162, data={}
+timestamp=[2020-12-15 09:42:24], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.771, duration_ms=771, data={}
+timestamp=[2020-12-15 09:42:30], mode=WORKBENCH_UI_INIT, duration=0:00:07.519, duration_ms=7519, data={editors_count=6, platform_editors_count=1, projects_count=10, platform_projects_count=2, active_platform_editor=false, projects=Caerus_Mem_Test,Caerus_Mem_Test_system,RemoteSystemsTempFiles,caerus_can,caerus_v4,expirement1,expirement1_system,sampleDetectSW,sampleDetectSW_system,sampleHW}
+timestamp=[2020-12-15 09:46:03], mode=PLATFORM_GENERATION, duration=0:00:24.015, duration_ms=24015, data={name=sampleHW}
+timestamp=[2020-12-15 09:46:05], mode=BUILD, duration=0:00:00.808, duration_ms=808, data={name=sampleDetectSW, configuration=Debug, clean_build=false}
+timestamp=[2020-12-15 09:46:14], mode=BUILD, duration=0:00:07.893, duration_ms=7893, data={name=sampleDetectSW_system, configuration=Debug, clean_build=false}
+timestamp=[2020-12-16 20:07:15], mode=WORKBENCH_START, duration=0:00:19.266, duration_ms=19266, data={}
+timestamp=[2020-12-16 20:07:16], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:01.267, duration_ms=1267, data={}
+timestamp=[2020-12-16 20:07:22], mode=WORKBENCH_UI_INIT, duration=0:00:06.883, duration_ms=6883, data={editors_count=6, platform_editors_count=1, projects_count=10, platform_projects_count=2, active_platform_editor=false, projects=Caerus_Mem_Test,Caerus_Mem_Test_system,RemoteSystemsTempFiles,caerus_can,caerus_v4,expirement1,expirement1_system,sampleDetectSW,sampleDetectSW_system,sampleHW}
+timestamp=[2020-12-16 20:09:08], mode=PLATFORM_GENERATION, duration=0:00:20.729, duration_ms=20729, data={name=sampleHW}
+timestamp=[2020-12-16 20:09:11], mode=BUILD, duration=0:00:00.696, duration_ms=696, data={name=sampleDetectSW, configuration=Debug, clean_build=false}
+timestamp=[2020-12-16 20:09:37], mode=BUILD, duration=0:00:00.142, duration_ms=142, data={name=sampleDetectSW, configuration=Debug, clean_build=false}
+timestamp=[2020-12-16 20:09:51], mode=BUILD, duration=0:00:07.709, duration_ms=7709, data={name=sampleDetectSW_system, configuration=Debug, clean_build=false}
+timestamp=[2020-12-16 20:22:37], mode=BUILD, duration=0:00:00.332, duration_ms=332, data={name=sampleDetectSW, configuration=Debug, clean_build=false}
+timestamp=[2020-12-16 20:24:30], mode=WORKBENCH_START, duration=0:00:08.252, duration_ms=8252, data={}
+timestamp=[2020-12-16 20:24:30], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.024, duration_ms=24, data={}
+timestamp=[2020-12-16 20:24:31], mode=WORKBENCH_UI_INIT, duration=0:00:00.800, duration_ms=800, data={editors_count=6, platform_editors_count=1, projects_count=10, platform_projects_count=2, active_platform_editor=false, projects=Caerus_Mem_Test,Caerus_Mem_Test_system,RemoteSystemsTempFiles,caerus_can,caerus_v4,expirement1,expirement1_system,sampleDetectSW,sampleDetectSW_system,sampleHW}
+timestamp=[2020-12-16 20:24:51], mode=BUILD, duration=0:00:00.183, duration_ms=183, data={name=sampleDetectSW, configuration=Debug, clean_build=false}
+timestamp=[2020-12-16 20:25:49], mode=WORKBENCH_START, duration=0:00:08.533, duration_ms=8533, data={}
+timestamp=[2020-12-16 20:25:49], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.032, duration_ms=32, data={}
+timestamp=[2020-12-16 20:25:50], mode=WORKBENCH_UI_INIT, duration=0:00:00.779, duration_ms=779, data={editors_count=6, platform_editors_count=1, projects_count=10, platform_projects_count=2, active_platform_editor=false, projects=Caerus_Mem_Test,Caerus_Mem_Test_system,RemoteSystemsTempFiles,caerus_can,caerus_v4,expirement1,expirement1_system,sampleDetectSW,sampleDetectSW_system,sampleHW}
+timestamp=[2020-12-16 20:26:36], mode=WORKBENCH_START, duration=0:00:08.714, duration_ms=8714, data={}
+timestamp=[2020-12-16 20:26:37], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.029, duration_ms=29, data={}
+timestamp=[2020-12-16 20:26:37], mode=WORKBENCH_UI_INIT, duration=0:00:00.716, duration_ms=716, data={editors_count=6, platform_editors_count=1, projects_count=10, platform_projects_count=2, active_platform_editor=false, projects=Caerus_Mem_Test,Caerus_Mem_Test_system,RemoteSystemsTempFiles,caerus_can,caerus_v4,expirement1,expirement1_system,sampleDetectSW,sampleDetectSW_system,sampleHW}
+timestamp=[2020-12-16 20:27:37], mode=PLATFORM_GENERATION, duration=0:00:20.437, duration_ms=20437, data={name=sampleHW}
+timestamp=[2020-12-16 20:27:39], mode=BUILD, duration=0:00:00.498, duration_ms=498, data={name=sampleDetectSW, configuration=Debug, clean_build=false}
+timestamp=[2020-12-16 20:32:50], mode=BUILD, duration=0:00:00.328, duration_ms=328, data={name=sampleDetectSW, configuration=Debug, clean_build=false}
+timestamp=[2020-12-16 20:34:05], mode=BUILD, duration=0:00:00.330, duration_ms=330, data={name=sampleDetectSW, configuration=Debug, clean_build=false}
+timestamp=[2020-12-16 20:36:31], mode=BUILD, duration=0:00:00.341, duration_ms=341, data={name=sampleDetectSW, configuration=Debug, clean_build=false}
+timestamp=[2020-12-16 20:39:33], mode=BUILD, duration=0:00:00.334, duration_ms=334, data={name=sampleDetectSW, configuration=Debug, clean_build=false}
+timestamp=[2020-12-16 20:56:41], mode=BUILD, duration=0:00:00.339, duration_ms=339, data={name=sampleDetectSW, configuration=Debug, clean_build=false}
+timestamp=[2020-12-17 11:11:42], mode=WORKBENCH_START, duration=0:00:21.726, duration_ms=21726, data={}
+timestamp=[2020-12-17 11:11:44], mode=WORKBENCH_UI_INIT, duration=0:00:01.483, duration_ms=1483, data={editors_count=11, platform_editors_count=5, projects_count=10, platform_projects_count=2, active_platform_editor=true, projects=Caerus_Mem_Test,Caerus_Mem_Test_system,RemoteSystemsTempFiles,caerus_can,caerus_v4,expirement1,expirement1_system,sampleDetectSW,sampleDetectSW_system,sampleHW}
+timestamp=[2020-12-17 11:11:45], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:02.286, duration_ms=2286, data={}
+timestamp=[2020-12-17 14:45:02], mode=PLATFORM_GENERATION, duration=0:00:21.887, duration_ms=21887, data={name=sampleHW}
+timestamp=[2020-12-17 14:50:55], mode=BUILD, duration=0:00:00.708, duration_ms=708, data={name=sampleDetectSW, configuration=Debug, clean_build=false}
+timestamp=[2020-12-17 14:51:10], mode=BUILD, duration=0:00:07.612, duration_ms=7612, data={name=sampleDetectSW_system, configuration=Debug, clean_build=false}
+timestamp=[2020-12-17 15:12:45], mode=BUILD, duration=0:00:00.276, duration_ms=276, data={name=sampleDetectSW, configuration=Debug, clean_build=false}
+timestamp=[2020-12-17 15:12:52], mode=BUILD, duration=0:00:07.103, duration_ms=7103, data={name=sampleDetectSW_system, configuration=Debug, clean_build=false}
+timestamp=[2020-12-17 16:03:52], mode=WORKBENCH_START, duration=0:00:15.366, duration_ms=15366, data={}
+timestamp=[2020-12-17 16:03:53], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.078, duration_ms=78, data={}
+timestamp=[2020-12-17 16:03:53], mode=WORKBENCH_UI_INIT, duration=0:00:01.811, duration_ms=1811, data={editors_count=6, platform_editors_count=3, projects_count=10, platform_projects_count=2, active_platform_editor=false, projects=Caerus_Mem_Test,Caerus_Mem_Test_system,RemoteSystemsTempFiles,caerus_can,caerus_v4,expirement1,expirement1_system,sampleDetectSW,sampleDetectSW_system,sampleHW}
+timestamp=[2020-12-17 16:07:32], mode=PLATFORM_GENERATION, duration=0:00:09.586, duration_ms=9586, data={name=sampleHW}
+timestamp=[2020-12-17 16:07:38], mode=PLATFORM_GENERATION, duration=0:00:05.602, duration_ms=5602, data={name=sampleHW}
+timestamp=[2020-12-17 16:07:38], mode=BUILD, duration=0:00:00.129, duration_ms=129, data={name=sampleDetectSW, configuration=Debug, clean_build=true}
+timestamp=[2020-12-17 16:07:38], mode=BUILD, duration=0:00:00.133, duration_ms=133, data={name=sampleDetectSW_system, configuration=Debug, clean_build=true}
+timestamp=[2020-12-17 16:08:11], mode=PLATFORM_GENERATION, duration=0:00:30.749, duration_ms=30749, data={name=sampleHW}
+timestamp=[2020-12-17 16:08:12], mode=BUILD, duration=0:00:00.495, duration_ms=495, data={name=sampleDetectSW, configuration=Debug, clean_build=false}
+timestamp=[2020-12-17 16:08:20], mode=BUILD, duration=0:00:07.264, duration_ms=7264, data={name=sampleDetectSW_system, configuration=Debug, clean_build=false}
+timestamp=[2020-12-17 16:16:26], mode=WORKBENCH_START, duration=0:00:11.620, duration_ms=11620, data={}
+timestamp=[2020-12-17 16:16:27], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.023, duration_ms=23, data={}
+timestamp=[2020-12-17 16:16:27], mode=WORKBENCH_UI_INIT, duration=0:00:00.813, duration_ms=813, data={editors_count=6, platform_editors_count=3, projects_count=10, platform_projects_count=2, active_platform_editor=false, projects=Caerus_Mem_Test,Caerus_Mem_Test_system,RemoteSystemsTempFiles,caerus_can,caerus_v4,expirement1,expirement1_system,sampleDetectSW,sampleDetectSW_system,sampleHW}
+timestamp=[2020-12-17 16:19:51], mode=WORKBENCH_START, duration=0:00:09.697, duration_ms=9697, data={}
+timestamp=[2020-12-17 16:19:51], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.052, duration_ms=52, data={}
+timestamp=[2020-12-17 16:19:52], mode=WORKBENCH_UI_INIT, duration=0:00:00.784, duration_ms=784, data={editors_count=6, platform_editors_count=3, projects_count=10, platform_projects_count=2, active_platform_editor=false, projects=Caerus_Mem_Test,Caerus_Mem_Test_system,RemoteSystemsTempFiles,caerus_can,caerus_v4,expirement1,expirement1_system,sampleDetectSW,sampleDetectSW_system,sampleHW}
+timestamp=[2020-12-17 17:00:30], mode=WORKBENCH_START, duration=0:00:11.250, duration_ms=11250, data={}
+timestamp=[2020-12-17 17:00:30], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.027, duration_ms=27, data={}
+timestamp=[2020-12-17 17:00:32], mode=WORKBENCH_UI_INIT, duration=0:00:01.994, duration_ms=1994, data={editors_count=6, platform_editors_count=3, projects_count=10, platform_projects_count=2, active_platform_editor=false, projects=Caerus_Mem_Test,Caerus_Mem_Test_system,RemoteSystemsTempFiles,caerus_can,caerus_v4,expirement1,expirement1_system,sampleDetectSW,sampleDetectSW_system,sampleHW}

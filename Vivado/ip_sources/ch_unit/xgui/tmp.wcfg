@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tl_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="dataSizes_pkg" />
+            <top_module name="dataTypes_pkg" />
+            <top_module name="glbl" />
+            <top_module name="tl_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="2036000001fs"></ZoomEndTime>
+      <Cursor1Time time="575605000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="200"></NameColumnWidth>
+      <ValueColumnWidth column_width="88"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="16" />
+   <wvobject type="logic" fp_name="/tl_tb/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tl_tb/resetN">
+      <obj_property name="ElementShortName">resetN</obj_property>
+      <obj_property name="ObjectShortName">resetN</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group60">
+      <obj_property name="label">I/O</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="vbus" fp_name="VirtualBus">
+         <obj_property name="label">OutputLogic</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="Reversed">false</obj_property>
+         <obj_property name="ElementShortName">VirtualBus[]</obj_property>
+         <obj_property name="ObjectShortName">VirtualBus[]</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="logic" fp_name="/tl_tb/outEnable">
+            <obj_property name="ElementShortName">outEnable</obj_property>
+            <obj_property name="ObjectShortName">outEnable</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tl_tb/out">
+            <obj_property name="ElementShortName">out</obj_property>
+            <obj_property name="ObjectShortName">out</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/interrupt">
+         <obj_property name="ElementShortName">interrupt</obj_property>
+         <obj_property name="ObjectShortName">interrupt</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/validSigNum">
+         <obj_property name="ElementShortName">validSigNum[15:0]</obj_property>
+         <obj_property name="ObjectShortName">validSigNum[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/invalidSignal">
+         <obj_property name="ElementShortName">invalidSignal</obj_property>
+         <obj_property name="ObjectShortName">invalidSignal</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/in">
+         <obj_property name="ElementShortName">in</obj_property>
+         <obj_property name="ObjectShortName">in</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/addr">
+         <obj_property name="ElementShortName">addr[14:0]</obj_property>
+         <obj_property name="ObjectShortName">addr[14:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/bramEnable">
+         <obj_property name="ElementShortName">bramEnable</obj_property>
+         <obj_property name="ObjectShortName">bramEnable</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/resetBusy">
+         <obj_property name="ElementShortName">resetBusy</obj_property>
+         <obj_property name="ObjectShortName">resetBusy</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/setValues">
+         <obj_property name="ElementShortName">setValues</obj_property>
+         <obj_property name="ObjectShortName">setValues</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/enable">
+         <obj_property name="ElementShortName">enable</obj_property>
+         <obj_property name="ObjectShortName">enable</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/tglSkip">
+         <obj_property name="ElementShortName">tglSkip</obj_property>
+         <obj_property name="ObjectShortName">tglSkip</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/prevIDSkip">
+         <obj_property name="ElementShortName">prevIDSkip</obj_property>
+         <obj_property name="ObjectShortName">prevIDSkip</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group61">
+      <obj_property name="label">StateMachine Stuff</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="array" fp_name="/tl_tb/uut/currReq">
+         <obj_property name="ElementShortName">currReq[2:0]</obj_property>
+         <obj_property name="ObjectShortName">currReq[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/currInit">
+         <obj_property name="ElementShortName">currInit[2:0]</obj_property>
+         <obj_property name="ObjectShortName">currInit[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/currMeta">
+         <obj_property name="ElementShortName">currMeta[3:0]</obj_property>
+         <obj_property name="ObjectShortName">currMeta[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/initStart">
+         <obj_property name="ElementShortName">initStart</obj_property>
+         <obj_property name="ObjectShortName">initStart</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/setupRunning">
+         <obj_property name="ElementShortName">setupRunning</obj_property>
+         <obj_property name="ObjectShortName">setupRunning</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/incrementer">
+         <obj_property name="ElementShortName">incrementer[15:0]</obj_property>
+         <obj_property name="ObjectShortName">incrementer[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/canClkCounter">
+         <obj_property name="ElementShortName">canClkCounter[4:0]</obj_property>
+         <obj_property name="ObjectShortName">canClkCounter[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/countEn">
+         <obj_property name="ElementShortName">countEn</obj_property>
+         <obj_property name="ObjectShortName">countEn</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tl_tb/uut/sampleInput">
+      <obj_property name="ElementShortName">sampleInput</obj_property>
+      <obj_property name="ObjectShortName">sampleInput</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group179">
+      <obj_property name="label">ID Compare</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="group" fp_name="group180">
+         <obj_property name="label">State Machine</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="logic" fp_name="/tl_tb/uut/ifDetect/rateSelector">
+            <obj_property name="ElementShortName">rateSelector</obj_property>
+            <obj_property name="ObjectShortName">rateSelector</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tl_tb/uut/ifDetect/samplePulse">
+            <obj_property name="ElementShortName">samplePulse</obj_property>
+            <obj_property name="ObjectShortName">samplePulse</obj_property>
+            <obj_property name="CustomSignalColor">#0000FF</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tl_tb/uut/idUnit/currState">
+            <obj_property name="ElementShortName">currState[2:0]</obj_property>
+            <obj_property name="ObjectShortName">currState[2:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tl_tb/uut/idUnit/shiftIn">
+            <obj_property name="ElementShortName">shiftIn</obj_property>
+            <obj_property name="ObjectShortName">shiftIn</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/idUnit/enable">
+         <obj_property name="ElementShortName">enable</obj_property>
+         <obj_property name="ObjectShortName">enable</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/idUnit/id">
+         <obj_property name="ElementShortName">id[31:0]</obj_property>
+         <obj_property name="ObjectShortName">id[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/idUnit/testData">
+         <obj_property name="ElementShortName">testData[31:0]</obj_property>
+         <obj_property name="ObjectShortName">testData[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/idUnit/equal">
+         <obj_property name="ElementShortName">equal</obj_property>
+         <obj_property name="ObjectShortName">equal</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/idUnit/idCheckComplete">
+         <obj_property name="ElementShortName">idCheckComplete</obj_property>
+         <obj_property name="ObjectShortName">idCheckComplete</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/idUnit/idMatch">
+         <obj_property name="ElementShortName">idMatch</obj_property>
+         <obj_property name="ObjectShortName">idMatch</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tl_tb/uut/error/errorFrame">
+      <obj_property name="ElementShortName">errorFrame</obj_property>
+      <obj_property name="ObjectShortName">errorFrame</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group221">
+      <obj_property name="label">ErrDetector</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/tl_tb/uut/error/samplePulse">
+         <obj_property name="ElementShortName">samplePulse</obj_property>
+         <obj_property name="ObjectShortName">samplePulse</obj_property>
+         <obj_property name="CustomSignalColor">#0000FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/error/rateSelector">
+         <obj_property name="ElementShortName">rateSelector</obj_property>
+         <obj_property name="ObjectShortName">rateSelector</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/error/currState">
+         <obj_property name="ElementShortName">currState[15:0]</obj_property>
+         <obj_property name="ObjectShortName">currState[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/error/nextState">
+         <obj_property name="ElementShortName">nextState[15:0]</obj_property>
+         <obj_property name="ObjectShortName">nextState[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/error/currSample">
+         <obj_property name="ElementShortName">currSample[1:0]</obj_property>
+         <obj_property name="ObjectShortName">currSample[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/error/nextSample">
+         <obj_property name="ElementShortName">nextSample[1:0]</obj_property>
+         <obj_property name="ObjectShortName">nextSample[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/error/dataValid">
+         <obj_property name="ElementShortName">dataValid</obj_property>
+         <obj_property name="ObjectShortName">dataValid</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tl_tb/uut/ifDetect/interframePeriod">
+      <obj_property name="ElementShortName">interframePeriod</obj_property>
+      <obj_property name="ObjectShortName">interframePeriod</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group234">
+      <obj_property name="label">Interframe Detector</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/tl_tb/uut/ifDetect/samplePulse">
+         <obj_property name="ElementShortName">samplePulse</obj_property>
+         <obj_property name="ObjectShortName">samplePulse</obj_property>
+         <obj_property name="CustomSignalColor">#0000FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/ifDetect/dataValid">
+         <obj_property name="ElementShortName">dataValid</obj_property>
+         <obj_property name="ObjectShortName">dataValid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/ifDetect/dIn">
+         <obj_property name="ElementShortName">dIn</obj_property>
+         <obj_property name="ObjectShortName">dIn</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/ifDetect/rateSelector">
+         <obj_property name="ElementShortName">rateSelector</obj_property>
+         <obj_property name="ObjectShortName">rateSelector</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/ifDetect/currState">
+         <obj_property name="ElementShortName">currState[12:0]</obj_property>
+         <obj_property name="ObjectShortName">currState[12:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/ifDetect/currSample">
+         <obj_property name="ElementShortName">currSample[1:0]</obj_property>
+         <obj_property name="ObjectShortName">currSample[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tl_tb/uut/su/syncCANClk">
+      <obj_property name="ElementShortName">syncCANClk</obj_property>
+      <obj_property name="ObjectShortName">syncCANClk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tl_tb/uut/su/syncIn">
+      <obj_property name="ElementShortName">syncIn</obj_property>
+      <obj_property name="ObjectShortName">syncIn</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tl_tb/uut/su/oneShotSample">
+      <obj_property name="ElementShortName">oneShotSample</obj_property>
+      <obj_property name="ObjectShortName">oneShotSample</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group249">
+      <obj_property name="label">Sync Unit</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="array" fp_name="/tl_tb/uut/su/bitPeriod">
+         <obj_property name="ElementShortName">bitPeriod[22:0]</obj_property>
+         <obj_property name="ObjectShortName">bitPeriod[22:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/su/dIn">
+         <obj_property name="ElementShortName">dIn</obj_property>
+         <obj_property name="ObjectShortName">dIn</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/su/override">
+         <obj_property name="ElementShortName">override</obj_property>
+         <obj_property name="ObjectShortName">override</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/su/multiSelect">
+         <obj_property name="ElementShortName">multiSelect</obj_property>
+         <obj_property name="ObjectShortName">multiSelect</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/su/sampleRange">
+         <obj_property name="ElementShortName">sampleRange</obj_property>
+         <obj_property name="ObjectShortName">sampleRange</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/su/count">
+         <obj_property name="ElementShortName">count[22:0]</obj_property>
+         <obj_property name="ObjectShortName">count[22:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/su/canReferenceSig">
+         <obj_property name="ElementShortName">canReferenceSig</obj_property>
+         <obj_property name="ObjectShortName">canReferenceSig</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/su/timingOut1">
+         <obj_property name="ElementShortName">timingOut1</obj_property>
+         <obj_property name="ObjectShortName">timingOut1</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/su/delayInput">
+         <obj_property name="ElementShortName">delayInput</obj_property>
+         <obj_property name="ObjectShortName">delayInput</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/su/edgeOccured">
+         <obj_property name="ElementShortName">edgeOccured</obj_property>
+         <obj_property name="ObjectShortName">edgeOccured</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/su/disableClk">
+         <obj_property name="ElementShortName">disableClk</obj_property>
+         <obj_property name="ObjectShortName">disableClk</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group91">
+      <obj_property name="label">Playback Unit</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/tl_tb/uut/pbUnit/resetN">
+         <obj_property name="ElementShortName">resetN</obj_property>
+         <obj_property name="ObjectShortName">resetN</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/pbUnit/enable">
+         <obj_property name="ElementShortName">enable</obj_property>
+         <obj_property name="ObjectShortName">enable</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/pbUnit/playbackSig">
+         <obj_property name="ElementShortName">playbackSig</obj_property>
+         <obj_property name="ObjectShortName">playbackSig</obj_property>
+         <wvobject type="array" fp_name="/tl_tb/uut/pbUnit/playbackSig.rawMemData">
+            <obj_property name="ElementShortName">.rawMemData[31:0]</obj_property>
+            <obj_property name="ObjectShortName">.rawMemData[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tl_tb/uut/pbUnit/playbackSig.outputData">
+            <obj_property name="ElementShortName">.outputData[15:0]</obj_property>
+            <obj_property name="ObjectShortName">.outputData[15:0]</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tl_tb/uut/pbUnit/playbackSig.halfWord">
+            <obj_property name="ElementShortName">.halfWord[1:0][15:0]</obj_property>
+            <obj_property name="ObjectShortName">.halfWord[1:0][15:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/pbUnit/requestNum">
+         <obj_property name="ElementShortName">requestNum[15:0]</obj_property>
+         <obj_property name="ObjectShortName">requestNum[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/pbUnit/playbackClk">
+         <obj_property name="ElementShortName">playbackClk</obj_property>
+         <obj_property name="ObjectShortName">playbackClk</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/pbUnit/dOut">
+         <obj_property name="ElementShortName">dOut</obj_property>
+         <obj_property name="ObjectShortName">dOut</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/pbUnit/dEnable">
+         <obj_property name="ElementShortName">dEnable</obj_property>
+         <obj_property name="ObjectShortName">dEnable</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/pbUnit/advFIFO">
+         <obj_property name="ElementShortName">advFIFO</obj_property>
+         <obj_property name="ObjectShortName">advFIFO</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/pbUnit/complete">
+         <obj_property name="ElementShortName">complete</obj_property>
+         <obj_property name="ObjectShortName">complete</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/pbUnit/currState">
+         <obj_property name="ElementShortName">currState[4:0]</obj_property>
+         <obj_property name="ObjectShortName">currState[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/pbUnit/nextState">
+         <obj_property name="ElementShortName">nextState[4:0]</obj_property>
+         <obj_property name="ObjectShortName">nextState[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/pbUnit/heldOutputVals">
+         <obj_property name="ElementShortName">heldOutputVals[7:0]</obj_property>
+         <obj_property name="ObjectShortName">heldOutputVals[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/pbUnit/currOutput">
+         <obj_property name="ElementShortName">currOutput</obj_property>
+         <obj_property name="ObjectShortName">currOutput</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/pbUnit/incrementReqCount">
+         <obj_property name="ElementShortName">incrementReqCount</obj_property>
+         <obj_property name="ObjectShortName">incrementReqCount</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/pbUnit/outputSel">
+         <obj_property name="ElementShortName">outputSel[3:0]</obj_property>
+         <obj_property name="ObjectShortName">outputSel[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/pbUnit/selDisable">
+         <obj_property name="ElementShortName">selDisable</obj_property>
+         <obj_property name="ObjectShortName">selDisable</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/pbUnit/requestCount">
+         <obj_property name="ElementShortName">requestCount[15:0]</obj_property>
+         <obj_property name="ObjectShortName">requestCount[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/pbUnit/playbackOS">
+         <obj_property name="ElementShortName">playbackOS</obj_property>
+         <obj_property name="ObjectShortName">playbackOS</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/pbUnit/incrementReqCountOS">
+         <obj_property name="ElementShortName">incrementReqCountOS</obj_property>
+         <obj_property name="ObjectShortName">incrementReqCountOS</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group121">
+      <obj_property name="label">Mem Controller</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/tl_tb/uut/br/resetN">
+         <obj_property name="ElementShortName">resetN</obj_property>
+         <obj_property name="ObjectShortName">resetN</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/br/advanceBuffer">
+         <obj_property name="ElementShortName">advanceBuffer</obj_property>
+         <obj_property name="ObjectShortName">advanceBuffer</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/br/clear">
+         <obj_property name="ElementShortName">clear</obj_property>
+         <obj_property name="ObjectShortName">clear</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/br/requestAddr">
+         <obj_property name="ElementShortName">requestAddr[15:0]</obj_property>
+         <obj_property name="ObjectShortName">requestAddr[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/br/numReads">
+         <obj_property name="ElementShortName">numReads[15:0]</obj_property>
+         <obj_property name="ObjectShortName">numReads[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/br/requestData">
+         <obj_property name="ElementShortName">requestData[31:0]</obj_property>
+         <obj_property name="ObjectShortName">requestData[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/br/dataValid">
+         <obj_property name="ElementShortName">dataValid</obj_property>
+         <obj_property name="ObjectShortName">dataValid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/br/readData">
+         <obj_property name="ElementShortName">readData[31:0]</obj_property>
+         <obj_property name="ObjectShortName">readData[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/br/resetBusy">
+         <obj_property name="ElementShortName">resetBusy</obj_property>
+         <obj_property name="ObjectShortName">resetBusy</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/br/addr">
+         <obj_property name="ElementShortName">addr[14:0]</obj_property>
+         <obj_property name="ObjectShortName">addr[14:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/br/writeData">
+         <obj_property name="ElementShortName">writeData[31:0]</obj_property>
+         <obj_property name="ObjectShortName">writeData[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/br/bramEnable">
+         <obj_property name="ElementShortName">bramEnable</obj_property>
+         <obj_property name="ObjectShortName">bramEnable</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/br/bramWe">
+         <obj_property name="ElementShortName">bramWe</obj_property>
+         <obj_property name="ObjectShortName">bramWe</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/br/clearFIFO">
+         <obj_property name="ElementShortName">clearFIFO</obj_property>
+         <obj_property name="ObjectShortName">clearFIFO</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/br/read">
+         <obj_property name="ElementShortName">read</obj_property>
+         <obj_property name="ObjectShortName">read</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/br/wr_en">
+         <obj_property name="ElementShortName">wr_en</obj_property>
+         <obj_property name="ObjectShortName">wr_en</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/br/rd_rst_busy">
+         <obj_property name="ElementShortName">rd_rst_busy</obj_property>
+         <obj_property name="ObjectShortName">rd_rst_busy</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/br/wr_rst_busy">
+         <obj_property name="ElementShortName">wr_rst_busy</obj_property>
+         <obj_property name="ObjectShortName">wr_rst_busy</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/br/currState">
+         <obj_property name="ElementShortName">currState[3:0]</obj_property>
+         <obj_property name="ObjectShortName">currState[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/br/nextState">
+         <obj_property name="ElementShortName">nextState[3:0]</obj_property>
+         <obj_property name="ObjectShortName">nextState[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/br/wrAddr">
+         <obj_property name="ElementShortName">wrAddr</obj_property>
+         <obj_property name="ObjectShortName">wrAddr</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/br/wrNumReads">
+         <obj_property name="ElementShortName">wrNumReads</obj_property>
+         <obj_property name="ObjectShortName">wrNumReads</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/br/incAddr">
+         <obj_property name="ElementShortName">incAddr</obj_property>
+         <obj_property name="ObjectShortName">incAddr</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tl_tb/uut/br/incI">
+         <obj_property name="ElementShortName">incI</obj_property>
+         <obj_property name="ObjectShortName">incI</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/br/i">
+         <obj_property name="ElementShortName">i[15:0]</obj_property>
+         <obj_property name="ObjectShortName">i[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tl_tb/uut/br/storedReads">
+         <obj_property name="ElementShortName">storedReads[15:0]</obj_property>
+         <obj_property name="ObjectShortName">storedReads[15:0]</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

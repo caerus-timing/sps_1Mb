@@ -6774,3 +6774,1207 @@ con
 18:19:52 INFO  : Checking for BSP changes to sync application flags for project 'expirement1'...
 18:21:08 INFO  : Invoking Bootgen: bootgen -image expirement1_system.bif -arch zynq -o /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/expirement1_system/_ide/bootimage/BOOT.bin -w on
 18:21:10 INFO  : Bootgen command execution is done.
+17:04:40 INFO  : Launching XSCT server: xsct -n  -interactive /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/temp_xsdb_launch_script.tcl
+17:04:48 INFO  : XSCT server has started successfully.
+17:04:48 INFO  : Successfully done setting XSCT server connection channel  
+17:04:48 INFO  : plnx-install-location is set to ''
+17:04:48 INFO  : Successfully done setting workspace for the tool. 
+17:05:06 INFO  : Platform repository initialization has completed.
+17:05:10 INFO  : Registering command handlers for Vitis TCF services
+17:05:31 INFO  : Successfully done query RDI_DATADIR 
+18:45:53 INFO  : Successfully done sdx_reload_mss "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/zynq_fsbl/zynq_fsbl_bsp/system.mss"
+18:46:12 INFO  : Successfully done sdx_reload_mss "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/ps7_cortexa9_0/standalone_domain/bsp/system.mss"
+14:32:15 INFO  : Launching XSCT server: xsct -n  -interactive /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/temp_xsdb_launch_script.tcl
+14:32:19 INFO  : XSCT server has started successfully.
+14:32:19 INFO  : plnx-install-location is set to ''
+14:32:19 INFO  : Successfully done setting XSCT server connection channel  
+14:32:19 INFO  : Successfully done setting workspace for the tool. 
+14:32:22 INFO  : Platform repository initialization has completed.
+14:32:23 INFO  : Registering command handlers for Vitis TCF services
+14:32:28 INFO  : Successfully done query RDI_DATADIR 
+14:34:31 INFO  : Result from executing command 'getProjects': caerus_can;sampleHW
+14:34:31 INFO  : Result from executing command 'getPlatforms': caerus_can|/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/export/caerus_can/caerus_can.xpfm
+14:39:02 INFO  : Successfully done sdx_reload_mss "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/zynq_fsbl/zynq_fsbl_bsp/system.mss"
+14:40:36 INFO  : Successfully done sdx_reload_mss "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/ps7_cortexa9_0/standalone_domain/bsp/system.mss"
+11:10:54 INFO  : Launching XSCT server: xsct -n  -interactive /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/temp_xsdb_launch_script.tcl
+11:10:59 INFO  : XSCT server has started successfully.
+11:10:59 INFO  : Successfully done setting XSCT server connection channel  
+11:10:59 INFO  : plnx-install-location is set to ''
+11:10:59 INFO  : Successfully done setting workspace for the tool. 
+11:11:07 INFO  : Platform repository initialization has completed.
+11:11:08 INFO  : Registering command handlers for Vitis TCF services
+11:11:19 INFO  : Successfully done query RDI_DATADIR 
+17:56:25 INFO  : Result from executing command 'getProjects': caerus_can;sampleHW
+17:56:25 INFO  : Result from executing command 'getPlatforms': caerus_can|/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/export/caerus_can/caerus_can.xpfm;sampleHW|/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/sampleHW.xpfm
+17:56:28 INFO  : Checking for BSP changes to sync application flags for project 'expirement1'...
+17:57:08 INFO  : Result from executing command 'getProjects': caerus_can;sampleHW
+17:57:08 INFO  : Result from executing command 'getPlatforms': caerus_can|/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/export/caerus_can/caerus_can.xpfm;sampleHW|/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/sampleHW.xpfm
+17:57:11 INFO  : Checking for BSP changes to sync application flags for project 'sampleDetectSW'...
+17:58:11 INFO  : Checking for BSP changes to sync application flags for project 'sampleDetectSW'...
+17:58:35 INFO  : Checking for BSP changes to sync application flags for project 'sampleDetectSW'...
+18:13:11 INFO  : Successfully done sdx_reload_mss "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/zynq_fsbl/zynq_fsbl_bsp/system.mss"
+18:13:18 INFO  : Successfully done sdx_reload_mss "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/ps7_cortexa9_0/standalone_domain/bsp/system.mss"
+18:17:23 INFO  : Checking for BSP changes to sync application flags for project 'expirement1'...
+18:17:33 INFO  : Result from executing command 'getProjects': caerus_can;sampleHW
+18:17:33 INFO  : Result from executing command 'getPlatforms': caerus_can|/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/export/caerus_can/caerus_can.xpfm;sampleHW|/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/sampleHW.xpfm
+18:17:37 INFO  : Checking for BSP changes to sync application flags for project 'sampleDetectSW'...
+18:17:55 INFO  : Checking for BSP changes to sync application flags for project 'sampleDetectSW'...
+18:18:28 INFO  : Checking for BSP changes to sync application flags for project 'sampleDetectSW'...
+18:18:43 INFO  : Checking for BSP changes to sync application flags for project 'sampleDetectSW'...
+18:19:08 INFO  : Checking for BSP changes to sync application flags for project 'sampleDetectSW'...
+18:19:22 INFO  : Checking for BSP changes to sync application flags for project 'sampleDetectSW'...
+18:19:51 INFO  : Checking for BSP changes to sync application flags for project 'sampleDetectSW'...
+18:20:08 INFO  : Checking for BSP changes to sync application flags for project 'sampleDetectSW'...
+09:42:01 INFO  : Launching XSCT server: xsct -n  -interactive /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/temp_xsdb_launch_script.tcl
+09:42:07 INFO  : XSCT server has started successfully.
+09:42:07 INFO  : plnx-install-location is set to ''
+09:42:07 INFO  : Successfully done setting XSCT server connection channel  
+09:42:07 INFO  : Successfully done setting workspace for the tool. 
+09:42:24 INFO  : Platform repository initialization has completed.
+09:42:25 INFO  : Registering command handlers for Vitis TCF services
+09:42:42 INFO  : Successfully done query RDI_DATADIR 
+09:45:59 INFO  : Result from executing command 'getProjects': caerus_can;sampleHW
+09:45:59 INFO  : Result from executing command 'getPlatforms': caerus_can|/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/export/caerus_can/caerus_can.xpfm;sampleHW|/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/sampleHW.xpfm
+09:46:03 INFO  : Checking for BSP changes to sync application flags for project 'sampleDetectSW'...
+16:40:15 ERROR : (XSDB Server)Terminated
+
+20:07:08 INFO  : Launching XSCT server: xsct -n  -interactive /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/temp_xsdb_launch_script.tcl
+20:07:12 INFO  : XSCT server has started successfully.
+20:07:12 INFO  : plnx-install-location is set to ''
+20:07:12 INFO  : Successfully done setting XSCT server connection channel  
+20:07:12 INFO  : Successfully done setting workspace for the tool. 
+20:07:16 INFO  : Platform repository initialization has completed.
+20:07:17 INFO  : Registering command handlers for Vitis TCF services
+20:07:26 INFO  : Successfully done query RDI_DATADIR 
+20:08:17 INFO  : Hardware specification for platform project 'sampleHW' is updated.
+20:09:05 INFO  : Result from executing command 'getProjects': caerus_can;sampleHW
+20:09:05 INFO  : Result from executing command 'getPlatforms': caerus_can|/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/export/caerus_can/caerus_can.xpfm;sampleHW|/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/sampleHW.xpfm
+20:09:08 INFO  : Checking for BSP changes to sync application flags for project 'sampleDetectSW'...
+20:09:37 INFO  : Checking for BSP changes to sync application flags for project 'sampleDetectSW'...
+20:09:37 INFO  : The hardware specfication used by project 'sampleDetectSW' is out of sync with the platform. Resource files extracted from the hardware specfiication will be updated.
+20:09:37 INFO  : The file '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit' stored in project is removed.
+20:09:37 INFO  : The updated bitstream files are copied from platform to folder '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream' in project 'sampleDetectSW'.
+20:09:37 INFO  : The file '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' stored in project is removed.
+20:09:44 INFO  : The updated ps init files are copied from platform to folder '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit' in project 'sampleDetectSW'.
+20:17:56 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+20:17:57 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+20:17:57 INFO  : 'jtag frequency' command is executed.
+20:17:57 INFO  : Context for 'APU' is selected.
+20:17:57 INFO  : System reset is completed.
+20:18:00 INFO  : 'after 3000' command is executed.
+20:18:00 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+20:18:02 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+20:18:03 INFO  : Context for 'APU' is selected.
+20:18:03 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+20:18:03 INFO  : 'configparams force-mem-access 1' command is executed.
+20:18:03 INFO  : Context for 'APU' is selected.
+20:18:03 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+20:18:03 INFO  : 'ps7_init' command is executed.
+20:18:03 INFO  : 'ps7_post_config' command is executed.
+20:18:03 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+20:18:03 INFO  : The application '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf' is downloaded to processor 'ps7_cortexa9_0'.
+20:18:03 INFO  : 'configparams force-mem-access 0' command is executed.
+20:18:03 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+20:18:03 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+20:18:04 INFO  : 'con' command is executed.
+20:18:04 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+20:18:04 INFO  : Launch script is exported to file '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/.sdk/launch_scripts/single_application_debug/debugger_sampledetectsw-default.tcl'
+20:22:36 INFO  : Checking for BSP changes to sync application flags for project 'sampleDetectSW'...
+20:24:08 INFO  : Disconnected from the channel tcfchan#3.
+20:24:26 INFO  : Launching XSCT server: xsct -n  -interactive /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/temp_xsdb_launch_script.tcl
+20:24:29 INFO  : XSCT server has started successfully.
+20:24:29 INFO  : plnx-install-location is set to ''
+20:24:29 INFO  : Successfully done setting XSCT server connection channel  
+20:24:29 INFO  : Successfully done setting workspace for the tool. 
+20:24:30 INFO  : Platform repository initialization has completed.
+20:24:30 INFO  : Successfully done query RDI_DATADIR 
+20:24:30 INFO  : Registering command handlers for Vitis TCF services
+20:24:49 INFO  : Checking for BSP changes to sync application flags for project 'sampleDetectSW'...
+20:25:45 INFO  : Launching XSCT server: xsct -n  -interactive /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/temp_xsdb_launch_script.tcl
+20:25:48 INFO  : XSCT server has started successfully.
+20:25:48 INFO  : Successfully done setting XSCT server connection channel  
+20:25:48 INFO  : plnx-install-location is set to ''
+20:25:48 INFO  : Successfully done setting workspace for the tool. 
+20:25:49 INFO  : Platform repository initialization has completed.
+20:25:49 INFO  : Successfully done query RDI_DATADIR 
+20:25:49 INFO  : Registering command handlers for Vitis TCF services
+20:26:33 INFO  : Launching XSCT server: xsct -n  -interactive /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/temp_xsdb_launch_script.tcl
+20:26:36 INFO  : XSCT server has started successfully.
+20:26:36 INFO  : Successfully done setting XSCT server connection channel  
+20:26:36 INFO  : plnx-install-location is set to ''
+20:26:36 INFO  : Successfully done setting workspace for the tool. 
+20:26:37 INFO  : Platform repository initialization has completed.
+20:26:37 INFO  : Successfully done query RDI_DATADIR 
+20:26:37 INFO  : Registering command handlers for Vitis TCF services
+20:27:34 INFO  : Result from executing command 'getProjects': caerus_can;sampleHW
+20:27:34 INFO  : Result from executing command 'getPlatforms': caerus_can|/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/export/caerus_can/caerus_can.xpfm;sampleHW|/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/sampleHW.xpfm
+20:27:37 INFO  : Checking for BSP changes to sync application flags for project 'sampleDetectSW'...
+20:27:51 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+20:27:52 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+20:27:52 INFO  : 'jtag frequency' command is executed.
+20:27:52 INFO  : Context for 'APU' is selected.
+20:27:52 INFO  : System reset is completed.
+20:27:55 INFO  : 'after 3000' command is executed.
+20:27:55 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+20:27:57 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+20:27:57 INFO  : Context for 'APU' is selected.
+20:27:57 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+20:27:57 INFO  : 'configparams force-mem-access 1' command is executed.
+20:27:57 INFO  : Context for 'APU' is selected.
+20:27:57 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+20:27:58 INFO  : 'ps7_init' command is executed.
+20:27:58 INFO  : 'ps7_post_config' command is executed.
+20:27:58 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+20:27:58 INFO  : The application '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf' is downloaded to processor 'ps7_cortexa9_0'.
+20:27:58 INFO  : 'configparams force-mem-access 0' command is executed.
+20:27:58 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+20:29:11 INFO  : Disconnected from the channel tcfchan#2.
+20:29:14 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+20:29:14 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+20:29:14 INFO  : 'jtag frequency' command is executed.
+20:29:14 INFO  : Context for 'APU' is selected.
+20:29:14 INFO  : System reset is completed.
+20:29:17 INFO  : 'after 3000' command is executed.
+20:29:17 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+20:29:20 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+20:29:20 INFO  : Context for 'APU' is selected.
+20:29:20 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+20:29:20 INFO  : 'configparams force-mem-access 1' command is executed.
+20:29:20 INFO  : Context for 'APU' is selected.
+20:29:20 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+20:29:20 INFO  : 'ps7_init' command is executed.
+20:29:20 INFO  : 'ps7_post_config' command is executed.
+20:29:20 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+20:29:21 INFO  : The application '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf' is downloaded to processor 'ps7_cortexa9_0'.
+20:29:21 INFO  : 'configparams force-mem-access 0' command is executed.
+20:29:21 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+20:32:50 INFO  : Checking for BSP changes to sync application flags for project 'sampleDetectSW'...
+20:32:55 INFO  : Disconnected from the channel tcfchan#3.
+20:32:57 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+20:32:57 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+20:32:57 INFO  : 'jtag frequency' command is executed.
+20:32:57 INFO  : Context for 'APU' is selected.
+20:32:58 INFO  : System reset is completed.
+20:33:01 INFO  : 'after 3000' command is executed.
+20:33:01 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+20:33:03 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+20:33:03 INFO  : Context for 'APU' is selected.
+20:33:03 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+20:33:03 INFO  : 'configparams force-mem-access 1' command is executed.
+20:33:03 INFO  : Context for 'APU' is selected.
+20:33:03 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+20:33:03 INFO  : 'ps7_init' command is executed.
+20:33:03 INFO  : 'ps7_post_config' command is executed.
+20:33:03 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+20:33:04 INFO  : The application '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf' is downloaded to processor 'ps7_cortexa9_0'.
+20:33:04 INFO  : 'configparams force-mem-access 0' command is executed.
+20:33:04 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+20:34:05 INFO  : Checking for BSP changes to sync application flags for project 'sampleDetectSW'...
+20:34:08 INFO  : Disconnected from the channel tcfchan#4.
+20:34:11 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+20:34:12 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+20:34:12 INFO  : 'jtag frequency' command is executed.
+20:34:12 INFO  : Context for 'APU' is selected.
+20:34:12 INFO  : System reset is completed.
+20:34:15 INFO  : 'after 3000' command is executed.
+20:34:15 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+20:34:17 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+20:34:17 INFO  : Context for 'APU' is selected.
+20:34:17 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+20:34:17 INFO  : 'configparams force-mem-access 1' command is executed.
+20:34:17 INFO  : Context for 'APU' is selected.
+20:34:17 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+20:34:18 INFO  : 'ps7_init' command is executed.
+20:34:18 INFO  : 'ps7_post_config' command is executed.
+20:34:18 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+20:34:18 INFO  : The application '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf' is downloaded to processor 'ps7_cortexa9_0'.
+20:34:18 INFO  : 'configparams force-mem-access 0' command is executed.
+20:34:18 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+20:36:16 INFO  : Disconnected from the channel tcfchan#5.
+20:36:17 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+20:36:17 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+20:36:17 INFO  : 'jtag frequency' command is executed.
+20:36:17 INFO  : Context for 'APU' is selected.
+20:36:17 INFO  : System reset is completed.
+20:36:20 INFO  : 'after 3000' command is executed.
+20:36:20 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+20:36:22 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+20:36:22 INFO  : Context for 'APU' is selected.
+20:36:22 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+20:36:22 INFO  : 'configparams force-mem-access 1' command is executed.
+20:36:22 INFO  : Context for 'APU' is selected.
+20:36:22 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+20:36:23 INFO  : 'ps7_init' command is executed.
+20:36:23 INFO  : 'ps7_post_config' command is executed.
+20:36:23 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+20:36:23 INFO  : The application '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf' is downloaded to processor 'ps7_cortexa9_0'.
+20:36:23 INFO  : 'configparams force-mem-access 0' command is executed.
+20:36:23 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+20:36:31 INFO  : Checking for BSP changes to sync application flags for project 'sampleDetectSW'...
+20:36:34 INFO  : Disconnected from the channel tcfchan#6.
+20:36:37 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+20:36:37 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+20:36:37 INFO  : 'jtag frequency' command is executed.
+20:36:37 INFO  : Context for 'APU' is selected.
+20:36:38 INFO  : System reset is completed.
+20:36:41 INFO  : 'after 3000' command is executed.
+20:36:41 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+20:36:43 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+20:36:43 INFO  : Context for 'APU' is selected.
+20:36:43 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+20:36:43 INFO  : 'configparams force-mem-access 1' command is executed.
+20:36:43 INFO  : Context for 'APU' is selected.
+20:36:43 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+20:36:43 INFO  : 'ps7_init' command is executed.
+20:36:43 INFO  : 'ps7_post_config' command is executed.
+20:36:43 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+20:36:44 INFO  : The application '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf' is downloaded to processor 'ps7_cortexa9_0'.
+20:36:44 INFO  : 'configparams force-mem-access 0' command is executed.
+20:36:44 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+20:39:06 INFO  : Disconnected from the channel tcfchan#7.
+20:39:11 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+20:39:11 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+20:39:11 INFO  : 'jtag frequency' command is executed.
+20:39:11 INFO  : Context for 'APU' is selected.
+20:39:11 INFO  : System reset is completed.
+20:39:14 INFO  : 'after 3000' command is executed.
+20:39:14 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+20:39:16 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+20:39:17 INFO  : Context for 'APU' is selected.
+20:39:17 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+20:39:17 INFO  : 'configparams force-mem-access 1' command is executed.
+20:39:17 INFO  : Context for 'APU' is selected.
+20:39:17 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+20:39:17 INFO  : 'ps7_init' command is executed.
+20:39:17 INFO  : 'ps7_post_config' command is executed.
+20:39:17 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+20:39:17 INFO  : The application '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf' is downloaded to processor 'ps7_cortexa9_0'.
+20:39:17 INFO  : 'configparams force-mem-access 0' command is executed.
+20:39:17 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+20:39:32 INFO  : Checking for BSP changes to sync application flags for project 'sampleDetectSW'...
+20:39:49 INFO  : Disconnected from the channel tcfchan#8.
+20:39:50 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+20:39:50 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+20:39:50 INFO  : 'jtag frequency' command is executed.
+20:39:50 INFO  : Context for 'APU' is selected.
+20:39:51 INFO  : System reset is completed.
+20:39:54 INFO  : 'after 3000' command is executed.
+20:39:54 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+20:39:56 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+20:39:56 INFO  : Context for 'APU' is selected.
+20:39:56 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+20:39:56 INFO  : 'configparams force-mem-access 1' command is executed.
+20:39:56 INFO  : Context for 'APU' is selected.
+20:39:56 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+20:39:56 INFO  : 'ps7_init' command is executed.
+20:39:56 INFO  : 'ps7_post_config' command is executed.
+20:39:56 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+20:39:57 INFO  : The application '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf' is downloaded to processor 'ps7_cortexa9_0'.
+20:39:57 INFO  : 'configparams force-mem-access 0' command is executed.
+20:39:57 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+20:44:02 INFO  : Disconnected from the channel tcfchan#9.
+20:56:41 INFO  : Checking for BSP changes to sync application flags for project 'sampleDetectSW'...
+20:56:52 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+20:56:52 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+20:56:52 INFO  : 'jtag frequency' command is executed.
+20:56:52 INFO  : Context for 'APU' is selected.
+20:56:52 INFO  : System reset is completed.
+20:56:55 INFO  : 'after 3000' command is executed.
+20:56:56 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+20:56:58 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+20:56:58 INFO  : Context for 'APU' is selected.
+20:56:58 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+20:56:58 INFO  : 'configparams force-mem-access 1' command is executed.
+20:56:58 INFO  : Context for 'APU' is selected.
+20:56:58 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+20:56:58 INFO  : 'ps7_init' command is executed.
+20:56:58 INFO  : 'ps7_post_config' command is executed.
+20:56:58 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+20:56:59 INFO  : The application '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf' is downloaded to processor 'ps7_cortexa9_0'.
+20:56:59 INFO  : 'configparams force-mem-access 0' command is executed.
+20:56:59 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+20:56:59 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+20:56:59 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+20:56:59 INFO  : 'jtag frequency' command is executed.
+20:56:59 INFO  : Context for 'APU' is selected.
+20:56:59 INFO  : System reset is completed.
+20:57:02 INFO  : 'after 3000' command is executed.
+20:57:02 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+20:57:05 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+20:57:05 INFO  : Context for 'APU' is selected.
+20:57:05 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+20:57:05 INFO  : 'configparams force-mem-access 1' command is executed.
+20:57:05 INFO  : Context for 'APU' is selected.
+20:57:05 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+20:57:05 INFO  : 'ps7_init' command is executed.
+20:57:05 INFO  : 'ps7_post_config' command is executed.
+20:57:05 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+20:57:05 INFO  : The application '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf' is downloaded to processor 'ps7_cortexa9_0'.
+20:57:05 INFO  : 'configparams force-mem-access 0' command is executed.
+20:57:05 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+20:57:46 INFO  : Disconnected from the channel tcfchan#10.
+21:33:03 INFO  : Successfully done sdx_reload_mss "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/zynq_fsbl/zynq_fsbl_bsp/system.mss"
+11:11:35 INFO  : Launching XSCT server: xsct -n  -interactive /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/temp_xsdb_launch_script.tcl
+11:11:39 INFO  : XSCT server has started successfully.
+11:11:39 INFO  : plnx-install-location is set to ''
+11:11:39 INFO  : Successfully done setting XSCT server connection channel  
+11:11:39 INFO  : Successfully done setting workspace for the tool. 
+11:11:44 INFO  : Registering command handlers for Vitis TCF services
+11:11:45 INFO  : Platform repository initialization has completed.
+11:11:54 INFO  : Successfully done query RDI_DATADIR 
+14:43:02 ERROR : (XSDB Server)ERROR: [Hsi 55-1571] The design file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/hw/sampleHW.xsa is already opened
+
+14:43:11 INFO  : Hardware specification for platform project 'sampleHW' is updated.
+14:44:59 INFO  : Result from executing command 'getProjects': caerus_can;sampleHW
+14:44:59 INFO  : Result from executing command 'getPlatforms': caerus_can|/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/export/caerus_can/caerus_can.xpfm;sampleHW|/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/sampleHW.xpfm
+14:50:55 INFO  : Checking for BSP changes to sync application flags for project 'sampleDetectSW'...
+14:50:56 INFO  : The hardware specfication used by project 'sampleDetectSW' is out of sync with the platform. Resource files extracted from the hardware specfiication will be updated.
+14:50:56 INFO  : The file '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit' stored in project is removed.
+14:50:56 INFO  : The updated bitstream files are copied from platform to folder '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream' in project 'sampleDetectSW'.
+14:50:56 INFO  : The file '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' stored in project is removed.
+14:51:02 INFO  : The updated ps init files are copied from platform to folder '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit' in project 'sampleDetectSW'.
+14:53:23 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:53:29 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+14:53:29 INFO  : 'jtag frequency' command is executed.
+14:53:29 INFO  : Context for 'APU' is selected.
+14:53:29 INFO  : System reset is completed.
+14:53:32 INFO  : 'after 3000' command is executed.
+14:53:33 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+14:53:35 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+14:53:35 INFO  : Context for 'APU' is selected.
+14:53:35 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+14:53:35 INFO  : 'configparams force-mem-access 1' command is executed.
+14:53:35 INFO  : Context for 'APU' is selected.
+14:53:35 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+14:53:35 INFO  : 'ps7_init' command is executed.
+14:53:35 INFO  : 'ps7_post_config' command is executed.
+14:53:35 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:53:36 INFO  : The application '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf' is downloaded to processor 'ps7_cortexa9_0'.
+14:53:36 INFO  : 'configparams force-mem-access 0' command is executed.
+14:53:36 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:53:36 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:53:36 INFO  : 'con' command is executed.
+14:53:36 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+14:53:36 INFO  : Disconnected from the channel tcfchan#3.
+14:55:33 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:55:34 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+14:55:34 INFO  : 'jtag frequency' command is executed.
+14:55:34 INFO  : Context for 'APU' is selected.
+14:55:34 INFO  : System reset is completed.
+14:55:37 INFO  : 'after 3000' command is executed.
+14:55:37 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+14:55:39 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+14:55:39 INFO  : Context for 'APU' is selected.
+14:55:39 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+14:55:39 INFO  : 'configparams force-mem-access 1' command is executed.
+14:55:39 INFO  : Context for 'APU' is selected.
+14:55:39 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+14:55:40 INFO  : 'ps7_init' command is executed.
+14:55:40 INFO  : 'ps7_post_config' command is executed.
+14:55:40 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:55:40 INFO  : The application '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf' is downloaded to processor 'ps7_cortexa9_0'.
+14:55:40 INFO  : 'configparams force-mem-access 0' command is executed.
+14:55:40 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:55:40 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:55:40 INFO  : 'con' command is executed.
+14:55:40 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+14:55:40 INFO  : Disconnected from the channel tcfchan#4.
+15:12:45 INFO  : Checking for BSP changes to sync application flags for project 'sampleDetectSW'...
+15:17:49 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:17:49 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+15:17:49 INFO  : 'jtag frequency' command is executed.
+15:17:49 INFO  : Context for 'APU' is selected.
+15:17:49 INFO  : System reset is completed.
+15:17:52 INFO  : 'after 3000' command is executed.
+15:17:53 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+15:17:55 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+15:17:55 INFO  : Context for 'APU' is selected.
+15:17:55 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+15:17:55 INFO  : 'configparams force-mem-access 1' command is executed.
+15:17:55 INFO  : Context for 'APU' is selected.
+15:17:55 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+15:17:55 INFO  : 'ps7_init' command is executed.
+15:17:55 INFO  : 'ps7_post_config' command is executed.
+15:17:55 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+15:17:56 INFO  : The application '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf' is downloaded to processor 'ps7_cortexa9_0'.
+15:17:56 INFO  : 'configparams force-mem-access 0' command is executed.
+15:17:56 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+15:17:56 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+15:17:56 INFO  : 'con' command is executed.
+15:17:56 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+15:17:56 INFO  : Launch script is exported to file '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/.sdk/launch_scripts/single_application_debug/systemdebugger_sampledetectsw_system_standalone.tcl'
+15:50:53 INFO  : Disconnected from the channel tcfchan#6.
+15:50:53 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:50:53 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+15:50:53 INFO  : 'jtag frequency' command is executed.
+15:50:53 INFO  : Context for 'APU' is selected.
+15:50:54 INFO  : System reset is completed.
+15:50:57 INFO  : 'after 3000' command is executed.
+15:50:57 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+15:50:59 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+15:50:59 INFO  : Context for 'APU' is selected.
+15:50:59 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+15:50:59 INFO  : 'configparams force-mem-access 1' command is executed.
+15:50:59 INFO  : Context for 'APU' is selected.
+15:50:59 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+15:50:59 INFO  : 'ps7_init' command is executed.
+15:50:59 INFO  : 'ps7_post_config' command is executed.
+15:50:59 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+15:51:00 INFO  : The application '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf' is downloaded to processor 'ps7_cortexa9_0'.
+15:51:00 INFO  : 'configparams force-mem-access 0' command is executed.
+15:51:00 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+15:51:00 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+15:51:00 INFO  : 'con' command is executed.
+15:51:00 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+15:51:00 INFO  : Launch script is exported to file '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/.sdk/launch_scripts/single_application_debug/systemdebugger_sampledetectsw_system_standalone.tcl'
+16:01:47 INFO  : Disconnected from the channel tcfchan#7.
+16:01:47 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:01:47 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+16:01:47 INFO  : 'jtag frequency' command is executed.
+16:01:47 INFO  : Context for 'APU' is selected.
+16:01:47 INFO  : System reset is completed.
+16:01:50 INFO  : 'after 3000' command is executed.
+16:01:50 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+16:01:52 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+16:01:52 INFO  : Context for 'APU' is selected.
+16:01:52 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+16:01:52 INFO  : 'configparams force-mem-access 1' command is executed.
+16:01:52 INFO  : Context for 'APU' is selected.
+16:01:52 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+16:01:53 ERROR : Memory write error at 0xF8000008. Cannot flush JTAG server queue. ftdi_transfer_data_done failed: usb bulk read failed
+16:01:53 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+----------------End of Script----------------
+
+16:01:53 ERROR : Memory write error at 0xF8000008. Cannot flush JTAG server queue. ftdi_transfer_data_done failed: usb bulk read failed
+16:02:20 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:02:20 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+16:02:20 INFO  : 'jtag frequency' command is executed.
+16:02:20 INFO  : Context for 'APU' is selected.
+16:02:20 INFO  : System reset is completed.
+16:02:23 INFO  : 'after 3000' command is executed.
+16:02:23 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+16:02:25 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+16:02:25 INFO  : Context for 'APU' is selected.
+16:02:25 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+16:02:25 INFO  : 'configparams force-mem-access 1' command is executed.
+16:02:25 INFO  : Context for 'APU' is selected.
+16:02:25 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+16:02:26 ERROR : Memory read error at 0xF8006054. Cannot flush JTAG server queue. ftdi_transfer_data_done failed: usb bulk read failed
+16:02:26 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+----------------End of Script----------------
+
+16:02:26 ERROR : Memory read error at 0xF8006054. Cannot flush JTAG server queue. ftdi_transfer_data_done failed: usb bulk read failed
+16:02:44 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:02:44 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+16:02:44 INFO  : 'jtag frequency' command is executed.
+16:02:44 INFO  : Context for 'APU' is selected.
+16:02:44 INFO  : System reset is completed.
+16:02:47 INFO  : 'after 3000' command is executed.
+16:02:48 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+16:02:50 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+16:02:50 INFO  : Context for 'APU' is selected.
+16:02:50 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+16:02:50 INFO  : 'configparams force-mem-access 1' command is executed.
+16:02:50 INFO  : Context for 'APU' is selected.
+16:02:50 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+16:02:50 ERROR : Memory read error at 0xF8000758. Cannot flush JTAG server queue. ftdi_read_data failed: usb bulk read failed
+16:02:50 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+----------------End of Script----------------
+
+16:02:50 ERROR : Memory read error at 0xF8000758. Cannot flush JTAG server queue. ftdi_read_data failed: usb bulk read failed
+16:03:47 INFO  : Launching XSCT server: xsct -n  -interactive /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/temp_xsdb_launch_script.tcl
+16:03:50 INFO  : XSCT server has started successfully.
+16:03:50 INFO  : Successfully done setting XSCT server connection channel  
+16:03:50 INFO  : plnx-install-location is set to ''
+16:03:50 INFO  : Successfully done setting workspace for the tool. 
+16:03:53 INFO  : Platform repository initialization has completed.
+16:03:54 INFO  : Registering command handlers for Vitis TCF services
+16:03:56 INFO  : Successfully done query RDI_DATADIR 
+16:04:05 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:04:05 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+16:04:05 INFO  : 'jtag frequency' command is executed.
+16:04:05 INFO  : Context for 'APU' is selected.
+16:04:05 INFO  : System reset is completed.
+16:04:08 INFO  : 'after 3000' command is executed.
+16:04:08 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+16:04:11 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+16:04:11 INFO  : Context for 'APU' is selected.
+16:04:11 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+16:04:11 INFO  : 'configparams force-mem-access 1' command is executed.
+16:04:11 INFO  : Context for 'APU' is selected.
+16:04:11 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+16:04:11 ERROR : Memory write error at 0xF8000768. Cannot flush JTAG server queue. ftdi_transfer_data_done failed: usb bulk read failed
+16:04:11 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+----------------End of Script----------------
+
+16:04:11 ERROR : Memory write error at 0xF8000768. Cannot flush JTAG server queue. ftdi_transfer_data_done failed: usb bulk read failed
+16:04:56 ERROR : (XSDB Server)unexpected arguments: arm hw
+
+16:05:06 ERROR : (XSDB Server)invalid command name "xmd"
+
+16:05:44 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:05:44 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+16:05:44 INFO  : 'jtag frequency' command is executed.
+16:05:44 INFO  : Context for 'APU' is selected.
+16:05:44 INFO  : System reset is completed.
+16:05:47 INFO  : 'after 3000' command is executed.
+16:05:47 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+16:05:50 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+16:05:50 INFO  : Context for 'APU' is selected.
+16:05:50 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+16:05:50 INFO  : 'configparams force-mem-access 1' command is executed.
+16:05:50 INFO  : Context for 'APU' is selected.
+16:05:50 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+16:05:50 ERROR : Memory write error at 0xF800077C. Cannot flush JTAG server queue. ftdi_transfer_data_done failed: usb bulk read failed
+16:05:50 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+----------------End of Script----------------
+
+16:05:50 ERROR : Memory write error at 0xF800077C. Cannot flush JTAG server queue. ftdi_transfer_data_done failed: usb bulk read failed
+16:05:59 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:05:59 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+16:05:59 INFO  : 'jtag frequency' command is executed.
+16:05:59 INFO  : Context for 'APU' is selected.
+16:05:59 INFO  : System reset is completed.
+16:06:02 INFO  : 'after 3000' command is executed.
+16:06:02 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+16:06:05 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+16:06:05 INFO  : Context for 'APU' is selected.
+16:06:05 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+16:06:05 INFO  : 'configparams force-mem-access 1' command is executed.
+16:06:05 INFO  : Context for 'APU' is selected.
+16:06:05 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+16:06:05 ERROR : Memory read error at 0xF8000768. Cannot flush JTAG server queue. ftdi_transfer_data_done failed: usb bulk read failed
+16:06:05 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+----------------End of Script----------------
+
+16:06:05 ERROR : Memory read error at 0xF8000768. Cannot flush JTAG server queue. ftdi_transfer_data_done failed: usb bulk read failed
+16:06:15 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:06:15 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+16:06:15 INFO  : 'jtag frequency' command is executed.
+16:06:15 INFO  : Context for 'APU' is selected.
+16:06:15 INFO  : System reset is completed.
+16:06:18 INFO  : 'after 3000' command is executed.
+16:06:18 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+16:06:20 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+16:06:20 INFO  : Context for 'APU' is selected.
+16:06:20 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+16:06:20 INFO  : 'configparams force-mem-access 1' command is executed.
+16:06:20 INFO  : Context for 'APU' is selected.
+16:06:20 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+16:06:21 ERROR : Memory write error at 0xF8000760. Cannot flush JTAG server queue. ftdi_transfer_data_done failed: usb bulk read failed
+16:06:21 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+----------------End of Script----------------
+
+16:06:21 ERROR : Memory write error at 0xF8000760. Cannot flush JTAG server queue. ftdi_transfer_data_done failed: usb bulk read failed
+16:08:08 INFO  : Result from executing command 'getProjects': caerus_can;sampleHW
+16:08:08 INFO  : Result from executing command 'getPlatforms': caerus_can|/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/caerus_can/export/caerus_can/caerus_can.xpfm;sampleHW|/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/sampleHW.xpfm
+16:08:12 INFO  : Checking for BSP changes to sync application flags for project 'sampleDetectSW'...
+16:08:23 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:08:23 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+16:08:23 INFO  : 'jtag frequency' command is executed.
+16:08:23 INFO  : Context for 'APU' is selected.
+16:08:23 INFO  : System reset is completed.
+16:08:26 INFO  : 'after 3000' command is executed.
+16:08:26 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+16:08:28 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+16:08:29 INFO  : Context for 'APU' is selected.
+16:08:29 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+16:08:29 INFO  : 'configparams force-mem-access 1' command is executed.
+16:08:29 INFO  : Context for 'APU' is selected.
+16:08:29 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+16:08:29 ERROR : Memory read error at 0xF8000774. Cannot flush JTAG server queue. ftdi_transfer_data_done failed: usb bulk read failed
+16:08:29 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+----------------End of Script----------------
+
+16:08:29 ERROR : Memory read error at 0xF8000774. Cannot flush JTAG server queue. ftdi_transfer_data_done failed: usb bulk read failed
+16:10:11 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:10:11 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+16:10:11 INFO  : 'jtag frequency' command is executed.
+16:10:11 INFO  : Context for 'APU' is selected.
+16:10:11 INFO  : System reset is completed.
+16:10:14 INFO  : 'after 3000' command is executed.
+16:10:14 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+16:10:17 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+16:10:17 INFO  : Context for 'APU' is selected.
+16:10:17 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+16:10:17 INFO  : 'configparams force-mem-access 1' command is executed.
+16:10:17 INFO  : Context for 'APU' is selected.
+16:10:17 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+16:10:17 ERROR : Memory write error at 0xF8000104. Cannot flush JTAG server queue. ftdi_read_data failed: usb bulk read failed
+16:10:17 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+----------------End of Script----------------
+
+16:10:17 ERROR : Memory write error at 0xF8000104. Cannot flush JTAG server queue. ftdi_read_data failed: usb bulk read failed
+16:16:22 INFO  : Launching XSCT server: xsct -n  -interactive /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/temp_xsdb_launch_script.tcl
+16:16:25 INFO  : XSCT server has started successfully.
+16:16:25 INFO  : plnx-install-location is set to ''
+16:16:25 INFO  : Successfully done setting XSCT server connection channel  
+16:16:25 INFO  : Successfully done setting workspace for the tool. 
+16:16:27 INFO  : Platform repository initialization has completed.
+16:16:27 INFO  : Registering command handlers for Vitis TCF services
+16:16:29 INFO  : Successfully done query RDI_DATADIR 
+16:16:57 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:16:57 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+16:16:57 INFO  : 'jtag frequency' command is executed.
+16:16:57 INFO  : Context for 'APU' is selected.
+16:16:58 INFO  : System reset is completed.
+16:17:01 INFO  : 'after 3000' command is executed.
+16:17:01 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+16:17:03 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+16:17:03 INFO  : Context for 'APU' is selected.
+16:17:03 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+16:17:03 INFO  : 'configparams force-mem-access 1' command is executed.
+16:17:03 INFO  : Context for 'APU' is selected.
+16:17:03 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+16:17:04 INFO  : 'ps7_init' command is executed.
+16:17:04 INFO  : 'ps7_post_config' command is executed.
+16:17:04 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+16:17:04 INFO  : The application '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf' is downloaded to processor 'ps7_cortexa9_0'.
+16:17:04 INFO  : 'configparams force-mem-access 0' command is executed.
+16:17:04 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+16:17:04 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+16:17:04 INFO  : 'con' command is executed.
+16:17:04 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+16:17:04 INFO  : Launch script is exported to file '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/.sdk/launch_scripts/single_application_debug/systemdebugger_sampledetectsw_system_standalone.tcl'
+16:19:47 INFO  : Launching XSCT server: xsct -n  -interactive /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/temp_xsdb_launch_script.tcl
+16:19:50 INFO  : XSCT server has started successfully.
+16:19:50 INFO  : plnx-install-location is set to ''
+16:19:50 INFO  : Successfully done setting XSCT server connection channel  
+16:19:50 INFO  : Successfully done setting workspace for the tool. 
+16:19:51 INFO  : Platform repository initialization has completed.
+16:19:51 INFO  : Successfully done query RDI_DATADIR 
+16:19:51 INFO  : Registering command handlers for Vitis TCF services
+16:20:59 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:20:59 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+16:21:00 INFO  : 'jtag frequency' command is executed.
+16:21:00 INFO  : Context for 'APU' is selected.
+16:21:00 INFO  : System reset is completed.
+16:21:03 INFO  : 'after 3000' command is executed.
+16:21:03 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+16:21:05 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+16:21:05 INFO  : Context for 'APU' is selected.
+16:21:05 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+16:21:05 INFO  : 'configparams force-mem-access 1' command is executed.
+16:21:05 INFO  : Context for 'APU' is selected.
+16:21:05 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+16:21:06 INFO  : 'ps7_init' command is executed.
+16:21:06 INFO  : 'ps7_post_config' command is executed.
+16:21:06 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+16:21:06 INFO  : The application '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf' is downloaded to processor 'ps7_cortexa9_0'.
+16:21:06 INFO  : 'configparams force-mem-access 0' command is executed.
+16:21:06 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/Debug/sampleDetectSW.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+16:21:06 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+16:21:06 INFO  : 'con' command is executed.
+16:21:06 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+16:21:06 INFO  : Launch script is exported to file '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/.sdk/launch_scripts/single_application_debug/debugger_sampledetectsw-default.tcl'
+16:59:18 INFO  : Disconnected from the channel tcfchan#1.
+16:59:19 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:59:19 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+16:59:19 INFO  : 'jtag frequency' command is executed.
+16:59:19 INFO  : Context for 'APU' is selected.
+16:59:19 INFO  : System reset is completed.
+16:59:22 INFO  : 'after 3000' command is executed.
+16:59:22 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+16:59:24 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+16:59:24 INFO  : Context for 'APU' is selected.
+16:59:26 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+16:59:26 INFO  : 'configparams force-mem-access 1' command is executed.
+16:59:26 INFO  : Context for 'APU' is selected.
+16:59:26 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+16:59:27 ERROR : Memory read error at 0xF8006054. Cannot flush JTAG server queue. ftdi_transfer_data_done failed: all fine
+16:59:27 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+----------------End of Script----------------
+
+16:59:27 ERROR : Memory read error at 0xF8006054. Cannot flush JTAG server queue. ftdi_transfer_data_done failed: all fine
+17:00:25 INFO  : Launching XSCT server: xsct -n  -interactive /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/temp_xsdb_launch_script.tcl
+17:00:28 INFO  : XSCT server has started successfully.
+17:00:28 INFO  : Successfully done setting XSCT server connection channel  
+17:00:28 INFO  : plnx-install-location is set to ''
+17:00:28 INFO  : Successfully done setting workspace for the tool. 
+17:00:30 INFO  : Platform repository initialization has completed.
+17:00:31 INFO  : Registering command handlers for Vitis TCF services
+17:00:32 INFO  : Successfully done query RDI_DATADIR 
+17:00:40 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:00:40 INFO  : Jtag cable 'Digilent Zybo Z7 210351A82692A' is selected.
+17:00:40 INFO  : 'jtag frequency' command is executed.
+17:00:40 INFO  : Context for 'APU' is selected.
+17:00:40 INFO  : System reset is completed.
+17:00:43 INFO  : 'after 3000' command is executed.
+17:00:44 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}' command is executed.
+17:00:46 INFO  : FPGA configured successfully with bitstream "/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit"
+17:00:46 INFO  : Context for 'APU' is selected.
+17:00:46 INFO  : Hardware design and registers information is loaded from '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa'.
+17:00:46 INFO  : 'configparams force-mem-access 1' command is executed.
+17:00:46 INFO  : Context for 'APU' is selected.
+17:00:46 INFO  : Sourcing of '/home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl' is done.
+17:00:47 ERROR : Memory read error at 0xF8006054. Cannot flush JTAG server queue. ftdi_transfer_data_done failed: all fine
+17:00:47 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351A82692A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351A82692A-23727093-0"}
+fpga -file /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/bitstream/sampleHW.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleHW/export/sampleHW/hw/sampleHW.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/mulholbn/Documents/Thesis/Kairos/ccs/Vitis/workspace/sampleDetectSW/_ide/psinit/ps7_init.tcl
+ps7_init
+----------------End of Script----------------
+
+17:00:47 ERROR : Memory read error at 0xF8006054. Cannot flush JTAG server queue. ftdi_transfer_data_done failed: all fine
