@@ -177,7 +177,6 @@ module sampleDetect_tl
 
 	logic setupRunning;
 	logic idValidation;
-	logic prevIDSkip = 0;
 	logic idMatch;
 	logic [4:0] canClkCounter;
 	logic playbackDone;
@@ -188,9 +187,11 @@ module sampleDetect_tl
 
 	logic reinitComp;
 	logic initStart;
-	logic tglSkip;
-	logic bramResetInit;
+	logic skipInc;
+    logic skipReset;
+    logic bramResetInit;
 	logic bramResetReq;
+	logic [3:0] skipCounter;
 	
 	always_comb begin
 	   bramReset = bramResetInit & bramResetReq;
@@ -219,24 +220,30 @@ module sampleDetect_tl
 		end
 	end
 
-    logic tglOS;
+    
 //Previous ID Skip Logic
+    logic incOS;
+    logic rstOS;
     //This is needed to avoid erroring out the device and in implimentation to avoid a latch
     always_ff @(posedge clk) begin
         //This should reset every time we go through the begin state
         if(!inputResetN) begin
-            prevIDSkip <= 0;
+            skipCounter <= 0;
         end else begin
-            if(tglOS) begin
-                prevIDSkip <= ~prevIDSkip;
+            if(rstOS) begin
+                skipCounter <= 0;  
             end else begin
-                prevIDSkip <= prevIDSkip;
+                if(incOS) begin
+                    skipCounter <= skipCounter + 1;
+                end else begin
+                    skipCounter <= skipCounter;
+                end
             end
         end
     
     end
-    
-    oneshot sampleOS(.clk, .resetN, .pulse(tglSkip), .oneshot(tglOS));
+    oneshot sampleOSInc(.clk, .resetN, .pulse(skipInc), .oneshot(incOS));
+    oneshot sampleOSRst(.clk, .resetN, .pulse(skipReset), .oneshot(rstOS));
 
 //This logic gives us a 1 clock cycle delay. It hurts. I don't like this. It is needed. If not, everything breaks
     //God forgive me for trying to get high temproal accuracy.
@@ -277,7 +284,7 @@ module sampleDetect_tl
 			end
 			s_waitSync_1: begin
 				if(!postInterframeReq) begin
-					if(prevIDSkip) begin
+					if(skipCounter != 4'b0000 && skipCounter[3] == 0) begin
 						nextMeta = s_idCompSkip;
 					end
 					else begin
@@ -385,7 +392,8 @@ module sampleDetect_tl
 				playbackEnable = 0;
 				syncOverride = 0;
 				countEn = 0;
-				tglSkip = 0;
+				skipInc = 0;
+				skipReset = 1;
 				reinitComp = 0;
 				{invalidSignal, validSigNum, interrupt} = {1'b0,16'b0,1'b0};
 				reqStart = 0;
@@ -398,7 +406,8 @@ module sampleDetect_tl
 				playbackEnable = 0;
 				syncOverride = 0;
 				countEn = 0;
-				tglSkip = 0;
+				skipInc = 0;
+				skipReset = 0;
 				reinitComp = 1;
 				{invalidSignal, validSigNum, interrupt} = {1'b0,16'b0,1'b0};
 				reqStart = 0;
@@ -410,10 +419,11 @@ module sampleDetect_tl
 				playbackEnable = 0;
 				syncOverride = 0;
 				countEn = 0;
-				tglSkip = 0;
+				skipInc = 0;
 				reinitComp = 1;
 				{invalidSignal, validSigNum, interrupt} = {1'b0,16'b0,1'b0};
 				reqStart = 0;
+				skipReset = 0;
 			end
 			s_idCompSkip: begin
 				initStart = 0;
@@ -424,17 +434,20 @@ module sampleDetect_tl
 				countEn = 0;
 				reinitComp = 1;
 				if(idMatch) begin
-					tglSkip = 1;
+					skipInc = 1;
 				end else begin
-					tglSkip = 0;
+					skipInc = 0;
 				end
 				{invalidSignal, validSigNum, interrupt} = {1'b0,16'b0,1'b0};
 				reqStart = 0;
+				skipReset = 0;
+				
 			end
 			s_waitData: begin
 				initStart = 0;
 				threeSamplePoint = 0;
-				tglSkip = 0;
+				skipReset = 1;
+				skipInc = 0;
 				compareEnable = 0;
 				playbackEnable = 0;
 				syncOverride = 0;
@@ -446,7 +459,8 @@ module sampleDetect_tl
 			s_waitRecessive: begin
 				initStart = 0;
 				threeSamplePoint = 0;
-				tglSkip = 0;
+				skipReset = 0;
+				skipInc = 0;
 				compareEnable = 0;
 				playbackEnable = 0;
 				syncOverride = 0;
@@ -458,7 +472,8 @@ module sampleDetect_tl
 			s_play: begin
 				initStart = 0;
 				threeSamplePoint = 0;
-				tglSkip = 0;
+				skipReset = 0;
+				skipInc = 0;
 				compareEnable = 0;
 				playbackEnable = 1;
 				syncOverride = 1;
@@ -470,7 +485,8 @@ module sampleDetect_tl
 			s_err: begin
 				initStart = 0;
 				threeSamplePoint = 1;
-				tglSkip = 0;
+				skipReset = 0;
+				skipInc = 0;
 				compareEnable = 0;
 				playbackEnable = 0;
 				syncOverride = 0;
@@ -482,7 +498,8 @@ module sampleDetect_tl
 			s_eof: begin
 				initStart = 0;
 				threeSamplePoint = 0;
-				tglSkip = 0;
+				skipReset = 0;
+				skipInc = 0;
 				compareEnable = 0;
 				playbackEnable = 0;
 				syncOverride = 0;
@@ -496,7 +513,8 @@ module sampleDetect_tl
 			    threeSamplePoint = 0;
 				compareEnable = 0;
 				playbackEnable = 0;
-				tglSkip = 0;
+				skipReset = 0;
+				skipInc = 0;
 				syncOverride = 0;
 				countEn = 0;
 				reinitComp = 1;
@@ -511,7 +529,8 @@ module sampleDetect_tl
 				initStart = 0;
 			    threeSamplePoint = 0;
 				compareEnable = 0;
-				tglSkip = 1;
+				skipReset = 0;
+				skipInc = 0;
 				playbackEnable = 0;
 				syncOverride = 0;
 				countEn = 0;
@@ -524,12 +543,13 @@ module sampleDetect_tl
 			    threeSamplePoint = 0;
 				compareEnable = 0;
 				playbackEnable = 0;
-				tglSkip = 0;
 				syncOverride = 0;
 				countEn = 0;
 				reinitComp = 1;
 				{invalidSignal, validSigNum, interrupt} = {1'b0,16'b0,1'b0};
 				reqStart = 0;
+				skipReset = 0;
+				skipInc = 0;
 			end
 		endcase
 
