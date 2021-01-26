@@ -45,6 +45,10 @@ module devDelay_tl
 
     );
 
+    localparam CANWAITTIME = 6;
+    localparam CANDEFAULTMSGLENGTH = 35;
+    localparam CANMSGLENGTHCRCERR = 55;
+
 
 //Submodule logic
 
@@ -149,7 +153,16 @@ module devDelay_tl
     logic prevClkVal;
 	logic countEn;
     logic [5:0] canClkCounter;
+    logic threeSamplePoint;
+    logic postInterframeReq;
+    logic errorDetected;
 
+    //Length detector logic
+    logic sizeDetected;
+    logic sizeResetN;
+    logic sizeReqResetN;
+    logic [3:0] msgLengthInput;
+    logic sizeDetectEnable;
 
     //Init state machine logic
 
@@ -160,6 +173,14 @@ module devDelay_tl
     logic incI;
     logic setupRunning;
 
+    //FSM Logic
+    logic overWrite;
+    logic setOverwrite;
+    logic [3:0] msgLength;
+    logic setMsgLength;
+    
+
+
 
 //Submodule declarations
 
@@ -168,19 +189,19 @@ module devDelay_tl
     //
 
     //Overwrite
-    sigStorage owStorage(.clk, .resetN(outputResetN), .baseAddr(baseAddrOW), .numFetches(sigSizeWordsOW), .storeConfig(storeConfigOW), .fetch(startWriteOW),
+    sigStorage owStorage(.clk, .resetN, .baseAddr(baseAddrOW), .numFetches(sigSizeWordsOW), .storeConfig(storeConfigOW), .fetch(startWriteOW),
         .returnToBaseAddr(returnOW), .request(storeReqOW), .bramIn(bramOut), .playbackOut(storeOutOW), .incrementAddr(incrementOW));
 
     //Invalid
-    sigStorage invalidStorage(.clk, .resetN(outputResetN), .baseAddr(baseAddrInvalid), .numFetches(sigSizeWordsInvalid), .storeConfig(storeConfigInvalid),
+    sigStorage invalidStorage(.clk, .resetN, .baseAddr(baseAddrInvalid), .numFetches(sigSizeWordsInvalid), .storeConfig(storeConfigInvalid),
         .fetch(startWriteInvalid), .returnToBaseAddr(returnInvalid), .request(storeReqInvalid), .bramIn(bramOut), .playbackOut(storeOutInvalid), .incrementAddr(incrementInvalid));
 
     //Valid
-    sigStorage validStorage(.clk, .resetN(outputResetN), .baseAddr(baseAddrValid), .numFetches(sigSizeWordsValid), .storeConfig(storeConfigValid),
+    sigStorage validStorage(.clk, .resetN, .baseAddr(baseAddrValid), .numFetches(sigSizeWordsValid), .storeConfig(storeConfigValid),
         .fetch(startWriteValid), .returnToBaseAddr(returnValid), .request(storeReqValid), .bramIn(bramOut), .playbackOut(storeOutValid), .incrementAddr(incrementValid));
 
     //CRC
-    sigStorage crcStorage(.clk, .resetN(outputResetN), .baseAddr(baseAddrCRC), .numFetches(sigSizeWordsCRC), .storeConfig(storeConfigCRC),
+    sigStorage crcStorage(.clk, .resetN, .baseAddr(baseAddrCRC), .numFetches(sigSizeWordsCRC), .storeConfig(storeConfigCRC),
         .fetch(startWriteCRC), .returnToBaseAddr(returnCRC), .request(storeReqCRC), .bramIn(bramOut), .playbackOut(storeOutCRC), .incrementAddr(incrementCRC));
 
 
@@ -280,8 +301,26 @@ module devDelay_tl
 
 	idComparator idUnit(.clk, .resetN(idReset), .enable(compareEnable), .dIn(calculatedInput), .id(canID), .samplePulse, .idCheckComplete(idValidation), .idMatch);
 
+    //Delay Detector logic
 
+    always_comb begin
+        sizeResetN = sizeReqResetN & resetN;
+    end
 
+    sizeDetect sizeDetecotr(.clk, .resetN, .enable(sizeDetectEnable), .dIn(calculatedInput), .samplePulse, .completeConfig(sizeDetected), .msgSize(msgLengthInput));
+
+    //Size Detector Latch Logic
+    always_ff @(posedge clk) begin
+        if(!resetN) begin
+            msgLength <= 0;
+        end else begin
+            if(setMsgLength) begin
+                msgLength <= msgLengthInput;
+            end else begin
+                msgLength <= msgLength;
+            end
+        end
+    end
 
 
 
@@ -354,11 +393,132 @@ module devDelay_tl
 
 
 
+    always_ff @(posedge clk) begin
+        if(!resetN) begin
+            currState <= s_reset;
+        end else begin
+            currState <= nextState;
+        end
+    end
+
+    always_comb begin
+        unique case(currState)
+            s_reset: begin
+                nextState = s_init;
+            end
+            s_init: begin
+                if(setupRunning) begin
+                    nextState = currState;
+                end else begin
+                    nextState = s_IF;
+                end
+            end
+            s_IF: begin
+                if(!postInterframeReq) begin
+                    nextState = currState;
+                end else begin
+                    nextState = s_waitBus;
+                end
+            end
+            s_waitBus: begin
+                if(!postInterframeReq) begin
+                    nextState = s_IDDetect;
+                end else begin
+                    if(canClkCounter >= CANWAITTIME) begin
+                        if(overWrite) begin
+                            nextState = s_playCRC;
+                        end else begin
+                            nextState = s_playValid;
+                        end
+                    end else begin
+                        nextState = currState;
+                    end
+                end
+            end
+            s_IDDetect: begin
+                if(!idValidation) begin 
+					nextState = currState;
+				end
+				else begin
+					if(idMatch) begin
+						nextState = s_decodeLen;
+					end
+					else begin
+						nextState = s_playInvalid;
+					end
+				end
+            end
+            s_playInvalid: begin
+                if(!complete) begin
+                    nextState = currState;
+                end else begin
+                    nextState = s_IF;
+                end
+            end
+            s_decodeLen: begin
+                //Not sure for here yet. This module still needs to get made.
+                //TODO: Finish
+            end
+            s_waitTgt: begin
+                if(canClkCounter >= ((msgLength << 3) + 16)) begin
+                    nextState = s_playACK;
+                end else begin
+                    nextState = currState;
+                end
+            end
+            s_playACK: begin
+                //NOT SURE HOW TO TRANSFER OUT OF THIS....
+            end
+            s_setOW: begin
+                nextState = s_clrRecording;
+            end
+            s_clrRecording: begin
+                nextState = s_IF;
+            end
+            s_playCRC: begin
+                if(canClkCounter >= CANDEFAULTMSGLENGTH) begin
+                    nextState = s_recordCRC;
+                end else begin
+                    nextState = currState;
+                end
+            end
+            s_recordCRC: begin
+                if(canClkCounter >= CANMSGLENGTHCRCERR) begin
+                    nextState = s_writeBRAM;
+                end else begin
+                    nextState = currState;
+                end
+            end
+            s_writeBRAM: begin
+                //Depending on if I use a signal storage unit here, I may have to change how this stage works.
+                if(!dataValid) begin
+                    nextState = currState;
+                end else begin
+                    nextState = s_report;
+                end
+            end
+            s_playValid: begin
+                if(!complete) begin
+                    nextState = currState;
+                end else begin
+                    nextState = s_IF;
+                end
+            end
+            s_report: begin
+                nextState = currState;
+            end
+        endcase
+    end
+
+
+
+
 
 //Init State FSM Definition
 
 
-    typedef enum logic [4:0] {i_init_hold, i_wait[0:1], i_readOW, i_writeOW, i_owWait, i_readInvalid, i_writeInvalid, i_invalidWait, i_readValid, i_writeValid, i_validWait, i_readCRC, i_writeCRC, i_hold} init_t;
+    typedef enum logic [4:0] {i_init_hold, i_wait[0:1], i_readOW, i_writeOW, i_owWait, i_readInvalid, i_writeInvalid,
+         i_invalidWait, i_readValid, i_writeValid, i_validWait, i_readCRC, i_writeCRC, i_hold} init_t;
 
     (* fsm_encoding = "sequential" *) (* mark_debug = "true" *) init_t currInit, nextInit;
 
@@ -441,9 +601,6 @@ module devDelay_tl
             end
         endcase
     end
-    /*
-        bramController bC(.clear(clearReadFIFO).readReq(readReq),
-    */
 
     always_comb begin
         unique case(currInit)
