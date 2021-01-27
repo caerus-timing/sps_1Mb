@@ -17,6 +17,7 @@ module devDelay_tl
         input logic [31:0] playbackRateInvalid,
         input logic [31:0] playbackRateValid,
         input logic [31:0] playbackRateCRC,
+        input logic [31:0] recordRate,
 		(* mark_debug = "true" *)  input logic setValues,
         //Following are the sizes for data
 		input logic [15:0] sigSizeWordsOW, //The number of 32 bit words that makeup a signal. These magic numbers are to fit them into a 32 bit register
@@ -116,6 +117,7 @@ module devDelay_tl
     logic clkInvalid;
     logic clkValid;
     logic clkCRC;
+    logic clkRecord;
     
 
     //Bram Controller
@@ -163,6 +165,14 @@ module devDelay_tl
     logic sizeReqResetN;
     logic [3:0] msgLengthInput;
     logic sizeDetectEnable;
+
+    //Record Unit Logic
+    logic recordResetN;
+    logic recordEnable;
+    logic writeRecording;
+    logic calcRecording;
+    logic ow;
+    logic owValid;
 
     //Init state machine logic
 
@@ -264,11 +274,13 @@ module devDelay_tl
     //CRC
     clkUnit crcRef(.clk, .resetN, .period(playbackRateCRC), .clkOut(clkCRC));
 
+    //Recording
+    clkUnit recordClock(.clk, .resetN, .period(recordRate), .clkOut(clkRecord));
 
     //
     //BRAM Controller
     //
-    bramController bC(.clk, .resetN, .advanceBuffer(popRead), .clear(clearReadFIFO), .requestAddr_read(readBaseAddr), .numReads(sigSize),
+    halfDuplex bC(.clk, .resetN, .advanceBuffer(popRead), .clear(clearReadFIFO), .requestAddr_read(readBaseAddr), .numReads(sigSize),
         .requestAddr_write(writeBaseAddr), .numWrites(numWrites), .sendData(bramIn), .pulseWrite(pulseWrite), .readReq(readReq), .writeReq(writeReq),
         .requestData(bramOut), .*);
 
@@ -307,7 +319,7 @@ module devDelay_tl
         sizeResetN = sizeReqResetN & resetN;
     end
 
-    sizeDetect sizeDetecotr(.clk, .resetN, .enable(sizeDetectEnable), .dIn(calculatedInput), .samplePulse, .completeConfig(sizeDetected), .msgSize(msgLengthInput));
+    sizeDetect sizeDetector(.clk, .resetN, .enable(sizeDetectEnable), .dIn(calculatedInput), .samplePulse, .completeConfig(sizeDetected), .msgSize(msgLengthInput));
 
     //Size Detector Latch Logic
     always_ff @(posedge clk) begin
@@ -322,6 +334,11 @@ module devDelay_tl
         end
     end
 
+
+
+    //Record Unit
+    recordMaster rm(.clk, .resetN(recordResetN), .enable(recordEnable), .writeOut(writeRecording), .determineOW(calcRecording), .samplePulse(clkRecord),
+        .dIn, .owTrue(ow), .owReady(owValid), .pulseWrite, .playbackOut(bramIn));
 
 
 //Sampler Control logic
@@ -379,7 +396,7 @@ module devDelay_tl
 
 //Top Level FSM Definition
 
-    typedef enum logic [4:0] {s_reset, s_init, s_IF, s_waitBus, s_IDDetect, s_playInvalid, s_decodeLen, s_waitTgt, s_playACK, s_setOW, s_clrRecording, 
+    typedef enum logic [5:0] {s_reset, s_init, s_IF, s_waitBus, s_IDDetect, s_playInvalid, s_decodeLen, s_latchLen, s_waitTgt, s_playACK, s_setOW, s_clrRecording, 
         s_playCRC, s_recordCRC, s_writeBRAM, s_playValid, s_report} delayFSM_t;
 
 
@@ -456,8 +473,14 @@ module devDelay_tl
                 end
             end
             s_decodeLen: begin
-                //Not sure for here yet. This module still needs to get made.
-                //TODO: Finish
+                if(!sizeDetected) begin
+                    nextState = currState;
+                end else begin
+                    nextState = s_latchLen;
+                end
+            end
+            s_latchLen: begin
+                nextState = s_waitTgt;
             end
             s_waitTgt: begin
                 if(canClkCounter >= ((msgLength << 3) + 16)) begin
@@ -467,6 +490,7 @@ module devDelay_tl
                 end
             end
             s_playACK: begin
+                nextState = s_setOW;
                 //NOT SURE HOW TO TRANSFER OUT OF THIS....
             end
             s_setOW: begin
@@ -506,6 +530,103 @@ module devDelay_tl
             end
             s_report: begin
                 nextState = currState;
+            end
+        endcase
+    end
+
+    always_comb begin
+        unique case(currState)
+            s_init: begin
+                initStart = 1;
+                threeSamplePoint = 0;
+				compareEnable = 0;
+				play = 0;
+				syncOverride = 0;
+				countEn = 0;
+				reinitComp = 1;
+				{err, interrupt} = 2'b00;
+                setMsgLength = 0;
+                sizeDetectEnable = 0;
+                sizeReqResetN = 0;
+                playbackreqReset = 0;
+                playbackSelector = 0;
+                baseAddrOW = 0;
+                baseAddrInvalid = 0;
+                baseAddrValid = 0;
+                baseAddrCRC = 0;
+                returnOW = 0;
+                returnInvalid = 0;
+                returnValid = 0;
+                returnCRC = 0;
+            end
+            s_clrRecording: begin
+                initStart = 1;
+                threeSamplePoint = 0;
+				compareEnable = 1;
+				play = 0;
+				syncOverride = 0;
+				countEn = 0;
+				reinitComp = 1;
+				{err, interrupt} = 2'b00;
+                setMsgLength = 0;
+                sizeDetectEnable = 0;
+                sizeReqResetN = 0;
+                playbackreqReset = 0;
+                playbackSelector = 0;
+                baseAddrOW = 0;
+                baseAddrInvalid = 0;
+                baseAddrValid = 0;
+                baseAddrCRC = 0;
+                returnOW = 0;
+                returnInvalid = 0;
+                returnValid = 0;
+                returnCRC = 0;
+            end
+            s_decodeLen: begin
+                initStart = 0;
+                threeSamplePoint = 0;
+				compareEnable = 0;
+				play = 0;
+				syncOverride = 0;
+				countEn = 0;
+				reinitComp = 1;
+				{err, interrupt} = 2'b00;
+                setMsgLength = 0;
+                sizeDetectEnable = 1;
+                sizeReqResetN = 0;
+                playbackreqReset = 0;
+                playbackSelector = 0;
+                baseAddrOW = 0;
+                baseAddrInvalid = 0;
+                baseAddrValid = 0;
+                baseAddrCRC = 0;
+                returnOW = 0;
+                returnInvalid = 0;
+                returnValid = 0;
+                returnCRC = 0;
+            end
+            s_IDDetect: begin
+                initStart = 1;
+                threeSamplePoint = 0;
+				compareEnable = 0;
+				play = 0;
+				syncOverride = 0;
+				countEn = 0;
+				reinitComp = 1;
+				{err, interrupt} = 2'b00;
+                setMsgLength = 0;
+                sizeDetectEnable = 0;
+                sizeReqResetN = 0;
+                playbackreqReset = 0;
+                playbackSelector = 0;
+                baseAddrOW = 0;
+                baseAddrInvalid = 0;
+                baseAddrValid = 0;
+                baseAddrCRC = 0;
+                returnOW = 0;
+                returnInvalid = 0;
+                returnValid = 0;
+                returnCRC = 0;
             end
         endcase
     end

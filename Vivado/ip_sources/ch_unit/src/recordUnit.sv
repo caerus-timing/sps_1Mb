@@ -7,16 +7,57 @@ module recordUnit
         input logic samplePulse,
         input logic dIn,
 
-        output logic [31:0] recordedData,
-        output logic dataValid
+        output logic [31:0] recordedOut,
+        output logic dataValid,
+        output logic [31:0] runningTotal,
+        output logic [5:0] incrementer
+
     );
 
+
     logic shiftIn;
-    logic [5:0] incrementer; 
+    logic shiftInUnGated;
+    
+    //Output latching
+    always_ff @(posedge clk) begin
+        if(!resetN) begin
+            recordedOut <= 0;
+        end else begin
+            if(shiftIn) begin
+                if(incrementer != 6'b100000) begin //If it is equal to 33,
+                    recordedOut <= recordedOut;
+                end
+                else begin
+                    recordedOut <= runningTotal;
+                end
+            end else begin
+                recordedOut <= recordedOut;
+            end
+        end
+    end
 
-    //TODO: HANDLE ENABLE AND THE SENDING OF REMAINING DATA WHEN STOPPED NOT ON 32 BIT POINT
+    //DataValid Latching
+    always_ff @(posedge clk) begin
+        if(!resetN) begin
+            dataValid <= 0;
+        end else begin
+            if(incrementer == 6'b100000) begin
+                dataValid <= 1;
+            end else if(dataValid == 6'hC) begin
+                dataValid <= 0;
+            end else begin
+                dataValid <= dataValid;
+            end
+        end
+    end
 
-    oneshot os(.*, .pulse(samplePulse), .oneshot(shiftIn));
+
+    oneshot osSample(.*, .pulse(samplePulse), .oneshot(shiftInUnGated));
+
+    always_comb begin
+        shiftIn = enable & shiftInUnGated;
+    end
+
 
     //Incrementer to keep track of when to write data.
 
@@ -25,11 +66,11 @@ module recordUnit
             incrementer <= 0;
         end else begin
             if(shiftIn) begin
-                if(incrementer != 6'b100001) begin //If it is equal to 33,
+                if(incrementer != 6'b100000) begin //If it is equal to 33,
                     incrementer <= incrementer + 1;
                 end
                 else begin
-                    incrementer <= 6'b000010; //Set to 2, write is high for 2 cycles, but is Oneshot so should not be an issue
+                    incrementer <= 6'b000000; //Set to 0;
                 end
             end else begin
                 incrementer <= incrementer;
@@ -45,12 +86,12 @@ module recordUnit
     //Shift logic
     always_ff @(posedge clk) begin
         if(!resetN) begin
-            recordedData <= 32'h00000000;
+            runningTotal <= 32'h00000000;
         end else begin
             if(shiftIn) begin
-                recordedData <= {recordedData, recordedData[31:1]};
+                runningTotal <= {runningTotal, runningTotal[31:1]};
             end else begin
-                recordedData <= recordedData;
+                runningTotal <= runningTotal;
             end
         end
     end

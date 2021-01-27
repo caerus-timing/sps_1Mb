@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module bramController
+module halfDuplex
 	#(
 		parameter integer BRAM_ADDR_SIZE = 15,
 		parameter integer BRAM_DATA_SIZE = 32,

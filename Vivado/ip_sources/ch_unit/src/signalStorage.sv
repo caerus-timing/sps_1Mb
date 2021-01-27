@@ -48,7 +48,7 @@ module sigStorage
     logic rstIncrement;
 
     //External Increment OS
-     oneshot os(.*, .pulse(incrementAddr), .oneshot(incrementOS));
+    oneshot os(.*, .pulse(incrementAddr), .oneshot(incrementOS));
 
 
 
