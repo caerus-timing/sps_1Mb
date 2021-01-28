@@ -49,7 +49,7 @@ module playbackUnit
 
 //Variables
 
-	playState_t currState, nextState;
+	(* fsm_encoding = "one_hot" *) playState_t currState, nextState;
 	output_t [7:0] heldOutputVals;
 	
 	output_t currOutput;

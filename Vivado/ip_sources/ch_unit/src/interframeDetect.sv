@@ -38,12 +38,12 @@ module interframeDetect
 	//6: 6 rec, 5th bit in EOF space
 	//7: 6th bit in EOF, 8: 7th bit in EOF, 9: 1st bit interframe, 10: 2nd bit interframe, 11: 3rd bit interframe, 12: readyToTransmit
 
-	eofStates_t currState, nextState;
+	(* fsm_encoding = "one_hot" *) eofStates_t currState, nextState;
 
 
 	typedef enum logic [1:0] {s_init, s_sample1, s_sample2, s_sample3} sample_t;
 	
-	sample_t currSample, nextSample;
+	(* fsm_encoding = "one_hot" *) sample_t currSample, nextSample;
 	
 	
 	logic dataValid;

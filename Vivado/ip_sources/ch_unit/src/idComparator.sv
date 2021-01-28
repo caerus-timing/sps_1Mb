@@ -42,7 +42,7 @@ module idComparator
 
 //Variables
 
-	idState_t currState, nextState;
+	(* fsm_encoding = "one_hot" *) idState_t currState, nextState;
 	logic [31:0] idStore;
 	logic [31:0] testData;
 	logic equal;

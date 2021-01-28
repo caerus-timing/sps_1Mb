@@ -38,11 +38,11 @@ module errorDetect
 	//6: 6dom, in error frame. stay in 6 dom until we read recessive bit
 	//7: 1 recessive, 8: 2 recessive, 9: 3 rec, 10: 4 rec, 11: 5rec, 12: 6rec, 13: 7rec,14: 8rec, out of delimiter, in bus idle
 
-	errorStates_t currState, nextState;
+	(* fsm_encoding = "one_hot" *)errorStates_t currState, nextState;
 	
 	typedef enum logic [1:0] {s_init, s_sample1, s_sample2, s_sample3} sample_t;
 	
-	sample_t currSample, nextSample;
+	(* fsm_encoding = "one_hot" *) sample_t currSample, nextSample;
 	
 	
 	logic dataValid;

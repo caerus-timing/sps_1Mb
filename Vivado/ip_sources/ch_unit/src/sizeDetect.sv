@@ -5,7 +5,7 @@ module sizeDetect
         input logic enable,
 
         input logic dIn,
-		input logic samplePulse, //Since we are in the early bit, this gets pulsed three times. Make sure to read the value after the third pulse
+		input logic samplePulse,
 
         output logic completeConfig,
 		output logic [3:0] msgSize
@@ -141,7 +141,7 @@ module sizeDetect
 
     typedef enum logic[3:0] {s_init, s_hold, s_sample, s_wait0, s_wait1, s_wait2, s_lenCheck, s_dlcSample, s_wait3, s_wait4, s_wait5, s_dlcLenCheck, s_finish} sizeDetect_t;
 
-    sizeDetect_t currState, nextState;
+    (* fsm_encoding = "one_hot" *) sizeDetect_t currState, nextState;
 
     always_ff @(posedge clk) begin
         if(!resetN) begin

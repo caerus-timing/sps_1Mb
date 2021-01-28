@@ -78,10 +78,6 @@ module recordUnit
         end
     end
 
-    //dataValid assignation
-    always_comb begin
-        dataValid = incrementer[5];
-    end
 
     //Shift logic
     always_ff @(posedge clk) begin

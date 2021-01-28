@@ -32,7 +32,7 @@ module devDelay_tl
 
 
 		//output logic ready,
-		output logic [4:0] stateDbg,
+		output logic [5:0] stateDbg,
         output logic err,
 
 		//BRAM Connections
@@ -102,7 +102,7 @@ module devDelay_tl
     logic complete;
     logic [1:0] playbackSelector;
     logic playbackResetN;
-    logic playbackreqReset; //Active low signal to request a reset of the playback unit
+    logic playbackreqResetN; //Active low signal to request a reset of the playback unit
     logic [15:0] sigSizeWords;
 
     logic incrementOW;
@@ -146,7 +146,7 @@ module devDelay_tl
 
     //ID Comparator Signals
     logic idReset;
-    logic reinitComp;
+    logic idResetN;
     logic compareEnable;
     logic idValidation;
     logic idMatch;
@@ -165,6 +165,7 @@ module devDelay_tl
     logic sizeReqResetN;
     logic [3:0] msgLengthInput;
     logic sizeDetectEnable;
+    logic resetLengthN;
 
     //Record Unit Logic
     logic recordResetN;
@@ -173,6 +174,9 @@ module devDelay_tl
     logic calcRecording;
     logic ow;
     logic owValid;
+    logic recordOpDone;
+    logic runRecord;
+    logic stopOnPlayback;
 
     //Init state machine logic
 
@@ -253,7 +257,7 @@ module devDelay_tl
     end
 
     always_comb begin
-        playbackResetN = resetN && playbackreqReset;
+        playbackResetN = resetN && playbackreqResetN;
         popRead = storeReqCRC || storeReqValid || storeReqInvalid || storeReqOW;
     end
 
@@ -282,7 +286,11 @@ module devDelay_tl
     //
     halfDuplex bC(.clk, .resetN, .advanceBuffer(popRead), .clear(clearReadFIFO), .requestAddr_read(readBaseAddr), .numReads(sigSize),
         .requestAddr_write(writeBaseAddr), .numWrites(numWrites), .sendData(bramIn), .pulseWrite(pulseWrite), .readReq(readReq), .writeReq(writeReq),
-        .requestData(bramOut), .*);
+        .requestData(bramOut), .wr_data_count(numWrites), .*);
+
+    always_comb begin
+        writeBaseAddr = 16'b0;
+    end
 
 
     //
@@ -307,7 +315,7 @@ module devDelay_tl
 
     //IDComparitor Reset Logic
 	always_comb begin
-		idReset = reinitComp & resetN;
+		idReset = idResetN && resetN;
 	end
 
 
@@ -323,7 +331,7 @@ module devDelay_tl
 
     //Size Detector Latch Logic
     always_ff @(posedge clk) begin
-        if(!resetN) begin
+        if(!(resetN && resetLengthN)) begin
             msgLength <= 0;
         end else begin
             if(setMsgLength) begin
@@ -338,7 +346,28 @@ module devDelay_tl
 
     //Record Unit
     recordMaster rm(.clk, .resetN(recordResetN), .enable(recordEnable), .writeOut(writeRecording), .determineOW(calcRecording), .samplePulse(clkRecord),
-        .dIn, .owTrue(ow), .owReady(owValid), .pulseWrite, .playbackOut(bramIn));
+        .dIn, .owTrue(ow), .owReady(owValid), .pulseWrite, .playbackOut(bramIn), .complete(recordOpDone));
+
+
+    always_comb begin
+        recordResetN = resetN;
+    end
+
+    always_comb begin
+        recordEnable = runRecord & !(outSwitch & stopOnPlayback);
+    end
+
+    always_ff @(posedge clk) begin
+        if(!resetN) begin
+            overWrite <= 0;
+        end else begin
+            if(setOverwrite) begin
+                overWrite <= (owValid & ow);
+            end else begin
+                overWrite <= overWrite;
+            end
+        end
+    end
 
 
 //Sampler Control logic
@@ -396,11 +425,11 @@ module devDelay_tl
 
 //Top Level FSM Definition
 
-    typedef enum logic [5:0] {s_reset, s_init, s_IF, s_waitBus, s_IDDetect, s_playInvalid, s_decodeLen, s_latchLen, s_waitTgt, s_playACK, s_setOW, s_clrRecording, 
-        s_playCRC, s_recordCRC, s_writeBRAM, s_playValid, s_report} delayFSM_t;
+    typedef enum logic [5:0] {s_reset, s_init, s_IF, s_waitBus, s_IDDetect, s_playInvalid, s_decodeLen, s_latchLen, s_waitTgt, s_playACK, s_waitCalc,
+        s_playCRC, s_recordCRC, s_writeCache, s_writeBRAM, s_playValid, s_report} delayFSM_t;
 
 
-    delayFSM_t currState, nextState;
+    (* fsm_encoding = "sequential" *) (* fsm_safe_state = "reset_state" *)  (* mark_debug = "true" *)  delayFSM_t currState, nextState;
 
 
 //Top Level FSM Variables
@@ -490,14 +519,18 @@ module devDelay_tl
                 end
             end
             s_playACK: begin
-                nextState = s_setOW;
-                //NOT SURE HOW TO TRANSFER OUT OF THIS....
+                if(recordEnable) begin
+                    nextState = currState;
+                end else begin
+                    nextState = s_waitCalc;
+                end
             end
-            s_setOW: begin
-                nextState = s_clrRecording;
-            end
-            s_clrRecording: begin
-                nextState = s_IF;
+            s_waitCalc: begin
+                if(recordOpDone) begin
+                    nextState = s_IF;
+                end else begin
+                    nextState = currState;
+                end
             end
             s_playCRC: begin
                 if(canClkCounter >= CANDEFAULTMSGLENGTH) begin
@@ -508,17 +541,23 @@ module devDelay_tl
             end
             s_recordCRC: begin
                 if(canClkCounter >= CANMSGLENGTHCRCERR) begin
-                    nextState = s_writeBRAM;
+                    nextState = s_writeCache;
                 end else begin
                     nextState = currState;
                 end
             end
-            s_writeBRAM: begin
-                //Depending on if I use a signal storage unit here, I may have to change how this stage works.
-                if(!dataValid) begin
+            s_writeCache: begin
+                if(!recordOpDone) begin
                     nextState = currState;
                 end else begin
+                    nextState = s_writeBRAM;
+                end
+            end
+            s_writeBRAM: begin
+                if(dataValid) begin
                     nextState = s_report;
+                end else begin
+                    nextState = currState;
                 end
             end
             s_playValid: begin
@@ -536,103 +575,217 @@ module devDelay_tl
 
     always_comb begin
         unique case(currState)
+            s_reset: begin
+                threeSamplePoint = 0;           //Select the total sample point rate.
+				syncOverride = 0;               //Override syncronization(used during playback)
+                {setOverwrite, setMsgLength} = 2'b00;               //Latches
+                playbackSelector = 2'b00;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3
+                {err, interrupt} = 2'b00;       //System Status Outputs
+                {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b000000;      //Enable Signals
+                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b1111;                   //Reset Signals
+                {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
+                {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
+                {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
+            end
             s_init: begin
-                initStart = 1;
-                threeSamplePoint = 0;
-				compareEnable = 0;
-				play = 0;
-				syncOverride = 0;
-				countEn = 0;
-				reinitComp = 1;
-				{err, interrupt} = 2'b00;
-                setMsgLength = 0;
-                sizeDetectEnable = 0;
-                sizeReqResetN = 0;
-                playbackreqReset = 0;
-                playbackSelector = 0;
-                baseAddrOW = 0;
-                baseAddrInvalid = 0;
-                baseAddrValid = 0;
-                baseAddrCRC = 0;
-                returnOW = 0;
-                returnInvalid = 0;
-                returnValid = 0;
-                returnCRC = 0;
+                threeSamplePoint = 0;           //Select the total sample point rate.
+				syncOverride = 0;               //Override syncronization(used during playback)
+                {setOverwrite, setMsgLength} = 2'b00;               //Latches
+                playbackSelector = 2'b10;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3    
+                {err, interrupt} = 2'b00;       //System Status Outputs
+                {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b100000;      //Enable Signals
+                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b0000;                   //Reset Signals
+                {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
+                {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
+                {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
             end
-            s_clrRecording: begin
-                initStart = 1;
-                threeSamplePoint = 0;
-				compareEnable = 1;
-				play = 0;
-				syncOverride = 0;
-				countEn = 0;
-				reinitComp = 1;
-				{err, interrupt} = 2'b00;
-                setMsgLength = 0;
-                sizeDetectEnable = 0;
-                sizeReqResetN = 0;
-                playbackreqReset = 0;
-                playbackSelector = 0;
-                baseAddrOW = 0;
-                baseAddrInvalid = 0;
-                baseAddrValid = 0;
-                baseAddrCRC = 0;
-                returnOW = 0;
-                returnInvalid = 0;
-                returnValid = 0;
-                returnCRC = 0;
+            s_IF: begin
+                threeSamplePoint = 1;           //Select the total sample point rate.
+				syncOverride = 0;               //Override syncronization(used during playback)
+                {setOverwrite, setMsgLength} = 2'b00;               //Latches
+                playbackSelector = 2'b10;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3  
+                {err, interrupt} = 2'b00;       //System Status Outputs
+                {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b000000;      //Enable Signals
+                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b1011;                   //Reset Signals
+                {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
+                {returnOW, returnInvalid, returnValid, returnCRC} = 4'b1110;                            //Return to base addr signals
+                {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
             end
-            s_decodeLen: begin
-                initStart = 0;
-                threeSamplePoint = 0;
-				compareEnable = 0;
-				play = 0;
-				syncOverride = 0;
-				countEn = 0;
-				reinitComp = 1;
-				{err, interrupt} = 2'b00;
-                setMsgLength = 0;
-                sizeDetectEnable = 1;
-                sizeReqResetN = 0;
-                playbackreqReset = 0;
-                playbackSelector = 0;
-                baseAddrOW = 0;
-                baseAddrInvalid = 0;
-                baseAddrValid = 0;
-                baseAddrCRC = 0;
-                returnOW = 0;
-                returnInvalid = 0;
-                returnValid = 0;
-                returnCRC = 0;
+            s_waitBus: begin
+                threeSamplePoint = 1;           //Select the total sample point rate.
+				syncOverride = 0;               //Override syncronization(used during playback)
+                {setOverwrite, setMsgLength} = 2'b00;               //Latches
+                playbackSelector = 2'b10;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3 
+                {err, interrupt} = 2'b00;       //System Status Outputs
+                {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b001000;      //Enable Signals
+                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b1111;                   //Reset Signals
+                {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
+                {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
+                {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
             end
             s_IDDetect: begin
-                initStart = 1;
-                threeSamplePoint = 0;
-				compareEnable = 0;
-				play = 0;
-				syncOverride = 0;
-				countEn = 0;
-				reinitComp = 1;
-				{err, interrupt} = 2'b00;
-                setMsgLength = 0;
-                sizeDetectEnable = 0;
-                sizeReqResetN = 0;
-                playbackreqReset = 0;
-                playbackSelector = 0;
-                baseAddrOW = 0;
-                baseAddrInvalid = 0;
-                baseAddrValid = 0;
-                baseAddrCRC = 0;
-                returnOW = 0;
-                returnInvalid = 0;
-                returnValid = 0;
-                returnCRC = 0;
+                threeSamplePoint = 1;           //Select the total sample point rate.
+				syncOverride = 0;               //Override syncronization(used during playback)
+                {setOverwrite, setMsgLength} = 2'b00;               //Latches
+                playbackSelector = 2'b01;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3 
+                {err, interrupt} = 2'b00;       //System Status Outputs
+                {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b010000;      //Enable Signals
+                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b1111;                   //Reset Signals
+                {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
+                {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
+                {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
+            end
+            s_playInvalid: begin
+                threeSamplePoint = 0;           //Select the total sample point rate.
+				syncOverride = 1;               //Override syncronization(used during playback)
+                {setOverwrite, setMsgLength} = 2'b00;               //Latches
+                playbackSelector = 2'b01;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3  
+                {err, interrupt} = 2'b00;       //System Status Outputs
+                {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b000010;      //Enable Signals
+                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b1110;                   //Reset Signals
+                {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
+                {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
+                {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
+            end
+            s_decodeLen:  begin
+                threeSamplePoint = 0;           //Select the total sample point rate.
+				syncOverride = 0;               //Override syncronization(used during playback)
+                {setOverwrite, setMsgLength} = 2'b00;               //Latches
+                playbackSelector = 2'b00;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3 
+                {err, interrupt} = 2'b00;       //System Status Outputs
+                {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b000100;      //Enable Signals
+                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b1110;                   //Reset Signals
+                {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
+                {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
+                {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
+            end
+            s_latchLen:  begin
+                threeSamplePoint = 0;           //Select the total sample point rate.
+				syncOverride = 0;               //Override syncronization(used during playback)
+                {setOverwrite, setMsgLength} = 2'b01;               //Latches
+                playbackSelector = 2'b00;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3 
+                {err, interrupt} = 2'b00;       //System Status Outputs
+                {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b001100;      //Enable Signals
+                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b1111;                   //Reset Signals
+                {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
+                {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
+                {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
+            end
+            s_waitTgt:  begin
+                threeSamplePoint = 0;           //Select the total sample point rate.
+				syncOverride = 0;               //Override syncronization(used during playback)
+                {setOverwrite, setMsgLength} = 2'b00;               //Latches
+                playbackSelector = 2'b00;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3 
+                {err, interrupt} = 2'b00;       //System Status Outputs
+                {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b001000;      //Enable Signals
+                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b1101;                   //Reset Signals
+                {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
+                {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
+                {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
+            end
+            s_playACK:  begin
+                threeSamplePoint = 0;           //Select the total sample point rate.
+				syncOverride = 1;               //Override syncronization(used during playback)
+                {setOverwrite, setMsgLength} = 2'b00;               //Latches
+                playbackSelector = 2'b00;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3 
+                {err, interrupt} = 2'b00;       //System Status Outputs
+                {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b000010;      //Enable Signals
+                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b1111;                   //Reset Signals
+                {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
+                {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
+                {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b1101;                   //Recording Unit Signals
+            end
+            s_waitCalc:  begin
+                threeSamplePoint = 0;           //Select the total sample point rate.
+				syncOverride = 1;               //Override syncronization(used during playback)
+                {setOverwrite, setMsgLength} = 2'b10;               //Latches
+                playbackSelector = 2'b00;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3 
+                {err, interrupt} = 2'b00;       //System Status Outputs
+                {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b000010;      //Enable Signals
+                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b1111;                   //Reset Signals
+                {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
+                {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
+                {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0001;                   //Recording Unit Signals
+            end
+            s_playCRC: begin
+                threeSamplePoint = 0;           //Select the total sample point rate.
+				syncOverride = 1;               //Override syncronization(used during playback)
+                {setOverwrite, setMsgLength} = 2'b00;               //Latches
+                playbackSelector = 2'b11;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3  
+                {err, interrupt} = 2'b00;       //System Status Outputs
+                {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b001010;      //Enable Signals
+                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b1111;                   //Reset Signals
+                {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
+                {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
+                {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
+            end
+            s_recordCRC: begin
+                threeSamplePoint = 0;           //Select the total sample point rate.
+				syncOverride = 1;               //Override syncronization(used during playback)
+                {setOverwrite, setMsgLength} = 2'b00;               //Latches
+                playbackSelector = 2'b11;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3  
+                {err, interrupt} = 2'b00;       //System Status Outputs
+                {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b001010;      //Enable Signals
+                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b1111;                   //Reset Signals
+                {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
+                {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
+                {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b1010;                   //Recording Unit Signals
+            end
+            s_writeCache: begin
+                threeSamplePoint = 0;           //Select the total sample point rate.
+				syncOverride = 0;               //Override syncronization(used during playback)
+                {setOverwrite, setMsgLength} = 2'b00;               //Latches
+                playbackSelector = 2'b01;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3  
+                {err, interrupt} = 2'b00;       //System Status Outputs
+                {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b000000;      //Enable Signals
+                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b1011;                   //Reset Signals
+                {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
+                {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
+                {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0010;                   //Recording Unit Signals
+            end
+            s_writeBRAM: begin
+                threeSamplePoint = 0;           //Select the total sample point rate.
+				syncOverride = 0;               //Override syncronization(used during playback)
+                {setOverwrite, setMsgLength} = 2'b00;               //Latches
+                playbackSelector = 2'b01;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3  
+                {err, interrupt} = 2'b00;       //System Status Outputs
+                {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b000001;      //Enable Signals
+                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b1111;                   //Reset Signals
+                {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
+                {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
+                {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
+            end
+            s_playValid: begin
+                threeSamplePoint = 0;           //Select the total sample point rate.
+				syncOverride = 1;               //Override syncronization(used during playback)
+                {setOverwrite, setMsgLength} = 2'b00;               //Latches
+                playbackSelector = 2'b10;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3  
+                {err, interrupt} = 2'b00;       //System Status Outputs
+                {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b000010;      //Enable Signals
+                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b1111;                   //Reset Signals
+                {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
+                {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
+                {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
+            end
+            s_report: begin
+                threeSamplePoint = 0;           //Select the total sample point rate.
+				syncOverride = 0;               //Override syncronization(used during playback)
+                {setOverwrite, setMsgLength} = 2'b00;               //Latches
+                playbackSelector = 2'b00;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3  
+                {err, interrupt} = 2'b01;       //System Status Outputs
+                {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b000000;      //Enable Signals
+                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b1111;                   //Reset Signals
+                {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
+                {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
+                {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
             end
         endcase
     end
 
 
-
+    always_comb begin
+        stateDbg = currState;
+    end
 
 
 //Init State FSM Definition
@@ -641,7 +794,7 @@ module devDelay_tl
     typedef enum logic [4:0] {i_init_hold, i_wait[0:1], i_readOW, i_writeOW, i_owWait, i_readInvalid, i_writeInvalid,
          i_invalidWait, i_readValid, i_writeValid, i_validWait, i_readCRC, i_writeCRC, i_hold} init_t;
 
-    (* fsm_encoding = "sequential" *) (* mark_debug = "true" *) init_t currInit, nextInit;
+    (* fsm_encoding = "one_hot" *) init_t currInit, nextInit;
 
 //Init FSM & Supporting Logic
 
@@ -732,6 +885,7 @@ module devDelay_tl
                 readReq = 0;
                 setupRunning = 1;
                 {storeConfigOW, storeConfigInvalid, storeConfigValid, storeConfigCRC} = 4'b0000;
+                {startWriteOW, startWriteInvalid, startWriteValid, startWriteCRC} = 4'b000;
             end
             i_wait1:begin
                 clearReadFIFO = 0;

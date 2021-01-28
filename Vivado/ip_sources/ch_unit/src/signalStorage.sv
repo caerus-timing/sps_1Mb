@@ -125,7 +125,7 @@ module sigStorage
 
     typedef enum logic [2:0] {s_init, s_disabled, s_store, s_request, s_increment, s_delay} storage_t;
 
-    storage_t currState, nextState;
+    (* fsm_encoding = "one_hot" *) storage_t currState, nextState;
 
     always_ff @(posedge clk) begin
         if(!resetN) begin

@@ -46,6 +46,7 @@ module halfDuplex
 		input logic writeReq,
 		output logic [BRAM_DATA_SIZE - 1: 0] requestData,
 		output logic dataValid,
+		output logic [$clog2(256):0] wr_data_count,
 
 		//TODO: Add Write capabilities. Not needed for part 1.
 
@@ -93,8 +94,7 @@ module halfDuplex
 	
 
 	//FSM Read Variables
-
-	bramRead_t currState_r, nextState_r;
+	(* fsm_encoding = "one_hot" *)  bramRead_t currState_r, nextState_r;
 	logic wrAddr_r;
 	logic wrNumReads;
 	logic incAddr_r;
@@ -107,7 +107,7 @@ module halfDuplex
 
 	//FSM Write Variables
 
-	bramWrite_t currState_w, nextState_w;
+	(* fsm_encoding = "one_hot" *) bramWrite_t currState_w, nextState_w;
 	logic wrAddr_w;
 	logic wrNumWrites;
 	logic incAddr_w;
@@ -328,6 +328,8 @@ end
 			end
 		endcase
 	end
+
+	//{s_init_r, s_fifoReset_r, s_hold_r, s_semWait_r, s_req, s_wait[0:3], s_insertInc, s_releaseSem_r, s_stop} bramRead_t;
 	always_comb begin
 		unique case(currState_r)
 			s_init_r: {wrAddr_r, wrNumReads,bramEnable_r,wr_en_r,incAddr_r,incI_r,dataValid_r,setSem_r,releaseSem_r} = 9'b110000000;
@@ -337,7 +339,7 @@ end
 			s_wait3: {wrAddr_r, wrNumReads,bramEnable_r,wr_en_r,incAddr_r,incI_r,dataValid_r,setSem_r,releaseSem_r} = 9'b001001000;
 			s_insertInc: {wrAddr_r, wrNumReads,bramEnable_r,wr_en_r,incAddr_r,incI_r,dataValid_r,setSem_r,releaseSem_r} = 9'b001110000;
 			s_releaseSem_r: {wrAddr_r, wrNumReads,bramEnable_r,wr_en_r,incAddr_r,incI_r,dataValid_r,setSem_r,releaseSem_r} = 9'b000000001;
-			s_hold_r: {wrAddr_r, wrNumReads,bramEnable_r,wr_en_r,incAddr_r,incI_r,dataValid_r,setSem_r,releaseSem_r} = 9'b000000100;
+			s_stop: {wrAddr_r, wrNumReads,bramEnable_r,wr_en_r,incAddr_r,incI_r,dataValid_r,setSem_r,releaseSem_r} = 9'b000000100;
 		endcase
 	end
 //Shared between Read and Write: dataValid for if the data read from BRAM is complete or the data write to BRAM is complete
@@ -414,7 +416,7 @@ end
 			s_init_w, s_fifoReset_w: {wrNumWrites, wrAddr_w, read_w, bramWe, bramEnable_w, clearI_w, incAddr_w, incI_w, dataValid_w, setSem_w, releaseSem_w} = 	11'b00000100000;
 			s_hold_w: {wrNumWrites, wrAddr_w, read_w, bramWe, bramEnable_w, clearI_w, incAddr_w, incI_w, dataValid_w, setSem_w, releaseSem_w} = 	11'b11000100000;
 			s_semWait_w: {wrNumWrites, wrAddr_w, read_w, bramWe, bramEnable_w, clearI_w, incAddr_w, incI_w, dataValid_w, setSem_w, releaseSem_w} = 	11'b00000000000;
-			s_hold_w: {wrNumWrites, wrAddr_w, read_w, bramWe, bramEnable_w, clearI_w, incAddr_w, incI_w, dataValid_w, setSem_w, releaseSem_w} = 	11'b00000000010;
+			s_wait_w: {wrNumWrites, wrAddr_w, read_w, bramWe, bramEnable_w, clearI_w, incAddr_w, incI_w, dataValid_w, setSem_w, releaseSem_w} = 	11'b00000000010;
 			s_bramEnable, s_deassertW, s_pause: {wrNumWrites, wrAddr_w, read_w, bramWe, bramEnable_w, clearI_w, incAddr_w, incI_w, dataValid_w, setSem_w, releaseSem_w} = 	11'b00001000000;
 			s_asserW: {wrNumWrites, wrAddr_w, read_w, bramWe, bramEnable_w, clearI_w, incAddr_w, incI_w, dataValid_w, setSem_w, releaseSem_w} = 	11'b00011000000;
 			s_removeInc: {wrNumWrites, wrAddr_w, read_w, bramWe, bramEnable_w, clearI_w, incAddr_w, incI_w, dataValid_w, setSem_w, releaseSem_w} = 	11'b00101011000;
@@ -495,9 +497,10 @@ end
 		.READ_DATA_WIDTH(32),             // DECIMAL
 		.READ_MODE("fwft"),                // String
 		.SIM_ASSERT_CHK(0),               // DECIMAL; 0=disable simulation messages, 1=enable simulation messages
-		.USE_ADV_FEATURES("0000"),        // String
+		.USE_ADV_FEATURES("0002"),        // String
 		.WAKEUP_TIME(0),                  // DECIMAL
-		.WRITE_DATA_WIDTH(32)             // DECIMAL
+		.WRITE_DATA_WIDTH(32),            // DECIMAL
+		.WR_DATA_COUNT_WIDTH($clog2(256)+1)
 	)
 	fifo_writeCache (
 
@@ -527,9 +530,11 @@ end
 		.wr_clk(clk), // 1-bit input: Write clock: Used for write operation. wr_clk must be a
 		// free running clock.
 
-		.wr_en(pulseWrite) // 1-bit input: Write Enable: If the FIFO is not full, asserting this
+		.wr_en(wr_en_w), // 1-bit input: Write Enable: If the FIFO is not full, asserting this
 	// signal causes data (on din) to be written to the FIFO Must be held
 	// active-low when rst or wr_rst_busy or rd_rst_busy is active high
+
+		.wr_data_count(wr_data_count)
 
 	);
 

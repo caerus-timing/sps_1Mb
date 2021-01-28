@@ -11,6 +11,7 @@ module recordMaster
         input logic dIn,
 
         output logic owTrue,
+        output logic complete,
         output logic owReady,
         output logic pulseWrite,
         output dataTypes_pkg::mem_t playbackOut
@@ -70,7 +71,7 @@ module recordMaster
     typedef enum logic[3:0] {s_init, s_hold, s_waitInc, s_increment, s_cmdHold, s_checkValid, s_reqWord, s_wait0, s_shiftFinMsg,
         s_finCheck, s_valid, s_invalid, s_resetCache, s_sendCommitSig, s_incSend, s_wait1} record_t;
 
-    record_t currState, nextState;
+    (* fsm_encoding = "sequential" *) (* mark_debug = "true" *) record_t currState, nextState;
 
 
     //
@@ -166,16 +167,20 @@ module recordMaster
         if(!resetN || resetValid) begin
             owTrue <= 0;
             owReady <= 0;
+            complete <= 0;
         end else begin
             if(latchValid) begin
                 owTrue <= 1;
                 owReady <= 1;
+                complete <= 1;
             end else if(latchInvalid) begin
-                owTrue <= 0;
+                owTrue <= owTrue;
                 owReady <= 1;
+                complete <= 1;
             end else begin
                 owTrue <= owTrue;
                 owReady <= owReady;
+                complete <= complete;
             end
         end
     end
