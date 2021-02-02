@@ -6,6 +6,7 @@ module sizeDetect
 
         input logic dIn,
 		input logic samplePulse,
+        input logic rateSelector, //1 for 3 sample points, 0 for just 1 sample point
 
         output logic completeConfig,
 		output logic [3:0] msgSize
@@ -21,7 +22,7 @@ module sizeDetect
     */
 
     
-    localparam PRELUDE_LENGTH = 15;
+    localparam PRELUDE_LENGTH = 14;
     localparam DLC_LEN = 4;
 
     logic [4:0] prevBits; // Ongoing counter to determine if stuff occurs
@@ -40,6 +41,57 @@ module sizeDetect
     const logic [4:0] initialBitPattern = 5'b01010; //This pattern was created to not have a stuff bit instantly detected, but still have SOF cause a bit stuff.
 
     oneshot os(.*, .pulse(stuffDetected), .oneshot(stuffOS));
+
+    //Multisample point logic
+    //This module needs to run in parallel with the CAN ID detector, and thus needs to be able to handle the module being run at triple sample point time
+
+    typedef enum logic [1:0] {s_start, s_sample1, s_sample2, s_sample3} sample_t;
+	
+	(* fsm_encoding = "one_hot" *) sample_t currSample, nextSample;
+
+
+    logic dataValid;
+	
+	always_ff @(posedge clk) begin
+	   if(!resetN) begin
+			currSample <= currSample.first;
+		end
+		else begin
+			currSample <= nextSample;
+		end
+	end
+	
+	always_comb begin
+	   unique case(currSample)
+	       s_start: begin
+	           if(samplePulse) begin
+	               if(rateSelector) begin
+	                   nextSample = currSample.next;
+	               end else begin
+	                   nextSample = s_sample3;
+	               end
+	           end else begin
+	               nextSample = currSample;
+	           end
+	       end
+	       s_sample1, s_sample2: begin
+	           if(samplePulse) begin
+	               nextSample = currSample.next;
+	           end else begin
+	               nextSample = currSample;
+	           end
+	       end
+	       s_sample3: begin
+	           nextSample = currSample.first;
+	       end
+	   endcase
+	end
+	always_comb begin
+	   unique case(currSample)
+	       s_sample3: dataValid = 1;
+	       default: dataValid = 0;
+	   endcase
+	end
 
 
 
@@ -81,6 +133,8 @@ module sizeDetect
 
     //Bit stuff detection logic
 
+
+    //TODO: CHECK TO SEE IF THIS NEEDS TO BE CHANGED TO 6 BITS WITH STUFF BIT AT END
     always_comb begin
         if(prevBits == 5'b00000 || prevBits == 5'b11111) begin
             stuffDetected = 1;
@@ -155,11 +209,11 @@ module sizeDetect
         unique case(currState)
             s_init: begin
                 if(resetN) begin
-					nextState = s_hold;
-				end
-				else begin
-					nextState = currState;
-				end
+                    nextState = s_hold;
+                end
+                else begin
+                    nextState = currState;
+                end
             end
             s_hold: begin
                 if (enable) begin
@@ -169,7 +223,7 @@ module sizeDetect
                 end
             end
             s_sample, s_dlcSample: begin
-                if(samplePulse) begin
+                if(dataValid) begin
                     nextState = currState.next;
                 end else begin
                     nextState = currState;
@@ -203,8 +257,8 @@ module sizeDetect
             s_init, s_hold, s_sample, s_wait1, s_wait2, s_lenCheck: {inDLC,shiftIn,dlcShift,completeConfig} = 4'b0000;
             s_wait0: {inDLC,shiftIn,dlcShift,completeConfig} = 4'b0100;
             s_dlcSample, s_wait4, s_wait5, s_dlcLenCheck: {inDLC,shiftIn,dlcShift,completeConfig} = 4'b1000;
-            s_wait3: {inDLC,shiftIn,dlcShift,completeConfig} = 4'b1010;
-            s_finish: {inDLC,shiftIn,dlcShift,completeConfig} = 4'b0001;
+            s_wait3: {inDLC,shiftIn,dlcShift,completeConfig} = 4'b1110;
+            s_finish: {inDLC,shiftIn,dlcShift,completeConfig} = 4'b1001;
         endcase
     end
 

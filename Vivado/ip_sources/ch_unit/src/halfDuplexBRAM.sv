@@ -112,8 +112,8 @@ module halfDuplex
 	logic wrNumWrites;
 	logic incAddr_w;
 	logic incI_w;
-	logic [15:0] i_w;
-	logic [15:0] storedWrites;
+	logic [$clog2(256)-1:0] i_w;
+	logic [$clog2(256)-1:0] storedWrites;
 	logic [BRAM_ADDR_SIZE - 1 : 0] addr_w;
 	logic clearI_w;
 	logic dataValid_w;
@@ -127,6 +127,16 @@ module halfDuplex
 
 	always_comb begin
 		dataValid = dataValid_w || dataValid_r;
+	end
+	
+	always_comb begin
+	   if(ctrl_sem == 2'b01) begin
+	       addr = addr_r;
+	   end else if(ctrl_sem == 2'b10) begin
+	       addr = addr_w;
+	   end else begin
+	       addr = 14'bZ;
+	   end
 	end
 
 
@@ -246,7 +256,7 @@ always_ff @(posedge clk) begin
 		i_w <= 0;
 	end
 	else begin
-		if(incI_r) begin
+		if(incI_w) begin
 			i_w <= i_w + 1;
 		end
 		else begin
@@ -496,11 +506,11 @@ end
 		.FULL_RESET_VALUE(0),             // DECIMAL
 		.READ_DATA_WIDTH(32),             // DECIMAL
 		.READ_MODE("fwft"),                // String
-		.SIM_ASSERT_CHK(0),               // DECIMAL; 0=disable simulation messages, 1=enable simulation messages
-		.USE_ADV_FEATURES("0002"),        // String
+		.SIM_ASSERT_CHK(1),               // DECIMAL; 0=disable simulation messages, 1=enable simulation messages
+		.USE_ADV_FEATURES("0014"),        // String
 		.WAKEUP_TIME(0),                  // DECIMAL
 		.WRITE_DATA_WIDTH(32),            // DECIMAL
-		.WR_DATA_COUNT_WIDTH($clog2(256)+1)
+		.WR_DATA_COUNT_WIDTH($clog2(256))
 	)
 	fifo_writeCache (
 
@@ -524,7 +534,7 @@ end
 		// signal causes data (on dout) to be read from the FIFO. Must be held
 		// active-low when rd_rst_busy is active high.
 
-		.rst(), //Purposefully left unconnected. This module will never be reset as it is assumed default state is state desired
+		.rst(!resetN), //Purposefully left unconnected. This module will never be reset as it is assumed default state is state desired
 
 
 		.wr_clk(clk), // 1-bit input: Write clock: Used for write operation. wr_clk must be a

@@ -21,7 +21,7 @@ module recordMaster
     localparam DEPTH = 256;
 
     import dataTypes_pkg::*;
-
+    //TODO: CHANGE THE VALID TO INVALID
 
     //Internal Logic Signals
 
@@ -146,7 +146,7 @@ module recordMaster
                 slidingCounter <= 0;
             end else begin
                 if(slide) begin
-                    if(slidingCounter < 64) begin //I know I will definately over use some clocks, but this is the calculation phase, and I'm not too woried about that
+                    if(slidingCounter < 59) begin //I know I will definately over use some clocks, but this is the calculation phase, and I'm not too woried about that
                         slidingCounter <= slidingCounter + 1;
                         slidingValStorage <= {1'b1, slidingValStorage[63:1]};
                     end else begin
@@ -251,6 +251,9 @@ module recordMaster
                     end
                 end
             end
+            s_increment: begin
+                nextState = s_waitInc;
+            end
             s_cmdHold: begin
                 if(writeOut) begin
                     nextState = s_sendCommitSig;
@@ -288,7 +291,7 @@ module recordMaster
             s_finCheck: begin
                 if(detected) begin
                     nextState = s_valid;
-                end else if (slidingCounter == 64) begin
+                end else if (slidingCounter == 59) begin
                     nextState = s_invalid;
                 end else begin
                     nextState = currState;

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="halfDuplex_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="dataSizes_pkg" />
+            <top_module name="dataTypes_pkg" />
+            <top_module name="glbl" />
+            <top_module name="halfDuplex_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="3901170fs"></ZoomStartTime>
+      <ZoomEndTime time="11881171fs"></ZoomEndTime>
+      <Cursor1Time time="9405000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="268"></NameColumnWidth>
+      <ValueColumnWidth column_width="131"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="38" />
+   <wvobject type="logic" fp_name="/halfDuplex_tb/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/halfDuplex_tb/resetN">
+      <obj_property name="ElementShortName">resetN</obj_property>
+      <obj_property name="ObjectShortName">resetN</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/halfDuplex_tb/advFIFO">
+      <obj_property name="ElementShortName">advFIFO</obj_property>
+      <obj_property name="ObjectShortName">advFIFO</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/halfDuplex_tb/requestData">
+      <obj_property name="ElementShortName">requestData[31:0]</obj_property>
+      <obj_property name="ObjectShortName">requestData[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/halfDuplex_tb/numReads">
+      <obj_property name="ElementShortName">numReads[15:0]</obj_property>
+      <obj_property name="ObjectShortName">numReads[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/halfDuplex_tb/dOut">
+      <obj_property name="ElementShortName">dOut</obj_property>
+      <obj_property name="ObjectShortName">dOut</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/halfDuplex_tb/dEnable">
+      <obj_property name="ElementShortName">dEnable</obj_property>
+      <obj_property name="ObjectShortName">dEnable</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/halfDuplex_tb/playbackClk">
+      <obj_property name="ElementShortName">playbackClk</obj_property>
+      <obj_property name="ObjectShortName">playbackClk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/halfDuplex_tb/enable">
+      <obj_property name="ElementShortName">enable</obj_property>
+      <obj_property name="ObjectShortName">enable</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/halfDuplex_tb/done">
+      <obj_property name="ElementShortName">done</obj_property>
+      <obj_property name="ObjectShortName">done</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/halfDuplex_tb/readData">
+      <obj_property name="ElementShortName">readData[31:0]</obj_property>
+      <obj_property name="ObjectShortName">readData[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/halfDuplex_tb/resetBusy">
+      <obj_property name="ElementShortName">resetBusy</obj_property>
+      <obj_property name="ObjectShortName">resetBusy</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/halfDuplex_tb/addrBRAM">
+      <obj_property name="ElementShortName">addrBRAM[14:0]</obj_property>
+      <obj_property name="ObjectShortName">addrBRAM[14:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/halfDuplex_tb/dataOut">
+      <obj_property name="ElementShortName">dataOut[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dataOut[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/halfDuplex_tb/bramEnable">
+      <obj_property name="ElementShortName">bramEnable</obj_property>
+      <obj_property name="ObjectShortName">bramEnable</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/halfDuplex_tb/bramWe">
+      <obj_property name="ElementShortName">bramWe</obj_property>
+      <obj_property name="ObjectShortName">bramWe</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/halfDuplex_tb/clear">
+      <obj_property name="ElementShortName">clear</obj_property>
+      <obj_property name="ObjectShortName">clear</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/halfDuplex_tb/requestAddr">
+      <obj_property name="ElementShortName">requestAddr[15:0]</obj_property>
+      <obj_property name="ObjectShortName">requestAddr[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/halfDuplex_tb/dataValid">
+      <obj_property name="ElementShortName">dataValid</obj_property>
+      <obj_property name="ObjectShortName">dataValid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/halfDuplex_tb/outputWrite_addr">
+      <obj_property name="ElementShortName">outputWrite_addr[15:0]</obj_property>
+      <obj_property name="ObjectShortName">outputWrite_addr[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/halfDuplex_tb/writeData">
+      <obj_property name="ElementShortName">writeData[31:0]</obj_property>
+      <obj_property name="ObjectShortName">writeData[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/halfDuplex_tb/pulseWrite">
+      <obj_property name="ElementShortName">pulseWrite</obj_property>
+      <obj_property name="ObjectShortName">pulseWrite</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/halfDuplex_tb/requestRead">
+      <obj_property name="ElementShortName">requestRead</obj_property>
+      <obj_property name="ObjectShortName">requestRead</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/halfDuplex_tb/requestWrite">
+      <obj_property name="ElementShortName">requestWrite</obj_property>
+      <obj_property name="ObjectShortName">requestWrite</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/halfDuplex_tb/writeDataCount">
+      <obj_property name="ElementShortName">writeDataCount[8:0]</obj_property>
+      <obj_property name="ObjectShortName">writeDataCount[8:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/halfDuplex_tb/memVals">
+      <obj_property name="ElementShortName">memVals[0:7][31:0]</obj_property>
+      <obj_property name="ObjectShortName">memVals[0:7][31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/halfDuplex_tb/controller/currState_w">
+      <obj_property name="ElementShortName">currState_w[3:0]</obj_property>
+      <obj_property name="ObjectShortName">currState_w[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/halfDuplex_tb/controller/currState_r">
+      <obj_property name="ElementShortName">currState_r[3:0]</obj_property>
+      <obj_property name="ObjectShortName">currState_r[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/halfDuplex_tb/controller/ctrl_sem">
+      <obj_property name="ElementShortName">ctrl_sem[1:0]</obj_property>
+      <obj_property name="ObjectShortName">ctrl_sem[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/halfDuplex_tb/controller/fifo_writeCache/empty">
+      <obj_property name="ElementShortName">empty</obj_property>
+      <obj_property name="ObjectShortName">empty</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/halfDuplex_tb/controller/fifo_writeCache/wr_ack">
+      <obj_property name="ElementShortName">wr_ack</obj_property>
+      <obj_property name="ObjectShortName">wr_ack</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/halfDuplex_tb/controller/fifo_writeCache/din">
+      <obj_property name="ElementShortName">din[31:0]</obj_property>
+      <obj_property name="ObjectShortName">din[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/halfDuplex_tb/controller/fifo_writeCache/dout">
+      <obj_property name="ElementShortName">dout[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dout[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/halfDuplex_tb/controller/fifo_writeCache/rst">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/halfDuplex_tb/controller/fifo_writeCache/wr_clk">
+      <obj_property name="ElementShortName">wr_clk</obj_property>
+      <obj_property name="ObjectShortName">wr_clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/halfDuplex_tb/controller/fifo_writeCache/wr_en">
+      <obj_property name="ElementShortName">wr_en</obj_property>
+      <obj_property name="ObjectShortName">wr_en</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/halfDuplex_tb/controller/i_w">
+      <obj_property name="ElementShortName">i_w[7:0]</obj_property>
+      <obj_property name="ObjectShortName">i_w[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/halfDuplex_tb/controller/storedWrites">
+      <obj_property name="ElementShortName">storedWrites[7:0]</obj_property>
+      <obj_property name="ObjectShortName">storedWrites[7:0]</obj_property>
+   </wvobject>
+</wave_config>

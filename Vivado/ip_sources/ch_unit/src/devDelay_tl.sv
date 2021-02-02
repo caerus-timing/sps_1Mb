@@ -629,7 +629,7 @@ module devDelay_tl
                 {setOverwrite, setMsgLength} = 2'b00;               //Latches
                 playbackSelector = 2'b01;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3 
                 {err, interrupt} = 2'b00;       //System Status Outputs
-                {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b010000;      //Enable Signals
+                {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b010100;      //Enable Signals
                 {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b1111;                   //Reset Signals
                 {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
                 {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
@@ -642,7 +642,7 @@ module devDelay_tl
                 playbackSelector = 2'b01;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3  
                 {err, interrupt} = 2'b00;       //System Status Outputs
                 {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b000010;      //Enable Signals
-                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b1110;                   //Reset Signals
+                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b0100;                   //Reset Signals
                 {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
                 {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals

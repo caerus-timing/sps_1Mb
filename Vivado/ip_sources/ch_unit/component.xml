@@ -140,7 +140,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>20322160</spirit:value>
+            <spirit:value>831dab1d</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -156,7 +156,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>20322160</spirit:value>
+            <spirit:value>831dab1d</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -164,14 +164,14 @@
         <spirit:name>xilinx_testbench</spirit:name>
         <spirit:displayName>Test Bench</spirit:displayName>
         <spirit:envIdentifier>:vivado.xilinx.com:simulation.testbench</spirit:envIdentifier>
-        <spirit:modelName>axiTB</spirit:modelName>
+        <spirit:modelName>length_tb</spirit:modelName>
         <spirit:fileSetRef>
           <spirit:localName>xilinx_testbench_view_fileset</spirit:localName>
         </spirit:fileSetRef>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>de8a9f6c</spirit:value>
+            <spirit:value>b6f82748</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -385,6 +385,23 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
+        <spirit:name>recordRate</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">31</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
         <spirit:name>setValues</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
@@ -538,7 +555,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long">4</spirit:left>
+            <spirit:left spirit:format="long">5</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -673,15 +690,15 @@
     <spirit:fileSet>
       <spirit:name>xilinx_anylanguagesynthesis_view_fileset</spirit:name>
       <spirit:file>
+        <spirit:name>src/clkUnit.sv</spirit:name>
+        <spirit:fileType>systemVerilogSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
         <spirit:name>includes/dataSizes.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
         <spirit:name>includes/dataTypes.sv</spirit:name>
-        <spirit:fileType>systemVerilogSource</spirit:fileType>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>src/clkUnit.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
@@ -706,6 +723,14 @@
       </spirit:file>
       <spirit:file>
         <spirit:name>src/playbackUnit.sv</spirit:name>
+        <spirit:fileType>systemVerilogSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/recordMaster.sv</spirit:name>
+        <spirit:fileType>systemVerilogSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/recordUnit.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
@@ -723,21 +748,21 @@
       <spirit:file>
         <spirit:name>src/devDelay_tl.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_014cb874</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_6f12a291</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
       <spirit:name>xilinx_anylanguagebehavioralsimulation_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>src/clkUnit.sv</spirit:name>
+        <spirit:fileType>systemVerilogSource</spirit:fileType>
+      </spirit:file>
       <spirit:file>
         <spirit:name>includes/dataSizes.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
         <spirit:name>includes/dataTypes.sv</spirit:name>
-        <spirit:fileType>systemVerilogSource</spirit:fileType>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>src/clkUnit.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
@@ -762,6 +787,14 @@
       </spirit:file>
       <spirit:file>
         <spirit:name>src/playbackUnit.sv</spirit:name>
+        <spirit:fileType>systemVerilogSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/recordMaster.sv</spirit:name>
+        <spirit:fileType>systemVerilogSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/recordUnit.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
@@ -784,16 +817,16 @@
     <spirit:fileSet>
       <spirit:name>xilinx_testbench_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>testbench/top_funcsim.v</spirit:name>
-        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:name>testbench/length_tb.sv</spirit:name>
+        <spirit:fileType>systemVerilogSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_implementation</spirit:userFileType>
         <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
-        <spirit:userFileType>USED_IN_testbench</spirit:userFileType>
+        <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>testbench/axiTB.sv</spirit:name>
-        <spirit:fileType>systemVerilogSource</spirit:fileType>
+        <spirit:name>testbench/length_tb_behav.wcfg</spirit:name>
+        <spirit:fileType>unknown</spirit:fileType>
         <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
-        <spirit:userFileType>USED_IN_testbench</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -849,11 +882,11 @@
         <xilinx:xpmLibrary>XPM_FIFO</xilinx:xpmLibrary>
         <xilinx:xpmLibrary>XPM_MEMORY</xilinx:xpmLibrary>
       </xilinx:xpmLibraries>
-      <xilinx:coreRevision>10</xilinx:coreRevision>
+      <xilinx:coreRevision>13</xilinx:coreRevision>
       <xilinx:upgrades>
         <xilinx:canUpgradeFrom>RHIT:user:ch_unit_tl:1.0</xilinx:canUpgradeFrom>
       </xilinx:upgrades>
-      <xilinx:coreCreationDateTime>2021-01-26T01:47:19Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2021-02-02T20:06:12Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="nopcore"/>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@309c6d43_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
@@ -1459,14 +1492,65 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@2f28cc71_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@23709aa7_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@4e5692c0_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@33f72d3_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7003f27c_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@26311916_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@44ba9918_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3f52c7a7_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a2c45ef_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e37dc04_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ccca5c0_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@38444f4e_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6274e88f_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2ee38507_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@220505a4_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5c1e50f7_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@31e53ea4_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5665cb4_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@58957588_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54c8b6a1_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1c1bff32_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e5da0e_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28c08954_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@23ba3d9a_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@78d4257a_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4aca2d8d_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@36f05e66_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@45db7720_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@409a8dcc_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a5eda3d_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@369cc1c2_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ac93b29_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@523a05c5_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@66d14473_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7029c77a_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@413c2b88_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d4cfb6d_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@16bdc46c_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@205bedb8_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6672f61_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f4881cc_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3cb32618_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1879885e_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@570294a_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@25316bb4_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@298c9b4e_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f1add74_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@53248301_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@531f348f_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54f980a6_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@40ef8541_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1de96577_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@25984d07_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a12c23b_ARCHIVE_LOCATION">/home/mulholbn/Documents/Thesis/Kairos/ccs/Vivado/ip_sources/ch_unit</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2020.1</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="7fc92cc3"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="12615e29"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="92e079de"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="9cfde53c"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="69d60b50"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="1bbb9391"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="293a4e6e"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>

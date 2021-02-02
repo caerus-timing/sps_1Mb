@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="length_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="length_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="20740001fs"></ZoomEndTime>
+      <Cursor1Time time="18465000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="268"></NameColumnWidth>
+      <ValueColumnWidth column_width="127"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="22" />
+   <wvobject type="logic" fp_name="/length_tb/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/length_tb/resetN">
+      <obj_property name="ElementShortName">resetN</obj_property>
+      <obj_property name="ObjectShortName">resetN</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/length_tb/dIn">
+      <obj_property name="ElementShortName">dIn</obj_property>
+      <obj_property name="ObjectShortName">dIn</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/length_tb/samplePulse">
+      <obj_property name="ElementShortName">samplePulse</obj_property>
+      <obj_property name="ObjectShortName">samplePulse</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/length_tb/rateSelector">
+      <obj_property name="ElementShortName">rateSelector</obj_property>
+      <obj_property name="ObjectShortName">rateSelector</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/length_tb/enableSD">
+      <obj_property name="ElementShortName">enableSD</obj_property>
+      <obj_property name="ObjectShortName">enableSD</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/length_tb/completeConfig">
+      <obj_property name="ElementShortName">completeConfig</obj_property>
+      <obj_property name="ObjectShortName">completeConfig</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/length_tb/msgSize">
+      <obj_property name="ElementShortName">msgSize[3:0]</obj_property>
+      <obj_property name="ObjectShortName">msgSize[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/length_tb/enableID">
+      <obj_property name="ElementShortName">enableID</obj_property>
+      <obj_property name="ObjectShortName">enableID</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/length_tb/id">
+      <obj_property name="ElementShortName">id[31:0]</obj_property>
+      <obj_property name="ObjectShortName">id[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/length_tb/idCheckComplete">
+      <obj_property name="ElementShortName">idCheckComplete</obj_property>
+      <obj_property name="ObjectShortName">idCheckComplete</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/length_tb/idMatch">
+      <obj_property name="ElementShortName">idMatch</obj_property>
+      <obj_property name="ObjectShortName">idMatch</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/length_tb/samplePulseOS">
+      <obj_property name="ElementShortName">samplePulseOS</obj_property>
+      <obj_property name="ObjectShortName">samplePulseOS</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/length_tb/sD/prevBits">
+      <obj_property name="ElementShortName">prevBits[4:0]</obj_property>
+      <obj_property name="ObjectShortName">prevBits[4:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/length_tb/sD/validCounter">
+      <obj_property name="ElementShortName">validCounter[4:0]</obj_property>
+      <obj_property name="ObjectShortName">validCounter[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/length_tb/sD/currState">
+      <obj_property name="ElementShortName">currState[3:0]</obj_property>
+      <obj_property name="ObjectShortName">currState[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/length_tb/sD/nextState">
+      <obj_property name="ElementShortName">nextState[3:0]</obj_property>
+      <obj_property name="ObjectShortName">nextState[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/length_tb/idUnit/testData">
+      <obj_property name="ElementShortName">testData[31:0]</obj_property>
+      <obj_property name="ObjectShortName">testData[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/length_tb/sD/dlcShift">
+      <obj_property name="ElementShortName">dlcShift</obj_property>
+      <obj_property name="ObjectShortName">dlcShift</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/length_tb/sD/inDLC">
+      <obj_property name="ElementShortName">inDLC</obj_property>
+      <obj_property name="ObjectShortName">inDLC</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/length_tb/sD/stuffDetected">
+      <obj_property name="ElementShortName">stuffDetected</obj_property>
+      <obj_property name="ObjectShortName">stuffDetected</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/length_tb/sD/stuffOS">
+      <obj_property name="ElementShortName">stuffOS</obj_property>
+      <obj_property name="ObjectShortName">stuffOS</obj_property>
+   </wvobject>
+</wave_config>
