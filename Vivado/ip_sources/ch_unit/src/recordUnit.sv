@@ -43,7 +43,7 @@ module recordUnit
         end else begin
             if(incrementer == 6'b100000) begin
                 dataValid <= 1;
-            end else if(dataValid == 6'hC) begin
+            end else if(incrementer == 6'b1) begin
                 dataValid <= 0;
             end else begin
                 dataValid <= dataValid;
@@ -85,7 +85,7 @@ module recordUnit
             runningTotal <= 32'h00000000;
         end else begin
             if(shiftIn) begin
-                runningTotal <= {runningTotal, runningTotal[31:1]};
+                runningTotal <= {dIn, runningTotal[31:1]};
             end else begin
                 runningTotal <= runningTotal;
             end

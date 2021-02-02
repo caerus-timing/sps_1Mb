@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="record_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="record_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="1079001fs"></ZoomEndTime>
+      <Cursor1Time time="100000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="268"></NameColumnWidth>
+      <ValueColumnWidth column_width="123"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="12" />
+   <wvobject type="logic" fp_name="/record_tb/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/record_tb/resetN">
+      <obj_property name="ElementShortName">resetN</obj_property>
+      <obj_property name="ObjectShortName">resetN</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/record_tb/dIn">
+      <obj_property name="ElementShortName">dIn</obj_property>
+      <obj_property name="ObjectShortName">dIn</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/record_tb/samplePulse">
+      <obj_property name="ElementShortName">samplePulse</obj_property>
+      <obj_property name="ObjectShortName">samplePulse</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/record_tb/enable">
+      <obj_property name="ElementShortName">enable</obj_property>
+      <obj_property name="ObjectShortName">enable</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/record_tb/sig">
+      <obj_property name="ElementShortName">sig[31:0]</obj_property>
+      <obj_property name="ObjectShortName">sig[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/record_tb/valid">
+      <obj_property name="ElementShortName">valid</obj_property>
+      <obj_property name="ObjectShortName">valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/record_tb/runningTotal">
+      <obj_property name="ElementShortName">runningTotal[31:0]</obj_property>
+      <obj_property name="ObjectShortName">runningTotal[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/record_tb/incrementer">
+      <obj_property name="ElementShortName">incrementer[5:0]</obj_property>
+      <obj_property name="ObjectShortName">incrementer[5:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/record_tb/dut/samplePulse">
+      <obj_property name="ElementShortName">samplePulse</obj_property>
+      <obj_property name="ObjectShortName">samplePulse</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/record_tb/dut/shiftIn">
+      <obj_property name="ElementShortName">shiftIn</obj_property>
+      <obj_property name="ObjectShortName">shiftIn</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/record_tb/dut/shiftInUnGated">
+      <obj_property name="ElementShortName">shiftInUnGated</obj_property>
+      <obj_property name="ObjectShortName">shiftInUnGated</obj_property>
+   </wvobject>
+</wave_config>
