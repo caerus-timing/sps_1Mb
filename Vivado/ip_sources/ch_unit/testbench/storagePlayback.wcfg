@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="storagePlayback_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="dataSizes_pkg" />
+            <top_module name="dataTypes_pkg" />
+            <top_module name="glbl" />
+            <top_module name="storagePlayback_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="5000fs"></ZoomStartTime>
+      <ZoomEndTime time="10045001fs"></ZoomEndTime>
+      <Cursor1Time time="4055000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="268"></NameColumnWidth>
+      <ValueColumnWidth column_width="119"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="21" />
+   <wvobject type="group" fp_name="group135">
+      <obj_property name="label">Playback</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="array" fp_name="/storagePlayback_tb/playback/playbackSig">
+         <obj_property name="ElementShortName">playbackSig</obj_property>
+         <obj_property name="ObjectShortName">playbackSig</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/storagePlayback_tb/playback/requestNum">
+         <obj_property name="ElementShortName">requestNum[15:0]</obj_property>
+         <obj_property name="ObjectShortName">requestNum[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/storagePlayback_tb/playback/advFIFO">
+         <obj_property name="ElementShortName">advFIFO</obj_property>
+         <obj_property name="ObjectShortName">advFIFO</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/storagePlayback_tb/dOut">
+         <obj_property name="ElementShortName">dOut</obj_property>
+         <obj_property name="ObjectShortName">dOut</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/storagePlayback_tb/dEnable">
+         <obj_property name="ElementShortName">dEnable</obj_property>
+         <obj_property name="ObjectShortName">dEnable</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/storagePlayback_tb/playbackClk">
+         <obj_property name="ElementShortName">playbackClk</obj_property>
+         <obj_property name="ObjectShortName">playbackClk</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/storagePlayback_tb/enable">
+         <obj_property name="ElementShortName">enable</obj_property>
+         <obj_property name="ObjectShortName">enable</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/storagePlayback_tb/done">
+         <obj_property name="ElementShortName">done</obj_property>
+         <obj_property name="ObjectShortName">done</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group136">
+      <obj_property name="label">BRAM Connection</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="array" fp_name="/storagePlayback_tb/dataOut">
+         <obj_property name="ElementShortName">dataOut[31:0]</obj_property>
+         <obj_property name="ObjectShortName">dataOut[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/storagePlayback_tb/addrBRAM">
+         <obj_property name="ElementShortName">addrBRAM[14:0]</obj_property>
+         <obj_property name="ObjectShortName">addrBRAM[14:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/storagePlayback_tb/bramEnable">
+         <obj_property name="ElementShortName">bramEnable</obj_property>
+         <obj_property name="ObjectShortName">bramEnable</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/storagePlayback_tb/bramWe">
+         <obj_property name="ElementShortName">bramWe</obj_property>
+         <obj_property name="ObjectShortName">bramWe</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/storagePlayback_tb/clear">
+         <obj_property name="ElementShortName">clear</obj_property>
+         <obj_property name="ObjectShortName">clear</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/storagePlayback_tb/readData">
+         <obj_property name="ElementShortName">readData[31:0]</obj_property>
+         <obj_property name="ObjectShortName">readData[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/storagePlayback_tb/resetBusy">
+         <obj_property name="ElementShortName">resetBusy</obj_property>
+         <obj_property name="ObjectShortName">resetBusy</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group138">
+      <obj_property name="label">BRAM Controller</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/storagePlayback_tb/requestWrite">
+         <obj_property name="ElementShortName">requestWrite</obj_property>
+         <obj_property name="ObjectShortName">requestWrite</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/storagePlayback_tb/writeData">
+         <obj_property name="ElementShortName">writeData[31:0]</obj_property>
+         <obj_property name="ObjectShortName">writeData[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/storagePlayback_tb/pulseWrite">
+         <obj_property name="ElementShortName">pulseWrite</obj_property>
+         <obj_property name="ObjectShortName">pulseWrite</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/storagePlayback_tb/outputWrite_addr">
+         <obj_property name="ElementShortName">outputWrite_addr[15:0]</obj_property>
+         <obj_property name="ObjectShortName">outputWrite_addr[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/storagePlayback_tb/requestAddr">
+         <obj_property name="ElementShortName">requestAddr[15:0]</obj_property>
+         <obj_property name="ObjectShortName">requestAddr[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/storagePlayback_tb/writeDataCount">
+         <obj_property name="ElementShortName">writeDataCount[7:0]</obj_property>
+         <obj_property name="ObjectShortName">writeDataCount[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/storagePlayback_tb/controller/currState_r">
+         <obj_property name="ElementShortName">currState_r[3:0]</obj_property>
+         <obj_property name="ObjectShortName">currState_r[3:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="array" fp_name="/storagePlayback_tb/baseAddr">
+      <obj_property name="ElementShortName">baseAddr[8:0]</obj_property>
+      <obj_property name="ObjectShortName">baseAddr[8:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/storagePlayback_tb/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/storagePlayback_tb/resetN">
+      <obj_property name="ElementShortName">resetN</obj_property>
+      <obj_property name="ObjectShortName">resetN</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/storagePlayback_tb/advFIFO">
+      <obj_property name="ElementShortName">advFIFO</obj_property>
+      <obj_property name="ObjectShortName">advFIFO</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/storagePlayback_tb/run">
+      <obj_property name="ElementShortName">run</obj_property>
+      <obj_property name="ObjectShortName">run</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/storagePlayback_tb/requestData">
+      <obj_property name="ElementShortName">requestData[31:0]</obj_property>
+      <obj_property name="ObjectShortName">requestData[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/storagePlayback_tb/numReads">
+      <obj_property name="ElementShortName">numReads[15:0]</obj_property>
+      <obj_property name="ObjectShortName">numReads[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/storagePlayback_tb/dataValid">
+      <obj_property name="ElementShortName">dataValid</obj_property>
+      <obj_property name="ObjectShortName">dataValid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/storagePlayback_tb/requestRead">
+      <obj_property name="ElementShortName">requestRead</obj_property>
+      <obj_property name="ObjectShortName">requestRead</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/storagePlayback_tb/enableStore">
+      <obj_property name="ElementShortName">enableStore</obj_property>
+      <obj_property name="ObjectShortName">enableStore</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/storagePlayback_tb/returnToBaseAddr">
+      <obj_property name="ElementShortName">returnToBaseAddr</obj_property>
+      <obj_property name="ObjectShortName">returnToBaseAddr</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/storagePlayback_tb/incrementAddr">
+      <obj_property name="ElementShortName">incrementAddr</obj_property>
+      <obj_property name="ObjectShortName">incrementAddr</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/storagePlayback_tb/currOut">
+      <obj_property name="ElementShortName">currOut[31:0]</obj_property>
+      <obj_property name="ObjectShortName">currOut[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/storagePlayback_tb/writeDBG">
+      <obj_property name="ElementShortName">writeDBG</obj_property>
+      <obj_property name="ObjectShortName">writeDBG</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/storagePlayback_tb/pointerDBG">
+      <obj_property name="ElementShortName">pointerDBG[7:0]</obj_property>
+      <obj_property name="ObjectShortName">pointerDBG[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/storagePlayback_tb/dut/currState">
+      <obj_property name="ElementShortName">currState[2:0]</obj_property>
+      <obj_property name="ObjectShortName">currState[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/storagePlayback_tb/dut/nextState">
+      <obj_property name="ElementShortName">nextState[2:0]</obj_property>
+      <obj_property name="ObjectShortName">nextState[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/storagePlayback_tb/dut/storedFetches">
+      <obj_property name="ElementShortName">storedFetches[8:0]</obj_property>
+      <obj_property name="ObjectShortName">storedFetches[8:0]</obj_property>
+   </wvobject>
+</wave_config>

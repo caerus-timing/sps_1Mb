@@ -74,8 +74,7 @@ module record_tb();
         resetN = 1;
         #25
         enable = 1;
-        #5;
-        #2; //Get off cycle from the sample clock to show async capabilities
+        #10;
         bitZero();
         bitZero();
         bitZero();

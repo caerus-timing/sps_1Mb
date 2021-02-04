@@ -68,8 +68,8 @@ module recordMaster
     logic incrementI;
     logic resetI;
 
-    typedef enum logic[3:0] {s_init, s_hold, s_waitInc, s_increment, s_cmdHold, s_checkValid, s_reqWord, s_wait0, s_shiftFinMsg,
-        s_finCheck, s_valid, s_invalid, s_resetCache, s_sendCommitSig, s_incSend, s_wait1} record_t;
+    typedef enum logic[4:0] {s_init, s_hold, s_waitInc, s_increment, s_cmdHold, s_checkValid, s_reqWord, s_wait0, s_shiftFinMsg,
+        s_finCheck, s_valid, s_invalid, s_resetCache, s_sendCommitSig, s_incSend, s_wait1, s_wait2} record_t;
 
     (* fsm_encoding = "sequential" *) (* mark_debug = "true" *) record_t currState, nextState;
 
@@ -83,7 +83,7 @@ module recordMaster
         .runningTotal(currRecordSample), .incrementer(currBit));
 
     //Signal Storage
-    sigStorage #(.DEPTH(DEPTH)) sStore(.clk, .resetN(resetStore), .baseAddr(9'b0), .numFetches(1'b1), .storeConfig(storeConfig),
+    sigStorage #(.DEPTH(DEPTH)) sStore(.clk, .resetN(resetStore), .baseAddr(9'b0), .numFetches({15'b0,1'b1}), .storeConfig(storeConfig),
         .fetch(read), .returnToBaseAddr(returnToStart), .request, .incrementAddr(incrementAddr), .bramIn(recordOut), .playbackOut);
 
     oneshot os(.clk, .resetN, .pulse(recordValid), .oneshot(recordValidOS));
@@ -106,14 +106,14 @@ module recordMaster
 
     //32 bit Equals Detector & 6 bit rundetector
     always_comb begin
-        detected = (playbackOut.rawMemData == 32'h0)  || (slidingValStorage[5:0] == 6'b0);
+        detected = (playbackOut == 0)  || (slidingValStorage[5:0] == 6'b0);
     end
 
     //Final Message Shifting
     always_ff @(posedge clk) begin
         if(!resetN) begin
             finalShiftCount <= 0;
-            finalValueShiftStorage <= 0;
+            finalValueShiftStorage <= 32'hFFFFFFFF;
         end else begin
             if(latchFinalMsg) begin
                 finalValueShiftStorage <= currRecordSample;
@@ -124,7 +124,7 @@ module recordMaster
                         finalShiftCount <= finalShiftCount + 1;
                         finalValueShiftStorage <= {1'b1, finalValueShiftStorage[31:1]};
                     end else begin
-                        finalValueShiftStorage <= finalShiftCount;
+                        finalValueShiftStorage <= finalValueShiftStorage;
                         finalShiftCount <= 6'h3F;
                     end
                 end else begin
@@ -138,7 +138,7 @@ module recordMaster
     //FinalMessageDetect
     always_ff @(posedge clk) begin
         if(!resetN) begin
-            slidingValStorage <= 0;
+            slidingValStorage <= 64'hFFFFFFFFFFFFFFFF;
             slidingCounter <= 0;
         end else begin
             if(latchSliding) begin
@@ -216,7 +216,7 @@ module recordMaster
         end
     end
 
-    /*typedef enum logic[3:0] {s_init, s_hold, s_waitInc, s_increment, s_cmdHold, s_checkValid, s_reqWord, s_wait0, s_shiftFinMsg,
+    /*typedef enum logic[3:0] {s_init, s_hold, s_waitInc, s_increment, s_cmdHold, s_checkValid, s_reqWord, s_wait0, s_shiftFinMsg, s_wait2,
         s_finCheck, s_valid, s_invalid, s_resetCache, s_sendCommitSig, s_incSend, s_wait1} record_t;
     */
 
@@ -258,10 +258,13 @@ module recordMaster
                 if(writeOut) begin
                     nextState = s_sendCommitSig;
                 end else if(determineOW) begin
-                    nextState = s_checkValid;
+                    nextState = s_wait2;
                 end else begin
                     nextState = currState;
                 end
+            end
+            s_wait2: begin
+                nextState = s_checkValid;
             end
             s_checkValid: begin
                 if(detected) begin
@@ -274,7 +277,7 @@ module recordMaster
                 nextState = currState.next;
             end
             s_wait0: begin
-                if((i-1) < counter) begin
+                if((i-2) < counter) begin
                     nextState = s_checkValid;
                 end
                 else begin
@@ -316,98 +319,98 @@ module recordMaster
     always_comb begin
         unique case(currState)
             s_init, s_checkValid, s_wait1: begin
-                {resetCounter, resetI, resetValid, clearStoreN} = 4'b0000;                          //Reset
+                {resetCounter, resetI, resetValid, clearStoreN} = 4'b0001;                          //Reset
                 {latchFinalMsg, latchSliding, latchValid, latchInvalid, storeConfig} = 5'b00000;    //Latches
                 {slide,shiftFinalMsg} = 2'b00;                                                      //Shift Register Commands
                 {incrementAddr, incrementI} = 2'b00;                                                //Incrementers
                 {pulseWrite, returnToStart, read} = 3'b000;                                         //Storage Commands
             end
             s_hold: begin
-                {resetCounter, resetI, resetValid, clearStoreN} = 4'b1101;                          //Reset
+                {resetCounter, resetI, resetValid, clearStoreN} = 4'b1100;                          //Reset
                 {latchFinalMsg, latchSliding, latchValid, latchInvalid, storeConfig} = 5'b00011;    //Latches
                 {slide,shiftFinalMsg} = 2'b00;                                                      //Shift Register Commands
                 {incrementAddr, incrementI} = 2'b00;                                                //Incrementers
                 {pulseWrite, returnToStart, read} = 3'b010;                                         //Storage Commands
             end
             s_waitInc: begin
-                {resetCounter, resetI, resetValid, clearStoreN} = 4'b0010;                          //Reset
+                {resetCounter, resetI, resetValid, clearStoreN} = 4'b0011;                          //Reset
                 {latchFinalMsg, latchSliding, latchValid, latchInvalid, storeConfig} = 5'b00000;    //Latches
                 {slide,shiftFinalMsg} = 2'b00;                                                      //Shift Register Commands
                 {incrementAddr, incrementI} = 2'b00;                                                //Incrementers
                 {pulseWrite, returnToStart, read} = 3'b000;                                         //Storage Commands
             end
             s_increment: begin
-                {resetCounter, resetI, resetValid, clearStoreN} = 4'b0010;                          //Reset
+                {resetCounter, resetI, resetValid, clearStoreN} = 4'b0011;                          //Reset
                 {latchFinalMsg, latchSliding, latchValid, latchInvalid, storeConfig} = 5'b00000;    //Latches
                 {slide,shiftFinalMsg} = 2'b00;                                                      //Shift Register Commands
                 {incrementAddr, incrementI} = 2'b00;                                                //Incrementers
                 {pulseWrite, returnToStart, read} = 3'b001;                                         //Storage Commands
             end
-            s_cmdHold: begin
-                {resetCounter, resetI, resetValid, clearStoreN} = 4'b0000;                          //Reset
+            s_cmdHold, s_wait2: begin
+                {resetCounter, resetI, resetValid, clearStoreN} = 4'b0001;                          //Reset
                 {latchFinalMsg, latchSliding, latchValid, latchInvalid, storeConfig} = 5'b00000;    //Latches
                 {slide,shiftFinalMsg} = 2'b00;                                                      //Shift Register Commands
                 {incrementAddr, incrementI} = 2'b00;                                                //Incrementers
                 {pulseWrite, returnToStart, read} = 3'b010;                                         //Storage Commands
             end
             s_reqWord: begin
-                {resetCounter, resetI, resetValid, clearStoreN} = 4'b0000;                          //Reset
+                {resetCounter, resetI, resetValid, clearStoreN} = 4'b0001;                          //Reset
                 {latchFinalMsg, latchSliding, latchValid, latchInvalid, storeConfig} = 5'b00000;    //Latches
                 {slide,shiftFinalMsg} = 2'b00;                                                      //Shift Register Commands
                 {incrementAddr, incrementI} = 2'b11;                                                //Incrementers
                 {pulseWrite, returnToStart, read} = 3'b000;                                         //Storage Commands
             end
             s_wait0: begin
-                {resetCounter, resetI, resetValid, clearStoreN} = 4'b0000;                          //Reset
+                {resetCounter, resetI, resetValid, clearStoreN} = 4'b0001;                          //Reset
                 {latchFinalMsg, latchSliding, latchValid, latchInvalid, storeConfig} = 5'b10000;    //Latches
                 {slide,shiftFinalMsg} = 2'b00;                                                      //Shift Register Commands
                 {incrementAddr, incrementI} = 2'b00;                                                //Incrementers
                 {pulseWrite, returnToStart, read} = 3'b000;                                         //Storage Commands
             end
             s_shiftFinMsg: begin
-                {resetCounter, resetI, resetValid, clearStoreN} = 4'b0000;                          //Reset
+                {resetCounter, resetI, resetValid, clearStoreN} = 4'b0001;                          //Reset
                 {latchFinalMsg, latchSliding, latchValid, latchInvalid, storeConfig} = 5'b01000;    //Latches
                 {slide,shiftFinalMsg} = 2'b01;                                                      //Shift Register Commands
                 {incrementAddr, incrementI} = 2'b00;                                                //Incrementers
                 {pulseWrite, returnToStart, read} = 3'b000;                                         //Storage Commands
             end
             s_finCheck: begin
-                {resetCounter, resetI, resetValid, clearStoreN} = 4'b0000;                          //Reset
+                {resetCounter, resetI, resetValid, clearStoreN} = 4'b0001;                          //Reset
                 {latchFinalMsg, latchSliding, latchValid, latchInvalid, storeConfig} = 5'b00000;    //Latches
                 {slide,shiftFinalMsg} = 2'b10;                                                      //Shift Register Commands
                 {incrementAddr, incrementI} = 2'b00;                                                //Incrementers
                 {pulseWrite, returnToStart, read} = 3'b000;                                         //Storage Commands
             end
             s_valid: begin
-                {resetCounter, resetI, resetValid, clearStoreN} = 4'b0000;                          //Reset
-                {latchFinalMsg, latchSliding, latchValid, latchInvalid, storeConfig} = 5'b00100;    //Latches
-                {slide,shiftFinalMsg} = 2'b00;                                                      //Shift Register Commands
-                {incrementAddr, incrementI} = 2'b00;                                                //Incrementers
-                {pulseWrite, returnToStart, read} = 3'b000;                                         //Storage Commands
-            end
-            s_invalid: begin
-                {resetCounter, resetI, resetValid, clearStoreN} = 4'b0000;                          //Reset
+                {resetCounter, resetI, resetValid, clearStoreN} = 4'b0001;                          //Reset
                 {latchFinalMsg, latchSliding, latchValid, latchInvalid, storeConfig} = 5'b00010;    //Latches
                 {slide,shiftFinalMsg} = 2'b00;                                                      //Shift Register Commands
                 {incrementAddr, incrementI} = 2'b00;                                                //Incrementers
                 {pulseWrite, returnToStart, read} = 3'b000;                                         //Storage Commands
             end
+            s_invalid: begin
+                {resetCounter, resetI, resetValid, clearStoreN} = 4'b0001;                          //Reset
+                {latchFinalMsg, latchSliding, latchValid, latchInvalid, storeConfig} = 5'b00100;    //Latches
+                {slide,shiftFinalMsg} = 2'b00;                                                      //Shift Register Commands
+                {incrementAddr, incrementI} = 2'b00;                                                //Incrementers
+                {pulseWrite, returnToStart, read} = 3'b000;                                         //Storage Commands
+            end
             s_resetCache: begin
-                {resetCounter, resetI, resetValid, clearStoreN} = 4'b1101;                          //Reset
+                {resetCounter, resetI, resetValid, clearStoreN} = 4'b1100;                          //Reset
                 {latchFinalMsg, latchSliding, latchValid, latchInvalid, storeConfig} = 5'b00000;    //Latches
                 {slide,shiftFinalMsg} = 2'b00;                                                      //Shift Register Commands
                 {incrementAddr, incrementI} = 2'b00;                                                //Incrementers
                 {pulseWrite, returnToStart, read} = 3'b010;                                         //Storage Commands
             end
             s_sendCommitSig: begin
-                {resetCounter, resetI, resetValid, clearStoreN} = 4'b0000;                          //Reset
+                {resetCounter, resetI, resetValid, clearStoreN} = 4'b0001;                          //Reset
                 {latchFinalMsg, latchSliding, latchValid, latchInvalid, storeConfig} = 5'b00000;    //Latches
                 {slide,shiftFinalMsg} = 2'b00;                                                      //Shift Register Commands
                 {incrementAddr, incrementI} = 2'b00;                                                //Incrementers
                 {pulseWrite, returnToStart, read} = 3'b100;                                         //Storage Commands
             end
             s_incSend: begin
-                {resetCounter, resetI, resetValid, clearStoreN} = 4'b0000;                          //Reset
+                {resetCounter, resetI, resetValid, clearStoreN} = 4'b0001;                          //Reset
                 {latchFinalMsg, latchSliding, latchValid, latchInvalid, storeConfig} = 5'b00000;    //Latches
                 {slide,shiftFinalMsg} = 2'b00;                                                      //Shift Register Commands
                 {incrementAddr, incrementI} = 2'b11;                                                //Incrementers

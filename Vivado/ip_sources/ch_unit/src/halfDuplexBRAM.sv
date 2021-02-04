@@ -46,7 +46,7 @@ module halfDuplex
 		input logic writeReq,
 		output logic [BRAM_DATA_SIZE - 1: 0] requestData,
 		output logic dataValid,
-		output logic [$clog2(256):0] wr_data_count,
+		output logic [$clog2(256)-1:0] wr_data_count,
 
 		//TODO: Add Write capabilities. Not needed for part 1.
 
@@ -135,7 +135,7 @@ module halfDuplex
 	   end else if(ctrl_sem == 2'b10) begin
 	       addr = addr_w;
 	   end else begin
-	       addr = 14'bZ;
+	       addr = 14'b0;
 	   end
 	end
 

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="sigRecord_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="dataSizes_pkg" />
+            <top_module name="dataTypes_pkg" />
+            <top_module name="glbl" />
+            <top_module name="sigRecord_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="107500001fs"></ZoomEndTime>
+      <Cursor1Time time="7344567fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="268"></NameColumnWidth>
+      <ValueColumnWidth column_width="123"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="23" />
+   <wvobject type="logic" fp_name="/sigRecord_tb/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/sigRecord_tb/resetN">
+      <obj_property name="ElementShortName">resetN</obj_property>
+      <obj_property name="ObjectShortName">resetN</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group27">
+      <obj_property name="label">Record Unit</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/sigRecord_tb/enable">
+         <obj_property name="ElementShortName">enable</obj_property>
+         <obj_property name="ObjectShortName">enable</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sigRecord_tb/incrementer">
+         <obj_property name="ElementShortName">incrementer[5:0]</obj_property>
+         <obj_property name="ObjectShortName">incrementer[5:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="AnalogYRangeType">ANALOG_YRANGETYPE_AUTO</obj_property>
+         <obj_property name="AnalogYRangeMin">0.000000</obj_property>
+         <obj_property name="AnalogYRRangeMax">0.000000</obj_property>
+         <obj_property name="AnalogInterpolation">ANALOG_INTERPOLATION_LINEAR</obj_property>
+         <obj_property name="AnalogOffscale">ANALOG_OFFSCALE_HIDE</obj_property>
+         <obj_property name="AnalogHorizLine">0.000000</obj_property>
+         <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sigRecord_tb/runningTotal">
+         <obj_property name="ElementShortName">runningTotal[31:0]</obj_property>
+         <obj_property name="ObjectShortName">runningTotal[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sigRecord_tb/samplePulse">
+         <obj_property name="ElementShortName">samplePulse</obj_property>
+         <obj_property name="ObjectShortName">samplePulse</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sigRecord_tb/dIn">
+         <obj_property name="ElementShortName">dIn</obj_property>
+         <obj_property name="ObjectShortName">dIn</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="array" fp_name="/sigRecord_tb/sig">
+      <obj_property name="ElementShortName">sig[31:0]</obj_property>
+      <obj_property name="ObjectShortName">sig[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/sigRecord_tb/valid">
+      <obj_property name="ElementShortName">valid</obj_property>
+      <obj_property name="ObjectShortName">valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/sigRecord_tb/baseAddr">
+      <obj_property name="ElementShortName">baseAddr[8:0]</obj_property>
+      <obj_property name="ObjectShortName">baseAddr[8:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/sigRecord_tb/numFetches">
+      <obj_property name="ElementShortName">numFetches[8:0]</obj_property>
+      <obj_property name="ObjectShortName">numFetches[8:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/sigRecord_tb/enableStore">
+      <obj_property name="ElementShortName">enableStore</obj_property>
+      <obj_property name="ObjectShortName">enableStore</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/sigRecord_tb/returnToBaseAddr">
+      <obj_property name="ElementShortName">returnToBaseAddr</obj_property>
+      <obj_property name="ObjectShortName">returnToBaseAddr</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/sigRecord_tb/request">
+      <obj_property name="ElementShortName">request</obj_property>
+      <obj_property name="ObjectShortName">request</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/sigRecord_tb/incrementAddr">
+      <obj_property name="ElementShortName">incrementAddr</obj_property>
+      <obj_property name="ObjectShortName">incrementAddr</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/sigRecord_tb/currOut">
+      <obj_property name="ElementShortName">currOut[31:0]</obj_property>
+      <obj_property name="ObjectShortName">currOut[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/sigRecord_tb/writeDBG">
+      <obj_property name="ElementShortName">writeDBG</obj_property>
+      <obj_property name="ObjectShortName">writeDBG</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/sigRecord_tb/pointerDBG">
+      <obj_property name="ElementShortName">pointerDBG[7:0]</obj_property>
+      <obj_property name="ObjectShortName">pointerDBG[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/sigRecord_tb/dut/storedBase">
+      <obj_property name="ElementShortName">storedBase[7:0]</obj_property>
+      <obj_property name="ObjectShortName">storedBase[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/sigRecord_tb/dut/storedFetches">
+      <obj_property name="ElementShortName">storedFetches[8:0]</obj_property>
+      <obj_property name="ObjectShortName">storedFetches[8:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/sigRecord_tb/dut/delayCounter">
+      <obj_property name="ElementShortName">delayCounter[2:0]</obj_property>
+      <obj_property name="ObjectShortName">delayCounter[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/sigRecord_tb/dut/fetchCounter">
+      <obj_property name="ElementShortName">fetchCounter[8:0]</obj_property>
+      <obj_property name="ObjectShortName">fetchCounter[8:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/sigRecord_tb/dut/incrementOS">
+      <obj_property name="ElementShortName">incrementOS</obj_property>
+      <obj_property name="ObjectShortName">incrementOS</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/sigRecord_tb/dut/currState">
+      <obj_property name="ElementShortName">currState[2:0]</obj_property>
+      <obj_property name="ObjectShortName">currState[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/sigRecord_tb/dut/xpm_memory_spram_inst/dina">
+      <obj_property name="ElementShortName">dina[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dina[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/sigRecord_tb/dut/xpm_memory_spram_inst/rsta">
+      <obj_property name="ElementShortName">rsta</obj_property>
+      <obj_property name="ObjectShortName">rsta</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/sigRecord_tb/dut/xpm_memory_spram_inst/ena">
+      <obj_property name="ElementShortName">ena</obj_property>
+      <obj_property name="ObjectShortName">ena</obj_property>
+   </wvobject>
+</wave_config>

@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="delayTL_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="dataSizes_pkg" />
+            <top_module name="dataTypes_pkg" />
+            <top_module name="delayTL_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="234110000fs"></ZoomStartTime>
+      <ZoomEndTime time="242670001fs"></ZoomEndTime>
+      <Cursor1Time time="241240000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="311"></NameColumnWidth>
+      <ValueColumnWidth column_width="227"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="13" />
+   <wave_markers>
+      <marker label="" time="245020000" />
+   </wave_markers>
+   <wvobject type="logic" fp_name="/delayTL_tb/resetN">
+      <obj_property name="ElementShortName">resetN</obj_property>
+      <obj_property name="ObjectShortName">resetN</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group491">
+      <obj_property name="label">Configuration Data</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="array" fp_name="/delayTL_tb/canID">
+         <obj_property name="ElementShortName">canID[31:0]</obj_property>
+         <obj_property name="ObjectShortName">canID[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/baudRate">
+         <obj_property name="ElementShortName">baudRate[31:0]</obj_property>
+         <obj_property name="ObjectShortName">baudRate[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/owRate">
+         <obj_property name="ElementShortName">owRate[31:0]</obj_property>
+         <obj_property name="ObjectShortName">owRate[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/invalidRate">
+         <obj_property name="ElementShortName">invalidRate[31:0]</obj_property>
+         <obj_property name="ObjectShortName">invalidRate[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/validRate">
+         <obj_property name="ElementShortName">validRate[31:0]</obj_property>
+         <obj_property name="ObjectShortName">validRate[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/recordRate">
+         <obj_property name="ElementShortName">recordRate[31:0]</obj_property>
+         <obj_property name="ObjectShortName">recordRate[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/crcRate">
+         <obj_property name="ElementShortName">crcRate[31:0]</obj_property>
+         <obj_property name="ObjectShortName">crcRate[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/sizeOW">
+         <obj_property name="ElementShortName">sizeOW[15:0]</obj_property>
+         <obj_property name="ObjectShortName">sizeOW[15:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/sizeInvalid">
+         <obj_property name="ElementShortName">sizeInvalid[15:0]</obj_property>
+         <obj_property name="ObjectShortName">sizeInvalid[15:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/sizeValid">
+         <obj_property name="ElementShortName">sizeValid[15:0]</obj_property>
+         <obj_property name="ObjectShortName">sizeValid[15:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/sizeCRC">
+         <obj_property name="ElementShortName">sizeCRC[15:0]</obj_property>
+         <obj_property name="ObjectShortName">sizeCRC[15:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/initOW">
+         <obj_property name="ElementShortName">initOW[15:0]</obj_property>
+         <obj_property name="ObjectShortName">initOW[15:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/initInvalid">
+         <obj_property name="ElementShortName">initInvalid[15:0]</obj_property>
+         <obj_property name="ObjectShortName">initInvalid[15:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/initValid">
+         <obj_property name="ElementShortName">initValid[15:0]</obj_property>
+         <obj_property name="ObjectShortName">initValid[15:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/initCRC">
+         <obj_property name="ElementShortName">initCRC[15:0]</obj_property>
+         <obj_property name="ObjectShortName">initCRC[15:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group492">
+      <obj_property name="label">I/O</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/delayTL_tb/outSwitch">
+         <obj_property name="ElementShortName">outSwitch</obj_property>
+         <obj_property name="ObjectShortName">outSwitch</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/sampleOut">
+         <obj_property name="ElementShortName">sampleOut</obj_property>
+         <obj_property name="ObjectShortName">sampleOut</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/dIn">
+         <obj_property name="ElementShortName">dIn</obj_property>
+         <obj_property name="ObjectShortName">dIn</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/interrupt">
+         <obj_property name="ElementShortName">interrupt</obj_property>
+         <obj_property name="ObjectShortName">interrupt</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="logic" fp_name="/delayTL_tb/dut/canClk">
+      <obj_property name="ElementShortName">canClk</obj_property>
+      <obj_property name="ObjectShortName">canClk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/delayTL_tb/enable">
+      <obj_property name="ElementShortName">enable</obj_property>
+      <obj_property name="ObjectShortName">enable</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group493">
+      <obj_property name="label">BRAM</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="array" fp_name="/delayTL_tb/readData">
+         <obj_property name="ElementShortName">readData[31:0]</obj_property>
+         <obj_property name="ObjectShortName">readData[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/resetBusy">
+         <obj_property name="ElementShortName">resetBusy</obj_property>
+         <obj_property name="ObjectShortName">resetBusy</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/writeData">
+         <obj_property name="ElementShortName">writeData[31:0]</obj_property>
+         <obj_property name="ObjectShortName">writeData[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/bramEnable">
+         <obj_property name="ElementShortName">bramEnable</obj_property>
+         <obj_property name="ObjectShortName">bramEnable</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/bramWe">
+         <obj_property name="ElementShortName">bramWe</obj_property>
+         <obj_property name="ObjectShortName">bramWe</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/addr">
+         <obj_property name="ElementShortName">addr[14:0]</obj_property>
+         <obj_property name="ObjectShortName">addr[14:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="logic" fp_name="/delayTL_tb/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group517">
+      <obj_property name="label">Top Level</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="group" fp_name="group533">
+         <obj_property name="label">Initial StateMachine</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="group" fp_name="group534">
+            <obj_property name="label">Output</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/startWriteOW">
+               <obj_property name="ElementShortName">startWriteOW</obj_property>
+               <obj_property name="ObjectShortName">startWriteOW</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/startWriteInvalid">
+               <obj_property name="ElementShortName">startWriteInvalid</obj_property>
+               <obj_property name="ObjectShortName">startWriteInvalid</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/startWriteValid">
+               <obj_property name="ElementShortName">startWriteValid</obj_property>
+               <obj_property name="ObjectShortName">startWriteValid</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/startWriteCRC">
+               <obj_property name="ElementShortName">startWriteCRC</obj_property>
+               <obj_property name="ObjectShortName">startWriteCRC</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/storeConfigOW">
+               <obj_property name="ElementShortName">storeConfigOW</obj_property>
+               <obj_property name="ObjectShortName">storeConfigOW</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/storeConfigInvalid">
+               <obj_property name="ElementShortName">storeConfigInvalid</obj_property>
+               <obj_property name="ObjectShortName">storeConfigInvalid</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/storeConfigValid">
+               <obj_property name="ElementShortName">storeConfigValid</obj_property>
+               <obj_property name="ObjectShortName">storeConfigValid</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/storeConfigCRC">
+               <obj_property name="ElementShortName">storeConfigCRC</obj_property>
+               <obj_property name="ObjectShortName">storeConfigCRC</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/readReq">
+               <obj_property name="ElementShortName">readReq</obj_property>
+               <obj_property name="ObjectShortName">readReq</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/rstIN">
+               <obj_property name="ElementShortName">rstIN</obj_property>
+               <obj_property name="ObjectShortName">rstIN</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/delayTL_tb/dut/sigSelector">
+               <obj_property name="ElementShortName">sigSelector[1:0]</obj_property>
+               <obj_property name="ObjectShortName">sigSelector[1:0]</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/clearReadFIFO">
+               <obj_property name="ElementShortName">clearReadFIFO</obj_property>
+               <obj_property name="ObjectShortName">clearReadFIFO</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="group535">
+            <obj_property name="label">Input</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/dataValid">
+               <obj_property name="ElementShortName">dataValid</obj_property>
+               <obj_property name="ObjectShortName">dataValid</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/delayTL_tb/dut/sigSize">
+               <obj_property name="ElementShortName">sigSize[15:0]</obj_property>
+               <obj_property name="ObjectShortName">sigSize[15:0]</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/delayTL_tb/dut/i">
+               <obj_property name="ElementShortName">i[15:0]</obj_property>
+               <obj_property name="ObjectShortName">i[15:0]</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/setValues">
+               <obj_property name="ElementShortName">setValues</obj_property>
+               <obj_property name="ObjectShortName">setValues</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject type="array" fp_name="/delayTL_tb/dut/currInit">
+            <obj_property name="ElementShortName">currInit[4:0]</obj_property>
+            <obj_property name="ObjectShortName">currInit[4:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/delayTL_tb/dut/nextInit">
+            <obj_property name="ElementShortName">nextInit[4:0]</obj_property>
+            <obj_property name="ObjectShortName">nextInit[4:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/dut/currState">
+         <obj_property name="ElementShortName">currState[5:0]</obj_property>
+         <obj_property name="ObjectShortName">currState[5:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/dut/nextState">
+         <obj_property name="ElementShortName">nextState[5:0]</obj_property>
+         <obj_property name="ObjectShortName">nextState[5:0]</obj_property>
+      </wvobject>
+      <wvobject type="group" fp_name="group541">
+         <obj_property name="label">State Machine Input</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="logic" fp_name="/delayTL_tb/dut/setupRunning">
+            <obj_property name="ElementShortName">setupRunning</obj_property>
+            <obj_property name="ObjectShortName">setupRunning</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/delayTL_tb/dut/postInterframeReq">
+            <obj_property name="ElementShortName">postInterframeReq</obj_property>
+            <obj_property name="ObjectShortName">postInterframeReq</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/delayTL_tb/dut/canClkCounter">
+            <obj_property name="ElementShortName">canClkCounter[7:0]</obj_property>
+            <obj_property name="ObjectShortName">canClkCounter[7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/delayTL_tb/dut/overWrite">
+            <obj_property name="ElementShortName">overWrite</obj_property>
+            <obj_property name="ObjectShortName">overWrite</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/delayTL_tb/dut/idValidation">
+            <obj_property name="ElementShortName">idValidation</obj_property>
+            <obj_property name="ObjectShortName">idValidation</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/delayTL_tb/dut/idMatch">
+            <obj_property name="ElementShortName">idMatch</obj_property>
+            <obj_property name="ObjectShortName">idMatch</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/delayTL_tb/dut/complete">
+            <obj_property name="ElementShortName">complete</obj_property>
+            <obj_property name="ObjectShortName">complete</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/delayTL_tb/dut/sizeDetected">
+            <obj_property name="ElementShortName">sizeDetected</obj_property>
+            <obj_property name="ObjectShortName">sizeDetected</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/delayTL_tb/dut/msgLength">
+            <obj_property name="ElementShortName">msgLength[3:0]</obj_property>
+            <obj_property name="ObjectShortName">msgLength[3:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/delayTL_tb/dut/recordEnable">
+            <obj_property name="ElementShortName">recordEnable</obj_property>
+            <obj_property name="ObjectShortName">recordEnable</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/delayTL_tb/dut/recordOpDone">
+            <obj_property name="ElementShortName">recordOpDone</obj_property>
+            <obj_property name="ObjectShortName">recordOpDone</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/delayTL_tb/dut/dataValid">
+            <obj_property name="ElementShortName">dataValid</obj_property>
+            <obj_property name="ObjectShortName">dataValid</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/delayTL_tb/dut/complete">
+            <obj_property name="ElementShortName">complete</obj_property>
+            <obj_property name="ObjectShortName">complete</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group556">
+         <obj_property name="label">State Machine Output</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="group" fp_name="group557">
+            <obj_property name="label">Recording Unit Signals</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/runRecord">
+               <obj_property name="ElementShortName">runRecord</obj_property>
+               <obj_property name="ObjectShortName">runRecord</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/stopOnPlayback">
+               <obj_property name="ElementShortName">stopOnPlayback</obj_property>
+               <obj_property name="ObjectShortName">stopOnPlayback</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/writeRecording">
+               <obj_property name="ElementShortName">writeRecording</obj_property>
+               <obj_property name="ObjectShortName">writeRecording</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/calcRecording">
+               <obj_property name="ElementShortName">calcRecording</obj_property>
+               <obj_property name="ObjectShortName">calcRecording</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="group562">
+            <obj_property name="label">Return to Base Addr</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/returnOW">
+               <obj_property name="ElementShortName">returnOW</obj_property>
+               <obj_property name="ObjectShortName">returnOW</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/returnInvalid">
+               <obj_property name="ElementShortName">returnInvalid</obj_property>
+               <obj_property name="ObjectShortName">returnInvalid</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/returnValid">
+               <obj_property name="ElementShortName">returnValid</obj_property>
+               <obj_property name="ObjectShortName">returnValid</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/returnCRC">
+               <obj_property name="ElementShortName">returnCRC</obj_property>
+               <obj_property name="ObjectShortName">returnCRC</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="group567">
+            <obj_property name="label">Base Address Signals</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="array" fp_name="/delayTL_tb/dut/baseAddrOW">
+               <obj_property name="ElementShortName">baseAddrOW[7:0]</obj_property>
+               <obj_property name="ObjectShortName">baseAddrOW[7:0]</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/delayTL_tb/dut/baseAddrInvalid">
+               <obj_property name="ElementShortName">baseAddrInvalid[7:0]</obj_property>
+               <obj_property name="ObjectShortName">baseAddrInvalid[7:0]</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/delayTL_tb/dut/baseAddrValid">
+               <obj_property name="ElementShortName">baseAddrValid[7:0]</obj_property>
+               <obj_property name="ObjectShortName">baseAddrValid[7:0]</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/delayTL_tb/dut/baseAddrCRC">
+               <obj_property name="ElementShortName">baseAddrCRC[7:0]</obj_property>
+               <obj_property name="ObjectShortName">baseAddrCRC[7:0]</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="group572">
+            <obj_property name="label">Reset Signals</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/sizeReqResetN">
+               <obj_property name="ElementShortName">sizeReqResetN</obj_property>
+               <obj_property name="ObjectShortName">sizeReqResetN</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/playbackreqResetN">
+               <obj_property name="ElementShortName">playbackreqResetN</obj_property>
+               <obj_property name="ObjectShortName">playbackreqResetN</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/resetLengthN">
+               <obj_property name="ElementShortName">resetLengthN</obj_property>
+               <obj_property name="ObjectShortName">resetLengthN</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/idResetN">
+               <obj_property name="ElementShortName">idResetN</obj_property>
+               <obj_property name="ObjectShortName">idResetN</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="group577">
+            <obj_property name="label">Enable Signals</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/initStart">
+               <obj_property name="ElementShortName">initStart</obj_property>
+               <obj_property name="ObjectShortName">initStart</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/compareEnable">
+               <obj_property name="ElementShortName">compareEnable</obj_property>
+               <obj_property name="ObjectShortName">compareEnable</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/countEn">
+               <obj_property name="ElementShortName">countEn</obj_property>
+               <obj_property name="ObjectShortName">countEn</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/sizeDetectEnable">
+               <obj_property name="ElementShortName">sizeDetectEnable</obj_property>
+               <obj_property name="ObjectShortName">sizeDetectEnable</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/play">
+               <obj_property name="ElementShortName">play</obj_property>
+               <obj_property name="ObjectShortName">play</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/writeReq">
+               <obj_property name="ElementShortName">writeReq</obj_property>
+               <obj_property name="ObjectShortName">writeReq</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="group584">
+            <obj_property name="label">Output</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/err">
+               <obj_property name="ElementShortName">err</obj_property>
+               <obj_property name="ObjectShortName">err</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/interrupt">
+               <obj_property name="ElementShortName">interrupt</obj_property>
+               <obj_property name="ObjectShortName">interrupt</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject type="array" fp_name="/delayTL_tb/dut/playbackSelector">
+            <obj_property name="ElementShortName">playbackSelector[1:0]</obj_property>
+            <obj_property name="ObjectShortName">playbackSelector[1:0]</obj_property>
+         </wvobject>
+         <wvobject type="group" fp_name="group588">
+            <obj_property name="label">Latches</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/setOverwrite">
+               <obj_property name="ElementShortName">setOverwrite</obj_property>
+               <obj_property name="ObjectShortName">setOverwrite</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/delayTL_tb/dut/setMsgLength">
+               <obj_property name="ElementShortName">setMsgLength</obj_property>
+               <obj_property name="ObjectShortName">setMsgLength</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject type="logic" fp_name="/delayTL_tb/dut/syncOverride">
+            <obj_property name="ElementShortName">syncOverride</obj_property>
+            <obj_property name="ObjectShortName">syncOverride</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/delayTL_tb/dut/threeSamplePoint">
+            <obj_property name="ElementShortName">threeSamplePoint</obj_property>
+            <obj_property name="ObjectShortName">threeSamplePoint</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group618">
+      <obj_property name="label">Interframe Unit</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/delayTL_tb/dut/ifDetect/dIn">
+         <obj_property name="ElementShortName">dIn</obj_property>
+         <obj_property name="ObjectShortName">dIn</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/dut/ifDetect/samplePulse">
+         <obj_property name="ElementShortName">samplePulse</obj_property>
+         <obj_property name="ObjectShortName">samplePulse</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/dut/ifDetect/rateSelector">
+         <obj_property name="ElementShortName">rateSelector</obj_property>
+         <obj_property name="ObjectShortName">rateSelector</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/dut/ifDetect/interframePeriod">
+         <obj_property name="ElementShortName">interframePeriod</obj_property>
+         <obj_property name="ObjectShortName">interframePeriod</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/dut/ifDetect/currState">
+         <obj_property name="ElementShortName">currState[12:0]</obj_property>
+         <obj_property name="ObjectShortName">currState[12:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/dut/ifDetect/currSample">
+         <obj_property name="ElementShortName">currSample[1:0]</obj_property>
+         <obj_property name="ObjectShortName">currSample[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/dut/ifDetect/dataValid">
+         <obj_property name="ElementShortName">dataValid</obj_property>
+         <obj_property name="ObjectShortName">dataValid</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group627">
+      <obj_property name="label">Sync Unit</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/delayTL_tb/dut/su/multi">
+         <obj_property name="ElementShortName">multi</obj_property>
+         <obj_property name="ObjectShortName">multi</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/dut/su/oneShotSample">
+         <obj_property name="ElementShortName">oneShotSample</obj_property>
+         <obj_property name="ObjectShortName">oneShotSample</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/dut/su/syncIn">
+         <obj_property name="ElementShortName">syncIn</obj_property>
+         <obj_property name="ObjectShortName">syncIn</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/dut/su/syncCANClk">
+         <obj_property name="ElementShortName">syncCANClk</obj_property>
+         <obj_property name="ObjectShortName">syncCANClk</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group638">
+      <obj_property name="label">Clock Units</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="group" fp_name="group639">
+         <obj_property name="label">owClock</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="logic" fp_name="/delayTL_tb/dut/owRef/clkOut">
+            <obj_property name="ElementShortName">clkOut</obj_property>
+            <obj_property name="ObjectShortName">clkOut</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/delayTL_tb/dut/owRef/count">
+            <obj_property name="ElementShortName">count[22:0]</obj_property>
+            <obj_property name="ObjectShortName">count[22:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/delayTL_tb/dut/owRef/goal">
+            <obj_property name="ElementShortName">goal[22:0]</obj_property>
+            <obj_property name="ObjectShortName">goal[22:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group643">
+         <obj_property name="label">invalidClock</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="logic" fp_name="/delayTL_tb/dut/invalidRef/clkOut">
+            <obj_property name="ElementShortName">clkOut</obj_property>
+            <obj_property name="ObjectShortName">clkOut</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/delayTL_tb/dut/invalidRef/count">
+            <obj_property name="ElementShortName">count[22:0]</obj_property>
+            <obj_property name="ObjectShortName">count[22:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/delayTL_tb/dut/invalidRef/goal">
+            <obj_property name="ElementShortName">goal[22:0]</obj_property>
+            <obj_property name="ObjectShortName">goal[22:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group647">
+         <obj_property name="label">validClock</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="logic" fp_name="/delayTL_tb/dut/validRef/clkOut">
+            <obj_property name="ElementShortName">clkOut</obj_property>
+            <obj_property name="ObjectShortName">clkOut</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/delayTL_tb/dut/validRef/count">
+            <obj_property name="ElementShortName">count[22:0]</obj_property>
+            <obj_property name="ObjectShortName">count[22:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/delayTL_tb/dut/validRef/goal">
+            <obj_property name="ElementShortName">goal[22:0]</obj_property>
+            <obj_property name="ObjectShortName">goal[22:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group651">
+         <obj_property name="label">crcClock</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="logic" fp_name="/delayTL_tb/dut/crcRef/clkOut">
+            <obj_property name="ElementShortName">clkOut</obj_property>
+            <obj_property name="ObjectShortName">clkOut</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/delayTL_tb/dut/crcRef/count">
+            <obj_property name="ElementShortName">count[22:0]</obj_property>
+            <obj_property name="ObjectShortName">count[22:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/delayTL_tb/dut/crcRef/goal">
+            <obj_property name="ElementShortName">goal[22:0]</obj_property>
+            <obj_property name="ObjectShortName">goal[22:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group655">
+         <obj_property name="label">recordClock</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="logic" fp_name="/delayTL_tb/dut/recordClock/clkOut">
+            <obj_property name="ElementShortName">clkOut</obj_property>
+            <obj_property name="ObjectShortName">clkOut</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/delayTL_tb/dut/recordClock/count">
+            <obj_property name="ElementShortName">count[22:0]</obj_property>
+            <obj_property name="ObjectShortName">count[22:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/delayTL_tb/dut/recordClock/goal">
+            <obj_property name="ElementShortName">goal[22:0]</obj_property>
+            <obj_property name="ObjectShortName">goal[22:0]</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group659">
+      <obj_property name="label">ID Detector</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/delayTL_tb/dut/idUnit/dIn">
+         <obj_property name="ElementShortName">dIn</obj_property>
+         <obj_property name="ObjectShortName">dIn</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/dut/idUnit/id">
+         <obj_property name="ElementShortName">id[31:0]</obj_property>
+         <obj_property name="ObjectShortName">id[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/dut/idUnit/samplePulse">
+         <obj_property name="ElementShortName">samplePulse</obj_property>
+         <obj_property name="ObjectShortName">samplePulse</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/dut/idUnit/idCheckComplete">
+         <obj_property name="ElementShortName">idCheckComplete</obj_property>
+         <obj_property name="ObjectShortName">idCheckComplete</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/dut/idUnit/idMatch">
+         <obj_property name="ElementShortName">idMatch</obj_property>
+         <obj_property name="ObjectShortName">idMatch</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/dut/idUnit/currState">
+         <obj_property name="ElementShortName">currState[2:0]</obj_property>
+         <obj_property name="ObjectShortName">currState[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/dut/idUnit/idStore">
+         <obj_property name="ElementShortName">idStore[31:0]</obj_property>
+         <obj_property name="ObjectShortName">idStore[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/dut/idUnit/testData">
+         <obj_property name="ElementShortName">testData[31:0]</obj_property>
+         <obj_property name="ObjectShortName">testData[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/dut/idUnit/count">
+         <obj_property name="ElementShortName">count[4:0]</obj_property>
+         <obj_property name="ObjectShortName">count[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/dut/idUnit/shiftIn">
+         <obj_property name="ElementShortName">shiftIn</obj_property>
+         <obj_property name="ObjectShortName">shiftIn</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group670">
+      <obj_property name="label">Length Decode</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/delayTL_tb/dut/sizeDetector/rateSelector">
+         <obj_property name="ElementShortName">rateSelector</obj_property>
+         <obj_property name="ObjectShortName">rateSelector</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/dut/sizeDetector/resetN">
+         <obj_property name="ElementShortName">resetN</obj_property>
+         <obj_property name="ObjectShortName">resetN</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/dut/sizeDetector/enable">
+         <obj_property name="ElementShortName">enable</obj_property>
+         <obj_property name="ObjectShortName">enable</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/dut/sizeDetector/shiftIn">
+         <obj_property name="ElementShortName">shiftIn</obj_property>
+         <obj_property name="ObjectShortName">shiftIn</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/dut/sizeDetector/completeConfig">
+         <obj_property name="ElementShortName">completeConfig</obj_property>
+         <obj_property name="ObjectShortName">completeConfig</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/dut/sizeDetector/msgSize">
+         <obj_property name="ElementShortName">msgSize[3:0]</obj_property>
+         <obj_property name="ObjectShortName">msgSize[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/dut/sizeDetector/prevBits">
+         <obj_property name="ElementShortName">prevBits[4:0]</obj_property>
+         <obj_property name="ObjectShortName">prevBits[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/dut/sizeDetector/validCounter">
+         <obj_property name="ElementShortName">validCounter[4:0]</obj_property>
+         <obj_property name="ObjectShortName">validCounter[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/dut/sizeDetector/dlcPos">
+         <obj_property name="ElementShortName">dlcPos[3:0]</obj_property>
+         <obj_property name="ObjectShortName">dlcPos[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/dut/sizeDetector/inverseDLC">
+         <obj_property name="ElementShortName">inverseDLC[3:0]</obj_property>
+         <obj_property name="ObjectShortName">inverseDLC[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/dut/sizeDetector/inDLC">
+         <obj_property name="ElementShortName">inDLC</obj_property>
+         <obj_property name="ObjectShortName">inDLC</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/dut/sizeDetector/stuffDetected">
+         <obj_property name="ElementShortName">stuffDetected</obj_property>
+         <obj_property name="ObjectShortName">stuffDetected</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/dut/sizeDetector/currSample">
+         <obj_property name="ElementShortName">currSample[1:0]</obj_property>
+         <obj_property name="ObjectShortName">currSample[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/delayTL_tb/dut/sizeDetector/currState">
+         <obj_property name="ElementShortName">currState[3:0]</obj_property>
+         <obj_property name="ObjectShortName">currState[3:0]</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

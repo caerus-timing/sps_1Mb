@@ -14,9 +14,13 @@ module recordUnit
 
     );
 
-
+    logic dataValidIn;
     logic shiftIn;
     logic shiftInUnGated;
+
+    always_comb begin
+        dataValid = dataValidIn & enable;
+    end
     
     //Output latching
     always_ff @(posedge clk) begin
@@ -39,14 +43,14 @@ module recordUnit
     //DataValid Latching
     always_ff @(posedge clk) begin
         if(!resetN) begin
-            dataValid <= 0;
+            dataValidIn <= 0;
         end else begin
             if(incrementer == 6'b100000) begin
-                dataValid <= 1;
+                dataValidIn <= 1;
             end else if(incrementer == 6'b1) begin
-                dataValid <= 0;
+                dataValidIn <= 0;
             end else begin
-                dataValid <= dataValid;
+                dataValidIn <= dataValid;
             end
         end
     end

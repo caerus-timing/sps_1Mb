@@ -120,55 +120,25 @@ module syncUnit
 	
     //TODO: UNCOMMENT
 	//Oneshot generation logic 0:15 = 0 16:30 = 1  MULTISAMPLE
-	/*
+	
 	always_comb begin
 		if(count <= 15) begin
 			sampleRange = 0;
 		end
-		else if(count <=30) begin
+		else if(count <=20) begin
 			sampleRange = 1;
 		end
 		else if(multiSelect) begin
-			if(count <= 45) begin
+			if(count <= 25) begin
 				sampleRange = 0;
 			end
-			else if(count <= 60) begin
+			else if(count <= 30) begin
 				sampleRange = 1;
 			end
-			else if(count <= 75) begin
+			else if(count <= 35) begin
 				sampleRange = 0;
 			end
-			else if(count <= 90) begin
-				sampleRange = 1;
-			end
-			else begin
-				sampleRange = 0;
-			end
-		end
-		else begin
-			sampleRange = 0;
-		end
-	end
-    */
-    
-    always_comb begin
-		if(count <= 3) begin
-			sampleRange = 0;
-		end
-		else if(count <=6) begin
-			sampleRange = 1;
-		end
-		else if(multi) begin
-			if(count <= 9) begin
-				sampleRange = 0;
-			end
-			else if(count <= 12) begin
-				sampleRange = 1;
-			end
-			else if(count <= 15) begin
-				sampleRange = 0;
-			end
-			else if(count <= 18) begin
+			else if(count <= 40) begin
 				sampleRange = 1;
 			end
 			else begin
@@ -179,5 +149,6 @@ module syncUnit
 			sampleRange = 0;
 		end
 	end
+
 
 endmodule

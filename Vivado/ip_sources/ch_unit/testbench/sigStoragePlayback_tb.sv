@@ -1,6 +1,8 @@
 `timescale 1ns / 1ps
 
-module halfDuplex_tb();
+
+
+module storagePlayback_tb();
 
     //Common
     logic clk;
@@ -15,6 +17,7 @@ module halfDuplex_tb();
     logic playbackClk;
     logic enable;
     logic done;
+    logic resetNplayback;
 
     //BRAM Connection
     logic [31: 0] readData;
@@ -34,9 +37,17 @@ module halfDuplex_tb();
     logic pulseWrite;
     logic requestRead;
     logic requestWrite;
-    logic [8:0] writeDataCount;
+    logic [7:0] writeDataCount;
 	
-
+    //Storage logic
+    logic [8:0] baseAddr;
+    logic enableStore;
+    logic returnToBaseAddr;
+    logic incrementAddr;
+    logic [31:0] currOut;
+    logic writeDBG;
+    logic [7:0] pointerDBG;
+    logic run;
 
     halfDuplex controller(
     	.clk                (clk),
@@ -54,7 +65,7 @@ module halfDuplex_tb();
         .bramEnable         (bramEnable),
         .bramWe             (bramWe),
         .requestAddr_write  (outputWrite_addr),
-        .numWrites          (writeDataCount),
+        .numWrites          ({8'b0,writeDataCount}),
         .sendData           (writeData),
         .pulseWrite         (pulseWrite),
         .readReq            (requestRead),
@@ -62,7 +73,11 @@ module halfDuplex_tb();
         .wr_data_count      (writeDataCount)
     );
 
-    playbackUnit dut(.clk(clk), .resetN(resetN), .enable(enable), .playbackSig(requestData), .requestNum(numReads), .playbackClk(playbackClk), .dOut(dOut), .dEnable(dEnable), .advFIFO(advFIFO), .complete(done));
+
+    sigStorage dut(.clk, .resetN, .baseAddr, .numFetches(numReads), .storeConfig(enableStore), .bramIn(requestData), .fetch(run), .returnToBaseAddr,
+         .request(advFIFO), .incrementAddr, .playbackOut(currOut), .writeDBG, .pointerDBG);
+    playbackUnit playback(.clk(clk), .resetN(resetNplayback), .enable(enable), .playbackSig(currOut), .requestNum(numReads), .playbackClk(playbackClk),
+         .dOut(dOut), .dEnable(dEnable), .advFIFO(incrementAddr), .complete(done));
 
     //Set all values at the beginning
     initial begin
@@ -80,6 +95,12 @@ module halfDuplex_tb();
         outputWrite_addr = 0;
         pulseWrite = 0;
         writeData = 0;
+        baseAddr = 0;
+        enableStore = 0;
+        returnToBaseAddr = 0;
+        incrementAddr = 0;
+        run = 0;
+        resetNplayback = 1;
     end
 
 
@@ -93,7 +114,7 @@ module halfDuplex_tb();
 
 
 
-    logic [31:0] memVals [0:7];
+    logic [31:0] memVals [0:15];
 
     initial begin
         memVals[0] = 32'h6F3B2A1C;
@@ -104,6 +125,14 @@ module halfDuplex_tb();
         memVals[5] = 32'hBB1BB1BB;
         memVals[6] = 32'h1BBBBBB1;
         memVals[7] = 32'h0F0F0F0F;
+        memVals[8] = 32'h6678291C;
+        memVals[9] = 32'hBcA46127;
+        memVals[10] = 32'hFABC97C1;
+        memVals[11] = 32'h44444444;
+        memVals[12] = 32'h87194586;
+        memVals[13] = 32'hAA66AA66;
+        memVals[14] = 32'h27658658;
+        memVals[15] = 32'h96759371;
     end
 
     initial begin
@@ -111,88 +140,94 @@ module halfDuplex_tb();
 
         //Initialize all the values
         resetN = 0;
-
+        resetNplayback = 0;
         #25;
+        
 
         numReads = 8; //Request 8 memory operations
         requestAddr = 0;
+     
+        returnToBaseAddr = 1;
         
         #15;
-
         resetN = 1;
+        resetNplayback = 1;
+        #25;
+        enableStore = 1;
+        #5;
+        returnToBaseAddr = 0;
         requestRead = 1;
+        enableStore = 0;
+        #5;
         wait(bramEnable == 1);
         for(int i =0; i < 8; i++) begin
-            //Hold for 2 clk cycles, per spec
-            @(posedge clk);
-            #1;
-            @(posedge clk);
-            #1;
+            #15;
             //Output the data;
             readData = memVals[i];
             //Wait for bramEnable to be deasserted.
-            #30;
+            #15;
         end
         #30;
         requestRead = 0;
-        
-        //Memory is configured. I'm going to wait for 50 cycles to simulate the intermediate steps that are being done
-        @(posedge clk);
-        #245;
-
-         #5; //Just wait so we are posedge aligned
-
-        //Initialize all the values
-        resetN = 0;
-
-        #25;
-
-        numReads = 5; //Request 8 memory operations
-        requestAddr = 7;
-        
-        #15;
-
-        resetN = 1;
-        requestRead = 1;
-        wait(bramEnable == 1);
-        for(int i =0; i < 5; i++) begin
-            //Hold for 2 clk cycles, per spec
-            @(posedge clk);
-            #1;
-            @(posedge clk);
-            #1;
-            //Output the data;
-            readData = memVals[i];
-            //Wait for bramEnable to be deasserted.
-            #30;
-        end
-        #30;
-        requestRead = 0;
-        
-        //Memory is configured. I'm going to wait for 50 cycles to simulate the intermediate steps that are being done
-        @(posedge clk);
-        #245;
-        requestWrite = 0;
-        //Now WRITE TO THE THING
-        for(int i=0; i < 245; i++)  begin
-            @(posedge clk);
-            writeData = i * 2;
-            @(posedge clk);
-            pulseWrite = 1;
-            @(posedge clk);
-            @(posedge clk);
-            pulseWrite = 0;
-        end
-        requestWrite = 1; 
-        wait(dataValid == 1);
-        requestWrite = 0;
-        #50;
-        
-        //Enable the playback.
-        enable = 1;
-        wait(done == 1);
         #20;
-        $stop;
+        run = 1;
+
+        #400;
+        run  = 0;
+        #25;
+        returnToBaseAddr = 1;
+        #25;
+        returnToBaseAddr = 0;
+        #200;
+        enable = 1;
+        #10;
+        wait(done == 1);
+        enable = 0;
+        #50;
+        numReads = 10; //Request 8 memory operations
+        requestAddr = 6;
+        baseAddr = 8;
+        #15;
+        enableStore = 1;
+        #10;
+        enableStore = 0;
+        #15;
+        returnToBaseAddr = 1;
+        #15;
+        returnToBaseAddr = 0;
+        #25;
+        clear = 0;
+        resetNplayback = 0;
+        #25;
+        clear = 1;
+        resetNplayback = 1;
+        #25;
+        requestRead = 1;
+        
+        wait(bramEnable == 1);
+        for(int i =0; i < 10; i++) begin
+            #15;
+            //Output the data;
+            readData = memVals[i];
+            //Wait for bramEnable to be deasserted.
+            #15;
+        end
+        #30;
+        requestRead = 0;
+        #20;
+        run = 1;
+
+        #1000;
+        run  = 0;
+        #25;
+        returnToBaseAddr = 1;
+        #25;
+        returnToBaseAddr = 0;
+        #200;
+        enable = 1;
+        #10;
+        wait(done == 1);
+        #25;
 
     end
     

@@ -154,7 +154,7 @@ module devDelay_tl
     //Other random signals
     logic prevClkVal;
 	logic countEn;
-    logic [5:0] canClkCounter;
+    logic [7:0] canClkCounter;
     logic threeSamplePoint;
     logic postInterframeReq;
     logic errorDetected;
@@ -267,19 +267,19 @@ module devDelay_tl
     //
 
     //Overwrite
-    clkUnit owRef(.clk, .resetN, .period(playbackRateOW), .clkOut(clkOW));
+    clkUnit owRef(.clk, .resetN(rstIN), .period(playbackRateOW), .clkOut(clkOW));
 
     //Invalid
-    clkUnit invalidRef(.clk, .resetN, .period(playbackRateInvalid), .clkOut(clkInvalid));
+    clkUnit invalidRef(.clk, .resetN(rstIN), .period(playbackRateInvalid), .clkOut(clkInvalid));
 
     //Valid
-    clkUnit validRef(.clk, .resetN, .period(playbackRateValid), .clkOut(clkValid));
+    clkUnit validRef(.clk, .resetN(rstIN), .period(playbackRateValid), .clkOut(clkValid));
 
     //CRC
-    clkUnit crcRef(.clk, .resetN, .period(playbackRateCRC), .clkOut(clkCRC));
+    clkUnit crcRef(.clk, .resetN(rstIN), .period(playbackRateCRC), .clkOut(clkCRC));
 
     //Recording
-    clkUnit recordClock(.clk, .resetN, .period(recordRate), .clkOut(clkRecord));
+    clkUnit recordClock(.clk, .resetN(rstIN), .period(recordRate), .clkOut(clkRecord));
 
     //
     //BRAM Controller
@@ -296,7 +296,7 @@ module devDelay_tl
     //
     //Sync Unit
     //
-    syncUnit su(.clk, .resetN, .bitPeriod(baudRate), .dIn, .override(syncOverride), .syncCANClk(canClk), .syncIn(sampleInput), .multiSelect(1'b0) , .oneShotSample(samplePulse));
+    syncUnit su(.clk, .resetN(rstIN), .bitPeriod(baudRate), .dIn, .override(syncOverride), .syncCANClk(canClk), .syncIn(sampleInput), .multiSelect(threeSamplePoint) , .oneShotSample(samplePulse));
 
     //
     //Error Detector
@@ -327,7 +327,8 @@ module devDelay_tl
         sizeResetN = sizeReqResetN & resetN;
     end
 
-    sizeDetect sizeDetector(.clk, .resetN, .enable(sizeDetectEnable), .dIn(calculatedInput), .samplePulse, .completeConfig(sizeDetected), .msgSize(msgLengthInput));
+    sizeDetect sizeDetector(.clk, .resetN(idReset), .enable(sizeDetectEnable), .dIn(calculatedInput), .samplePulse, .completeConfig(sizeDetected),
+     .msgSize(msgLengthInput), .rateSelector(threeSamplePoint));
 
     //Size Detector Latch Logic
     always_ff @(posedge clk) begin
@@ -654,7 +655,7 @@ module devDelay_tl
                 playbackSelector = 2'b00;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3 
                 {err, interrupt} = 2'b00;       //System Status Outputs
                 {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b000100;      //Enable Signals
-                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b1110;                   //Reset Signals
+                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b1111;                   //Reset Signals
                 {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
                 {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
@@ -678,7 +679,7 @@ module devDelay_tl
                 playbackSelector = 2'b00;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3 
                 {err, interrupt} = 2'b00;       //System Status Outputs
                 {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b001000;      //Enable Signals
-                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b1101;                   //Reset Signals
+                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b1110;                   //Reset Signals
                 {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
                 {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
@@ -690,7 +691,7 @@ module devDelay_tl
                 playbackSelector = 2'b00;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3 
                 {err, interrupt} = 2'b00;       //System Status Outputs
                 {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b000010;      //Enable Signals
-                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b1111;                   //Reset Signals
+                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN} = 4'b1101;                   //Reset Signals
                 {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
                 {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b1101;                   //Recording Unit Signals

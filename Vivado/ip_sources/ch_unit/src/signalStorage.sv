@@ -1,7 +1,7 @@
 module sigStorage
     #(
         parameter integer DEPTH = 256,
-        parameter integer DELAY = 3
+        parameter integer DELAY = 5
     )
     (
         //Common Signals
@@ -171,11 +171,11 @@ module sigStorage
 
     always_comb begin
         unique case(currState)
-            s_init, s_disabled: {request, write, runDelay, internalIncrement, rstIncrement} = 5'b0001;
-            s_store: {request, write, runDelay, internalIncrement, rstIncrement} = 5'b0100;
-            s_request: {request, write, runDelay, internalIncrement, rstIncrement} = 5'b1000;
-            s_increment: {request, write, runDelay, internalIncrement, rstIncrement} = 5'b0001;
-            s_delay: {request, write, runDelay, internalIncrement, rstIncrement} = 5'b0010;
+            s_init, s_disabled: {request, write, runDelay, internalIncrement, rstIncrement} = 5'b00001;
+            s_store: {request, write, runDelay, internalIncrement, rstIncrement} = 5'b01000;
+            s_request: {request, write, runDelay, internalIncrement, rstIncrement} = 5'b10000;
+            s_increment: {request, write, runDelay, internalIncrement, rstIncrement} = 5'b00010;
+            s_delay: {request, write, runDelay, internalIncrement, rstIncrement} = 5'b00100;
         endcase
     end
 
@@ -222,7 +222,7 @@ module sigStorage
       .injectdbiterra(1'b0),            // 1-bit input: Controls double bit error injection
       .injectsbiterra(1'b0),            // 1-bit input: Controls single bit error injection on input
       .regcea(1'b1),                    // 1-bit input: Clock Enable
-        .rsta(~resetN),                 // 1-bit input: Reset signal for the final port A output register stage.
+      .rsta(~resetN),                 // 1-bit input: Reset signal for the final port A output register stage.
       .sleep(1'b0),                     // 1-bit input: sleep signal to enable the dynamic power saving feature.
       .wea(write)                       // WRITE_DATA_WIDTH_A/BYTE_WRITE_WIDTH_A-bit input: Write enable
 
