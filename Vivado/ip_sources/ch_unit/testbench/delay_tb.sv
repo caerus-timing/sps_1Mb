@@ -676,16 +676,6 @@ module delayTL_tb();
             pointOne();
             pointOne();
             pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
             pointZero();
             pointZero();
             pointZero();
@@ -831,16 +821,6 @@ module delayTL_tb();
             pointOne();
             pointOne();
             pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
             pointZero();
             pointZero();
             pointZero();
@@ -856,16 +836,6 @@ module delayTL_tb();
 
     task calcSignalPassEdge();
         begin
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
             pointOne();
             pointOne();
             pointOne();
@@ -1071,17 +1041,7 @@ module delayTL_tb();
             pointOne();
             pointOne();
             pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
-            pointOne();
+            pointZero();
         end
     endtask
 
@@ -1164,28 +1124,28 @@ module delayTL_tb();
         sendUnstuffedID();
         sendUnstuffedLengthSeven();
         stdCRCEnd();
-        calcSignalFail();
-        #9000; //May need to adjust this value. Need to be in the IF detect for this to work
-        dIn = 1;
-        #15000;
-        sendUnstuffedID();
-        sendUnstuffedLengthSix();
-        stdCRCEnd();
-        calcSignalFail();
-        #9000; //May need to adjust this value. Need to be in the IF detect for this to work
-        dIn = 1;
-        #15000;
-        sendUnstuffedID();
-        sendUnstuffedLengthFive();
-        stdCRCEnd();
-        calcSignalFail();
-        #9000; //May need to adjust this value. Need to be in the IF detect for this to work
-        dIn = 1;
-        #15000;
-        sendUnstuffedID();
-        sendUnstuffedLengthFive();
-        stdCRCEnd();
         calcSignalPassEasy();
+        #9000; //May need to adjust this value. Need to be in the IF detect for this to work
+        dIn = 1;
+        #15000;
+        sendUnstuffedID();
+        sendUnstuffedLengthSeven();
+        stdCRCEnd();
+        calcSignalPassHard();
+        #9000; //May need to adjust this value. Need to be in the IF detect for this to work
+        dIn = 1;
+        #15000;
+        sendUnstuffedID();
+        sendUnstuffedLengthSeven();
+        stdCRCEnd();
+        calcSignalPassEdge();
+        #9000; //May need to adjust this value. Need to be in the IF detect for this to work
+        dIn = 1;
+        #15000;
+        sendUnstuffedID();
+        sendUnstuffedLengthSeven();
+        stdCRCEnd();
+        calcSignalFail();
         #9000; //May need to adjust this value. Need to be in the IF detect for this to work
         dIn = 1;
         #23000;

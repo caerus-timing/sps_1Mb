@@ -128,7 +128,7 @@ module recordMaster
                         finalShiftCount <= 6'h3F;
                     end
                 end else begin
-                    finalValueShiftStorage <= finalShiftCount;
+                    finalValueShiftStorage <= finalValueShiftStorage;
                     finalShiftCount <= finalShiftCount;
                 end
             end
@@ -305,6 +305,9 @@ module recordMaster
             end
             s_sendCommitSig, s_incSend: begin
                 nextState = currState.next;
+            end
+            s_resetCache: begin
+                nextState = s_hold;
             end
             s_wait1: begin
                 if(i == counter) begin
