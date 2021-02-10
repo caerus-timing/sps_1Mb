@@ -25,7 +25,7 @@ module sizeDetect
     localparam PRELUDE_LENGTH = 14;
     localparam DLC_LEN = 4;
 
-    logic [4:0] prevBits; // Ongoing counter to determine if stuff occurs
+    logic [6:0] prevBits; // Ongoing counter to determine if stuff occurs
     logic [4:0] validCounter; //Valid counter to get us to the DLC
     logic [3:0] dlcPos;
 
@@ -38,7 +38,7 @@ module sizeDetect
     logic stuffDetected;
     logic stuffOS;
 
-    const logic [4:0] initialBitPattern = 5'b01010; //This pattern was created to not have a stuff bit instantly detected, but still have SOF cause a bit stuff.
+    const logic [4:0] initialBitPattern = 7'b0101010; //This pattern was created to not have a stuff bit instantly detected, but still have SOF cause a bit stuff.
 
     oneshot os(.*, .pulse(stuffDetected), .oneshot(stuffOS));
 
@@ -102,7 +102,7 @@ module sizeDetect
             prevBits <= initialBitPattern;
         end else begin
 			if(shiftIn) begin
-				prevBits <= {prevBits[3:0],dIn};
+				prevBits <= {prevBits[5:0],dIn};
 			end
 			else begin
 				prevBits <= prevBits;
@@ -136,7 +136,7 @@ module sizeDetect
 
     //TODO: CHECK TO SEE IF THIS NEEDS TO BE CHANGED TO 6 BITS WITH STUFF BIT AT END
     always_comb begin
-        if(prevBits == 5'b00000 || prevBits == 5'b11111) begin
+        if(prevBits[6:1] == 6'b000001 || prevBits[6:1] == 6'b111110) begin
             stuffDetected = 1;
         end else begin
             stuffDetected = 0;

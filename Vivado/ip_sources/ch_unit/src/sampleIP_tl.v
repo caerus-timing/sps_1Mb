@@ -53,7 +53,7 @@ module sampleIP_tl #
         output wire dOut,
         output wire enOut,
         output wire interrupt,
-        output wire [3:0] metaState,
+        output wire [5:0] metaState,
         
 
 		
@@ -95,7 +95,7 @@ module sampleIP_tl #
 		.S_BRAM_A_DATA_SIZE(BRAM_A_DATA_SIZE),
 		.S_BRAM_A_DEPTH(BRAM_A_DEPTH)
 	) axi_slave (
-	    .metaState(metaState),
+	    .delayDBG(metaState),
         .BRAM_enable(ena),
         .BRAM_reset(bramReset),
         .canIn(canIn),

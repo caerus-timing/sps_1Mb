@@ -13,23 +13,34 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="569830000fs"></ZoomStartTime>
-      <ZoomEndTime time="651430001fs"></ZoomEndTime>
-      <Cursor1Time time="628730000fs"></Cursor1Time>
+      <ZoomStartTime time="2410000fs"></ZoomStartTime>
+      <ZoomEndTime time="4457410001fs"></ZoomEndTime>
+      <Cursor1Time time="2602410000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="311"></NameColumnWidth>
-      <ValueColumnWidth column_width="219"></ValueColumnWidth>
+      <ValueColumnWidth column_width="215"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="14" />
+   <WVObjectSize size="15" />
    <wave_markers>
-      <marker label="" time="152220000" />
-      <marker label="" time="167220000" />
-      <marker label="" time="227220000" />
-      <marker label="" time="243220000" />
-      <marker label="" time="475430000" />
-      <marker label="" time="591530000" />
-      <marker label="" time="359230000" />
+      <marker label="" time="243225000" />
+      <marker label="" time="359235000" />
+      <marker label="" time="444235000" />
+      <marker label="" time="687460000" />
+      <marker label="" time="803470000" />
+      <marker label="" time="888470000" />
+      <marker label="" time="1131695000" />
+      <marker label="" time="1247705000" />
+      <marker label="" time="1332705000" />
+      <marker label="" time="1567930000" />
+      <marker label="" time="1675940000" />
+      <marker label="" time="1760940000" />
+      <marker label="" time="1988165000" />
+      <marker label="" time="2088175000" />
+      <marker label="" time="2173175000" />
+      <marker label="" time="2401400000" />
+      <marker label="" time="2502410000" />
+      <marker label="" time="2602410000" />
    </wave_markers>
    <wvobject type="logic" fp_name="/delayTL_tb/resetN">
       <obj_property name="ElementShortName">resetN</obj_property>
@@ -117,6 +128,10 @@
       <obj_property name="label">I/O</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/delayTL_tb/dIn">
+         <obj_property name="ElementShortName">dIn</obj_property>
+         <obj_property name="ObjectShortName">dIn</obj_property>
+      </wvobject>
       <wvobject type="logic" fp_name="/delayTL_tb/outSwitch">
          <obj_property name="ElementShortName">outSwitch</obj_property>
          <obj_property name="ObjectShortName">outSwitch</obj_property>
@@ -124,10 +139,6 @@
       <wvobject type="logic" fp_name="/delayTL_tb/sampleOut">
          <obj_property name="ElementShortName">sampleOut</obj_property>
          <obj_property name="ObjectShortName">sampleOut</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/delayTL_tb/dIn">
-         <obj_property name="ElementShortName">dIn</obj_property>
-         <obj_property name="ObjectShortName">dIn</obj_property>
       </wvobject>
       <wvobject type="logic" fp_name="/delayTL_tb/interrupt">
          <obj_property name="ElementShortName">interrupt</obj_property>
@@ -174,10 +185,13 @@
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
+   <wvobject type="array" fp_name="/delayTL_tb/dut/currState">
+      <obj_property name="ElementShortName">currState[5:0]</obj_property>
+      <obj_property name="ObjectShortName">currState[5:0]</obj_property>
+   </wvobject>
    <wvobject type="group" fp_name="group517">
       <obj_property name="label">Top Level</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="group" fp_name="group533">
          <obj_property name="label">Initial StateMachine</obj_property>
          <obj_property name="DisplayName">label</obj_property>
@@ -264,10 +278,6 @@
             <obj_property name="ObjectShortName">nextInit[4:0]</obj_property>
          </wvobject>
       </wvobject>
-      <wvobject type="array" fp_name="/delayTL_tb/dut/currState">
-         <obj_property name="ElementShortName">currState[5:0]</obj_property>
-         <obj_property name="ObjectShortName">currState[5:0]</obj_property>
-      </wvobject>
       <wvobject type="array" fp_name="/delayTL_tb/dut/nextState">
          <obj_property name="ElementShortName">nextState[5:0]</obj_property>
          <obj_property name="ObjectShortName">nextState[5:0]</obj_property>
@@ -276,6 +286,10 @@
          <obj_property name="label">State Machine Input</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="isExpanded"></obj_property>
+         <wvobject type="array" fp_name="/delayTL_tb/dut/msgLength">
+            <obj_property name="ElementShortName">msgLength[3:0]</obj_property>
+            <obj_property name="ObjectShortName">msgLength[3:0]</obj_property>
+         </wvobject>
          <wvobject type="logic" fp_name="/delayTL_tb/dut/setupRunning">
             <obj_property name="ElementShortName">setupRunning</obj_property>
             <obj_property name="ObjectShortName">setupRunning</obj_property>
@@ -308,10 +322,6 @@
          <wvobject type="logic" fp_name="/delayTL_tb/dut/sizeDetected">
             <obj_property name="ElementShortName">sizeDetected</obj_property>
             <obj_property name="ObjectShortName">sizeDetected</obj_property>
-         </wvobject>
-         <wvobject type="array" fp_name="/delayTL_tb/dut/msgLength">
-            <obj_property name="ElementShortName">msgLength[3:0]</obj_property>
-            <obj_property name="ObjectShortName">msgLength[3:0]</obj_property>
          </wvobject>
          <wvobject type="logic" fp_name="/delayTL_tb/dut/recordEnable">
             <obj_property name="ElementShortName">recordEnable</obj_property>
@@ -680,6 +690,10 @@
          <obj_property name="ElementShortName">resetN</obj_property>
          <obj_property name="ObjectShortName">resetN</obj_property>
       </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/dut/sizeDetector/samplePulse">
+         <obj_property name="ElementShortName">samplePulse</obj_property>
+         <obj_property name="ObjectShortName">samplePulse</obj_property>
+      </wvobject>
       <wvobject type="logic" fp_name="/delayTL_tb/dut/sizeDetector/enable">
          <obj_property name="ElementShortName">enable</obj_property>
          <obj_property name="ObjectShortName">enable</obj_property>
@@ -695,14 +709,18 @@
       <wvobject type="array" fp_name="/delayTL_tb/dut/sizeDetector/msgSize">
          <obj_property name="ElementShortName">msgSize[3:0]</obj_property>
          <obj_property name="ObjectShortName">msgSize[3:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/delayTL_tb/dut/sizeDetector/prevBits">
-         <obj_property name="ElementShortName">prevBits[4:0]</obj_property>
-         <obj_property name="ObjectShortName">prevBits[4:0]</obj_property>
+         <obj_property name="ElementShortName">prevBits[6:0]</obj_property>
+         <obj_property name="ObjectShortName">prevBits[6:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+         <obj_property name="isExpanded"></obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/delayTL_tb/dut/sizeDetector/validCounter">
          <obj_property name="ElementShortName">validCounter[4:0]</obj_property>
          <obj_property name="ObjectShortName">validCounter[4:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/delayTL_tb/dut/sizeDetector/dlcPos">
          <obj_property name="ElementShortName">dlcPos[3:0]</obj_property>
@@ -715,6 +733,14 @@
       <wvobject type="logic" fp_name="/delayTL_tb/dut/sizeDetector/inDLC">
          <obj_property name="ElementShortName">inDLC</obj_property>
          <obj_property name="ObjectShortName">inDLC</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/dut/sizeDetector/dlcShift">
+         <obj_property name="ElementShortName">dlcShift</obj_property>
+         <obj_property name="ObjectShortName">dlcShift</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/delayTL_tb/dut/sizeDetector/shiftIn">
+         <obj_property name="ElementShortName">shiftIn</obj_property>
+         <obj_property name="ObjectShortName">shiftIn</obj_property>
       </wvobject>
       <wvobject type="logic" fp_name="/delayTL_tb/dut/sizeDetector/stuffDetected">
          <obj_property name="ElementShortName">stuffDetected</obj_property>
@@ -732,7 +758,6 @@
    <wvobject type="group" fp_name="group454">
       <obj_property name="label">Record Master</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/delayTL_tb/dut/rm/resetN">
          <obj_property name="ElementShortName">resetN</obj_property>
          <obj_property name="ObjectShortName">resetN</obj_property>

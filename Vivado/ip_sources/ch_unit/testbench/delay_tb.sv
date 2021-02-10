@@ -553,6 +553,7 @@ module delayTL_tb();
             bitOne();
             bitZero();
             bitOne();
+            bitOne();
             bitZero();
             bitZero();
             bitZero();
@@ -1091,6 +1092,8 @@ module delayTL_tb();
 
         //Standard Run Format
         #25;
+        initializeVariables();
+        #5;
         resetN = 0;
         #45;
         resetN = 1;
@@ -1134,11 +1137,91 @@ module delayTL_tb();
         calcSignalPassHard();
         #9000; //May need to adjust this value. Need to be in the IF detect for this to work
         dIn = 1;
+        #75000;
+        #25;
+        initializeVariables();
+        #5;
+        resetN = 0;
+        #45;
+        resetN = 1;
+        #50;
+        
+        canID = 32'hFFFFF96F;
+        owRate = 1;
+        invalidRate = 25;
+        validRate = 25;
+        crcRate = 25;
+        sizeOW = 7;
+        sizeInvalid = 7;
+        sizeValid = 19;
+        sizeCRC = 18;
+        initOW = 0;
+        initInvalid = 7;
+        initValid = 14;
+        initCRC = 33;
+        baudRate = 100;
+        recordRate = 1;
+        #50;
+        enable = 1;
+        setValues = 1;
+        #5;
+        memFetch();
+        #90000; //Allow for the system to play the valid signal.
+        sendInvalidID();
+        #30000; //May need to adjust this value. Need to be in the IF detect for this to work
+        dIn = 1;
+        #15000;
+        sendUnstuffedID();
+        sendUnstuffedLengthSeven();
+        stdCRCEnd();
+        calcSignalPassEasy();
+        #9000; //May need to adjust this value. Need to be in the IF detect for this to work
+        dIn = 1;
         #15000;
         sendUnstuffedID();
         sendUnstuffedLengthSeven();
         stdCRCEnd();
         calcSignalPassEdge();
+        #9000; //May need to adjust this value. Need to be in the IF detect for this to work
+        dIn = 1;
+        #75000;
+        #25;
+        initializeVariables();
+        #5;
+        resetN = 0;
+        #45;
+        resetN = 1;
+        #50;
+        
+        canID = 32'hFFFFF96F;
+        owRate = 1;
+        invalidRate = 25;
+        validRate = 25;
+        crcRate = 25;
+        sizeOW = 7;
+        sizeInvalid = 7;
+        sizeValid = 19;
+        sizeCRC = 18;
+        initOW = 0;
+        initInvalid = 7;
+        initValid = 14;
+        initCRC = 33;
+        baudRate = 100;
+        recordRate = 1;
+        #50;
+        enable = 1;
+        setValues = 1;
+        #5;
+        memFetch();
+        #90000; //Allow for the system to play the valid signal.
+        sendInvalidID();
+        #30000; //May need to adjust this value. Need to be in the IF detect for this to work
+        dIn = 1;
+        #15000;
+        sendUnstuffedID();
+        sendUnstuffedLengthSeven();
+        stdCRCEnd();
+        calcSignalPassEasy();
         #9000; //May need to adjust this value. Need to be in the IF detect for this to work
         dIn = 1;
         #15000;
@@ -1148,8 +1231,156 @@ module delayTL_tb();
         calcSignalFail();
         #9000; //May need to adjust this value. Need to be in the IF detect for this to work
         dIn = 1;
-        #23000;
-        #50000;
+        #75000;
+        //NOW LENGTH 6
+        
+        //Standard Run Format
+        #25;
+        initializeVariables();
+        #5;
+        resetN = 0;
+        #45;
+        resetN = 1;
+        #50;
+        
+        canID = 32'hFFFFF96F;
+        owRate = 1;
+        invalidRate = 25;
+        validRate = 25;
+        crcRate = 25;
+        sizeOW = 7;
+        sizeInvalid = 7;
+        sizeValid = 19;
+        sizeCRC = 18;
+        initOW = 0;
+        initInvalid = 7;
+        initValid = 14;
+        initCRC = 33;
+        baudRate = 100;
+        recordRate = 1;
+        #50;
+        enable = 1;
+        setValues = 1;
+        #5;
+        memFetch();
+        #90000; //Allow for the system to play the valid signal.
+        sendInvalidID();
+        #30000; //May need to adjust this value. Need to be in the IF detect for this to work
+        dIn = 1;
+        #15000;
+        sendUnstuffedID();
+        sendUnstuffedLengthSix();
+        stdCRCEnd();
+        calcSignalPassEasy();
+        #9000; //May need to adjust this value. Need to be in the IF detect for this to work
+        dIn = 1;
+        #15000;
+        sendUnstuffedID();
+        sendUnstuffedLengthSix();
+        stdCRCEnd();
+        calcSignalPassHard();
+        #9000; //May need to adjust this value. Need to be in the IF detect for this to work
+        dIn = 1;
+        #75000;
+        
+        //Now 5
+        //Standard Run Format
+        #25;
+        initializeVariables();
+        #5;
+        resetN = 0;
+        #45;
+        resetN = 1;
+        #50;
+        
+        canID = 32'hFFFFF96F;
+        owRate = 1;
+        invalidRate = 25;
+        validRate = 25;
+        crcRate = 25;
+        sizeOW = 7;
+        sizeInvalid = 7;
+        sizeValid = 19;
+        sizeCRC = 18;
+        initOW = 0;
+        initInvalid = 7;
+        initValid = 14;
+        initCRC = 33;
+        baudRate = 100;
+        recordRate = 1;
+        #50;
+        enable = 1;
+        setValues = 1;
+        #5;
+        memFetch();
+        #90000; //Allow for the system to play the valid signal.
+        sendInvalidID();
+        #30000; //May need to adjust this value. Need to be in the IF detect for this to work
+        dIn = 1;
+        #15000;
+        sendUnstuffedID();
+        sendUnstuffedLengthFive();
+        stdCRCEnd();
+        calcSignalPassEasy();
+        #9000; //May need to adjust this value. Need to be in the IF detect for this to work
+        dIn = 1;
+        #15000;
+        sendUnstuffedID();
+        sendUnstuffedLengthFive();
+        stdCRCEnd();
+        calcSignalPassHard();
+        #9000; //May need to adjust this value. Need to be in the IF detect for this to work
+        dIn = 1;
+        #75000;
+        
+        //Now stuffed CAN ID
+        #25;
+        initializeVariables();
+        #5;
+        resetN = 0;
+        #45;
+        resetN = 1;
+        #50;
+        
+        canID = 32'hFFFFF855;
+        owRate = 1;
+        invalidRate = 25;
+        validRate = 25;
+        crcRate = 25;
+        sizeOW = 7;
+        sizeInvalid = 7;
+        sizeValid = 19;
+        sizeCRC = 18;
+        initOW = 0;
+        initInvalid = 7;
+        initValid = 14;
+        initCRC = 33;
+        baudRate = 100;
+        recordRate = 1;
+        #50;
+        enable = 1;
+        setValues = 1;
+        #5;
+        memFetch();
+        #90000; //Allow for the system to play the valid signal.
+        sendInvalidID();
+        #30000; //May need to adjust this value. Need to be in the IF detect for this to work
+        dIn = 1;
+        #15000;
+        sendstuffedID();
+        sendUnstuffedLengthFive();
+        stdCRCEnd();
+        calcSignalPassEasy();
+        #9000; //May need to adjust this value. Need to be in the IF detect for this to work
+        dIn = 1;
+        #15000;
+        sendstuffedID();
+        sendUnstuffedLengthFive();
+        stdCRCEnd();
+        calcSignalPassHard();
+        #9000; //May need to adjust this value. Need to be in the IF detect for this to work
+        dIn = 1;
+        #90000;
         $stop;
     end
     

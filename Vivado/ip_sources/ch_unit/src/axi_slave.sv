@@ -42,17 +42,17 @@ module axi_slave_module #
 	(
 
 		// Users to add ports here
-		output wire S_WEA,
-		output wire [S_BRAM_A_ADDR_SIZE - 1 : 0] S_ADDRA,
-		output wire [S_BRAM_A_DATA_SIZE - 1 : 0] S_DINA,
-		input wire [S_BRAM_A_DATA_SIZE - 1 : 0] S_DOUTA,
+		output logic S_WEA,
+		output logic [S_BRAM_A_ADDR_SIZE - 1 : 0] S_ADDRA,
+		output logic [S_BRAM_A_DATA_SIZE - 1 : 0] S_DINA,
+		input logic [S_BRAM_A_DATA_SIZE - 1 : 0] S_DOUTA,
 		input logic canIn,
 		output logic sampleOut,
 		output logic outSwitch,
 		output logic interrupt,
 		input logic BRAM_reset,
 		output logic BRAM_enable,
-		output logic [3:0] metaState,
+		output logic [5:0] delayDBG,
 		
 
 		// User ports ends
@@ -534,8 +534,46 @@ module axi_slave_module #
 	
 	logic invalidSig;
 	logic [15:0] validSigNum;
+	logic err;
 	
 	
+	logic dOutSample;
+	logic dOutDelay;
+	logic switchSample;
+	logic switchDelay;
+	logic interruptSample;
+	logic interruptDelay;
+	
+	logic writeDelay;
+	logic writeSample;
+	logic [S_BRAM_A_ADDR_SIZE - 1 : 0] delayAddr;
+	logic [S_BRAM_A_ADDR_SIZE - 1 : 0] sampleAddr;
+	logic [S_BRAM_A_DATA_SIZE - 1 : 0] delayData;
+	logic [S_BRAM_A_DATA_SIZE - 1 : 0] sampleData;
+	logic enableDelay;
+	logic enableSample;
+	logic [3:0] metaState;
+
+        
+    always_comb begin
+        if(slv_reg4[2]) begin
+            sampleOut = dOutDelay;
+            outSwitch = switchDelay;
+            interrupt = interruptDelay;
+            BRAM_enable = enableDelay;
+            S_DINA = delayData;
+            S_ADDRA = delayAddr;
+            S_WEA = writeDelay;
+        end else begin
+            sampleOut = dOutSample;
+            outSwitch = switchSample;
+            interrupt = interruptSample;
+            BRAM_enable = enableSample;
+            S_DINA = sampleData;
+            S_ADDRA = sampleAddr;
+            S_WEA = writeSample;
+        end
+    end
 
 
 	sampleDetect_tl #(
@@ -547,9 +585,9 @@ module axi_slave_module #
 		.resetN(S_AXI_ARESETN),
 		.enable(slv_reg4[1]),
 		.dIn(canIn),
-		.sampleOut,
-		.outSwitch,
-		.interrupt,
+		.sampleOut(dOutSample),
+		.outSwitch(switchSample),
+		.interrupt(interruptSample),
 		.canID(slv_reg0),
 		.baudRate(slv_reg1),
 		.playbackRate(slv_reg2),
@@ -561,11 +599,54 @@ module axi_slave_module #
 		.stateDbg(metaState),
 		.readData(S_DOUTA),
 		.resetBusy(BRAM_reset),
-		.addr(S_ADDRA),
-		.writeData(S_DINA),
-		.bramEnable(BRAM_enable),
-		.bramWe(S_WEA)
+		.addr(sampleAddr),
+		.writeData(sampleData),
+		.bramEnable(enableSample),
+		.bramWe(writeSample)
 	);
+	devDelay_tl delayUnit
+    (
+        //Standard I/O
+		.clk(S_AXI_ACLK),
+		.resetN(S_AXI_ARESETN),
+		.enable(slv_reg4[2]),
+		.dIn(canIn),
+		.sampleOut(dOutDelay),
+		.outSwitch(switchDelay),
+		.interrupt(interruptDelay),
+		.canID(slv_reg0),
+		.baudRate(slv_reg1),
+		.playbackRateOW(slv_reg2), //Rates are multiples of 10ns. Baudrate can not be 0, but a playbackRate of 0 will play at system clk speed.
+        .playbackRateInvalid(slv_reg6),
+        .playbackRateValid(slv_reg7),
+        .playbackRateCRC(slv_reg8),
+        .recordRate(slv_reg9),
+		.setValues(slv_reg4[3]),
+        //Following are the sizes for data
+		.sigSizeWordsOW(slv_reg10[15:0]), //The number of 32 bit words that makeup a signal. These magic numbers are to fit them into a 32 bit register
+        .sigSizeWordsInvalid(slv_reg11[15:0]), //The number of 32 bit words that makeup a signal. These magic numbers are to fit them into a 32 bit register
+        .sigSizeWordsValid(slv_reg12[15:0]), //The number of 32 bit words that makeup a signal. These magic numbers are to fit them into a 32 bit register
+        .sigSizeWordsCRC(slv_reg13[15:0]), //The number of 32 bit words that makeup a signal. These magic numbers are to fit them into a 32 bit register
+        //Following are the starting addresses for data
+        .initAddrOW(slv_reg10[31:16]), //The number of 32 bit words that makeup a signal. These magic numbers are to fit them into a 32 bit register
+        .initAddrInvalid(slv_reg11[31:16]), //The number of 32 bit words that makeup a signal. These magic numbers are to fit them into a 32 bit register
+        .initAddrValid(slv_reg12[31:16]), //The number of 32 bit words that makeup a signal. These magic numbers are to fit them into a 32 bit register
+        .initAddrCRC(slv_reg13[31:16]), //The number of 32 bit words that makeup a signal. These magic numbers are to fit them into a 32 bit register
+
+
+		//output logic ready,
+		.stateDbg(delayDBG),
+        .err,
+
+		//BRAM Connections
+		.readData(S_DOUTA),
+		.resetBusy(BRAM_reset),
+		.addr(delayAddr),
+		.writeData(delayData),
+		.bramEnable(enableDelay),
+		.bramWe(writeDelay)
+
+    );
 
 	//Assign the output reg values
 
@@ -576,7 +657,8 @@ module axi_slave_module #
 		end else begin
             slv_reg5[3:0] <= metaState;
             slv_reg5[4] <= invalidSig;
-            slv_reg5[15:5] <= 0;
+            slv_reg5[5] <= err;
+            slv_reg5[11:6] <= delayDBG;
             slv_reg5[31:16] <= validSigNum;
         end
     end
