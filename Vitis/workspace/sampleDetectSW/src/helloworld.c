@@ -56,13 +56,99 @@
 #include "xil_cache.h"
 #include "xil_exception.h"
 #include "xscugic.h"
+#include "unit.h"
+#include "platform.h"
 
 static XScuGic GICInstance;
 #define INTC_INTERRUPT_ID_0 28 // IRQ_F2P[0]
 
 #define NUMSIGS 100
 #define SIGBITS 100
-#define NUMBYTE 28
+#define NUMBYTE 300
+#define DISABLEDFULLSIG 0
+#define ONEFULLSIG 0xFF
+#define ZEROFULLSIG 0xAA
+#define FIVESIG()	{\
+	sigArr[incrementer] = ZEROFULLSIG;\
+	incrementer++;\
+	sigArr[incrementer] = ONEFULLSIG;\
+	incrementer++;\
+	sigArr[incrementer] = ZEROFULLSIG;\
+	incrementer++;\
+	sigArr[incrementer] = ONEFULLSIG;\
+	incrementer++;\
+}
+#define NINESIG()	{\
+	sigArr[incrementer] = ONEFULLSIG;\
+	incrementer++;\
+	sigArr[incrementer] = ZEROFULLSIG;\
+	incrementer++;\
+	sigArr[incrementer] = ZEROFULLSIG;\
+	incrementer++;\
+	sigArr[incrementer] = ONEFULLSIG;\
+	incrementer++;\
+}
+#define SIXSIG()	{\
+	sigArr[incrementer] = ZEROFULLSIG;\
+	incrementer++;\
+	sigArr[incrementer] = ONEFULLSIG;\
+	incrementer++;\
+	sigArr[incrementer] = ONEFULLSIG;\
+	incrementer++;\
+	sigArr[incrementer] = ZEROFULLSIG;\
+	incrementer++;\
+}
+#define THIRTEENSIG()	{\
+	sigArr[incrementer] = ONEFULLSIG;\
+	incrementer++;\
+	sigArr[incrementer] = ONEFULLSIG;\
+	incrementer++;\
+	sigArr[incrementer] = ZEROFULLSIG;\
+	incrementer++;\
+	sigArr[incrementer] = ONEFULLSIG;\
+	incrementer++;\
+}
+#define FOURTEENSIG()	{\
+	sigArr[incrementer] = ONEFULLSIG;\
+	incrementer++;\
+	sigArr[incrementer] = ONEFULLSIG;\
+	incrementer++;\
+	sigArr[incrementer] = ONEFULLSIG;\
+	incrementer++;\
+	sigArr[incrementer] = ZEROFULLSIG;\
+	incrementer++;\
+}
+#define DISABLEDSIG() {\
+	sigArr[incrementer] = DISABLEDFULLSIG;\
+	incrementer++;\
+	sigArr[incrementer] = DISABLEDFULLSIG;\
+	incrementer++;\
+	sigArr[incrementer] = DISABLEDFULLSIG;\
+	incrementer++;\
+	sigArr[incrementer] = DISABLEDFULLSIG;\
+	incrementer++;\
+}
+#define ZEROSIG() {\
+	sigArr[incrementer] = ZEROFULLSIG;\
+	incrementer++;\
+	sigArr[incrementer] = ZEROFULLSIG;\
+	incrementer++;\
+	sigArr[incrementer] = ZEROFULLSIG;\
+	incrementer++;\
+	sigArr[incrementer] = ZEROFULLSIG;\
+	incrementer++;\
+}
+#define ONESIG() {\
+	sigArr[incrementer] = ONEFULLSIG;\
+	incrementer++;\
+	sigArr[incrementer] = ONEFULLSIG;\
+	incrementer++;\
+	sigArr[incrementer] = ONEFULLSIG;\
+	incrementer++;\
+	sigArr[incrementer] = ONEFULLSIG;\
+	incrementer++;\
+}
+
 //Hex Values
 //A: 2 are turned on and set to dominant
 //E: Both turned on, first value is dominant, second is recessive
@@ -125,8 +211,7 @@ int setup_interrupt_system() {
 }
 
 
-int init() {
-	int Status;
+void init() {
 
 	initMemory();
 	// Disable DCache
@@ -144,7 +229,7 @@ int main() {
 	sleep(5);
 
 	sem = 1;
-
+	/*
 	//Create the signal for the system.
 	//This should run 100 times to create 100 signals
 	for (u16 i = 0; i < NUMSIGS; i++) {
@@ -209,13 +294,261 @@ int main() {
 	//Wait for the semaphore to get set. This may never happen.
 
 	while(sem == 1){
-		xil_printf("Return value:: %X \r\n",Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20));
+		//xil_printf("Return value:: %X \r\n",Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20));
 	}
 
 	xil_printf("Out of semaphore \r\n");
 
 	//Read the thing
 	xil_printf("Return value:: %X \r\n",Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20));
+	*/
+
+
+
+
+	//Create the signal for the system.
+	u8 sigArr[NUMBYTE];
+	u16 incrementer = 0;
+
+	//
+	//OW Sig Creation
+	//
+	//0
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	{//MEM 4
+		sigArr[incrementer] = DISABLEDFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = 0x80;
+		incrementer++;
+		sigArr[incrementer] = ZEROFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = ZEROFULLSIG;
+		incrementer++;
+	}
+	ZEROSIG();
+	DISABLEDSIG();
+	//
+	//INVALID SIG
+	//
+	//7
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	ONESIG();
+	ONESIG();
+	ONESIG();
+	ONESIG();
+	ONESIG();
+	ONESIG();
+	DISABLEDSIG();
+
+	//
+	//Valid Signal
+	//
+	//14
+	FIVESIG();
+	NINESIG();
+	THIRTEENSIG();
+	ZEROSIG();
+	NINESIG();
+	ZEROSIG();
+	FOURTEENSIG();
+	SIXSIG();
+	NINESIG();
+	ZEROSIG();
+	FOURTEENSIG();
+	SIXSIG();
+	{//8
+		sigArr[incrementer] = ONEFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = ZEROFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = ZEROFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = ZEROFULLSIG;
+		incrementer++;
+	}
+	THIRTEENSIG();
+	{//B
+		sigArr[incrementer] = ONEFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = ZEROFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = ONEFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = ONEFULLSIG;
+		incrementer++;
+	}
+	{//7
+		sigArr[incrementer] = ZEROFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = ONEFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = ONEFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = ONEFULLSIG;
+		incrementer++;
+	}
+	{//END OF CRC AND THE REST OF THE SIGNAL
+		sigArr[incrementer] = ONEFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = ZEROFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = DISABLEDFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = DISABLEDFULLSIG;
+		incrementer++;
+	}
+
+	DISABLEDSIG();
+	DISABLEDSIG();
+	//
+	//CRC Sig
+	//
+	//33
+	FIVESIG();
+	NINESIG();
+	THIRTEENSIG();
+	ZEROSIG();
+	NINESIG();
+	ZEROSIG();
+	FOURTEENSIG();
+	SIXSIG();
+	NINESIG();
+	ZEROSIG();
+	FOURTEENSIG();
+	SIXSIG();
+	{//8
+		sigArr[incrementer] = ONEFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = ZEROFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = ZEROFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = ZEROFULLSIG;
+		incrementer++;
+	}
+	THIRTEENSIG();
+	{//B
+		sigArr[incrementer] = ZEROFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = ZEROFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = ONEFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = ONEFULLSIG;
+		incrementer++;
+	}
+	{//7
+		sigArr[incrementer] = ONEFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = ZEROFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = ONEFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = ZEROFULLSIG;
+		incrementer++;
+	}
+	{//END OF CRC AND THE REST OF THE SIGNAL
+		sigArr[incrementer] = ONEFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = ZEROFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = DISABLEDFULLSIG;
+		incrementer++;
+		sigArr[incrementer] = DISABLEDFULLSIG;
+		incrementer++;
+	}
+
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+
+
+
+	//Now to pad out the signal some more
+
+
+	//Move the signal to the memory thing as it should work this way.
+	//This ensures the correct ordering
+	//PLAN:
+	//31	24 23		16 15 		8 7 	0
+	// j+3			j+2			j+1		j
+	//MSB   LSB MSB	  LSB    MSB   LSB  MSB LSB
+	for (int j = 0; j < NUMBYTE; j += 4) {
+		writeWord((sigArr[j + 3] << 24) + (sigArr[j + 2] << 16) + (sigArr[j + 1] << 8) + sigArr[j]);
+	}
+	writetoDev();
+	//Configure the stuff
+	//SEND THE ID:
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+0,0xFFFFF09B); //ID: 09B Reg0
+
+
+	//System Baudrate
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+4,0x64); // 1000 ns Reg 1
+	//OW rate
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+8,0x1); // 10 ns Reg 2
+	//Invalid rate
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+24,0x1); // 250 ns Reg 6
+	//Valid Rate
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+28,0x19); // 250 ns Reg 7
+	//CRC Rate
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+32,0x19); // 250 ns Reg 8
+	//OW rate
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+36,0x1); // 10 ns Reg 9
+
+
+	//OW Config
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+40,0x7); // 7 Words starting at addr. 0 Reg 10
+
+	//Invalid Config
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+44,0x70013); // 19 Words starting at addr. 7 Reg 11
+
+	//Valid Config
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+48,0x1A0013); // 19 words startingat Addr. 26 Reg 12
+
+	//CRC Config
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+52,0x2D0016); // 22 words startingat Addr. 45 Reg 13
+
+
+
+	xil_printf("Return value:: %X \r\n",Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20));
+
+	//Play
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+16,0xC); //Write to the 3rd and 2nd bits
+
+	//Wait for the semaphore to get set. This may never happen.
+
+	while(sem == 1){
+		//xil_printf("Return value:: %X \r\n",Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20));
+	}
+
+	xil_printf("Out of semaphore \r\n");
+
+	//Read the thing
+	xil_printf("Return value:: %X \r\n",Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20));
+
+	readDev();
 
 	//Calling it here. Gotta make the algorithm in reverse next time.
 

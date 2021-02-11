@@ -69,17 +69,16 @@ void toMemory(){
 
 
 void readDev(){
-	/*
 	u32 length;
 	int Status;
 	int CDMA_Status;
-	for(int i=0; i <= random; i++){
-				ch2Loc[i] = 0;
+	for(int i=0; i <= 64; i++){
+		ch1Loc[i] = 0;
 	}
-	printf("The engine is going to transfer %ld words from BRAM to CH2BASE \r\n",random);
+	printf("The engine is going to transfer %ld words from BRAM to CH2BASE \r\n",64);
 
 
-	Status = XAxiCdma_SimpleTransfer(&AxiCdma0, (u32) BRAM, (u32) CH2BASE, (random*4), NULL, NULL);
+	Status = XAxiCdma_SimpleTransfer(&AxiCdma0, (u32) BRAM, (u32) CH1BASE, (64*4), NULL, NULL);
 
 	if (Status != XST_SUCCESS) {
 		xil_printf("CDMA STATUS: %d\r\n",Status);
@@ -95,10 +94,9 @@ void readDev(){
 
 
 
-	for(int i=0; i <= random; i++){
-		xil_printf("@ %d ch2Data: %lX \r\n",i, ch2Loc[i]);
+	for(int i=0; i <= 64; i++){
+		xil_printf("@ %d ch1Data: %lX \r\n",i, ch1Loc[i]);
 	}
-	*/
 }
 
 void writetoDev(){

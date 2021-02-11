@@ -21,7 +21,7 @@
 
 
 
-module axi_slave_module #
+module axi_slave_module  #
 	(
 		// Users to add parameters here
 
@@ -53,6 +53,7 @@ module axi_slave_module #
 		input logic BRAM_reset,
 		output logic BRAM_enable,
 		output logic [5:0] delayDBG,
+		output logic [5:0] ifState,
 		
 
 		// User ports ends
@@ -644,7 +645,8 @@ module axi_slave_module #
 		.addr(delayAddr),
 		.writeData(delayData),
 		.bramEnable(enableDelay),
-		.bramWe(writeDelay)
+		.bramWe(writeDelay),
+		.ifState(ifState)
 
     );
 

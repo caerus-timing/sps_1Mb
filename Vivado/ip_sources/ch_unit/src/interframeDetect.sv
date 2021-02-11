@@ -27,24 +27,28 @@ module interframeDetect
 		input logic dIn,
 		input logic samplePulse, //Since we are in the early bit, this gets pulsed three times. Make sure to read the value after the third pulse
 		input logic rateSelector, //1 for 3 sample points, 0 for just 1 sample point
-		output logic interframePeriod
+		output logic interframePeriod,
+		output logic [5:0] ifState
 	);
 
 
 	//Interframe Detector
-	typedef enum logic [12:0] {state[0:12]} eofStates_t;
+	typedef enum logic [3:0] {state[0:12]} eofStates_t;
 
 	//0 std, 1: 1 rec,2: 2 rec, 3: 3 rec, 4: 4 rec, 5: 5 rec, all ok
 	//6: 6 rec, 5th bit in EOF space
 	//7: 6th bit in EOF, 8: 7th bit in EOF, 9: 1st bit interframe, 10: 2nd bit interframe, 11: 3rd bit interframe, 12: readyToTransmit
 
-	(* fsm_encoding = "one_hot" *) eofStates_t currState, nextState;
+	(* fsm_encoding = "sequential" *) (* fsm_safe_state = "reset_state" *)  (* mark_debug = "true" *) eofStates_t currState, nextState;
 
 
 	typedef enum logic [1:0] {s_init, s_sample1, s_sample2, s_sample3} sample_t;
 	
-	(* fsm_encoding = "one_hot" *) sample_t currSample, nextSample;
+	(* fsm_encoding = "sequential" *) (* fsm_safe_state = "reset_state" *)  (* mark_debug = "true" *) sample_t currSample, nextSample;
 	
+	always_comb begin
+	   ifState = {currSample, currState};
+	end
 	
 	logic dataValid;
 	
@@ -102,7 +106,7 @@ module interframeDetect
 	always_comb begin
 		if(dataValid == 1) begin
 			unique case(currState)
-				state12: begin
+				state11: begin
 					if(!dIn) begin
 						nextState = currState.first;
 					end
@@ -126,7 +130,7 @@ module interframeDetect
 
 	always_comb begin
 		case(currState)
-			state12: interframePeriod = 1;
+			state11: interframePeriod = 1;
 			default: interframePeriod = 0;
 		endcase
 	end

@@ -42,11 +42,12 @@ module devDelay_tl
 		output logic [31 : 0] writeData,
 		output logic bramEnable,
 		//output logic bramResetOut,
-		output logic bramWe
+		output logic bramWe,
+		output logic [5:0] ifState
 
     );
 
-    localparam CANWAITTIME = 6;
+    localparam CANWAITTIME = 3;
     localparam CANDEFAULTMSGLENGTH = 35;
     localparam CANMSGLENGTHCRCERR = 55;
 
@@ -307,7 +308,7 @@ module devDelay_tl
     //
     //Transmission Window
     //
-	interframeDetect ifDetect(.clk, .resetN, .dIn(calculatedInput), .interframePeriod(postInterframeReq), .samplePulse, .rateSelector(threeSamplePoint));
+	interframeDetect ifDetect(.clk, .resetN, .dIn(calculatedInput), .interframePeriod(postInterframeReq), .samplePulse, .rateSelector(threeSamplePoint), .ifState(ifState));
 
 
     //
@@ -602,7 +603,7 @@ module devDelay_tl
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
             end
             s_IF: begin
-                threeSamplePoint = 1;           //Select the total sample point rate.
+                threeSamplePoint = 0;           //Select the total sample point rate.
 				syncOverride = 0;               //Override syncronization(used during playback)
                 {setOverwrite, setMsgLength} = 2'b00;               //Latches
                 playbackSelector = 2'b10;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3  
@@ -614,7 +615,7 @@ module devDelay_tl
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
             end
             s_waitBus: begin
-                threeSamplePoint = 1;           //Select the total sample point rate.
+                threeSamplePoint = 0;           //Select the total sample point rate.
 				syncOverride = 0;               //Override syncronization(used during playback)
                 {setOverwrite, setMsgLength} = 2'b00;               //Latches
                 playbackSelector = 2'b10;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3 
@@ -638,8 +639,8 @@ module devDelay_tl
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
             end
             s_playInvalid: begin
-                threeSamplePoint = 0;           //Select the total sample point rate.
-				syncOverride = 1;               //Override syncronization(used during playback)
+                threeSamplePoint = 1;           //Select the total sample point rate.
+				syncOverride = 0;               //Override syncronization(used during playback)
                 {setOverwrite, setMsgLength} = 2'b00;               //Latches
                 playbackSelector = 2'b01;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3  
                 {err, interrupt} = 2'b00;       //System Status Outputs

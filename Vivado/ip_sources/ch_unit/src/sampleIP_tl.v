@@ -23,7 +23,7 @@
 
 module sampleIP_tl #
 	(
-		// Users to add parameters here
+		// Users to add parameters her
 
 		// User parameters ends
 		// Do not modify the parameters beyond this line
@@ -54,6 +54,7 @@ module sampleIP_tl #
         output wire enOut,
         output wire interrupt,
         output wire [5:0] metaState,
+        output wire [5:0] ifState,
         
 
 		
@@ -95,6 +96,7 @@ module sampleIP_tl #
 		.S_BRAM_A_DATA_SIZE(BRAM_A_DATA_SIZE),
 		.S_BRAM_A_DEPTH(BRAM_A_DEPTH)
 	) axi_slave (
+	    .ifState(ifState),
 	    .delayDBG(metaState),
         .BRAM_enable(ena),
         .BRAM_reset(bramReset),
