@@ -14,7 +14,8 @@ module recordMaster
         output logic complete,
         output logic owReady,
         output logic pulseWrite,
-        output dataTypes_pkg::mem_t playbackOut
+        output dataTypes_pkg::mem_t playbackOut,
+        output logic [5:0] DBG
 
     );
 
@@ -73,6 +74,9 @@ module recordMaster
 
     (* fsm_encoding = "sequential" *) (* mark_debug = "true" *) record_t currState, nextState;
 
+    always_comb begin
+        DBG = {detected,currState};
+    end
 
     //
     //Submodules

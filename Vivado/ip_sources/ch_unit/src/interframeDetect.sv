@@ -28,7 +28,7 @@ module interframeDetect
 		input logic samplePulse, //Since we are in the early bit, this gets pulsed three times. Make sure to read the value after the third pulse
 		input logic rateSelector, //1 for 3 sample points, 0 for just 1 sample point
 		output logic interframePeriod,
-		output logic [5:0] ifState
+		output logic [5:0] DBG
 	);
 
 
@@ -47,7 +47,7 @@ module interframeDetect
 	(* fsm_encoding = "sequential" *) (* fsm_safe_state = "reset_state" *)  (* mark_debug = "true" *) sample_t currSample, nextSample;
 	
 	always_comb begin
-	   ifState = {currSample, currState};
+	   DBG = {currSample, currState};
 	end
 	
 	logic dataValid;

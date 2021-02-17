@@ -9,8 +9,10 @@ module sizeDetect
         input logic rateSelector, //1 for 3 sample points, 0 for just 1 sample point
 
         output logic completeConfig,
-		output logic [3:0] msgSize
+		output logic [3:0] msgSize,
+        output logic [5:0] DBG
     );
+
 
     /*
         Anatomy of a CAN Bit stuff: A CAN Bit stuff is the inverse bit from the sequnece: run of 0's = 1, run of 1's = 0;
@@ -37,6 +39,11 @@ module sizeDetect
 
     logic stuffDetected;
     logic stuffOS;
+
+
+    always_comb begin
+        DBG = {inverseDLC,inDLC, dlcShift};
+    end
 
     const logic [4:0] initialBitPattern = 7'b0101010; //This pattern was created to not have a stuff bit instantly detected, but still have SOF cause a bit stuff.
 

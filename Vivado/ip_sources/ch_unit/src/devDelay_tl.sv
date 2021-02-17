@@ -47,9 +47,17 @@ module devDelay_tl
 
     );
 
-    localparam CANWAITTIME = 3;
-    localparam CANDEFAULTMSGLENGTH = 35;
-    localparam CANMSGLENGTHCRCERR = 55;
+    localparam CANWAITTIME = 5;
+    localparam CANDEFAULTMSGLENGTH = 45;
+    localparam CANMSGLENGTHCRCERR = 65;
+
+//Top Level FSM Definition
+
+    typedef enum logic [5:0] {s_reset, s_init, s_IF, s_waitBus, s_IDDetect, s_playInvalid, s_decodeLen, s_latchLen, s_waitTgt, s_playACK, s_waitCalc,
+        s_playCRC, s_recordCRC, s_writeCache, s_writeBRAM, s_playValid, s_report, s_waitPB} delayFSM_t;
+
+
+    (* fsm_encoding = "sequential" *) (* fsm_safe_state = "reset_state" *)  (* mark_debug = "true" *)  delayFSM_t currState, nextState;
 
 
 //Submodule logic
@@ -144,6 +152,8 @@ module devDelay_tl
     logic calculatedInput;
     logic canClkPrevValue;
     logic [2:0] runningSample;
+    logic waitLeave;
+    logic tenPulse;
 
     //ID Comparator Signals
     logic idReset;
@@ -194,8 +204,29 @@ module devDelay_tl
     logic setOverwrite;
     logic [3:0] msgLength;
     logic setMsgLength;
-    
 
+    //Debug Logic
+    logic [5:0] idDBG;
+    logic [5:0] lenDBG;
+    logic [5:0] waitDBG;
+    logic [5:0] crcDBG;
+    logic [5:0] detectDBG;
+    
+// DEBUG SWITCHING UNIT
+
+    always_comb begin
+        if(currState == s_IDDetect) begin
+            ifState = idDBG;
+        end else if(currState == s_decodeLen || currState == s_latchLen) begin
+            ifState = lenDBG;
+        end else if(currState == s_waitTgt) begin
+            ifState = canClkCounter[5:0];
+        end else if(currState == s_playCRC) begin
+            ifState = {complete,incrementCRC,play,clkPlayback,sampleOut,outSwitch};
+        end else begin
+            ifState = detectDBG;
+        end
+    end
 
 
 //Submodule declarations
@@ -295,10 +326,12 @@ module devDelay_tl
     end
 
 
+
     //
     //Sync Unit
     //
-    syncUnit su(.clk, .resetN(rstIN), .bitPeriod(baudRate), .dIn, .override(syncOverride), .syncCANClk(canClk), .syncIn(sampleInput), .multiSelect(threeSamplePoint) , .oneShotSample(samplePulse));
+    syncUnit su(.clk, .resetN(rstIN), .bitPeriod(baudRate), .dIn, .override(syncOverride), .syncCANClk(canClk), .syncIn(sampleInput), .multiSelect(threeSamplePoint) , .oneShotSample(samplePulse),
+        .earlyCycleWarn(waitLeave), .TenPulse(tenPulse));
 
     //
     //Error Detector
@@ -308,7 +341,8 @@ module devDelay_tl
     //
     //Transmission Window
     //
-	interframeDetect ifDetect(.clk, .resetN, .dIn(calculatedInput), .interframePeriod(postInterframeReq), .samplePulse, .rateSelector(threeSamplePoint), .ifState(ifState));
+    //THIS UNIT DOES NOT WORK WITH TRIPLE SAMPLE POINTS HERE. I DO NOT KNOW WHY. THIS SHOULD BE USING TRIPLE SAMPLING POINTS AND CALCULATED INPUT, BUT TO KEEP THE SYSTEM WORKING CORRECTLY, IT IS NOT.
+	interframeDetect ifDetect(.clk, .resetN, .dIn(sampleInput), .interframePeriod(postInterframeReq), .samplePulse, .rateSelector(1'b0));
 
 
     //
@@ -321,7 +355,7 @@ module devDelay_tl
 	end
 
 
-	idComparator idUnit(.clk, .resetN(idReset), .enable(compareEnable), .dIn(calculatedInput), .id(canID), .samplePulse, .idCheckComplete(idValidation), .idMatch);
+	idComparator idUnit(.clk, .resetN(idReset), .enable(compareEnable), .dIn(sampleInput), .id(canID), .samplePulse, .idCheckComplete(idValidation), .idMatch, .DBG(idDBG));
 
     //Delay Detector logic
 
@@ -329,8 +363,8 @@ module devDelay_tl
         sizeResetN = sizeReqResetN & resetN;
     end
 
-    sizeDetect sizeDetector(.clk, .resetN(idReset), .enable(sizeDetectEnable), .dIn(calculatedInput), .samplePulse, .completeConfig(sizeDetected),
-     .msgSize(msgLengthInput), .rateSelector(threeSamplePoint));
+    sizeDetect sizeDetector(.clk, .resetN(idReset), .enable(sizeDetectEnable), .dIn(sampleInput), .samplePulse, .completeConfig(sizeDetected),
+     .msgSize(msgLengthInput), .rateSelector(threeSamplePoint), .DBG(lenDBG));
 
     //Size Detector Latch Logic
     always_ff @(posedge clk) begin
@@ -349,7 +383,7 @@ module devDelay_tl
 
     //Record Unit
     recordMaster rm(.clk, .resetN(recordResetN), .enable(recordEnable), .writeOut(writeRecording), .determineOW(calcRecording), .samplePulse(clkRecord),
-        .dIn, .owTrue(ow), .owReady(owValid), .pulseWrite, .playbackOut(bramIn), .complete(recordOpDone));
+        .dIn(sampleInput), .owTrue(ow), .owReady(owValid), .pulseWrite, .playbackOut(bramIn), .complete(recordOpDone), .DBG(detectDBG));
 
 
     always_comb begin
@@ -412,7 +446,7 @@ module devDelay_tl
 			prevClkVal <= 0;
 		end else begin
 			if(canClk) begin
-				if(!prevClkVal) begin
+				if(tenPulse) begin
 					canClkCounter <= canClkCounter + 1;
 					prevClkVal <= 1;
 				end else begin
@@ -426,13 +460,7 @@ module devDelay_tl
 		end
 	end
 
-//Top Level FSM Definition
 
-    typedef enum logic [5:0] {s_reset, s_init, s_IF, s_waitBus, s_IDDetect, s_playInvalid, s_decodeLen, s_latchLen, s_waitTgt, s_playACK, s_waitCalc,
-        s_playCRC, s_recordCRC, s_writeCache, s_writeBRAM, s_playValid, s_report} delayFSM_t;
-
-
-    (* fsm_encoding = "sequential" *) (* fsm_safe_state = "reset_state" *)  (* mark_debug = "true" *)  delayFSM_t currState, nextState;
 
 
 //Top Level FSM Variables
@@ -470,7 +498,7 @@ module devDelay_tl
                 end
             end
             s_waitBus: begin
-                if(!postInterframeReq) begin
+                if(waitLeave) begin
                     nextState = s_IDDetect;
                 end else begin
                     if(canClkCounter >= CANWAITTIME) begin
@@ -515,7 +543,7 @@ module devDelay_tl
                 nextState = s_waitTgt;
             end
             s_waitTgt: begin
-                if(canClkCounter >= ((msgLength << 3) + 18)) begin
+                if(canClkCounter >= ((msgLength << 3) + 16)) begin
                     nextState = s_playACK;
                 end else begin
                     nextState = currState;
@@ -530,6 +558,13 @@ module devDelay_tl
             end
             s_waitCalc: begin
                 if(recordOpDone) begin
+                    nextState = s_waitPB;
+                end else begin
+                    nextState = currState;
+                end
+            end
+            s_waitPB: begin
+                if(recordOpDone && complete) begin
                     nextState = s_IF;
                 end else begin
                     nextState = currState;
@@ -603,7 +638,7 @@ module devDelay_tl
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
             end
             s_IF: begin
-                threeSamplePoint = 0;           //Select the total sample point rate.
+                threeSamplePoint = 1;           //Select the total sample point rate.
 				syncOverride = 0;               //Override syncronization(used during playback)
                 {setOverwrite, setMsgLength} = 2'b00;               //Latches
                 playbackSelector = 2'b10;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3  
@@ -611,11 +646,11 @@ module devDelay_tl
                 {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b000000;      //Enable Signals
                 {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN, recordResetNReq} = 5'b10110;                   //Reset Signals
                 {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
-                {returnOW, returnInvalid, returnValid, returnCRC} = 4'b1110;                            //Return to base addr signals
+                {returnOW, returnInvalid, returnValid, returnCRC} = 4'b1111;                            //Return to base addr signals
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
             end
             s_waitBus: begin
-                threeSamplePoint = 0;           //Select the total sample point rate.
+                threeSamplePoint = 1;           //Select the total sample point rate.
 				syncOverride = 0;               //Override syncronization(used during playback)
                 {setOverwrite, setMsgLength} = 2'b00;               //Latches
                 playbackSelector = 2'b10;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3 
@@ -640,7 +675,7 @@ module devDelay_tl
             end
             s_playInvalid: begin
                 threeSamplePoint = 1;           //Select the total sample point rate.
-				syncOverride = 0;               //Override syncronization(used during playback)
+				syncOverride = 1;               //Override syncronization(used during playback)
                 {setOverwrite, setMsgLength} = 2'b00;               //Latches
                 playbackSelector = 2'b01;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3  
                 {err, interrupt} = 2'b00;       //System Status Outputs
@@ -709,6 +744,18 @@ module devDelay_tl
                 {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
                 {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0001;                   //Recording Unit Signals
+            end
+            s_waitPB:  begin
+                threeSamplePoint = 0;           //Select the total sample point rate.
+				syncOverride = 1;               //Override syncronization(used during playback)
+                {setOverwrite, setMsgLength} = 2'b00;               //Latches
+                playbackSelector = 2'b00;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3 
+                {err, interrupt} = 2'b00;       //System Status Outputs
+                {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b000010;      //Enable Signals
+               {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN, recordResetNReq} = 5'b11111;                   //Reset Signals
+                {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
+                {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
+                {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
             end
             s_playCRC: begin
                 threeSamplePoint = 0;           //Select the total sample point rate.

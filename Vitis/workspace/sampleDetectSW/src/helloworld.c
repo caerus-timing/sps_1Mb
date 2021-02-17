@@ -64,7 +64,7 @@ static XScuGic GICInstance;
 
 #define NUMSIGS 100
 #define SIGBITS 100
-#define NUMBYTE 300
+#define NUMBYTE 600
 #define DISABLEDFULLSIG 0
 #define ONEFULLSIG 0xFF
 #define ZEROFULLSIG 0xAA
@@ -318,6 +318,9 @@ int main() {
 	DISABLEDSIG();
 	DISABLEDSIG();
 	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
 	{//MEM 4
 		sigArr[incrementer] = DISABLEDFULLSIG;
 		incrementer++;
@@ -329,11 +332,73 @@ int main() {
 		incrementer++;
 	}
 	ZEROSIG();
+	ZEROSIG();
+	ZEROSIG();
+	ZEROSIG();
 	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();//20
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();//30
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();//40
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();//50
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();//60
+	DISABLEDSIG();//61
 	//
 	//INVALID SIG
 	//
 	//7
+	DISABLEDSIG();//62 //1
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();
+	DISABLEDSIG();//70
+	DISABLEDSIG();//10
 	DISABLEDSIG();
 	DISABLEDSIG();
 	DISABLEDSIG();
@@ -342,17 +407,26 @@ int main() {
 	DISABLEDSIG();
 	DISABLEDSIG();
 	DISABLEDSIG();
+	DISABLEDSIG();//80
+	DISABLEDSIG();//20
 	DISABLEDSIG();
 	DISABLEDSIG();
 	DISABLEDSIG();
 	DISABLEDSIG();
-	ONESIG();
-	ONESIG();
-	ONESIG();
-	ONESIG();
-	ONESIG();
-	ONESIG();
-	DISABLEDSIG();
+	ZEROSIG();
+	ZEROSIG();
+	ZEROSIG();
+	ZEROSIG();
+	ZEROSIG();//90
+	ZEROSIG();//30
+	ZEROSIG();
+	ZEROSIG();
+	ZEROSIG();
+	ZEROSIG();
+	ZEROSIG();
+	ZEROSIG();
+	ZEROSIG();
+	DISABLEDSIG();//38
 
 	//
 	//Valid Signal
@@ -519,16 +593,17 @@ int main() {
 
 
 	//OW Config
-	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+40,0x7); // 7 Words starting at addr. 0 Reg 10
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+40,0x3E); // 61 Words starting at addr. 0 Reg 10
 
 	//Invalid Config
-	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+44,0x70013); // 19 Words starting at addr. 7 Reg 11
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+44,0x3E0026); // 38 Words starting at addr. 14 Reg 11
 
 	//Valid Config
-	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+48,0x1A0013); // 19 words startingat Addr. 26 Reg 12
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+48,0x640013); // 19 words startingat Addr. 52 Reg 12 71
 
 	//CRC Config
-	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+52,0x2D0016); // 22 words startingat Addr. 45 Reg 13
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+52,0x77001B); // 22 words startingat Addr. 45 Reg 13
+	//Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+52,0x2D0013); // 19 words startingat Addr. 45 Reg 12
 
 
 
@@ -540,7 +615,12 @@ int main() {
 	//Wait for the semaphore to get set. This may never happen.
 
 	while(sem == 1){
-		//xil_printf("Return value:: %X \r\n",Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20));
+		u32 val = Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20);
+		if( 0x10 & (val >> 6)){
+			sem = 0;
+		} else {
+			xil_printf("Return value:: %X \r\n",val);
+		}
 	}
 
 	xil_printf("Out of semaphore \r\n");

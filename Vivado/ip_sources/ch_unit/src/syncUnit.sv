@@ -30,7 +30,9 @@ module syncUnit
 		input logic multiSelect,
 		output logic syncCANClk,
 		output logic syncIn, //The asyncronous input signal turned into a synchronous signal.
-		output logic oneShotSample
+		output logic oneShotSample,
+		output logic earlyCycleWarn,
+		output logic TenPulse
 	);
 
 	//Note:  @ 200 MHz 5ns <= delay <= 10ns
@@ -39,6 +41,8 @@ module syncUnit
 	logic canReferenceSig;
 	logic timingOut1;
 	logic delayInput;
+	logic delayInput2;
+	logic delayInput3;
 	logic edgeOccured;
 	logic disableClk;
 	logic [22:0] count;
@@ -64,8 +68,28 @@ module syncUnit
 		timingOut1 <= dIn;
 		syncIn     <= timingOut1;
 		delayInput <= syncIn;
+		delayInput2 <= delayInput;
 	end
 
+	always_comb begin
+		if(count == 10) begin
+			TenPulse = 1;
+		end else begin
+			TenPulse = 0;
+		end
+	end
+
+	always_ff @(posedge clk) begin
+		if(!resetN) begin
+			earlyCycleWarn <= 0;
+		end else begin
+			if(syncIn == 0 && count == 2) begin
+				earlyCycleWarn <= 1;
+			end else begin
+				earlyCycleWarn <= 0;
+			end
+		end
+	end
 
 
 	//Logic to detect if an edge occured in the signal
@@ -74,7 +98,7 @@ module syncUnit
 			edgeOccured = 0;
 		end
 		else begin
-			if(syncIn == delayInput) begin
+			if(syncIn == delayInput2) begin
 				edgeOccured = 0;
 			end
 			else begin

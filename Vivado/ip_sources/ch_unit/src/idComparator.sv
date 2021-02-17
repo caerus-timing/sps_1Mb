@@ -19,7 +19,7 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-
+(* DONT_TOUCH = "yes" *)
 module idComparator
 	(
 		//Normal Inputs
@@ -33,7 +33,8 @@ module idComparator
 		input logic samplePulse, //Since we are in the early bit, this gets pulsed three times. Make sure to read the value after the third pulse
 
 		output logic idCheckComplete,
-		output logic idMatch
+		output logic idMatch,
+		output logic [5:0] DBG
 	);
 
 //State machine enum
@@ -49,8 +50,11 @@ module idComparator
 	logic [4:0] count;
 	logic shiftIn;
 
-	const logic [4:0] length = 11;
+	const logic [4:0] length = 12;
 
+    always_comb begin
+        DBG = {shiftIn, dIn, testData[3:0]};
+    end
 
 //Given ID
 
