@@ -320,7 +320,7 @@ module sampleDetect_tl
 				end
 			end
 			s_waitData: begin
-				if(canClkCounter >= 9) begin //Choosing 9 is arbitrary
+				if(canClkCounter >= 16) begin //Choosing 9 is arbitrary
 					nextMeta = s_waitRecessive;
 				end
 				else begin
