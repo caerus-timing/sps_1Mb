@@ -3,7 +3,7 @@ module devDelay_tl
         //Standard I/O
 		input logic clk,
 		input logic resetN,
-		(* mark_debug = "true" *)  input logic enable,
+		input logic enable,
 		input logic dIn,
 		output logic sampleOut,
 		output logic outSwitch,
@@ -18,7 +18,7 @@ module devDelay_tl
         input logic [31:0] playbackRateValid,
         input logic [31:0] playbackRateCRC,
         input logic [31:0] recordRate,
-		(* mark_debug = "true" *)  input logic setValues,
+		input logic setValues,
         //Following are the sizes for data
 		input logic [15:0] sigSizeWordsOW, //The number of 32 bit words that makeup a signal. These magic numbers are to fit them into a 32 bit register
         input logic [15:0] sigSizeWordsInvalid, //The number of 32 bit words that makeup a signal. These magic numbers are to fit them into a 32 bit register
@@ -48,8 +48,8 @@ module devDelay_tl
     );
 
     localparam CANWAITTIME = 5;
-    localparam CANDEFAULTMSGLENGTH = 45;
-    localparam CANMSGLENGTHCRCERR = 65;
+    localparam CANDEFAULTMSGLENGTH = 65;
+    localparam CANMSGLENGTHCRCERR = 85;
 
 //Top Level FSM Definition
 
@@ -57,7 +57,7 @@ module devDelay_tl
         s_playCRC, s_recordCRC, s_writeCache, s_writeBRAM, s_playValid, s_report, s_waitPB} delayFSM_t;
 
 
-    (* fsm_encoding = "sequential" *) (* fsm_safe_state = "reset_state" *)  (* mark_debug = "true" *)  delayFSM_t currState, nextState;
+    (* fsm_encoding = "sequential" *) (* mark_debug = "true" *)  delayFSM_t currState, nextState;
 
 
 //Submodule logic
@@ -213,7 +213,7 @@ module devDelay_tl
     logic [5:0] detectDBG;
     
 // DEBUG SWITCHING UNIT
-
+    /*
     always_comb begin
         if(currState == s_IDDetect) begin
             ifState = idDBG;
@@ -227,7 +227,10 @@ module devDelay_tl
             ifState = detectDBG;
         end
     end
-
+    */
+    /*always_comb begin
+        ifState = {canClk,detectDBG[3:0],dIn};
+    end*/
 
 //Submodule declarations
 
@@ -383,7 +386,7 @@ module devDelay_tl
 
     //Record Unit
     recordMaster rm(.clk, .resetN(recordResetN), .enable(recordEnable), .writeOut(writeRecording), .determineOW(calcRecording), .samplePulse(clkRecord),
-        .dIn(sampleInput), .owTrue(ow), .owReady(owValid), .pulseWrite, .playbackOut(bramIn), .complete(recordOpDone), .DBG(detectDBG));
+        .dIn, .owTrue(ow), .owReady(owValid), .pulseWrite, .playbackOut(bramIn), .complete(recordOpDone), .DBG(detectDBG));
 
 
     always_comb begin

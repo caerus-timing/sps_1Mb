@@ -79,6 +79,7 @@ module sampleDetect_tl
 
 //Variable Instantiations
 
+	logic waitLeave;
 
 	mem_t dataCAN;
 	logic [15:0] incrementer;
@@ -124,7 +125,7 @@ module sampleDetect_tl
 
 
 //Sync Unit
-	syncUnit su(.clk, .resetN(inputResetN), .bitPeriod(baudRate), .dIn, .override(syncOverride), .syncCANClk(canClk), .syncIn(sampleInput), .multiSelect(threeSamplePoint) , .oneShotSample(samplePulse));
+	l_syncUnit su(.clk, .resetN(inputResetN), .bitPeriod(baudRate), .dIn, .override(syncOverride), .syncCANClk(canClk), .syncIn(sampleInput), .multiSelect(threeSamplePoint) , .oneShotSample(samplePulse), .earlyCycleWarn(waitLeave));
 
 //Output Clock Reference
 	clkUnit outRef(.clk, .resetN(outputResetN), .period(playbackRate), .clkOut(playbackReference));
@@ -135,10 +136,10 @@ module sampleDetect_tl
 
 
 //Error Detector
-	errorDetect error(.clk, .resetN, .dIn(calculatedInput), .errorFrame(errorDetected), .samplePulse, .rateSelector(threeSamplePoint));
+	errorDetect error(.clk, .resetN, .dIn(sampleInput), .errorFrame(errorDetected), .samplePulse, .rateSelector(threeSamplePoint));
 
 //Transmission Window
-	interframeDetect ifDetect(.clk, .resetN, .dIn(calculatedInput), .interframePeriod(postInterframeReq), .samplePulse, .rateSelector(threeSamplePoint));
+	l_interframeDetect ifDetect(.clk, .resetN, .dIn(sampleInput), .interframePeriod(postInterframeReq), .samplePulse, .rateSelector(threeSamplePoint));
 
 
 
@@ -192,6 +193,8 @@ module sampleDetect_tl
     logic bramResetInit;
 	logic bramResetReq;
 	logic [3:0] skipCounter;
+	
+	
 	
 	always_comb begin
 	   bramReset = bramResetInit & bramResetReq;
@@ -283,12 +286,12 @@ module sampleDetect_tl
 				end
 			end
 			s_waitSync_1: begin
-				if(!postInterframeReq) begin
-					if(skipCounter != 4'b0000 && skipCounter[3] == 0) begin
-						nextMeta = s_idCompSkip;
+				if(waitLeave) begin
+					if(skipCounter == 4'b0000 || skipCounter == 4'b1001) begin
+						nextMeta = s_idComp;
 					end
 					else begin
-						nextMeta = s_idComp;
+						nextMeta = s_idCompSkip;
 					end
 				end
 				else begin
@@ -486,7 +489,7 @@ module sampleDetect_tl
 				initStart = 0;
 				threeSamplePoint = 1;
 				skipReset = 0;
-				skipInc = 0;
+				skipInc = 1;
 				compareEnable = 0;
 				playbackEnable = 0;
 				syncOverride = 0;
@@ -497,7 +500,7 @@ module sampleDetect_tl
 			end
 			s_eof: begin
 				initStart = 0;
-				threeSamplePoint = 0;
+				threeSamplePoint = 1;
 				skipReset = 0;
 				skipInc = 0;
 				compareEnable = 0;
@@ -642,7 +645,7 @@ module sampleDetect_tl
 	end
 
 //Connection to IDComparitor
-	idComparator idUnit(.clk, .resetN(idReset), .enable(compareEnable), .dIn(calculatedInput), .id(canID), .samplePulse, .idCheckComplete(idValidation), .idMatch);
+	idComparator idUnit(.clk, .resetN(idReset), .enable(compareEnable), .dIn(sampleInput), .id(canID), .samplePulse, .idCheckComplete(idValidation), .idMatch);
 
 
 //Connection to playback Unit

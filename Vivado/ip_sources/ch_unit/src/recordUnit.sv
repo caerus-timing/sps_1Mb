@@ -10,13 +10,18 @@ module recordUnit
         output logic [31:0] recordedOut,
         output logic dataValid,
         output logic [31:0] runningTotal,
-        output logic [5:0] incrementer
+        output logic [5:0] incrementer,
+        output logic [3:0] DBG
 
     );
 
     logic dataValidIn;
     logic shiftIn;
     logic shiftInUnGated;
+
+    always_comb begin
+        DBG = {runningTotal[31:30], samplePulse, dataValidIn};
+    end
 
     always_comb begin
         dataValid = dataValidIn & enable;
@@ -28,7 +33,7 @@ module recordUnit
             recordedOut <= 0;
         end else begin
             if(shiftIn) begin
-                if(incrementer != 6'b100000) begin //If it is equal to 33,
+                if(incrementer != 6'b011111) begin //If it is equal to 31, i.e. 32 samples have been taken
                     recordedOut <= recordedOut;
                 end
                 else begin
@@ -45,7 +50,7 @@ module recordUnit
         if(!resetN) begin
             dataValidIn <= 0;
         end else begin
-            if(incrementer == 6'b100000) begin
+            if(incrementer == 6'b011111) begin
                 dataValidIn <= 1;
             end else if(incrementer == 6'b1) begin
                 dataValidIn <= 0;
@@ -70,7 +75,7 @@ module recordUnit
             incrementer <= 0;
         end else begin
             if(shiftIn) begin
-                if(incrementer != 6'b100000) begin //If it is equal to 33,
+                if(incrementer != 6'b011111) begin //If it is equal to 33,
                     incrementer <= incrementer + 1;
                 end
                 else begin

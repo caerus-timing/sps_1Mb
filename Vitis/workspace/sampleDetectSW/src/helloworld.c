@@ -58,13 +58,26 @@
 #include "xscugic.h"
 #include "unit.h"
 #include "platform.h"
+#include "deviceType.h"
+#include "xil_misc_psreset_api.h"
+
+#define DEBUG
 
 static XScuGic GICInstance;
 #define INTC_INTERRUPT_ID_0 28 // IRQ_F2P[0]
 
-#define NUMSIGS 100
-#define SIGBITS 100
-#define NUMBYTE 600
+//Reset Locations
+#define SLCR_LOCK_ADDR                  (XPS_SYS_CTRL_BASEADDR + 0x4)
+#define SLCR_UNLOCK_ADDR                (XPS_SYS_CTRL_BASEADDR + 0x8)
+#define SLCR_LOCK_KEY_VALUE             0x767B
+#define SLCR_UNLOCK_KEY_VALUE           0xDF0D
+#define FPGA_RST_CTRL					0x240
+
+#define XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR XPAR_SAMPLEPOINTDETECTOR_0_AXI_IN_BASEADDR
+
+#define NUMSIGS1M 100
+#define NUMBYTES1M 7
+#define NUMBYTE 896 //This is chosen to be larger than we will ever need
 #define DISABLEDFULLSIG 0
 #define ONEFULLSIG 0xFF
 #define ZEROFULLSIG 0xAA
@@ -156,7 +169,8 @@ static XScuGic GICInstance;
 
 u8 sem; //Worst semaphore implimentation of all time.
 
-
+canNode * curr;
+canNode * first;
 
 
 void isr(){
@@ -221,22 +235,415 @@ void init() {
 }
 
 
+void resetPL(){
+	Xil_Out32(SLCR_UNLOCK_ADDR, SLCR_UNLOCK_KEY_VALUE);
+	//Reset PL
+	Xil_Out32(XSLCR_BASEADDR+FPGA_RST_CTRL, 0x0);
+	Xil_Out32(XSLCR_BASEADDR+FPGA_RST_CTRL, 0x1);
+	Xil_Out32(XSLCR_BASEADDR+FPGA_RST_CTRL, 0x0);
 
-int main() {
-	init();
-	print("Hello World\n\r");
-	print("Successfully ran Hello World application");
-	sleep(5);
+	Xil_Out32(SLCR_LOCK_ADDR, SLCR_LOCK_KEY_VALUE); //Lock back XSLCR
+}
+
+
+void detect(u32 canID, u16 kbps){
+
+		sem = 1;
+		//Create the signals for the system
+		u8 sigArr[NUMBYTE];
+		u16 incrementer = 0;
+
+
+		if(kbps == 1000){
+			//
+			//OW Sig Creation
+			//
+			//0
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			{//MEM 4
+				sigArr[incrementer] = DISABLEDFULLSIG;
+				incrementer++;
+				sigArr[incrementer] = 0x80;
+				incrementer++;
+				sigArr[incrementer] = ZEROFULLSIG;
+				incrementer++;
+				sigArr[incrementer] = ZEROFULLSIG;
+				incrementer++;
+			}
+			ZEROSIG();
+			ZEROSIG();
+			ZEROSIG();
+			ZEROSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();//20
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();//30
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();//40
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();//50
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();
+			DISABLEDSIG();//60
+			DISABLEDSIG();//61
+		} else if(kbps == 500){
+			//TODO: CREATE THE 500 KBPS SIGNAL HERE
+		} else{
+			printf("This function has not been validated for this signal rate.\r\nPlease read the comment near line %d in file %s for more information.\r\n",__LINE__,__FILE__);
+		}
+
+		//
+		//INVALID SIG
+		//
+		//7
+		DISABLEDSIG();//62 //1
+		DISABLEDSIG();
+		DISABLEDSIG();
+		DISABLEDSIG();
+		DISABLEDSIG();
+		DISABLEDSIG();
+		DISABLEDSIG();
+		DISABLEDSIG();
+		DISABLEDSIG();//70
+		DISABLEDSIG();//10
+		DISABLEDSIG();
+		DISABLEDSIG();
+		DISABLEDSIG();
+		DISABLEDSIG();
+		DISABLEDSIG();
+		DISABLEDSIG();
+		DISABLEDSIG();
+		DISABLEDSIG();
+		DISABLEDSIG();//80
+		DISABLEDSIG();//20
+		DISABLEDSIG();
+		DISABLEDSIG();
+		DISABLEDSIG();
+		DISABLEDSIG();
+		ZEROSIG();
+		ZEROSIG();
+		ZEROSIG();
+		ZEROSIG();
+		ZEROSIG();//90
+		ZEROSIG();//30
+		ZEROSIG();
+		ZEROSIG();
+		ZEROSIG();
+		ZEROSIG();
+		ZEROSIG();
+		ZEROSIG();
+		ZEROSIG();
+		DISABLEDSIG();//38
+
+		//
+		//Valid Signal
+		//
+		//14
+		FIVESIG();
+		NINESIG();
+		THIRTEENSIG();
+		ZEROSIG();
+		NINESIG();
+		ZEROSIG();
+		FOURTEENSIG();
+		SIXSIG();
+		NINESIG();
+		ZEROSIG();
+		FOURTEENSIG();
+		SIXSIG();
+		{//8
+			sigArr[incrementer] = ONEFULLSIG;
+			incrementer++;
+			sigArr[incrementer] = ZEROFULLSIG;
+			incrementer++;
+			sigArr[incrementer] = ZEROFULLSIG;
+			incrementer++;
+			sigArr[incrementer] = ZEROFULLSIG;
+			incrementer++;
+		}
+		THIRTEENSIG();
+		{//B
+			sigArr[incrementer] = ONEFULLSIG;
+			incrementer++;
+			sigArr[incrementer] = ZEROFULLSIG;
+			incrementer++;
+			sigArr[incrementer] = ONEFULLSIG;
+			incrementer++;
+			sigArr[incrementer] = ONEFULLSIG;
+			incrementer++;
+		}
+		{//7
+			sigArr[incrementer] = ZEROFULLSIG;
+			incrementer++;
+			sigArr[incrementer] = ONEFULLSIG;
+			incrementer++;
+			sigArr[incrementer] = ONEFULLSIG;
+			incrementer++;
+			sigArr[incrementer] = ONEFULLSIG;
+			incrementer++;
+		}
+		{//END OF CRC AND THE REST OF THE SIGNAL
+			sigArr[incrementer] = ONEFULLSIG;
+			incrementer++;
+			sigArr[incrementer] = ZEROFULLSIG;
+			incrementer++;
+			sigArr[incrementer] = DISABLEDFULLSIG;
+			incrementer++;
+			sigArr[incrementer] = DISABLEDFULLSIG;
+			incrementer++;
+		}
+
+		DISABLEDSIG();
+		DISABLEDSIG();
+		//
+		//CRC Sig
+		//
+		//33
+		FIVESIG();
+		NINESIG();
+		THIRTEENSIG();
+		ZEROSIG();
+		NINESIG();
+		ZEROSIG();
+		FOURTEENSIG();
+		SIXSIG();
+		NINESIG();
+		ZEROSIG();
+		FOURTEENSIG();
+		SIXSIG();
+		{//8
+			sigArr[incrementer] = ONEFULLSIG;
+			incrementer++;
+			sigArr[incrementer] = ZEROFULLSIG;
+			incrementer++;
+			sigArr[incrementer] = ZEROFULLSIG;
+			incrementer++;
+			sigArr[incrementer] = ZEROFULLSIG;
+			incrementer++;
+		}
+		THIRTEENSIG();
+		{//B
+			sigArr[incrementer] = ZEROFULLSIG;
+			incrementer++;
+			sigArr[incrementer] = ZEROFULLSIG;
+			incrementer++;
+			sigArr[incrementer] = ONEFULLSIG;
+			incrementer++;
+			sigArr[incrementer] = ONEFULLSIG;
+			incrementer++;
+		}
+		{//7
+			sigArr[incrementer] = ONEFULLSIG;
+			incrementer++;
+			sigArr[incrementer] = ZEROFULLSIG;
+			incrementer++;
+			sigArr[incrementer] = ONEFULLSIG;
+			incrementer++;
+			sigArr[incrementer] = ZEROFULLSIG;
+			incrementer++;
+		}
+		{//END OF CRC AND THE REST OF THE SIGNAL
+			sigArr[incrementer] = ONEFULLSIG;
+			incrementer++;
+			sigArr[incrementer] = ZEROFULLSIG;
+			incrementer++;
+			sigArr[incrementer] = DISABLEDFULLSIG;
+			incrementer++;
+			sigArr[incrementer] = DISABLEDFULLSIG;
+			incrementer++;
+		}
+
+		DISABLEDSIG();
+		DISABLEDSIG();
+		DISABLEDSIG();
+		DISABLEDSIG();
+		DISABLEDSIG();
+		DISABLEDSIG();
+		DISABLEDSIG();
+		DISABLEDSIG();
+		DISABLEDSIG();
+		DISABLEDSIG();
+		DISABLEDSIG();
+
+
+
+
+
+		//This ensures the correct ordering
+		//PLAN:
+		//31	24 23		16 15 		8 7 	0
+		// j+3			j+2			j+1		j
+		//MSB   LSB MSB	  LSB    MSB   LSB  MSB LSB
+		for (int j = 0; j < NUMBYTE; j += 4) {
+			writeWord((sigArr[j + 3] << 24) + (sigArr[j + 2] << 16) + (sigArr[j + 1] << 8) + sigArr[j]);
+		}
+
+		//Send signal to the device
+		writetoDev();
+
+
+
+		//Send the configuration bits
+		//SEND THE ID:
+		Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+0,canID); //ID: Reg0
+		//Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+0,0xFFFFF09B); //ID: 09B Reg0
+
+
+		if(kbps == 1000){
+			Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+4,0x64); // 1000 ns Reg 1 BaudRate
+			Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+28,0x19); // 250 ns Reg 7 Valid
+			Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+32,0x19); // 250 ns Reg 8 CRC
+			//OW Config
+			Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+40,0x3E); // 61 Words starting at addr. 0 Reg 10
+			//Invalid Config
+			Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+44,0x3E0026); // 38 Words starting at addr. 14 Reg 11
+			//Valid Config
+			Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+48,0x640013); // 19 words startingat Addr. 52 Reg 12 71
+			//CRC Config
+			Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+52,0x77001B); // 22 words startingat Addr. 45 Reg 13
+		} else if(kbps == 500){
+			Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+4,0xC8); // 2000 ns Reg 1 BaudRate
+			Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+28,0x32); // 250 ns Reg 7 Valid
+			Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+32,0x32); // 250 ns Reg 8 CRC
+			//TODO: CHANGE THIS BASED ON THE UPDATED MEMORY CALCULATIONS
+			//OW Config
+			Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+40,0x3E); // 61 Words starting at addr. 0 Reg 10
+			//Invalid Config
+			Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+44,0x3E0026); // 38 Words starting at addr. 14 Reg 11
+			//Valid Config
+			Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+48,0x640013); // 19 words startingat Addr. 52 Reg 12 71
+			//CRC Config
+			Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+52,0x77001B); // 22 words startingat Addr. 45 Reg 13
+		} else {
+			return;
+		}
+
+		//These rates should not be changed based on the baud rate.
+		Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+8,0x1); // 10 ns Reg 2. OW
+		Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+24,0x1); // 10 ns Reg 6 Invalid
+		Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+36,0x1); // 10 ns Reg 9 Record Rate
+
+
+
+
+
+
+		#ifdef DEBUG
+		xil_printf("Return value:: %X \r\n",Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20));
+		#endif
+		//Play
+		Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+16,0xC); //Write to the 3rd and 2nd bits
+		xil_printf("Going in\r\n");
+
+		//Wait for the semaphore to get set. This may never happen.
+
+		while(sem == 1){
+			u32 val = Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20);
+			if( 0x10 & (val >> 6)){
+				sem = 0;
+			} else {
+				#ifdef DEBUG
+				//xil_printf("Return value:: %X \r\n",val);
+				#endif
+			}
+		}
+		#ifdef DEBUG
+		xil_printf("Out of semaphore \r\n");
+		#endif
+
+
+		readDev();
+
+		//SEND THE ID:
+		Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+0,0); //ID: Reg0
+		//Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+0,0xFFFFF09B); //ID: 09B Reg0
+
+		Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+4,0); // 1000 ns Reg 1 BaudRate
+		Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+28,0); // 250 ns Reg 7 Valid
+		Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+32,0); // 250 ns Reg 8 CRC
+		//OW Config
+		Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+40,0); // 61 Words starting at addr. 0 Reg 10
+		//Invalid Config
+		Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+44,0); // 38 Words starting at addr. 14 Reg 11
+		//Valid Config
+		Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+48,0); // 19 words startingat Addr. 52 Reg 12 71
+		//CRC Config
+		Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+52,0); // 22 words startingat Addr. 45 Reg 13
+		Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+8,0x0); // 10 ns Reg 2. OW
+		Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+24,0x0); // 10 ns Reg 6 Invalid
+		Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+36,0x0); // 10 ns Reg 9 Record Rate
+		Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+16,0); //Write to the 3rd and 2nd bits
+
+		resetPL();
+
+
+		return;
+
+
+}
+
+u32 sampleEarly(u32 canID, u16 kbps){
+
+	u8 scale = 1000/kbps;
+
+	if(scale > 4){
+		xil_printf("This speed has not currently been tested and may not work with the current makeup of the hardware. This function will not allow for the test to continue\r\n");
+		return 0;
+	}
 
 	sem = 1;
-	/*
 	//Create the signal for the system.
 	//This should run 100 times to create 100 signals
-	for (u16 i = 0; i < NUMSIGS; i++) {
+	for (u16 i = 0; i < (NUMSIGS1M * scale); i++) {
 		//The array of our signals
-		u8 sigArr[NUMBYTE];
+
+		u8 sigArr[56];
 		//We need to get these down into groups of 4's
-		u16 highCount = (NUMSIGS - i) >> 2; // Divide by 4.
+		u16 highCount = ((NUMSIGS1M * scale) - i) >> 2; // Divide by 4.
 		u16 mixedCount = i % 4;
 		u16 counter = 0;
 		for (int j = 0; j < highCount; j++) {
@@ -258,7 +665,7 @@ int main() {
 			break;
 		}
 		counter++;
-		for (int j = counter; j <= NUMBYTE; j++) {
+		for (int j = counter; j <= (NUMBYTES1M * scale * 4); j++) {
 			//This should fit the signal toa  32 bit word.
 			sigArr[counter] = 0x00;
 		}
@@ -269,7 +676,7 @@ int main() {
 		//31	24 23		16 15 		8 7 	0
 		// j+3			j+2			j+1		j
 		//MSB   LSB MSB	  LSB    MSB   LSB  MSB LSB
-		for (int j = 0; j < NUMBYTE; j += 4) {
+		for (int j = 0; j < (NUMBYTES1M * scale * 4); j += 4) {
 			writeWord((sigArr[j + 3] << 24) + (sigArr[j + 2] << 16) + (sigArr[j + 1] << 8) + sigArr[j]);
 		}
 
@@ -277,361 +684,189 @@ int main() {
 	writetoDev();
 	//Configure the stuff
 	//SEND THE ID:
-	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+0,0xFFFFF89B); //ID: 09B
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+0,canID); //ID: 09B
 	//Input Baud Rate
-	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+4,0x64); //ID: 26A
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+4,(scale * 100));
 	//Playback Rate
-	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+8,0x1); //ID: 26A
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+8,0x1);
 
 	//Signal Stuff
-	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+12,0x70064); //ID: 26A
-
+	//THIS MAY HAVE TO CHANGE.....
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+12,0x70064);
+	#ifdef DEBUG
 	xil_printf("Return value:: %X \r\n",Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20));
-
+	#endif
 	//Play
 	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+16,0x3); //ID: 26A
 
 	//Wait for the semaphore to get set. This may never happen.
 
 	while(sem == 1){
-		//xil_printf("Return value:: %X \r\n",Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20));
+		#ifdef DEBUG
+		xil_printf("Return value:: %X \r\n",Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20));
+		#endif
 	}
-
+	#ifdef DEBUG
 	xil_printf("Out of semaphore \r\n");
-
+	u32 returnVal = Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20);
 	//Read the thing
+	xil_printf("Return value:: %X \r\n",returnVal);
+	#endif
+
+
+
+	//Cleanup
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+0,0); //ID: 09B
+	//Input Baud Rate
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+4,0);
+	//Playback Rate
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+8,0);
+
+	//Signal Stuff
+	//THIS MAY HAVE TO CHANGE.....
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+12,0);
+	#ifdef DEBUG
 	xil_printf("Return value:: %X \r\n",Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20));
-	*/
+	#endif
+	//Play
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+16,0); //ID: 26A
 
+	resetPL();
 
+	return returnVal;
+}
 
+u32 sampleLate(u32 canID, u16 kbps){
 
+	u8 scale = 10000/kbps;
+
+	if(scale > 4){
+		xil_printf("This speed has not currently been tested and may not work with the current makeup of the hardware. This function will not allow for the test to continue\r\n");
+		return 0;
+	}
+
+	sem = 1;
 	//Create the signal for the system.
-	u8 sigArr[NUMBYTE];
-	u16 incrementer = 0;
+	//This should run 100 times to create 100 signals
+	for (u16 i = 0; i < (NUMSIGS1M * scale); i++) {
+		//The array of our signals
+		u8 sigArr[NUMBYTES1M * scale];
+		//We need to get these down into groups of 4's
+		u16 highCount = (NUMSIGS1M - i) >> 2; // Divide by 4.
+		u16 mixedCount = i % 4;
+		u16 counter = 0;
+		for (int j = 0; j < ((NUMSIGS1M >> 2) - highCount -1); j++) {
+			sigArr[j] = 0x00;
+			counter++;
+		}
+		switch (mixedCount) {
+		case 3:
+			sigArr[counter] = 0x80;
+			break;
+		case 2:
+			sigArr[counter] = 0xA0;
+			break;
+		case 1:
+			sigArr[counter] = 0xA8;
+			break;
+		default:
+			sigArr[counter] = 0xAA;
+			break;
+		}
+		counter++;
+		for (int j = counter; j <= (NUMBYTES1M * scale); j++) {
+			//This should fit the signal toa  32 bit word.
+			sigArr[counter] = 0xAA;
+		}
 
-	//
-	//OW Sig Creation
-	//
-	//0
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	{//MEM 4
-		sigArr[incrementer] = DISABLEDFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = 0x80;
-		incrementer++;
-		sigArr[incrementer] = ZEROFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = ZEROFULLSIG;
-		incrementer++;
-	}
-	ZEROSIG();
-	ZEROSIG();
-	ZEROSIG();
-	ZEROSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();//20
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();//30
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();//40
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();//50
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();//60
-	DISABLEDSIG();//61
-	//
-	//INVALID SIG
-	//
-	//7
-	DISABLEDSIG();//62 //1
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();//70
-	DISABLEDSIG();//10
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();//80
-	DISABLEDSIG();//20
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	ZEROSIG();
-	ZEROSIG();
-	ZEROSIG();
-	ZEROSIG();
-	ZEROSIG();//90
-	ZEROSIG();//30
-	ZEROSIG();
-	ZEROSIG();
-	ZEROSIG();
-	ZEROSIG();
-	ZEROSIG();
-	ZEROSIG();
-	ZEROSIG();
-	DISABLEDSIG();//38
+		//Move the signal to the memory thing as it should work this way.
+		//This ensures the correct ordering
+		//PLAN:
+		//31	24 23		16 15 		8 7 	0
+		// j+3			j+2			j+1		j
+		//MSB   LSB MSB	  LSB    MSB   LSB  MSB LSB
+		for (int j = 0; j < (NUMBYTES1M * scale); j += 4) {
+			writeWord((sigArr[j + 3] << 24) + (sigArr[j + 2] << 16) + (sigArr[j + 1] << 8) + sigArr[j]);
+		}
 
-	//
-	//Valid Signal
-	//
-	//14
-	FIVESIG();
-	NINESIG();
-	THIRTEENSIG();
-	ZEROSIG();
-	NINESIG();
-	ZEROSIG();
-	FOURTEENSIG();
-	SIXSIG();
-	NINESIG();
-	ZEROSIG();
-	FOURTEENSIG();
-	SIXSIG();
-	{//8
-		sigArr[incrementer] = ONEFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = ZEROFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = ZEROFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = ZEROFULLSIG;
-		incrementer++;
-	}
-	THIRTEENSIG();
-	{//B
-		sigArr[incrementer] = ONEFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = ZEROFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = ONEFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = ONEFULLSIG;
-		incrementer++;
-	}
-	{//7
-		sigArr[incrementer] = ZEROFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = ONEFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = ONEFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = ONEFULLSIG;
-		incrementer++;
-	}
-	{//END OF CRC AND THE REST OF THE SIGNAL
-		sigArr[incrementer] = ONEFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = ZEROFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = DISABLEDFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = DISABLEDFULLSIG;
-		incrementer++;
-	}
-
-	DISABLEDSIG();
-	DISABLEDSIG();
-	//
-	//CRC Sig
-	//
-	//33
-	FIVESIG();
-	NINESIG();
-	THIRTEENSIG();
-	ZEROSIG();
-	NINESIG();
-	ZEROSIG();
-	FOURTEENSIG();
-	SIXSIG();
-	NINESIG();
-	ZEROSIG();
-	FOURTEENSIG();
-	SIXSIG();
-	{//8
-		sigArr[incrementer] = ONEFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = ZEROFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = ZEROFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = ZEROFULLSIG;
-		incrementer++;
-	}
-	THIRTEENSIG();
-	{//B
-		sigArr[incrementer] = ZEROFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = ZEROFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = ONEFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = ONEFULLSIG;
-		incrementer++;
-	}
-	{//7
-		sigArr[incrementer] = ONEFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = ZEROFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = ONEFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = ZEROFULLSIG;
-		incrementer++;
-	}
-	{//END OF CRC AND THE REST OF THE SIGNAL
-		sigArr[incrementer] = ONEFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = ZEROFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = DISABLEDFULLSIG;
-		incrementer++;
-		sigArr[incrementer] = DISABLEDFULLSIG;
-		incrementer++;
-	}
-
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-	DISABLEDSIG();
-
-
-
-	//Now to pad out the signal some more
-
-
-	//Move the signal to the memory thing as it should work this way.
-	//This ensures the correct ordering
-	//PLAN:
-	//31	24 23		16 15 		8 7 	0
-	// j+3			j+2			j+1		j
-	//MSB   LSB MSB	  LSB    MSB   LSB  MSB LSB
-	for (int j = 0; j < NUMBYTE; j += 4) {
-		writeWord((sigArr[j + 3] << 24) + (sigArr[j + 2] << 16) + (sigArr[j + 1] << 8) + sigArr[j]);
 	}
 	writetoDev();
 	//Configure the stuff
 	//SEND THE ID:
-	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+0,0xFFFFF09B); //ID: 09B Reg0
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+0,canID); //ID: 09B
+	//Input Baud Rate
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+4,(scale * 100));
+	//Playback Rate
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+8,0x1);
 
-
-	//System Baudrate
-	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+4,0x64); // 1000 ns Reg 1
-	//OW rate
-	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+8,0x1); // 10 ns Reg 2
-	//Invalid rate
-	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+24,0x1); // 250 ns Reg 6
-	//Valid Rate
-	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+28,0x19); // 250 ns Reg 7
-	//CRC Rate
-	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+32,0x19); // 250 ns Reg 8
-	//OW rate
-	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+36,0x1); // 10 ns Reg 9
-
-
-	//OW Config
-	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+40,0x3E); // 61 Words starting at addr. 0 Reg 10
-
-	//Invalid Config
-	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+44,0x3E0026); // 38 Words starting at addr. 14 Reg 11
-
-	//Valid Config
-	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+48,0x640013); // 19 words startingat Addr. 52 Reg 12 71
-
-	//CRC Config
-	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+52,0x77001B); // 22 words startingat Addr. 45 Reg 13
-	//Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+52,0x2D0013); // 19 words startingat Addr. 45 Reg 12
-
-
-
+	//Signal Stuff
+	//THIS MAY HAVE TO CHANGE.....
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+12,0x70064);
+	#ifdef DEBUG
 	xil_printf("Return value:: %X \r\n",Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20));
-
+	#endif
 	//Play
-	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+16,0xC); //Write to the 3rd and 2nd bits
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+16,0x3); //ID: 26A
 
 	//Wait for the semaphore to get set. This may never happen.
 
 	while(sem == 1){
-		u32 val = Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20);
-		if( 0x10 & (val >> 6)){
-			sem = 0;
-		} else {
-			xil_printf("Return value:: %X \r\n",val);
-		}
+		#ifdef DEBUG
+		xil_printf("Return value:: %X \r\n",Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20));
+		#endif
+	}
+	#ifdef DEBUG
+	xil_printf("Out of semaphore \r\n");
+	u32 returnVal = Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20);
+	//Read the thing
+	xil_printf("Return value:: %X \r\n",returnVal);
+	#endif
+
+
+
+	//Cleanup
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+0,0); //ID: 09B
+	//Input Baud Rate
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+4,0);
+	//Playback Rate
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+8,0);
+
+	//Signal Stuff
+	//THIS MAY HAVE TO CHANGE.....
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+12,0);
+	#ifdef DEBUG
+	xil_printf("Return value:: %X \r\n",Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20));
+	#endif
+	//Play
+	Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+16,0); //ID: 26A
+
+	resetPL();
+
+	return returnVal;
+}
+
+
+u16 canDetect(){
+
+}
+
+int main() {
+	init();
+	sleep(1);
+
+	//First run the CAN sample rate detector
+
+	//u16 speed = canDetect();
+	for(int i=0; i < 30;i++){
+		sampleEarly(0xFFFFF09B, 1000);
+		sleep(5);
 	}
 
-	xil_printf("Out of semaphore \r\n");
-
-	//Read the thing
-	xil_printf("Return value:: %X \r\n",Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20));
-
-	readDev();
 
 	//Calling it here. Gotta make the algorithm in reverse next time.
 
 	cleanup_platform();
 	return 0;
+
+
 }

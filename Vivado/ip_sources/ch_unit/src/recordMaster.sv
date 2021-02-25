@@ -68,6 +68,7 @@ module recordMaster
     logic [$clog2(DEPTH)-1 : 0] i;
     logic incrementI;
     logic resetI;
+    logic [3:0] subDBG;
 
     typedef enum logic[4:0] {s_init, s_hold, s_waitInc, s_increment, s_cmdHold, s_checkValid, s_reqWord, s_wait0, s_shiftFinMsg,
         s_finCheck, s_valid, s_invalid, s_resetCache, s_sendCommitSig, s_incSend, s_wait1, s_wait2} record_t;
@@ -75,7 +76,7 @@ module recordMaster
     (* fsm_encoding = "sequential" *) (* mark_debug = "true" *) record_t currState, nextState;
 
     always_comb begin
-        DBG = {detected,currState};
+        DBG = {2'b0,subDBG};
     end
 
     //
@@ -84,7 +85,7 @@ module recordMaster
 
     //Record Unit
     recordUnit rU(.clk, .resetN, .enable, .samplePulse, .dIn, .recordedOut(recordOut), .dataValid(recordValid),
-        .runningTotal(currRecordSample), .incrementer(currBit));
+        .runningTotal(currRecordSample), .incrementer(currBit), .DBG(subDBG));
 
     //Signal Storage
     sigStorage #(.DEPTH(DEPTH)) sStore(.clk, .resetN(resetStore), .baseAddr(9'b0), .numFetches({15'b0,1'b1}), .storeConfig(storeConfig),

@@ -554,7 +554,12 @@ module axi_slave_module  #
 	logic enableDelay;
 	logic enableSample;
 	logic [3:0] metaState;
+	logic [5:0] delaydbg;
 
+	//TEMP REMOVE IF WORKING ON DELAY UNIT
+	always_comb begin
+		delayDBG = {2'b0,metaState};
+	end
         
     always_comb begin
         if(slv_reg4[2]) begin
@@ -636,7 +641,7 @@ module axi_slave_module  #
 
 
 		//output logic ready,
-		.stateDbg(delayDBG),
+		.stateDbg(delaydbg),
         .err,
 
 		//BRAM Connections
@@ -660,7 +665,7 @@ module axi_slave_module  #
             slv_reg5[3:0] <= metaState;
             slv_reg5[4] <= invalidSig;
             slv_reg5[5] <= err;
-            slv_reg5[11:6] <= delayDBG;
+            slv_reg5[11:6] <= delaydbg;
             slv_reg5[31:16] <= validSigNum;
         end
     end
