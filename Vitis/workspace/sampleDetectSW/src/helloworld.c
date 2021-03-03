@@ -342,39 +342,6 @@ void detect(u32 canID, u16 kbps){
 		//7
 		DISABLEDSIG();//62 //1
 		DISABLEDSIG();
-		DISABLEDSIG();
-		DISABLEDSIG();
-		DISABLEDSIG();
-		DISABLEDSIG();
-		DISABLEDSIG();
-		DISABLEDSIG();
-		DISABLEDSIG();//70
-		DISABLEDSIG();//10
-		DISABLEDSIG();
-		DISABLEDSIG();
-		DISABLEDSIG();
-		DISABLEDSIG();
-		DISABLEDSIG();
-		DISABLEDSIG();
-		DISABLEDSIG();
-		DISABLEDSIG();
-		DISABLEDSIG();//80
-		DISABLEDSIG();//20
-		DISABLEDSIG();
-		DISABLEDSIG();
-		DISABLEDSIG();
-		DISABLEDSIG();
-		ZEROSIG();
-		ZEROSIG();
-		ZEROSIG();
-		ZEROSIG();
-		ZEROSIG();//90
-		ZEROSIG();//30
-		ZEROSIG();
-		ZEROSIG();
-		ZEROSIG();
-		ZEROSIG();
-		ZEROSIG();
 		ZEROSIG();
 		ZEROSIG();
 		DISABLEDSIG();//38
@@ -540,11 +507,11 @@ void detect(u32 canID, u16 kbps){
 			//OW Config
 			Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+40,0x3E); // 61 Words starting at addr. 0 Reg 10
 			//Invalid Config
-			Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+44,0x3E0026); // 38 Words starting at addr. 14 Reg 11
+			Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+44,0x3E0005); // 38 Words starting at addr. 14 Reg 11 17
 			//Valid Config
-			Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+48,0x640013); // 19 words startingat Addr. 52 Reg 12 71
+			Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+48,0x430013); // 19 words startingat Addr. 52 Reg 12 71
 			//CRC Config
-			Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+52,0x77001B); // 22 words startingat Addr. 45 Reg 13
+			Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+52,0x56001B); // 22 words startingat Addr. 45 Reg 13
 		} else if(kbps == 500){
 			Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+4,0xC8); // 2000 ns Reg 1 BaudRate
 			Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+28,0x32); // 250 ns Reg 7 Valid
@@ -564,7 +531,7 @@ void detect(u32 canID, u16 kbps){
 
 		//These rates should not be changed based on the baud rate.
 		Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+8,0x1); // 10 ns Reg 2. OW
-		Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+24,0x1); // 10 ns Reg 6 Invalid
+		Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+24,0x32); // 10 ns Reg 6 Invalid
 		Xil_Out32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+36,0x1); // 10 ns Reg 9 Record Rate
 
 
@@ -583,7 +550,7 @@ void detect(u32 canID, u16 kbps){
 
 		while(sem == 1){
 			u32 val = Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20);
-			if( 0x10 & (val >> 6)){
+			if( 0x10 == (val >> 6)){
 				sem = 0;
 			} else {
 				#ifdef DEBUG
@@ -667,7 +634,7 @@ u32 sampleEarly(u32 canID, u16 kbps){
 		counter++;
 		for (int j = counter; j <= (NUMBYTES1M * scale * 4); j++) {
 			//This should fit the signal toa  32 bit word.
-			sigArr[counter] = 0x00;
+			sigArr[j] = 0x00;
 		}
 
 		//Move the signal to the memory thing as it should work this way.
@@ -702,9 +669,14 @@ u32 sampleEarly(u32 canID, u16 kbps){
 	//Wait for the semaphore to get set. This may never happen.
 
 	while(sem == 1){
-		#ifdef DEBUG
-		xil_printf("Return value:: %X \r\n",Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20));
-		#endif
+		u32 val = Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20);
+		if( 0x0B == (val & 0x1F)){
+			sem = 0;
+		} else {
+			#ifdef DEBUG
+			//xil_printf("Return value:: %X \r\n",val);
+			#endif
+		}
 	}
 	#ifdef DEBUG
 	xil_printf("Out of semaphore \r\n");
@@ -738,7 +710,7 @@ u32 sampleEarly(u32 canID, u16 kbps){
 
 u32 sampleLate(u32 canID, u16 kbps){
 
-	u8 scale = 10000/kbps;
+	u8 scale = 1000/kbps;
 
 	if(scale > 4){
 		xil_printf("This speed has not currently been tested and may not work with the current makeup of the hardware. This function will not allow for the test to continue\r\n");
@@ -750,13 +722,13 @@ u32 sampleLate(u32 canID, u16 kbps){
 	//This should run 100 times to create 100 signals
 	for (u16 i = 0; i < (NUMSIGS1M * scale); i++) {
 		//The array of our signals
-		u8 sigArr[NUMBYTES1M * scale];
+		u8 sigArr[56];
 		//We need to get these down into groups of 4's
-		u16 highCount = (NUMSIGS1M - i) >> 2; // Divide by 4.
+		u16 highCount = ((NUMSIGS1M * scale) - i) >> 2; // Divide by 4.
 		u16 mixedCount = i % 4;
 		u16 counter = 0;
-		for (int j = 0; j < ((NUMSIGS1M >> 2) - highCount -1); j++) {
-			sigArr[j] = 0x00;
+		for (int j = 0; j < highCount; j++) {
+			sigArr[j] = 0xAA;
 			counter++;
 		}
 		switch (mixedCount) {
@@ -770,14 +742,15 @@ u32 sampleLate(u32 canID, u16 kbps){
 			sigArr[counter] = 0xA8;
 			break;
 		default:
-			sigArr[counter] = 0xAA;
+			sigArr[counter] = 0x00;
 			break;
 		}
 		counter++;
-		for (int j = counter; j <= (NUMBYTES1M * scale); j++) {
+		for (int j = counter; j < (NUMBYTES1M * scale * 4); j++) {
 			//This should fit the signal toa  32 bit word.
-			sigArr[counter] = 0xAA;
+			sigArr[j] = 0x00;
 		}
+		sigArr[0] = 0x2A;
 
 		//Move the signal to the memory thing as it should work this way.
 		//This ensures the correct ordering
@@ -785,8 +758,8 @@ u32 sampleLate(u32 canID, u16 kbps){
 		//31	24 23		16 15 		8 7 	0
 		// j+3			j+2			j+1		j
 		//MSB   LSB MSB	  LSB    MSB   LSB  MSB LSB
-		for (int j = 0; j < (NUMBYTES1M * scale); j += 4) {
-			writeWord((sigArr[j + 3] << 24) + (sigArr[j + 2] << 16) + (sigArr[j + 1] << 8) + sigArr[j]);
+		for (int j = (NUMBYTES1M * scale * 4) - 1; j > 0; j -= 4) {
+			writeWord((sigArr[j - 3] << 24) + (sigArr[j -2] << 16) + (sigArr[j -1] << 8) + sigArr[j]);
 		}
 
 	}
@@ -811,9 +784,14 @@ u32 sampleLate(u32 canID, u16 kbps){
 	//Wait for the semaphore to get set. This may never happen.
 
 	while(sem == 1){
-		#ifdef DEBUG
-		xil_printf("Return value:: %X \r\n",Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20));
-		#endif
+		u32 val = Xil_In32(XPAR_SAMPLEPOINTDETECTOR_0_BASEADDR+20);
+				if( 0x0B == (val & 0x1F)){
+					sem = 0;
+				} else {
+					#ifdef DEBUG
+					//xil_printf("Return value:: %X \r\n",val);
+					#endif
+				}
 	}
 	#ifdef DEBUG
 	xil_printf("Out of semaphore \r\n");
@@ -858,8 +836,8 @@ int main() {
 
 	//u16 speed = canDetect();
 	for(int i=0; i < 30;i++){
-		sampleEarly(0xFFFFF09B, 1000);
-		sleep(5);
+		detect(0xFFFFF09B, 1000);
+
 	}
 
 

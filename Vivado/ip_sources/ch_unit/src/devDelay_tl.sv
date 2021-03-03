@@ -47,9 +47,10 @@ module devDelay_tl
 
     );
 
-    localparam CANWAITTIME = 5;
+    localparam CANWAITTIME = 3; //Originally 5, if this breaks
     localparam CANDEFAULTMSGLENGTH = 65;
     localparam CANMSGLENGTHCRCERR = 85;
+    localparam VALIDCOUNTVAL = 7;
 
 //Top Level FSM Definition
 
@@ -211,9 +212,9 @@ module devDelay_tl
     logic [5:0] waitDBG;
     logic [5:0] crcDBG;
     logic [5:0] detectDBG;
+    logic [5:0] ifDebug;
     
 // DEBUG SWITCHING UNIT
-    /*
     always_comb begin
         if(currState == s_IDDetect) begin
             ifState = idDBG;
@@ -223,11 +224,12 @@ module devDelay_tl
             ifState = canClkCounter[5:0];
         end else if(currState == s_playCRC) begin
             ifState = {complete,incrementCRC,play,clkPlayback,sampleOut,outSwitch};
+        end else if(currState == s_IF) begin
+            ifState = ifDebug;
         end else begin
-            ifState = detectDBG;
+            ifState = {canClk,detectDBG[3:0],dIn};
         end
     end
-    */
     /*always_comb begin
         ifState = {canClk,detectDBG[3:0],dIn};
     end*/
@@ -345,7 +347,7 @@ module devDelay_tl
     //Transmission Window
     //
     //THIS UNIT DOES NOT WORK WITH TRIPLE SAMPLE POINTS HERE. I DO NOT KNOW WHY. THIS SHOULD BE USING TRIPLE SAMPLING POINTS AND CALCULATED INPUT, BUT TO KEEP THE SYSTEM WORKING CORRECTLY, IT IS NOT.
-	interframeDetect ifDetect(.clk, .resetN, .dIn(sampleInput), .interframePeriod(postInterframeReq), .samplePulse, .rateSelector(1'b0));
+	interframeDetect ifDetect(.clk, .resetN, .dIn(sampleInput), .interframePeriod(postInterframeReq), .samplePulse, .rateSelector(1'b0), .DBG(ifDebug));
 
 
     //
@@ -464,6 +466,66 @@ module devDelay_tl
 	end
 
 
+    //Wait Bus Counter
+    //This is neccessary to bring devices slowly into Bus off mode, but not the DUT
+    //Adding this really late, as I did not notice this key portion of my algorithm was wrong until final testing
+
+    logic [4:0] waitTime;
+    logic resetWait;
+    logic incWait;
+    logic resetWaitOS;
+    logic incWaitOS;
+
+
+    always_ff @(posedge clk) begin
+        if(!resetN) begin
+            waitTime <= CANWAITTIME;
+        end else begin
+            if(resetWaitOS) begin
+                waitTime <= CANWAITTIME;
+            end else begin
+                if(incWaitOS) begin
+                    if(waitTime != 15) begin
+                        waitTime <= waitTime + 4;
+                    end else begin
+                        waitTime <= waitTime;
+                    end
+                end else begin
+                    waitTime <= waitTime;
+                end
+            end
+        end
+    end
+
+    //Play Counter Neccessary to increment during valid playback, so as to bring all devices out of RX error
+
+    logic [7:0] validCount;
+    logic resetValidCount;
+    logic incValidCount;
+    logic resetValidOS;
+    logic incValidOS;
+
+    always_ff @(posedge clk) begin
+        if(!resetN) begin
+            validCount <= 0;
+        end else begin
+            if(resetValidOS) begin
+                validCount <= 0;
+            end else begin
+                if(incValidOS) begin
+                    validCount <= validCount + 1;
+                end else begin
+                    validCount <= validCount;
+                end
+            end
+        end
+    end
+
+    oneshot osIW(.*, .pulse(incWait), .oneshot(incWaitOS));
+    oneshot osRW(.*, .pulse(resetWait), .oneshot(resetWaitOS));
+    oneshot osIE(.*, .pulse(incValidCount), .oneshot(incValidOS));
+    oneshot osRE(.*, .pulse(resetValidCount), .oneshot(resetValidOS));
+
 
 
 //Top Level FSM Variables
@@ -504,7 +566,7 @@ module devDelay_tl
                 if(waitLeave) begin
                     nextState = s_IDDetect;
                 end else begin
-                    if(canClkCounter >= CANWAITTIME) begin
+                    if(canClkCounter >= waitTime) begin
                         if(overWrite) begin
                             nextState = s_playCRC;
                         end else begin
@@ -574,14 +636,14 @@ module devDelay_tl
                 end
             end
             s_playCRC: begin
-                if(canClkCounter >= CANDEFAULTMSGLENGTH) begin
+                if(canClkCounter >= (CANDEFAULTMSGLENGTH + waitTime - 5)) begin
                     nextState = s_recordCRC;
                 end else begin
                     nextState = currState;
                 end
             end
             s_recordCRC: begin
-                if(canClkCounter >= CANMSGLENGTHCRCERR) begin
+                if(canClkCounter >= (CANMSGLENGTHCRCERR + waitTime - 5)) begin
                     nextState = s_writeCache;
                 end else begin
                     nextState = currState;
@@ -627,6 +689,7 @@ module devDelay_tl
                 {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
                 {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
+                {incWait, resetWait, incValidCount, resetValidCount} = 4'b0101;                             //Additional Signals Added Late into Dev
             end
             s_init: begin
                 threeSamplePoint = 0;           //Select the total sample point rate.
@@ -639,9 +702,10 @@ module devDelay_tl
                 {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
                 {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
+                {incWait, resetWait, incValidCount, resetValidCount} = 4'b0101;                             //Additional Signals Added Late into Dev
             end
             s_IF: begin
-                threeSamplePoint = 1;           //Select the total sample point rate.
+                threeSamplePoint = 0;           //Select the total sample point rate.
 				syncOverride = 0;               //Override syncronization(used during playback)
                 {setOverwrite, setMsgLength} = 2'b00;               //Latches
                 playbackSelector = 2'b10;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3  
@@ -651,6 +715,11 @@ module devDelay_tl
                 {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
                 {returnOW, returnInvalid, returnValid, returnCRC} = 4'b1111;                            //Return to base addr signals
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
+                if(validCount == VALIDCOUNTVAL) begin
+                    {incWait, resetWait, incValidCount, resetValidCount} = 4'b1001;                             //Additional Signals Added Late into Dev
+                end else begin
+                    {incWait, resetWait, incValidCount, resetValidCount} = 4'b0000;                             //Additional Signals Added Late into Dev
+                end
             end
             s_waitBus: begin
                 threeSamplePoint = 1;           //Select the total sample point rate.
@@ -663,6 +732,7 @@ module devDelay_tl
                 {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
                 {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
+                {incWait, resetWait, incValidCount, resetValidCount} = 4'b0000;                             //Additional Signals Added Late into Dev
             end
             s_IDDetect: begin
                 threeSamplePoint = 1;           //Select the total sample point rate.
@@ -675,6 +745,7 @@ module devDelay_tl
                 {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
                 {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
+                {incWait, resetWait, incValidCount, resetValidCount} = 4'b0000;                             //Additional Signals Added Late into Dev
             end
             s_playInvalid: begin
                 threeSamplePoint = 1;           //Select the total sample point rate.
@@ -687,9 +758,10 @@ module devDelay_tl
                 {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
                 {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
+                {incWait, resetWait, incValidCount, resetValidCount} = 4'b0101;                             //Additional Signals Added Late into Dev
             end
             s_decodeLen:  begin
-                threeSamplePoint = 0;           //Select the total sample point rate.
+                threeSamplePoint = 1;           //Select the total sample point rate.
 				syncOverride = 0;               //Override syncronization(used during playback)
                 {setOverwrite, setMsgLength} = 2'b00;               //Latches
                 playbackSelector = 2'b00;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3 
@@ -699,6 +771,7 @@ module devDelay_tl
                 {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
                 {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
+                {incWait, resetWait, incValidCount, resetValidCount} = 4'b0000;                             //Additional Signals Added Late into Dev
             end
             s_latchLen:  begin
                 threeSamplePoint = 0;           //Select the total sample point rate.
@@ -711,6 +784,7 @@ module devDelay_tl
                 {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
                 {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
+                {incWait, resetWait, incValidCount, resetValidCount} = 4'b0000;                             //Additional Signals Added Late into Dev
             end
             s_waitTgt:  begin
                 threeSamplePoint = 0;           //Select the total sample point rate.
@@ -723,6 +797,7 @@ module devDelay_tl
                 {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
                 {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
+                {incWait, resetWait, incValidCount, resetValidCount} = 4'b0000;                             //Additional Signals Added Late into Dev
             end
             s_playACK:  begin
                 threeSamplePoint = 0;           //Select the total sample point rate.
@@ -735,6 +810,7 @@ module devDelay_tl
                 {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
                 {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b1101;                   //Recording Unit Signals
+                {incWait, resetWait, incValidCount, resetValidCount} = 4'b0000;                             //Additional Signals Added Late into Dev
             end
             s_waitCalc:  begin
                 threeSamplePoint = 0;           //Select the total sample point rate.
@@ -743,10 +819,11 @@ module devDelay_tl
                 playbackSelector = 2'b00;       //Playback Signal Selector   OW = 0, Invalid = 1, Valid = 2, CRC = 3 
                 {err, interrupt} = 2'b00;       //System Status Outputs
                 {initStart, compareEnable, countEn, sizeDetectEnable, play, writeReq} = 6'b000010;      //Enable Signals
-               {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN, recordResetNReq} = 5'b11111;                   //Reset Signals
+                {sizeReqResetN, playbackreqResetN, resetLengthN, idResetN, recordResetNReq} = 5'b11111;                   //Reset Signals
                 {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
                 {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0001;                   //Recording Unit Signals
+                {incWait, resetWait, incValidCount, resetValidCount} = 4'b0000;                             //Additional Signals Added Late into Dev
             end
             s_waitPB:  begin
                 threeSamplePoint = 0;           //Select the total sample point rate.
@@ -759,6 +836,7 @@ module devDelay_tl
                 {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
                 {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
+                {incWait, resetWait, incValidCount, resetValidCount} = 4'b1001;                             //Additional Signals Added Late into Dev
             end
             s_playCRC: begin
                 threeSamplePoint = 0;           //Select the total sample point rate.
@@ -771,6 +849,7 @@ module devDelay_tl
                 {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
                 {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
+                {incWait, resetWait, incValidCount, resetValidCount} = 4'b0000;                             //Additional Signals Added Late into Dev
             end
             s_recordCRC: begin
                 threeSamplePoint = 0;           //Select the total sample point rate.
@@ -783,6 +862,7 @@ module devDelay_tl
                 {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
                 {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b1010;                   //Recording Unit Signals
+                {incWait, resetWait, incValidCount, resetValidCount} = 4'b0000;                             //Additional Signals Added Late into Dev
             end
             s_writeCache: begin
                 threeSamplePoint = 0;           //Select the total sample point rate.
@@ -795,6 +875,7 @@ module devDelay_tl
                 {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
                 {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0010;                   //Recording Unit Signals
+                {incWait, resetWait, incValidCount, resetValidCount} = 4'b0000;                             //Additional Signals Added Late into Dev
             end
             s_writeBRAM: begin
                 threeSamplePoint = 0;           //Select the total sample point rate.
@@ -807,6 +888,7 @@ module devDelay_tl
                 {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
                 {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
+                {incWait, resetWait, incValidCount, resetValidCount} = 4'b0000;                             //Additional Signals Added Late into Dev
             end
             s_playValid: begin
                 threeSamplePoint = 0;           //Select the total sample point rate.
@@ -819,6 +901,7 @@ module devDelay_tl
                 {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
                 {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
+                {incWait, resetWait, incValidCount, resetValidCount} = 4'b0010;                             //Additional Signals Added Late into Dev
             end
             s_report: begin
                 threeSamplePoint = 0;           //Select the total sample point rate.
@@ -831,6 +914,7 @@ module devDelay_tl
                 {baseAddrOW, baseAddrInvalid, baseAddrValid, baseAddrCRC} = {8'b0, 8'b0, 8'b0, 8'b0};   //Base address signals
                 {returnOW, returnInvalid, returnValid, returnCRC} = 4'b0000;                            //Return to base addr signals
                 {runRecord, stopOnPlayback, writeRecording, calcRecording} = 4'b0000;                   //Recording Unit Signals
+                {incWait, resetWait, incValidCount, resetValidCount} = 4'b0000;                             //Additional Signals Added Late into Dev
             end
         endcase
     end

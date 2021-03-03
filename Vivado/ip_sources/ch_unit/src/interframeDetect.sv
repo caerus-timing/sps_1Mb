@@ -106,7 +106,7 @@ module interframeDetect
 	always_comb begin
 		if(dataValid == 1) begin
 			unique case(currState)
-				state11: begin
+				state10: begin
 					if(!dIn) begin
 						nextState = currState.first;
 					end
@@ -130,7 +130,7 @@ module interframeDetect
 
 	always_comb begin
 		case(currState)
-			state11: interframePeriod = 1;
+			state10: interframePeriod = 1;
 			default: interframePeriod = 0;
 		endcase
 	end

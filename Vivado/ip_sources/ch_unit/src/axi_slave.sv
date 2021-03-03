@@ -558,7 +558,7 @@ module axi_slave_module  #
 
 	//TEMP REMOVE IF WORKING ON DELAY UNIT
 	always_comb begin
-		delayDBG = {2'b0,metaState};
+		delayDBG = delaydbg;
 	end
         
     always_comb begin

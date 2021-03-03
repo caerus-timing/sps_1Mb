@@ -42,7 +42,7 @@ module sizeDetect
 
 
     always_comb begin
-        DBG = {inverseDLC,inDLC, dlcShift};
+        DBG = {dlcShift,inDLC,validCounter[3:0]};
     end
 
     const logic [4:0] initialBitPattern = 7'b0101010; //This pattern was created to not have a stuff bit instantly detected, but still have SOF cause a bit stuff.
